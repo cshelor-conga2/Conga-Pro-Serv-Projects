@@ -1,0 +1,71 @@
+<apex:page sidebar="false" showHeader="true" docType="html-4.01-strict">
+<div id="tabstrip" style="display:none;"> 
+<ul> 
+	<li class="k-state-active">Mintigo Main</li>
+	<li>DocGen</li>
+    <li>Sign</li>    
+    <li>Contracts</li>
+    <li>Grid &amp; Orchestrate</li>  
+    <li>Services &amp; Support</li>     
+</ul>
+    
+<!-- Mintigo Main -->
+<div style="overflow:hidden;"> 
+<CRMC_PP:Grid ObjectName="Account" DelayLoad="false"  ViewID="a6A1T000000bpnHUAQ" 
+ EnableNewButton="false"  EnableNewInline="false"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true" 
+ EnableStickyViews="true"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+ <CRMC_PP:DrillUp /> 
+ </div>
+
+<!-- DocGen -->
+<div style="overflow:hidden;"> 
+<CRMC_PP:Grid ObjectName="Account" DelayLoad="true"  ViewID="a6A1T000000bpnEUAQ" 
+ EnableNewButton="false"  EnableNewInline="false"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true" 
+ EnableStickyViews="true"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+ <CRMC_PP:DrillUp /> 
+ </div>
+    
+<!-- Sign -->
+<div style="overflow:hidden;"> 
+<CRMC_PP:Grid ObjectName="Account" DelayLoad="true"  ViewID="a6A1T000000bpnFUAQ" 
+ EnableNewButton="false"  EnableNewInline="false"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true" 
+ EnableStickyViews="true"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+ <CRMC_PP:DrillUp /> 
+ </div>       
+    
+<!-- Contracts -->
+<div style="overflow:hidden;"> 
+<CRMC_PP:Grid ObjectName="Account" DelayLoad="true"  ViewID="a6A1T000000bpnDUAQ" 
+ EnableNewButton="false"  EnableNewInline="false"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true" 
+ EnableStickyViews="true"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+ <CRMC_PP:DrillUp /> 
+ </div>
+   
+<!-- Grid & Orchestrate -->
+<div style="overflow:hidden;"> 
+<CRMC_PP:Grid ObjectName="Account" DelayLoad="true"  ViewID="a6A1T000000bpnCUAQ" 
+ EnableNewButton="false"  EnableNewInline="false"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true" 
+ EnableStickyViews="true"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+ <CRMC_PP:DrillUp /> 
+ </div>    
+
+<!-- Services & Support -->
+<div style="overflow:hidden;"> 
+<CRMC_PP:Grid ObjectName="Account" DelayLoad="true"  ViewID="a6A1T000000bpnGUAQ" 
+ EnableNewButton="false"  EnableNewInline="false"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true" 
+ EnableStickyViews="true"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+ <CRMC_PP:DrillUp /> 
+ </div>   
+    
+</div>
+<script>
+$(document).ready(function() {
+    $("#tabstrip").kendoTabStrip({
+      activate: function(e){
+        setTimeout(function(){          $(window).resize();        });
+      }
+    });
+    $("#tabstrip").css("display", "block");
+});
+ </script>
+</apex:page>

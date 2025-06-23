@@ -1,0 +1,9 @@
+h1, p, h2, td, .pc_quote_amount_box, .pc_quote_expiration { text-align:left }
+h1, h2 { font-size:13px }
+p, td, th { font-size:12px }
+.pc_frame { background-color:transparent; border:none }
+.pc_page_content { background-color:#FFF; margin:57px 0 0 0; padding:1px 0 0 0 }
+.pc_frame_top { margin:30px 0 0 20px;  }
+.button { height:30px; width:110px; text-align:center; cursor:pointer; outline:none }
+.labelColumn { float:right }
+img { border:none }

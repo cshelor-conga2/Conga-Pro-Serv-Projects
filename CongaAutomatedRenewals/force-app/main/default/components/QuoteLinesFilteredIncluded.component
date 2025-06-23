@@ -1,0 +1,76 @@
+<apex:component controller="QuoteLinesFilteredController" access="global">
+    <apex:attribute name="quoteId" description="Id of the quote" type="Id" assignTo="{!objId}" />
+    <!-- {!quoteLines} -->
+    <apex:dataTable value="{!quoteLineList}" var="quoteLine" styleClass="tableClass" border="1">
+        <apex:column width="25%">
+            <apex:facet name="header">Product Name</apex:facet>
+            <apex:outputText value="{!quoteLine.SBQQ__ProductName__c}"/>
+        </apex:column>
+        
+        <apex:column width="8%">
+            <apex:facet name="header">Start Date</apex:facet>
+            <apex:outputText value="{0, date, MMMM dd',' yyyy}">
+                <apex:param value="{!quoteLine.Opp_Item_Start_Date__c}"/>
+            </apex:outputText>
+        </apex:column>
+        
+        <apex:column width="8%">
+            <apex:facet name="header">End Date</apex:facet>
+            <apex:outputText value="{0, date, MMMM dd',' yyyy}">
+                <apex:param value="{!quoteLine.Opp_Item_End_Date__c}"/>
+            </apex:outputText>
+        </apex:column>
+        <!--
+        <apex:column width="8%">
+            <apex:facet name="header">Quantity</apex:facet>
+            <apex:outputText value="{0, number, #,###,##0}">
+                <apex:param value="{!quoteLine.SBQQ__Quantity__c}"/>
+            </apex:outputText>
+        </apex:column>
+        -->
+        <apex:column width="8%" style="text-align:center;">
+            <apex:facet name="header">Effective Quantity</apex:facet>
+            <apex:outputText value="{0, number, #,###,##0}">
+                <apex:param value="{!quoteLine.SBQQ__EffectiveQuantity__c}"/>
+            </apex:outputText>
+        </apex:column>
+        
+        <apex:column width="8%" style="text-align:right;">
+            <apex:facet name="header">List Price (Unit)</apex:facet>
+            <!-- {!quoteLine.CurrencyIsoCode}&nbsp; -->
+            <apex:outputText value="{0, Number, Currency}">
+                <apex:param value="{!quoteLine.SBQQ__ListPrice__c}" />
+            </apex:outputText>
+        </apex:column>
+        
+        <apex:column width="8%" style="text-align:right;">
+            <apex:facet name="header">Customer Price (Unit)</apex:facet>
+            <!-- {!quoteLine.CurrencyIsoCode}&nbsp; -->
+            <apex:outputText value="{0, Number, Currency}">
+                <apex:param value="{!quoteLine.SBQQ__CustomerPrice__c }" />
+            </apex:outputText>
+        </apex:column>
+        
+        <apex:column width="8%" style="text-align:right;">
+            <apex:facet name="header">Discount %</apex:facet>
+            <apex:outputText value="{0, number, #,##0.00}%">
+                <apex:param value="{!quoteLine.SBQQ__Discount__c}"/>
+            </apex:outputText>    
+        </apex:column>
+        
+        <apex:column width="8%" style="text-align:right;">
+            <apex:facet name="header">Discount Amt</apex:facet>
+            <apex:outputText value="{0, Number, Currency}">
+                <apex:param value="{!quoteLine.SBQQ__AdditionalDiscountAmount__c}"/>
+            </apex:outputText>    
+        </apex:column>
+        
+        <apex:column width="8%" style="text-align:right;">
+            <apex:facet name="header">Customer Total</apex:facet>
+            <!-- {!quoteLine.CurrencyIsoCode}&nbsp; -->
+            <apex:outputText value="{0, Number, Currency}">
+                <apex:param value="{!quoteLine.SBQQ__CustomerTotal__c }" />
+            </apex:outputText>
+        </apex:column>
+    </apex:dataTable>
+</apex:component>

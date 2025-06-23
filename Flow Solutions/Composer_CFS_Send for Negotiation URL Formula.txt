@@ -1,0 +1,13 @@
+"/apex/APXTConga4__Conga_Composer?serverUrl="+{!$Api.Partner_Server_URL_370}+
+"&Id="+{!recordId}+
+"&QVar0Id=0Q_402EAY922805?pv0="+{!recordId}+
+"&QVar0Format=10000"+
+"&TemplateId={QVar0}"+
+"&DS7=112"+
+"&BML=Sending+for+negotiation..."+
+"&EmailToId="+{!ClientNegotiator.firstSelectedRow.Contact__r.Id}+
+"&CongaEmailTemplateId=0E_002EAY121463"+
+"&ContentDocumentId={QVar0}"+
+"&SC0=1"+
+"&SC1=SalesforceFile"+
+"&OFN="+{!Get_Legal_Agreement_Record.Legal_Agreement_Filename__c}

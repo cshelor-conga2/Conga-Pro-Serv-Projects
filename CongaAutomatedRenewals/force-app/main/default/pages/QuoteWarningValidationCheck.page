@@ -1,0 +1,10 @@
+<apex:page standardController="SBQQ__Quote__c" extensions="QuoteWarningValidationCheckController" showHeader="true" sidebar="true" action="{!checkQuote}">
+    <head>
+        <apex:slds />
+    </head>
+    
+    <apex:outputPanel styleClass="myCustomMessage">
+        <apex:pageMessages id="contractValCheck" escape="false" />
+    </apex:outputPanel>
+    
+</apex:page>

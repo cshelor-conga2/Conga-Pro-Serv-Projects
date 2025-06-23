@@ -1,0 +1,20 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global" >
+	
+	<aura:attribute name="currentUserId" type="Id"/>
+	<!-- <aura:handler name="updateViewMode" event="c:ContactInfoEvent" action="{!c.updateViewMode}"/> -->
+
+    <lightning:recordViewForm recordId="{!v.currentUserId}" objectApiName="User">
+    	<div class="slds-grid slds-wrap contact-info">
+    		<div class="slds-col slds-p-horizontal_medium slds-p-bottom_large slds-xx-small-size_12-of-12 slds-x-small-size_12-of-12 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-text-align_center">
+    			<lightning:outputField fieldName="Name" />
+    		</div>
+    		<div class="slds-col slds-p-horizontal_medium slds-p-bottom_large slds-xx-small-size_12-of-12 slds-x-small-size_12-of-12 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-text-align_center">
+    			<lightning:outputField fieldName="Email" />
+    		</div>
+    		<div class="slds-col slds-p-horizontal_medium slds-p-bottom_large slds-xx-small-size_12-of-12 slds-x-small-size_12-of-12 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-text-align_center">
+    			<lightning:outputField fieldName="Phone" />
+    		</div>
+    	</div>
+    </lightning:recordViewForm>
+    
+</aura:component>

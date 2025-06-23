@@ -1,0 +1,7 @@
+<apex:page >
+    <script>
+        window.onload = function(e){ 
+            window.open('https://getconga.my.salesforce.com/0XI','_self');
+        }
+    </script>
+</apex:page>

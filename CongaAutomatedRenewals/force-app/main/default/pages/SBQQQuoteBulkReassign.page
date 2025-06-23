@@ -1,0 +1,6 @@
+<apex:page standardController="SBQQ__Quote__c" extensions="SBQQQuoteBulkReassignExt" showHeader="true" sidebar="true" action="{!bulkReassign}">
+    <apex:pageMessages ></apex:pageMessages>
+    <apex:form >
+        <apex:commandButton id="returnButton" value="Back to Quote" action="{!returnToQuote}"/>
+    </apex:form>
+</apex:page>

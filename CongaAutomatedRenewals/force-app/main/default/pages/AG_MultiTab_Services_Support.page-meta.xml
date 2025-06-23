@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApexPage xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>34.0</apiVersion>
+    <availableInTouch>true</availableInTouch>
+    <confirmationTokenRequired>false</confirmationTokenRequired>
+    <description>AG_PS_Project__c;AG_Time_Card_Entry__c;AG_OpportunityLineItem;AG_Opportunity;AG_Survey__c
+26Jan17 BAS
+
+For Eric Goldgeir</description>
+    <label>AG MultiTab: Services &amp; Support</label>
+    <packageVersions>
+        <majorNumber>2</majorNumber>
+        <minorNumber>55</minorNumber>
+        <namespace>CRMC_PP</namespace>
+    </packageVersions>
+</ApexPage>

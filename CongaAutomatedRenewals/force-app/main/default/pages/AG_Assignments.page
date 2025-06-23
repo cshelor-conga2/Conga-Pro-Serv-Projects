@@ -1,0 +1,6 @@
+<apex:page standardController="PS_Project__c" showHeader="false" docType="html-4.01-strict">
+<CRMC_PP:Grid ObjectName="Assignment__c" FKName="ProjectId__c" FKValue="{!PS_Project__c.Id}"  DelayLoad="false"  ViewID="a6A1T000000bqFbUAI" 
+ EnableNewButton="true"  EnableNewInline="true"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true" 
+ EnableStickyViews="false"  EnableToolbar="true"  EnableViews="false"  EnableFormatting="true"  EnableReadingPane="false" />
+<CRMC_PP:DrillUp />
+</apex:page>

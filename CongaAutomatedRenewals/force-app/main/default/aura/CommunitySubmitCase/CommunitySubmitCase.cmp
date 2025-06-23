@@ -1,0 +1,49 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes,force:hasRecordId" controller="CommunitySubmitCaseController" access="global">
+    <aura:attribute name="showSpinner" type="Boolean" default="FALSE"/>
+    <aura:attribute name="userContactId" type="String" />
+    <aura:attribute name="caseRecordTypeId" type="String" />
+    <aura:attribute name="caseOrigin" type="String" />
+    
+    <!-- THIS IS THE BUTTON -->
+    <div class="slds-align_absolute-center">
+        <lightning:button class="create-case-button" variant="brand" label="CONTACT CUSTOMER SUCCESS" title="CONTACT CUSTOMER SUCCESS" onclick="{!c.openModal}" />
+    </div>
+    
+    <!-- FORM MODAL, HIDDEN BY DEFAULT -->
+    <section role="dialog" id="modaldialog" tabindex="-1" aria-label="Create New Case" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open" style="display:none;">
+      <div class="slds-modal__container">
+
+        <header class="slds-modal__header">
+            <h2 id="modal-heading-01" class="slds-modal__title slds-hyphenate">Submit A Case</h2>
+        </header> 
+
+        <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+            <div class="slds-is-relative">
+                <aura:if isTrue="{!v.showSpinner}">
+                    <lightning:spinner variant="base" size="large" alternativeText="Submitting Case..." />
+                </aura:if>
+            </div>            
+            <lightning:recordEditForm aura:id="recordEditForm" objectApiName="Case" recordTypeId="{!v.caseRecordTypeId}" onsubmit="{!c.handleSubmit}" onsuccess="{!c.handleSuccess}" >
+                <lightning:messages />
+                
+                <label for="subjectField">Subject</label>
+                <lightning:inputField aura:id="subjectField" fieldName="Subject" required="true" variant="label-hidden" />
+                <br />
+                <label for="descriptionField">Description</label>
+                <lightning:inputField aura:id="descriptionField" fieldName="Description" required="true" variant="label-hidden" />
+                <br />
+                <label for="requestTypeField">Request Type</label>
+                <lightning:inputField aura:id="requestTypeField" fieldName="CSM_Request_Type__c" required="true" variant="label-hidden" />
+                <br />
+                <label for="preferredContactMethodField">Preferred Contact Method</label>
+                <lightning:inputField aura:id="preferredContactMethodField" fieldName="Preferred_Contact_Method__c" required="true" variant="label-hidden" />
+                
+                <lightning:button class="slds-m-top_medium" name="Cancel" label="Cancel" onclick="{!c.closeModal}"/>
+                <lightning:button class="slds-m-top_medium" name="Save" label="Save" type="submit" />
+            </lightning:recordEditForm>
+
+        </div>
+      </div>
+    </section>
+	<div id="dialogbackdrop" class="slds-backdrop slds-backdrop_open" style="display:none;"></div>
+</aura:component>

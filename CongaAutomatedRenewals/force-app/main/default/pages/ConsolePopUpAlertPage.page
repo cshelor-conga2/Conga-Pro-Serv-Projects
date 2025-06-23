@@ -1,0 +1,27 @@
+<apex:page standardController="Case" extensions="PopUpWindowController">
+    <apex:form >
+        <apex:pageMessages ></apex:pageMessages>
+        <script type="text/javascript">
+            var caseId = "{!Case.Id}";
+            var timeoutDuration = 3600000;
+
+            window.onload = function(){
+                setTimeout(alertFunc, timeoutDuration);
+            }
+
+            function alertFunc() {
+                Visualforce.remoting.Manager.invokeAction("{!$RemoteAction.PopUpWindowController.checkStatus}",caseId,function(result,event){
+                    if(event.type== "exception"){
+                        console.log('your code broke...seriously');
+                    }else{
+                        console.log("The result of the call is " + result);
+                        if(result){
+                            window.open('/apex/PopUpWindowPage?cId=' + caseId);
+                            setTimeout(alertFunc, timeoutDuration);
+                        }
+                    }
+                }); 
+            }
+        </script>
+    </apex:form>
+</apex:page>

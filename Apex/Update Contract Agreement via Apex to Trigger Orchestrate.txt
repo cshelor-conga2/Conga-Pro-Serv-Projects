@@ -1,0 +1,19 @@
+public class LegalAgreementUpdateAction {
+    @InvocableMethod(label='Update Legal Agreements' description='Update Legal and Commercial legal agreement to trigger Conga Orchestrate')
+    public static void updateLegalAgreements(List<LegalAgreements> agreement) {
+        List<APXT_Redlining__Contract_Agreement__c> agreementsToUpdate = new List<APXT_Redlining__Contract_Agreement__c>();
+        system.debug('legalAgreements '+ agreement[0].legalLA.Id);
+        system.debug('legalAgreements '+ agreement[0].commercialLA.Id);
+        agreementsToUpdate.add(agreement[0].legalLA);
+        agreementsToUpdate.add(agreement[0].commercialLA);
+        update agreementsToUpdate;
+    }
+     public class LegalAgreements{
+         
+        @InvocableVariable
+        public APXT_Redlining__Contract_Agreement__c legalLA;
+
+        @InvocableVariable
+        public APXT_Redlining__Contract_Agreement__c commercialLA;
+    }
+}

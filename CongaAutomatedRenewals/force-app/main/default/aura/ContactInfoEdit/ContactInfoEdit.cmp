@@ -1,0 +1,28 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global" >
+	
+	<aura:attribute name="currentUserId" type="Id"/>
+	<aura:registerEvent name="contactInfoEvent" type="c:ContactInfoEvent"/>
+
+    <lightning:recordEditForm aura:id="edit" recordId="{!v.currentUserId}" objectApiName="User" onsuccess="{!c.refreshComponent}">
+        <div aura:id="msg">
+            <lightning:messages />
+        </div>
+
+        <div class="slds-grid slds-wrap contact-info">
+    		<div class="slds-col slds-p-horizontal_medium slds-p-bottom_large slds-xx-small-size_12-of-12 slds-x-small-size_12-of-12 slds-medium-size_3-of-12 slds-large-size_3-of-12">
+    			<lightning:inputField fieldName="FirstName" />
+    		</div>
+    		<div class="slds-col slds-p-horizontal_medium slds-p-bottom_large slds-xx-small-size_12-of-12 slds-x-small-size_12-of-12 slds-medium-size_3-of-12 slds-large-size_3-of-12 ">
+    			<lightning:inputField fieldName="LastName" />
+    		</div>
+    		<div class="slds-col slds-p-horizontal_medium slds-p-bottom_large slds-xx-small-size_12-of-12 slds-x-small-size_12-of-12 slds-medium-size_3-of-12 slds-large-size_3-of-12">
+    			<lightning:inputField fieldName="Email" />
+    		</div>
+    		<div class="slds-col slds-p-horizontal_medium slds-p-bottom_large slds-xx-small-size_12-of-12 slds-x-small-size_12-of-12 slds-medium-size_3-of-12 slds-large-size_3-of-12">
+    			<lightning:inputField fieldName="Phone" />
+    		</div>
+    		<lightning:button type="submit" label="Save" name="save" variant="brand" class="slds-m-top_small slds-m-left_medium"/>
+    	</div>
+    </lightning:recordEditForm>
+    
+</aura:component>

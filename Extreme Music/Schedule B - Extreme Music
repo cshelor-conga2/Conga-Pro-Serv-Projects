@@ -1,0 +1,28 @@
+<p style="text-align: center;"><strong><span style="text-decoration: underline;">SCHEDULE "B"</span></strong></p>
+<div data-repeat="product in Opportunity_Products">
+  <table style="width: 75%; height: 63px; margin-left: 140px; margin-bottom: 20px;" data-hide-if="product.opportunity_products.ac_tracknamelong IS BLANK OR product.opportunity_products.ac_composerlong IS BLANK OR product.opportunity_products.ac_publisherlong IS BLANK">
+    <tbody>
+      <tr style="height: 21px;">
+        <td style="width: 25.313%; height: 21px; background-color: #ffffff; border-color: #ffffff;"><strong>Composition/Master Title:</strong></td>
+        <td style="width: 56.687%; height: 21px; background-color: #ffffff; border-color: #ffffff;">[product.opportunity_products.ac_tracknamelong]</td>
+      </tr>
+      <tr style="height: 21px;">
+        <td style="width: 25.313%; height: 21px; background-color: #ffffff; border-color: #ffffff;"><strong>Composer/Artist:</strong></td>
+        <td style="width: 56.687%; height: 21px; background-color: #ffffff; border-color: #ffffff;">[product.opportunity_products.ac_composerlong]</td>
+      </tr>
+      <tr style="height: 21px;">
+        <td style="width: 25.313%; height: 21px; background-color: #ffffff; border-color: #ffffff;"><strong>Publisher:</strong></td>
+        <td style="width: 56.687%; height: 21px; background-color: #ffffff; border-color: #ffffff;">[product.opportunity_products.ac_publisherlong]</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div data-source="Opportunity_Products" data-show-if="opportunity_products.producttypecode_formatted LIKE 'Blanket License'">
+  <p style="text-align: center;"><strong>The Extreme Production Music X-Series</strong><br /><strong>The Extreme Production Music Ultimate Classix</strong><br /><strong>The Extreme Production Music Twisted Series</strong><br /><strong>The Extreme Production Music Easy Listening Series</strong><br
+    /><strong>The Extreme Production Music Passport Series</strong><br /><strong>The Extreme Production Music Directors Cuts Series</strong><br /><strong>The Extreme Production Music Q Series</strong><br /><strong>The Extreme Production Music Mixtape Series</strong><br
+    /><strong>The Extreme Production Music Two Steps From Hell Series</strong><br /><strong>The Extreme Production Music Scoreganics Series</strong><br /><strong>The Extreme Production Music Grandmaster Series</strong><br /><strong>The Extreme Production Music Stampede Series</strong><br
+    /><strong>The Extreme Production Music Velvet Ears Series</strong><br /><strong>The Extreme Production Music Law &amp; Audio Series</strong><br /><strong>The Extreme Production Music Gore &amp; Audio Series</strong><br /><strong>The Extreme Production Music War &amp; Audio Series</strong><br
+    /><strong>The Extreme Production Music Super Pop Series</strong><br /><strong>The Extreme Production Music Moonshine Music Series</strong><br /><strong>The Extreme Production Music 13 Brotherhood Series</strong><br /><strong>The Extreme Production Music/MTVN Hype Catalogue</strong><br
+    /><strong>The Extreme Production Music Lab Rat Recordings Series</strong><br /><strong>The Extreme Production Music Made Series</strong><br /><strong>The Extreme Production Music Spintrest Series</strong><br /><strong>The Extreme Production Music Reality Check Series</strong><br
+    /><strong>The Extreme Production Music Super Rock Series</strong><br /><strong>The Extreme Production Music A-Tone Recordings Series</strong></p>
+</div>

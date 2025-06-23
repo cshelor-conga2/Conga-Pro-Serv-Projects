@@ -1,0 +1,101 @@
+<apex:page sidebar="false" showHeader="true" docType="html-4.01-strict" >
+<p>Any object can be <b>ActionGrid'd.</b> So think about using ActionGrid to administer VF Pages, Users, Profiles, Objects, Fields and all those things that could benefit from the ActionGrid experience</p>
+<div id="tabstrip" style="display:none;"> 
+
+<ul> 
+<li class="k-state-active">
+Users</li>
+<li>VisualForce Pages</li>
+<li>Custom Actions</li>
+<li>Permission Sets</li>
+<li>ActionGrid Views</li>
+<li>List Views</li>
+<li>Email Templates</li>
+<li>Docusign Configuration</li>
+
+
+</ul>
+
+<!-- Users -->
+<div style="overflow:hidden;"> 
+<CRMC_PP:Grid ObjectName="User" DelayLoad="true"  ViewID="" 
+ EnableNewButton="true"  EnableNewInline="true"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true" 
+ EnableStickyViews="true"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+<CRMC_PP:DrillUp /> 
+ </div>
+
+<!-- Apex Page aka VisualForce Pages -->
+<div style="overflow:hidden;"> 
+<CRMC_PP:Grid ObjectName="ApexPage" DelayLoad="false"  ViewID="" 
+ EnableNewButton="true"  EnableNewInline="true"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true" 
+ EnableStickyViews="true"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+<CRMC_PP:DrillUp /> 
+ </div>
+
+<!-- Static Resource -aka Custom Actions -->
+<div style="overflow:hidden;"> 
+<p>ActionGrid Custom Actions are stored in the Static Resource object</p>
+<CRMC_PP:Grid ObjectName="StaticResource" DelayLoad="true"  ViewID="" 
+ EnableNewButton="true"  EnableNewInline="true"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true" 
+ EnableStickyViews="true"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+<CRMC_PP:DrillUp /> 
+</div>
+
+<!-- Entity Definition aka the Table/Object -->
+<div style="overflow:hidden;"> 
+<p>ActionGrid Custom Actions are stored in the Static Resource object</p>
+<CRMC_PP:Grid ObjectName="PermissionSet" DelayLoad="true"  ViewID="" 
+ EnableNewButton="true"  EnableNewInline="true"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true" 
+ EnableStickyViews="true"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+<CRMC_PP:DrillUp /> 
+</div>
+
+ 
+ <!-- AG Views -->
+<div style="overflow:hidden;"> 
+<CRMC_PP:Grid ObjectName="CRMC_PP__GridView__c" DelayLoad="true"  ViewID="" 
+ EnableNewButton="true"  EnableNewInline="true"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true" 
+ EnableStickyViews="true"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+<CRMC_PP:DrillUp /> 
+ </div>
+
+ 
+<!-- Salesforce List Views -->
+<div style="overflow:hidden;"> 
+<CRMC_PP:Grid ObjectName="ListView" DelayLoad="true"  ViewID="" 
+ EnableNewButton="true"  EnableNewInline="true"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true" 
+ EnableStickyViews="true"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+<CRMC_PP:DrillUp /> 
+</div>
+
+<!-- Salesforce Email Template for easier management -->
+<div style="overflow:hidden;"> 
+<CRMC_PP:Grid ObjectName="EmailTemplate" DelayLoad="true"  ViewID="" 
+ EnableNewButton="true"  EnableNewInline="true"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true" 
+ EnableStickyViews="true"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+<CRMC_PP:DrillUp /> 
+</div>
+
+<!-- Docusign Configuration -->
+<div style="overflow:hidden;"> 
+<CRMC_PP:Grid ObjectName="01I50000000BdE4" DelayLoad="false"  ViewID="" 
+ EnableNewButton="true"  EnableNewInline="true"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true" 
+ EnableStickyViews="true"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+<CRMC_PP:DrillUp />
+</div>
+
+
+
+
+</div>
+<script>
+$(document).ready(function() {
+    $("#tabstrip").kendoTabStrip({
+      activate: function(e){
+        setTimeout(function(){          $(window).resize();        });
+      }
+    });
+    $("#tabstrip").css("display", "block");
+});
+</script>
+</apex:page>

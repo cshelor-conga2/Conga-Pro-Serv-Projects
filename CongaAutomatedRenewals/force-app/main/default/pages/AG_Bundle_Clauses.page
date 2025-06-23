@@ -1,0 +1,6 @@
+<apex:page standardController="APXT_Redlining__Clause_Bundle__c" showHeader="false" docType="html-4.01-strict">
+<CRMC_PP:Grid ObjectName="APXT_Redlining__Bundle_Clause__c" FKName="APXT_Redlining__Clause_Bundle__c" FKValue="{!APXT_Redlining__Clause_Bundle__c.Id}"  DelayLoad="false"  ViewID="a6A50000000boQ3EAI" 
+ EnableNewButton="true"  EnableNewInline="true"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true" 
+ EnableStickyViews="true"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+<CRMC_PP:DrillUp />
+</apex:page>

@@ -1,0 +1,317 @@
+<apex:page showHeader="false" sidebar="false" applyHtmlTag="false" applyBodyTag="false" standardStylesheets="false" docType="html-5.0">
+<html>
+    <head>
+		<title>Live Chat Simulation</title>        
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    </head>  
+	<body>
+        <div class="jumbotron">
+          <div class="container">
+            <h1 class="display-3">Live Agent Simulation</h1>
+            <p>Simulates the page hosting the buttons for initiating a Live Chat</p>
+          </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+
+                    <div id="productSelection">
+                        <p>Please, select your product:</p>
+
+                        <select id="productsCombo">
+                            <option value="" selected="true"/>
+                            <option value="aianalyzeChat">AI Analyze</option>
+                            <option value="docgenChat">Batch</option> 
+                            <option value="contractsChat">CLM Suit</option>
+                            <option value="collaborateChat">Collaborate</option>
+                            <option value="docgenChat">Composer 7</option> 
+                            <option value="docgenChat">Composer 8</option> 
+                            <option value="docgenChat">Conductor 7</option>
+                            <option value="docgenChat">Conga Invoice Generation</option>
+                            <option value="docgenChat">Conga Quote Generation</option>
+                            <option value="contractsChat">Contracts</option>
+                            <option value="c4sfChat">Contracts for Salesforce</option>
+                            <option value="docgenChat">Courier</option>
+                            <option value="gridChat">Grid</option>
+                            <option value="docgenChat">Mail Merge</option>
+                            <option value="orchestrateChat">Mix Forms</option>
+                            <option value="orchestrateChat">Orchestrate</option>
+                            <option value="orchestrateChat">Pulse</option>
+                            <option value="contractsChat">SalesConnect</option>
+                            <option value="signChat">Sign</option>
+                            <option value="docgenChat">Trigger</option>
+                            <option value="docgenChat">Workflow 7</option>                            
+                        </select>
+                        <p></p>
+                    </div>
+
+					<!-- AI Analyze -->
+                    <div id="aianalyzeChatButtons" style="display: none;">
+						<p>AI Analyze Support</p>
+                        <div id="liveagent_button_online_5731T000000XgLd" style="display: none;">
+                            <a class="btn btn-success" href="#" onclick="liveagent.startChat('5731T000000XgLd')" role="button">
+                                Chat with an Agent &raquo;
+                            </a>
+                        </div>
+                    
+                        <div id="liveagent_button_offline_5731T000000XgLd" style="display: none;">
+                            <p>There are no Agents available at this moment to chat.</p>
+                        </div>
+                        <script type="text/javascript">
+                            if (!window._laq) { window._laq = []; }
+                            window._laq.push(function(){
+                                liveagent.showWhenOnline('5731T000000XgLd', document.getElementById('liveagent_button_online_5731T000000XgLd'));
+                                liveagent.showWhenOffline('5731T000000XgLd', document.getElementById('liveagent_button_offline_5731T000000XgLd'));
+                            });
+                        </script>                        
+                    </div>
+                    
+                    <!-- Grid -->
+                    <div id="gridChatButtons" style="display: none;">
+						<p>Grid Support</p>
+                        <div id="liveagent_button_online_57350000000TXFj" style="display: none;">
+                            <a class="btn btn-success" href="#" onclick="liveagent.startChat('57350000000TXFj')" role="button">
+                                Chat with an Agent &raquo;
+                            </a>
+                        </div>
+                    
+                        <div id="liveagent_button_offline_57350000000TXFj" style="display: none;">
+                            <p>There are no Agents available at this moment to chat.</p>
+                        </div>
+                        <script type="text/javascript">
+                            if (!window._laq) { window._laq = []; }
+                            window._laq.push(function(){
+                                liveagent.showWhenOnline('57350000000TXFj', document.getElementById('liveagent_button_online_57350000000TXFj'));
+                                liveagent.showWhenOffline('57350000000TXFj', document.getElementById('liveagent_button_offline_57350000000TXFj'));
+                            });
+                        </script>                        
+                    </div>
+                    
+                    <!-- Contracts -->
+                    <div id="contractsChatButtons" style="display: none;">
+						<p>Contracts Support</p>
+                        <div id="liveagent_button_online_57350000000TXFk" style="display: none;">
+                            <a class="btn btn-success" href="#" onclick="liveagent.startChat('57350000000TXFk')" role="button">
+                                Chat with an Agent &raquo;
+                            </a>
+                        </div>
+                    
+                        <div id="liveagent_button_offline_57350000000TXFk" style="display: none;">
+                            <p>There are no Agents available at this moment to chat.</p>
+                        </div>
+                        <script type="text/javascript">
+                            if (!window._laq) { window._laq = []; }
+                            window._laq.push(function(){
+                                liveagent.showWhenOnline('57350000000TXFk', document.getElementById('liveagent_button_online_57350000000TXFk'));
+                                liveagent.showWhenOffline('57350000000TXFk', document.getElementById('liveagent_button_offline_57350000000TXFk'));
+                            });
+                        </script>                        
+                    </div>
+                    
+                    <!-- DocGen -->
+                    <div id="docgenChatButtons" style="display: none;">
+						<p>DocGen Support</p>
+                        <div id="liveagent_button_online_57350000000TXFl" style="display: none;">
+                            <a class="btn btn-success" href="#" onclick="liveagent.startChat('57350000000TXFl')" role="button">
+                                Chat with an Agent &raquo;
+                            </a>
+                        </div>
+                    
+                        <div id="liveagent_button_offline_57350000000TXFl" style="display: none;">
+                            <p>There are no Agents available at this moment to chat.</p>
+                        </div>
+                        <script type="text/javascript">
+                            if (!window._laq) { window._laq = []; }
+                            window._laq.push(function(){
+                                liveagent.showWhenOnline('57350000000TXFl', document.getElementById('liveagent_button_online_57350000000TXFl'));
+                                liveagent.showWhenOffline('57350000000TXFl', document.getElementById('liveagent_button_offline_57350000000TXFl'));
+                            });
+                        </script>                        
+                    </div>
+                    
+                    <!-- C4SF -->
+                    <div id="c4sfChatButtons" style="display: none;">
+                        <p>C4SF Support</p>
+                        <div id="liveagent_button_online_57350000000033u" style="display: none;">
+                            <a class="btn btn-success" href="#" onclick="liveagent.startChat('57350000000033u')" role="button">
+                                Chat with an Agent &raquo;
+                            </a>
+                        </div>
+                    
+                        <div id="liveagent_button_offline_57350000000033u" style="display: none;">
+                            <p>There are no Agents available at this moment to chat.</p>
+                        </div>
+                        <script type="text/javascript">
+                            if (!window._laq) { window._laq = []; }
+                            window._laq.push(function(){
+                                liveagent.showWhenOnline('57350000000033u', document.getElementById('liveagent_button_online_57350000000033u'));
+                                liveagent.showWhenOffline('57350000000033u', document.getElementById('liveagent_button_offline_57350000000033u'));
+                            });
+                        </script>                        
+                    </div>
+                    
+                    <!-- Collaborate -->
+                    <div id="collaborateChatButtons" style="display: none;">
+                        <p>Collaborate Support</p>
+                        <div id="liveagent_button_online_57350000000TXFK" style="display: none;">
+                            <a class="btn btn-success" href="#" onclick="liveagent.startChat('57350000000TXFK')" role="button">
+                                Chat with an Agent &raquo;
+                            </a>
+                        </div>
+                    
+                        <div id="liveagent_button_offline_57350000000TXFK" style="display: none;">
+                            <p>There are no Agents available at this moment to chat.</p>
+                        </div>
+                        <script type="text/javascript">
+                            if (!window._laq) { window._laq = []; }
+                            window._laq.push(function(){
+                                liveagent.showWhenOnline('57350000000TXFK', document.getElementById('liveagent_button_online_57350000000TXFK'));
+                                liveagent.showWhenOffline('57350000000TXFK', document.getElementById('liveagent_button_offline_57350000000TXFK'));
+                            });
+                        </script>                        
+                    </div>
+                    
+					<!-- Orchestrate -->
+                    <div id="orchestrateChatButtons" style="display: none;">
+                        <p>Orchestrate Support</p>
+                        <div id="liveagent_button_online_57350000000TXFP" style="display: none;">
+                            <a class="btn btn-success" href="#" onclick="liveagent.startChat('57350000000TXFP')" role="button">
+                                Chat with an Agent &raquo;
+                            </a>
+                        </div>
+                    
+                        <div id="liveagent_button_offline_57350000000TXFP" style="display: none;">
+                            <p>There are no Agents available at this moment to chat.</p>
+                        </div>
+                        <script type="text/javascript">
+                            if (!window._laq) { window._laq = []; }
+                            window._laq.push(function(){
+                                liveagent.showWhenOnline('57350000000TXFP', document.getElementById('liveagent_button_online_57350000000TXFP'));
+                                liveagent.showWhenOffline('57350000000TXFP', document.getElementById('liveagent_button_offline_57350000000TXFP'));
+                            });
+                        </script>                        
+                    </div> 
+                    
+                    <!-- Sign -->
+                    <div id="signChatButtons" style="display: none;">
+                        <p>Sign Support</p>
+                        <div id="liveagent_button_online_57350000000TXFm" style="display: none;">
+                            <a class="btn btn-success" href="#" onclick="liveagent.startChat('57350000000TXFm')" role="button">
+                                Chat with an Agent &raquo;
+                            </a>
+                        </div>
+                    
+                        <div id="liveagent_button_offline_57350000000TXFm" style="display: none;">
+                            <p>There are no Agents available at this moment to chat.</p>
+                        </div>
+                        <script type="text/javascript">
+                            if (!window._laq) { window._laq = []; }
+                            window._laq.push(function(){
+                                liveagent.showWhenOnline('57350000000TXFm', document.getElementById('liveagent_button_online_57350000000TXFm'));
+                                liveagent.showWhenOffline('57350000000TXFm', document.getElementById('liveagent_button_offline_57350000000TXFm'));
+                            });
+                        </script>                        
+                    </div>
+
+                    <!-- General -->
+                    <div id="generalChatButtons" style="display: none;">
+                        <p>General Support</p>
+                        <div id="liveagent_button_online_57350000000033p" style="display: none;" >
+                            <!--<p>Agents are online waiting to answer your questions</p>-->
+                            <a class="btn btn-success" href="#" onclick="liveagent.startChat('57350000000033p')" role="button">
+                                Chat with an Agent &raquo;
+                            </a>
+                        </div>
+                        
+                        <div id="liveagent_button_offline_57350000000033p" style="display: none;">
+                            <p>There are no Agents available at this moment to chat.</p>
+                        </div>
+                        <script type="text/javascript">
+                            if (!window._laq) { window._laq = []; }
+                            window._laq.push(function(){
+                                liveagent.showWhenOnline('57350000000033p', document.getElementById('liveagent_button_online_57350000000033p'));
+                                liveagent.showWhenOffline('57350000000033p', document.getElementById('liveagent_button_offline_57350000000033p'));
+                            });
+                        </script>                                        
+                    </div>
+                </div>
+            </div>
+           
+            <footer>
+                <br/>
+                <p>&copy; Conga 2019</p>
+            </footer>
+        </div>
+        
+        <div id="liveagent_invite_button_573180000004CPm" style="display: none; position: fixed; border: 2px solid darkblue; border-radius: 5px; background-color: lightblue; height: 100px; width: 200px;">
+            <!-- Creates an "X" option to reject or close the invitation if it's offered  -->
+            <div style="cursor: pointer; padding: 5px; right: 0px; position: absolute; color: darkred; font-weight: bold;" onclick="liveagent.rejectChat('573180000004CPm')">X</div>
+            <!-- Provides the Start Chat option for the customer to accept or start the chat for the invitation  -->
+            <div style="cursor: pointer; top: 42px; left: 65px; position: absolute;font-weight: bold; font-size: 16px;" onclick="liveagent.startChat('573180000004CPm')">Start Chat</div>
+        </div>
+        
+        <!--Deployment Code-->
+        <!--<script type='text/javascript' src='https://c.la1-c2cs-ph2.salesforceliveagent.com/content/g/js/44.0/deployment.js'></script>-->
+		<script type='text/javascript' src='https://c.la1-c2-ph2.salesforceliveagent.com/content/g/js/45.0/deployment.js'></script>
+        <script type='text/javascript'>
+            function buttonCallback(e) {
+                
+                // When the chat invitation is online (i.e. at least one available, skilled agent), display it at position top 200px and left 300px
+                if (e == liveagent.BUTTON_EVENT.BUTTON_AVAILABLE) {
+                    document.getElementById('liveagent_invite_button_573180000004CPm').style.display = '';
+                    document.getElementById('liveagent_invite_button_573180000004CPm').style.left = '300px';
+                    document.getElementById('liveagent_invite_button_573180000004CPm').style.top = '200px';
+                }
+                
+                // When the chat invitation is offline, don't display it
+                if (e == liveagent.BUTTON_EVENT.BUTTON_UNAVAILABLE) {
+                    document.getElementById('liveagent_invite_button_573180000004CPm').style.display = 'none';
+                }
+                
+                // When the chat invitation is accepted, stop displaying it
+                if (e == liveagent.BUTTON_EVENT.BUTTON_ACCEPTED) {
+                    document.getElementById('liveagent_invite_button_573180000004CPm').style.display = 'none';
+                }
+                
+                // When the chat invitation is rejected, stop displaying it
+                if (e == liveagent.BUTTON_EVENT.BUTTON_REJECTED) {
+                    document.getElementById('liveagent_invite_button_573180000004CPm').style.display = 'none';
+                }
+            }
+        
+            liveagent.addButtonEventHandler('573180000004CPm', buttonCallback);
+			//liveagent.init('https://d.la1-c2cs-ph2.salesforceliveagent.com/chat', '572500000008OdC', '00DS0000003EOWg'); // FULL
+			liveagent.init('https://d.la1-c2-ph2.salesforceliveagent.com/chat', '572500000008OdC', '00D500000007Fr8');
+        </script>
+        
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $("#productsCombo").change(function() {
+                    var productName = $(this).val();
+                    var productLabel = $("#productsCombo option:selected").text();
+                    $(this).children().each(function(key,option) {
+                        if(option.value !== '') {
+                        	$("#" + option.value + "Buttons").hide();
+                        }
+                    });
+                    if(productName !== '') {
+                        $("#" + productName + "Buttons").show();
+                        setCookie('congaliveagentprechatproduct',productLabel);
+                    }
+                })
+            });
+        
+        function setCookie(cname, cvalue) {
+          	var d = new Date();
+            d.setTime(d.getTime() + (5*60*1000)); // 5 minutes
+            var expires = "expires="+ d.toUTCString();
+          	document.cookie = cname + "=" + cvalue + ";" + expires + ";domain=.force.com;path=/";
+        }
+        </script>
+	</body>
+</html>
+</apex:page>

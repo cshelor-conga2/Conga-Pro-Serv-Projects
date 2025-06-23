@@ -1,0 +1,3 @@
+<apex:page standardController="Opportunity" showHeader="false" docType="html-4.01-strict">
+<apex:iframe src="/apex/AG_Account_Detail?id={!Opportunity.AccountId}" rendered="{!Opportunity.AccountId!=null}"/>
+</apex:page>

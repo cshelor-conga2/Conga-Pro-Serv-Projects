@@ -1,0 +1,319 @@
+{
+  "api_key": "0b29e43b4f424b57ff326a8266ab7202cfd7624e",
+  "squash_variables": "false",
+  "proposal": {
+    "name": "Test Document",
+    "description": "Sample Text",
+    "value": 10000,
+    "password": "",
+    "archived": 0,
+    "visibility": 0,
+    "template_id": "24327",
+    "variable_data": {
+      "Opportunity_Name": "Big Oppty",
+      "Opportunity_StageName": "Closed Won",
+      "Opportunity_Amount": 365000.0,
+      "Opportunity_Account_Name": "Test Account",
+      "Opportunity_Account_Id": "00146000003XHPHAA4",
+      "Opportunity_Id": "00646000002ULQzAAO",
+      "Opportunity_Rich_Text_Field__c": "",
+      "Opportunity_TEST_AMOUNT__c": 808080.0,
+      "Opportunity_CloseDate": "2018-09-17",
+      "Opportunity_URL_FIELD__c": "https://uxfactor.files.wordpress.com/2012/12/stick-figure1.jpg",
+      "OpportunityLineItems": [{
+          "attributes": {
+            "type": "OpportunityLineItem",
+            "url": "/services/data/v36.0/sobjects/OpportunityLineItem/00k4600000CizMlAAJ"
+          },
+          "Id": "00k4600000CizMlAAJ",
+          "TotalPrice": 5000.0,
+          "UnitPrice": 5000.0,
+          "Quantity": 1.0,
+          "SortOrder": null,
+          "ListPrice": 5000.0,
+          "ServiceDate": null,
+          "Description": "This is a GenWatt Diesel 10kW generator, here it is!",
+          "PricebookEntry": {
+            "attributes": {
+              "type": "PricebookEntry",
+              "url": "/services/data/v36.0/sobjects/PricebookEntry/01u46000000u1NNAAY"
+            },
+            "Product2": {
+              "attributes": {
+                "type": "Product2",
+                "url": "/services/data/v36.0/sobjects/Product2/01t46000000N8ybAAC"
+              },
+              "Name": "GenWatt Diesel 10kW",
+              "ProductCode": "GC1020",
+              "Description": null,
+              "Family": null
+            },
+            "Id": "01u46000000u1NNAAY",
+            "Name": "GenWatt Diesel 10kW",
+            "Pricebook2Id": "01s46000000WohUAAS",
+            "UnitPrice": 5000.0
+          },
+          "OpportunityId": "00646000002ULQzAAO",
+          "Product_Image__c": "https://upload.wikimedia.org/wikipedia/commons/9/94/Stick_Figure.svg",
+          "Name": "Big Oppty GenWatt Diesel 10kW"
+        },
+        {
+          "attributes": {
+            "type": "OpportunityLineItem",
+            "url": "/services/data/v36.0/sobjects/OpportunityLineItem/00k4600000CizMqAAJ"
+          },
+          "Id": "00k4600000CizMqAAJ",
+          "TotalPrice": 15000.0,
+          "UnitPrice": 15000.0,
+          "Quantity": 1.0,
+          "SortOrder": null,
+          "ListPrice": 15000.0,
+          "ServiceDate": null,
+          "Description": null,
+          "PricebookEntry": {
+            "attributes": {
+              "type": "PricebookEntry",
+              "url": "/services/data/v36.0/sobjects/PricebookEntry/01u46000000u1NSAAY"
+            },
+            "Product2": {
+              "attributes": {
+                "type": "Product2",
+                "url": "/services/data/v36.0/sobjects/Product2/01t46000000N8ygAAC"
+              },
+              "Name": "GenWatt Propane 100kW",
+              "ProductCode": "GC3020",
+              "Description": null,
+              "Family": null
+            },
+            "Id": "01u46000000u1NSAAY",
+            "Name": "GenWatt Propane 100kW",
+            "Pricebook2Id": "01s46000000WohUAAS",
+            "UnitPrice": 15000.0
+          },
+          "OpportunityId": "00646000002ULQzAAO",
+          "Product_Image__c": null,
+          "Name": "Big Oppty GenWatt Propane 100kW"
+        },
+        {
+          "attributes": {
+            "type": "OpportunityLineItem",
+            "url": "/services/data/v36.0/sobjects/OpportunityLineItem/00k4600000BgkF3AAJ"
+          },
+          "Id": "00k4600000BgkF3AAJ",
+          "TotalPrice": 10000.0,
+          "UnitPrice": 10000.0,
+          "Quantity": 1.0,
+          "SortOrder": null,
+          "ListPrice": 10000.0,
+          "ServiceDate": null,
+          "Description": null,
+          "PricebookEntry": {
+            "attributes": {
+              "type": "PricebookEntry",
+              "url": "/services/data/v36.0/sobjects/PricebookEntry/01u46000000u1NVAAY"
+            },
+            "Product2": {
+              "attributes": {
+                "type": "Product2",
+                "url": "/services/data/v36.0/sobjects/Product2/01t46000000N8yjAAC"
+              },
+              "Name": "SLA: Bronze",
+              "ProductCode": "SL9020",
+              "Description": null,
+              "Family": null
+            },
+            "Id": "01u46000000u1NVAAY",
+            "Name": "SLA: Bronze",
+            "Pricebook2Id": "01s46000000WohUAAS",
+            "UnitPrice": 10000.0
+          },
+          "OpportunityId": "00646000002ULQzAAO",
+          "Product_Image__c": null,
+          "Name": "Big Oppty SLA: Bronze"
+        },
+        {
+          "attributes": {
+            "type": "OpportunityLineItem",
+            "url": "/services/data/v36.0/sobjects/OpportunityLineItem/00k4600000BBdA2AAL"
+          },
+          "Id": "00k4600000BBdA2AAL",
+          "TotalPrice": 75000.0,
+          "UnitPrice": 75000.0,
+          "Quantity": 1.0,
+          "SortOrder": null,
+          "ListPrice": 75000.0,
+          "ServiceDate": null,
+          "Description": null,
+          "PricebookEntry": {
+            "attributes": {
+              "type": "PricebookEntry",
+              "url": "/services/data/v36.0/sobjects/PricebookEntry/01u46000000u1NWAAY"
+            },
+            "Product2": {
+              "attributes": {
+                "type": "Product2",
+                "url": "/services/data/v36.0/sobjects/Product2/01t46000000N8ykAAC"
+              },
+              "Name": "GenWatt Gasoline 750kW",
+              "ProductCode": "GC5040",
+              "Description": null,
+              "Family": null
+            },
+            "Id": "01u46000000u1NWAAY",
+            "Name": "GenWatt Gasoline 750kW",
+            "Pricebook2Id": "01s46000000WohUAAS",
+            "UnitPrice": 75000.0
+          },
+          "OpportunityId": "00646000002ULQzAAO",
+          "Product_Image__c": null,
+          "Name": "Big Oppty GenWatt Gasoline 750kW"
+        },
+        {
+          "attributes": {
+            "type": "OpportunityLineItem",
+            "url": "/services/data/v36.0/sobjects/OpportunityLineItem/00k4600000CizMpAAJ"
+          },
+          "Id": "00k4600000CizMpAAJ",
+          "TotalPrice": 75000.0,
+          "UnitPrice": 75000.0,
+          "Quantity": 1.0,
+          "SortOrder": null,
+          "ListPrice": 75000.0,
+          "ServiceDate": null,
+          "Description": null,
+          "PricebookEntry": {
+            "attributes": {
+              "type": "PricebookEntry",
+              "url": "/services/data/v36.0/sobjects/PricebookEntry/01u46000000u1NWAAY"
+            },
+            "Product2": {
+              "attributes": {
+                "type": "Product2",
+                "url": "/services/data/v36.0/sobjects/Product2/01t46000000N8ykAAC"
+              },
+              "Name": "GenWatt Gasoline 750kW",
+              "ProductCode": "GC5040",
+              "Description": null,
+              "Family": null
+            },
+            "Id": "01u46000000u1NWAAY",
+            "Name": "GenWatt Gasoline 750kW",
+            "Pricebook2Id": "01s46000000WohUAAS",
+            "UnitPrice": 75000.0
+          },
+          "OpportunityId": "00646000002ULQzAAO",
+          "Product_Image__c": null,
+          "Name": "Big Oppty GenWatt Gasoline 750kW"
+        },
+        {
+          "attributes": {
+            "type": "OpportunityLineItem",
+            "url": "/services/data/v36.0/sobjects/OpportunityLineItem/00k4600000CizMoAAJ"
+          },
+          "Id": "00k4600000CizMoAAJ",
+          "TotalPrice": 35000.0,
+          "UnitPrice": 35000.0,
+          "Quantity": 1.0,
+          "SortOrder": null,
+          "ListPrice": 35000.0,
+          "ServiceDate": null,
+          "Description": null,
+          "PricebookEntry": {
+            "attributes": {
+              "type": "PricebookEntry",
+              "url": "/services/data/v36.0/sobjects/PricebookEntry/01u46000000u1NZAAY"
+            },
+            "Product2": {
+              "attributes": {
+                "type": "Product2",
+                "url": "/services/data/v36.0/sobjects/Product2/01t46000000N8ynAAC"
+              },
+              "Name": "GenWatt Gasoline 300kW",
+              "ProductCode": "GC5020",
+              "Description": null,
+              "Family": null
+            },
+            "Id": "01u46000000u1NZAAY",
+            "Name": "GenWatt Gasoline 300kW",
+            "Pricebook2Id": "01s46000000WohUAAS",
+            "UnitPrice": 35000.0
+          },
+          "OpportunityId": "00646000002ULQzAAO",
+          "Product_Image__c": null,
+          "Name": "Big Oppty GenWatt Gasoline 300kW"
+        },
+        {
+          "attributes": {
+            "type": "OpportunityLineItem",
+            "url": "/services/data/v36.0/sobjects/OpportunityLineItem/00k4600000CizMnAAJ"
+          },
+          "Id": "00k4600000CizMnAAJ",
+          "TotalPrice": 150000.0,
+          "UnitPrice": 150000.0,
+          "Quantity": 1.0,
+          "SortOrder": null,
+          "ListPrice": 150000.0,
+          "ServiceDate": null,
+          "Description": null,
+          "PricebookEntry": {
+            "attributes": {
+              "type": "PricebookEntry",
+              "url": "/services/data/v36.0/sobjects/PricebookEntry/01u46000000u1NbAAI"
+            },
+            "Product2": {
+              "attributes": {
+                "type": "Product2",
+                "url": "/services/data/v36.0/sobjects/Product2/01t46000000N8ypAAC"
+              },
+              "Name": "GenWatt Gasoline 2000kW",
+              "ProductCode": "GC5060",
+              "Description": null,
+              "Family": null
+            },
+            "Id": "01u46000000u1NbAAI",
+            "Name": "GenWatt Gasoline 2000kW",
+            "Pricebook2Id": "01s46000000WohUAAS",
+            "UnitPrice": 150000.0
+          },
+          "OpportunityId": "00646000002ULQzAAO",
+          "Product_Image__c": null,
+          "Name": "Big Oppty GenWatt Gasoline 2000kW"
+        }
+      ],
+      "Opportunity_Contact_LastName": "Juan",
+      "Opportunity_Contact_FirstName": "Anotha",
+      "Opportunity_Contact_Salutation": "",
+      "Opportunity_Contact_Name": "Anotha Juan",
+      "Opportunity_Contact_MailingStreet": "123 scary lane",
+      "Opportunity_Contact_MailingCity": "Halloweentown",
+      "Opportunity_Contact_MailingState": "IN",
+      "Opportunity_Contact_MailingPostalCode": "46204",
+      "Documents": [{
+          "Description": "Specsheet",
+          "URL": "https://mytinder.s3.amazonaws.com/assets/medias/389711_thumb.png?1493836648"
+        },
+        {
+          "Description": "Specsheet",
+          "URL": "https://static.thenounproject.com/png/1285891-200.png"
+        }
+      ]
+    },
+    "sections": [{
+      "name": "Your Project",
+      "pages": [
+
+        {
+          "document": "https://scholar.harvard.edu/files/torman_personal/files/samplepptx.pptx",
+          "name": "Even More Components"
+        }
+      ]
+    }],
+    "ext_integration_id": "",
+    "workgroup_ids": [],
+    "metadata_template_id": "",
+    "metadata_field_values": {
+      "metadata_field_id": "my_value",
+      "metadata_field_name": "my_value"
+    }
+  }
+}

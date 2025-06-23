@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApexPage xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>45.0</apiVersion>
+    <availableInTouch>true</availableInTouch>
+    <confirmationTokenRequired>false</confirmationTokenRequired>
+    <description>AG_CampaignMember;
+This tab is intended to assist the SDRs to monitor and execute on a planned Sign Campaign for Nonprofit companies during the COVID19 outbreak.</description>
+    <label>Sign Campaign Grid</label>
+    <packageVersions>
+        <majorNumber>2</majorNumber>
+        <minorNumber>63</minorNumber>
+        <namespace>CRMC_PP</namespace>
+    </packageVersions>
+</ApexPage>

@@ -1,0 +1,6 @@
+<apex:page standardController="sfLma__License__c" showHeader="false" docType="html-4.01-strict">
+<CRMC_PP:Grid ObjectName="sfFma__FeatureParameterBoolean__c" FKName="sfFma__License__c" FKValue="{!sfLma__License__c.Id}"  DelayLoad="false"  ViewID="a6A1T000000xvwTUAQ" 
+ EnableNewButton="true"  EnableNewInline="true"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true" 
+ EnableStickyViews="true"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="false" />
+<CRMC_PP:DrillUp />
+</apex:page>

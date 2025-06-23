@@ -1,0 +1,12 @@
+<design:component>
+    <design:attribute name="header" label="Header" default="Knowledge" description="The header to display." required="true"  />
+    <design:attribute name="noResultsMessage" label="No Results Message" default="No knowledge articles found." description="Message displayed when no results are found." required="true" />
+    <design:attribute name="linkToCaseButtonLabel" label="Link To Case Button Text" default="Link To Case" description="Text to show on the link to case button." required="true" />
+    <design:attribute name="removeFromCaseButtonLabel" label="Remove From Case Button Label" default="Remove From Case" description="Text to show on the remove from case button." required="true" />
+    <design:attribute name="searchPlaceholder" label="Search Placeholder" default="Search Documentation..." description="The text shown within the search textbox when it's blank." required="true" />
+    <design:attribute name="heightInPx" label="Height In PX" default="600" description="Sets the height in px" />
+
+    <sfdc:objects>
+        <sfdc:object>Case</sfdc:object>
+    </sfdc:objects>
+</design:component>

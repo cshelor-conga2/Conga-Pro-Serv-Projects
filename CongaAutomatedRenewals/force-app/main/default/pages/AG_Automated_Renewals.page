@@ -1,0 +1,70 @@
+<apex:page sidebar="false" showHeader="true" docType="html-4.01-strict">
+<div id="tabstrip" style="display:none;"> <ul> 
+<li class="k-state-active">My 110+ Days Out</li>
+<li>My 110 - 45 Days Out</li>
+<!--<li>My 110 - 75 Days Out</li>-->
+<!--<li>My 75 - 60 Days Out</li>-->
+<!--<li>My 60 - 45 Days Out</li>-->
+<li>My 45 Days Out or Less</li>
+</ul>
+ 
+<!-- 110 Days Out or More -->
+<div style="overflow:hidden;"> 
+<CRMC_PP:Grid ObjectName="Opportunity" DelayLoad="false"  ViewID="{!IF($UserRole.Name =='Renewals Specialist',"a6A1T000000bqHI", "a6A1T000000bpyp")}"
+ EnableNewButton="false"  EnableNewInline="false"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true" 
+ EnableStickyViews="false"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+ <CRMC_PP:DrillUp /> 
+ </div> 
+ 
+<!-- My 110 - 45 Days Out -->
+<div style="overflow:hidden;"> 
+<CRMC_PP:Grid ObjectName="Opportunity" DelayLoad="true"  ViewID="a6A1T000000bqHD" 
+ EnableNewButton="false"  EnableNewInline="false"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true" 
+ EnableStickyViews="false"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+ <CRMC_PP:DrillUp /> 
+ </div>
+
+<!-- My 110 - 75 Days Out -->
+<!-- <div style="overflow:hidden;"> 
+<CRMC_PP:Grid ObjectName="Opportunity" DelayLoad="false"  ViewID="a6A1T000000bq4d" 
+ EnableNewButton="false"  EnableNewInline="false"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true" 
+ EnableStickyViews="false"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+ <CRMC_PP:DrillUp /> 
+ </div>-->
+
+<!-- 75 - 60 Days Out -->
+<!--<div style="overflow:hidden;"> 
+<CRMC_PP:Grid ObjectName="Opportunity" DelayLoad="true"  ViewID="a6A1T000000bq4Y" 
+ EnableNewButton="false"  EnableNewInline="false"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true" 
+ EnableStickyViews="false"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+ <CRMC_PP:DrillUp /> 
+ </div>
+ 
+<!-- 60 - 45 Days Out -->
+<!--<div style="overflow:hidden;"> 
+<CRMC_PP:Grid ObjectName="Opportunity" DelayLoad="true"  ViewID="a6A1T000000bq4O" 
+ EnableNewButton="false"  EnableNewInline="false"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true" 
+ EnableStickyViews="false"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+ <CRMC_PP:DrillUp /> 
+ </div>-->
+ 
+ <!-- My 45 Days Out or Less -->
+<div style="overflow:hidden;"> 
+<CRMC_PP:Grid ObjectName="Opportunity" DelayLoad="true"  ViewID="a6A1T000000bq4J" 
+ EnableNewButton="false"  EnableNewInline="false"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true" 
+ EnableStickyViews="false"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+ <CRMC_PP:DrillUp /> 
+ </div>
+ 
+</div>
+<script>
+$(document).ready(function() {
+    $("#tabstrip").kendoTabStrip({
+      activate: function(e){
+        setTimeout(function(){          $(window).resize();        });
+      }
+    });
+    $("#tabstrip").css("display", "block");
+});
+ </script>
+</apex:page>

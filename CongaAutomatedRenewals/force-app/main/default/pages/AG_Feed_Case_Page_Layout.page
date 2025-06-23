@@ -1,0 +1,87 @@
+<apex:page standardController="Case" showHeader="true" docType="html-4.01-strict">
+<div id="tabstrip" style="display:none;"> <ul> 
+<li class="k-state-active">Case Comments</li>
+<li>Case Journals</li>
+<li>Tasks</li>
+<li>Events</li>
+<li>Debug URLs</li>
+<li>Related Cases</li>
+<li>Notes</li>
+<li>Attachments</li>
+</ul>
+<!-- Case Comments -->
+<div style="overflow:hidden;"> 
+<CRMC_PP:Grid ObjectName="CaseComment" FKName="ParentId" FKValue="{!Case.Id}"  DelayLoad="true"  ViewID="a6A50000000XmZtEAK" 
+ EnableNewButton="true"  EnableNewInline="true"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true" 
+ EnableStickyViews="true"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+ <CRMC_PP:DrillUp /> 
+ </div>
+
+<!-- Case Journals -->
+<div style="overflow:hidden;"> 
+<CRMC_PP:Grid ObjectName="Case_Journal__c" FKName="CaseId__c" FKValue="{!Case.Id}"  DelayLoad="true"  ViewID="" 
+ EnableNewButton="true"  EnableNewInline="true"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true" 
+ EnableStickyViews="true"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+ <CRMC_PP:DrillUp /> 
+ </div>
+
+<!-- Tasks -->
+<div style="overflow:hidden;"> 
+<CRMC_PP:Grid ObjectName="Task" FKName="WhatId" FKValue="{!Case.Id}"  DelayLoad="false"  ViewID="" 
+ EnableNewButton="true"  EnableNewInline="true"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true" 
+ EnableStickyViews="true"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+ <CRMC_PP:DrillUp /> 
+ </div>
+
+<!-- Events -->
+<div style="overflow:hidden;"> 
+<CRMC_PP:Grid ObjectName="Event" FKName="WhatId" FKValue="{!Case.Id}"  DelayLoad="true"  ViewID="" 
+ EnableNewButton="true"  EnableNewInline="true"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true" 
+ EnableStickyViews="true"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+ <CRMC_PP:DrillUp /> 
+ </div>
+
+<!-- Debug URLs -->
+<div style="overflow:hidden;"> 
+<CRMC_PP:Grid ObjectName="Debug_URL__c" FKName="Case__c" FKValue="{!Case.Id}"  DelayLoad="true"  ViewID="" 
+ EnableNewButton="true"  EnableNewInline="true"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true" 
+ EnableStickyViews="true"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+ <CRMC_PP:DrillUp /> 
+ </div>
+
+<!-- Related Cases -->
+<div style="overflow:hidden;"> 
+<CRMC_PP:Grid ObjectName="Case" FKName="ParentId" FKValue="{!Case.Id}"  DelayLoad="true"  ViewID="" 
+ EnableNewButton="true"  EnableNewInline="true"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true" 
+ EnableStickyViews="true"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+ <CRMC_PP:DrillUp /> 
+ </div>
+
+<!-- Notes -->
+<div style="overflow:hidden;"> 
+<CRMC_PP:Grid ObjectName="Note" FKName="ParentId" FKValue="{!Case.Id}"  DelayLoad="true"  ViewID="" 
+ EnableNewButton="true"  EnableNewInline="true"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true" 
+ EnableStickyViews="true"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+ <CRMC_PP:DrillUp /> 
+ </div>
+
+<!-- Attachments -->
+<div style="overflow:hidden;"> 
+<CRMC_PP:Grid ObjectName="Attachment" FKName="ParentId" FKValue="{!Case.Id}"  DelayLoad="true"  ViewID="" 
+ EnableNewButton="true"  EnableNewInline="true"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true" 
+ EnableStickyViews="true"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+ <CRMC_PP:DrillUp /> 
+ </div>
+
+</div>
+<script>
+$(document).ready(function() {
+    $("#tabstrip").kendoTabStrip({
+      activate: function(e){
+        setTimeout(function(){          $(window).resize();        });
+      }
+    });
+    $("#tabstrip").css("display", "block");
+});
+ </script>
+</apex:page>

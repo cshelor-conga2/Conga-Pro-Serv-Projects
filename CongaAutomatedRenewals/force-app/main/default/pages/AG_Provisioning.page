@@ -1,0 +1,70 @@
+<apex:page sidebar="false" showHeader="true" docType="html-4.01-strict">
+<div id="tabstrip" style="display:none;"> <ul> 
+<li class="k-state-active">Support Requests</li>
+<li>Salesforce Orgs</li>
+<li>Licenses</li>
+<li>Assets</li>
+<li>Conga Email Templates</li>
+<li>Surveys</li>
+</ul>
+
+<!-- Support Requests -->
+<div style="overflow:hidden;"> 
+<CRMC_PP:Grid ObjectName="Support_Request__c" DelayLoad="false"  ViewID="a6A500000009LOjEAM" 
+ EnableNewButton="true"  EnableNewInline="true"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true" 
+ EnableStickyViews="true"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+ <CRMC_PP:DrillUp /> 
+ </div>
+
+<!-- Salesforce Orgs -->
+<div style="overflow:hidden;"> 
+<CRMC_PP:Grid ObjectName="Salesforce_Org__c" DelayLoad="true"  ViewID="" 
+ EnableNewButton="true"  EnableNewInline="true"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true" 
+ EnableStickyViews="true"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+ <CRMC_PP:DrillUp /> 
+ </div>
+
+<!-- Licenses -->
+<div style="overflow:hidden;"> 
+<CRMC_PP:Grid ObjectName="sfLma__License__c" DelayLoad="true"  ViewID="" 
+ EnableNewButton="true"  EnableNewInline="true"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true" 
+ EnableStickyViews="true"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+ <CRMC_PP:DrillUp /> 
+ </div>
+
+<!-- Assets -->
+<div style="overflow:hidden;"> 
+<CRMC_PP:Grid ObjectName="Asset" DelayLoad="true"  ViewID="" 
+ EnableNewButton="true"  EnableNewInline="true"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true" 
+ EnableStickyViews="true"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+ <CRMC_PP:DrillUp /> 
+ </div>
+ 
+ <!-- Conga Email Templates -->
+<div style="overflow:hidden;"> 
+<CRMC_PP:Grid ObjectName="APXTConga4__Conga_Email_Template__c" DelayLoad="false"  ViewID="a1250000000OMAsAAO" 
+ EnableNewButton="true"  EnableNewInline="true"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true" 
+ EnableStickyViews="true"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+ <CRMC_PP:DrillUp /> 
+ </div>
+ 
+  <!-- Surveys -->
+<div style="overflow:hidden;"> 
+<CRMC_PP:Grid ObjectName="Survey__c" DelayLoad="false"  ViewID="a68500000009G97" 
+ EnableNewButton="true"  EnableNewInline="true"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true" 
+ EnableStickyViews="true"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+ <CRMC_PP:DrillUp /> 
+ </div>
+
+</div>
+<script>
+$(document).ready(function() {
+    $("#tabstrip").kendoTabStrip({
+      activate: function(e){
+        setTimeout(function(){          $(window).resize();        });
+      }
+    });
+    $("#tabstrip").css("display", "block");
+});
+ </script>
+</apex:page>

@@ -1,0 +1,44 @@
+<apex:page standardController="Contact" showHeader="false" docType="html-4.01-strict">
+<apex:stylesheet value="{!URLFOR($Resource.CRMC_PP__SLDS080, '/assets/styles/salesforce-lightning-design-system-vf.css')}" />
+<style>
+.fullWidth{
+width:96%; 
+}
+.font{
+        font: 12px Salesforce Sans,Arial,Helvetica,sans-serif;
+        font-weight: inherit;
+        text-align: center -21px;
+    }
+div.bPageBlock {
+        background-color: #ffffff !important;
+        border-color: #ffffff !important;
+}
+div.pbSubsection{
+        height: 920px;
+}
+
+</style>
+<div class="font">
+
+<apex:form id="refresh" >
+<apex:messages />
+<apex:pageBlock id="editBlock">
+<apex:pageBlockButtons >
+<apex:commandButton value="Save" action="{!quickSave}" oncomplete="location.reload()"/>
+<apex:commandButton onclick="location.reload()" value="Cancel" rerender="refresh"/>
+</apex:pageBlockButtons>
+<apex:pageBlockSection columns="1">
+<apex:repeat value="{!$ObjectType.Contact.FieldSets.AG_Contact_Detail}" var="field">
+        <apex:inputField value="{!Contact[field]}" styleClass="fullWidth"/>
+    </apex:repeat>
+
+<!--- OPTIONAL - include another VF Page such as Tasks --->     
+<apex:iframe width="100%" height="500px" src="/apex/AG_TasksRelatedList_Contact?id={!Contact.Id}"/>
+
+</apex:pageBlockSection>
+</apex:pageBlock>
+
+
+</apex:form>
+</div>
+</apex:page>

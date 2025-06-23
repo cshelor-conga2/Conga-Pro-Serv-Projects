@@ -1,0 +1,6 @@
+<apex:page standardController="Asset" showHeader="false" docType="html-4.01-strict">
+<CRMC_PP:Grid ObjectName="sfLma__License__c" FKName="sfLma__Account__c" FKValue="{!Asset.AccountId}"  DelayLoad="false"  ViewID="a6A1T000000P45aUAC" 
+ EnableNewButton="true"  EnableNewInline="true"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true" 
+ EnableStickyViews="true"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+<CRMC_PP:DrillUp />
+</apex:page>

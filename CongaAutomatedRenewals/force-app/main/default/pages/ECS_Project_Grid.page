@@ -1,0 +1,60 @@
+<apex:page sidebar="false" showHeader="true" docType="html-4.01-strict">
+<div id="tabstrip" style="display:none;"> <ul> 
+<li class="k-state-active">Active Projects</li>
+<li>All Projects</li>
+<li>Active User Stories</li>
+<li>User Stories to be Completed</li>
+<li>Completed User Stories</li>
+</ul>
+<!-- Active Projects -->
+<div style="overflow:hidden;"> 
+<CRMC_PP:Grid ObjectName="PS_Project__c" DelayLoad="false"  ViewID="a6A1T000000bw8bUAA" 
+ EnableNewButton="true"  EnableNewInline="true"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true" 
+ EnableStickyViews="true"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+ <CRMC_PP:DrillUp /> 
+ </div>
+
+<!-- All Projects -->
+<div style="overflow:hidden;"> 
+<CRMC_PP:Grid ObjectName="PS_Project__c" DelayLoad="true"  ViewID="a6A1T000000bw82UAA" 
+ EnableNewButton="true"  EnableNewInline="true"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true" 
+ EnableStickyViews="true"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+ <CRMC_PP:DrillUp /> 
+ </div>
+
+<!-- Active User Stories -->
+<div style="overflow:hidden;"> 
+<CRMC_PP:Grid ObjectName="copado__User_Story__c" DelayLoad="true"  ViewID="a6A1T000000bw8vUAA" 
+ EnableNewButton="true"  EnableNewInline="true"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true" 
+ EnableStickyViews="true"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+ <CRMC_PP:DrillUp /> 
+ </div>
+
+<!-- User Stories to be Completed -->
+<div style="overflow:hidden;"> 
+<CRMC_PP:Grid ObjectName="copado__User_Story__c" DelayLoad="true"  ViewID="a6A1T000000bw9AUAQ" 
+ EnableNewButton="true"  EnableNewInline="true"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true" 
+ EnableStickyViews="true"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+ <CRMC_PP:DrillUp /> 
+ </div>
+
+<!-- Completed User Stories -->
+<div style="overflow:hidden;"> 
+<CRMC_PP:Grid ObjectName="copado__User_Story__c" DelayLoad="true"  ViewID="a6A1T000000bw9FUAQ" 
+ EnableNewButton="true"  EnableNewInline="true"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true" 
+ EnableStickyViews="true"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+ <CRMC_PP:DrillUp /> 
+ </div>
+
+</div>
+<script>
+$(document).ready(function() {
+    $("#tabstrip").kendoTabStrip({
+      activate: function(e){
+        setTimeout(function(){          $(window).resize();        });
+      }
+    });
+    $("#tabstrip").css("display", "block");
+});
+ </script>
+</apex:page>

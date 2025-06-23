@@ -1,0 +1,17 @@
+.THIS.ed-container {
+	/*max-height: 600px;*/
+	overflow-y: auto;
+}
+
+.THIS .ed-search-container {
+	clear: both;
+}
+
+.THIS .ed-search-box {
+	float: left;
+	width: 80%;
+}
+
+.THIS .ed-search-btn {
+	margin-left: 10px;
+}

@@ -1,0 +1,33 @@
+<apex:page sidebar="true" showHeader="true" docType="html-4.01-strict">
+<div id="tabstrip" style="display:none;"> <ul> 
+<li class="k-state-active">Customer Success Queue</li>
+<li>My Customer Success Cases</li>
+</ul>
+<!-- Customer Success Queue -->
+<div style="overflow:hidden;"> 
+<CRMC_PP:Grid ObjectName="Case" DelayLoad="false"  ViewID="a6A1T0000001Fq3UAE" 
+ EnableNewButton="true"  EnableNewInline="true"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true" 
+ EnableStickyViews="true"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+ <CRMC_PP:DrillUp /> 
+ </div>
+
+<!-- My Customer Success Cases -->
+<div style="overflow:hidden;"> 
+<CRMC_PP:Grid ObjectName="Case" DelayLoad="true"  ViewID="a6A1T0000001Fq2UAE" 
+ EnableNewButton="true"  EnableNewInline="true"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true" 
+ EnableStickyViews="true"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+ <CRMC_PP:DrillUp /> 
+ </div>
+
+</div>
+<script>
+$(document).ready(function() {
+    $("#tabstrip").kendoTabStrip({
+      activate: function(e){
+        setTimeout(function(){          $(window).resize();        });
+      }
+    });
+    $("#tabstrip").css("display", "block");
+});
+ </script>
+</apex:page>

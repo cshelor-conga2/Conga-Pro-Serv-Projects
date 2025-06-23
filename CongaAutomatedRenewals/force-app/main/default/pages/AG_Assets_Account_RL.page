@@ -1,0 +1,39 @@
+<apex:page standardController="Account" showHeader="false" docType="html-4.01-strict">
+<div id="tabstrip" style="display:none;"> <ul> 
+<li class="k-state-active">Assets</li>
+<li>Salesforce Orgs</li>
+<li>Licenses</li> 
+</ul>
+
+<!-- Assets -->
+<div style="overflow:hidden;"> 
+<CRMC_PP:Grid ObjectName="Asset" FKName="AccountId" FKValue="{!Account.Id}"  DelayLoad="false"  ViewID="a6A1T000000pGsIUAU" 
+ EnableNewButton="true"  EnableNewInline="true"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true" 
+ EnableStickyViews="true"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+<CRMC_PP:DrillUp />
+ </div>
+
+<!-- Salesforce Orgs -->
+<div style="overflow:hidden;"> 
+<CRMC_PP:Grid ObjectName="Salesforce_Org__c" FKName="Account__c" FKValue="{!Account.Id}"  DelayLoad="true"  ViewID="a6A50000000Orl7EAC" 
+ EnableNewButton="true"  EnableNewInline="true"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true" 
+ EnableStickyViews="true"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+ <CRMC_PP:DrillUp /> 
+ </div>
+
+<!-- Licenses -->
+<div style="overflow:hidden;"> 
+<CRMC_PP:Grid ObjectName="sfLma__License__c" FKName="sfLma__Account__c" FKValue="{!Account.Id}" DelayLoad="true"  ViewID="a6A50000000Orl6EAC" 
+ EnableNewButton="true"  EnableNewInline="true"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true" 
+ EnableStickyViews="true"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+ <CRMC_PP:DrillUp /> 
+ </div>
+
+</div>
+<script>
+$(document).ready(function() {
+    $("#tabstrip").kendoTabStrip();
+    $("#tabstrip").css("display", "block");
+});
+ </script>
+</apex:page>

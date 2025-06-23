@@ -1,0 +1,11 @@
+.THIS .create-case-button {
+	border-radius: 0px;   
+    padding-top: 5px;
+    padding-right: 38px;
+    padding-bottom: 5px;
+    padding-left: 38px;
+}
+
+.THIS .slds-modal__content{
+    overflow: visible;
+}

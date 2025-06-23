@@ -1,0 +1,38 @@
+<apex:page sidebar="false" showHeader="true" docType="html-4.01-strict">
+<div id="tabstrip" style="display:none;"> <ul> 
+<li class="k-state-active">My Open Leads</li>
+<li>My Working Leads</li>
+<li>My Leads - All</li>
+</ul>
+<!-- My Open Leads -->
+<div style="overflow:hidden;"> 
+<CRMC_PP:Grid ObjectName="Lead" DelayLoad="false"  ViewID="a6A50000000XaTrEAK" 
+ EnableNewButton="true"  EnableNewInline="true"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true" 
+ EnableStickyViews="true"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+ <CRMC_PP:DrillUp /> 
+ </div>
+
+<!-- My Working Leads -->
+<div style="overflow:hidden;"> 
+<CRMC_PP:Grid ObjectName="Lead" DelayLoad="true"  ViewID="a6A50000000XaTwEAK" 
+ EnableNewButton="true"  EnableNewInline="true"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true" 
+ EnableStickyViews="true"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+ <CRMC_PP:DrillUp /> 
+ </div>
+
+<!-- My Leads - All -->
+<div style="overflow:hidden;"> 
+<CRMC_PP:Grid ObjectName="Lead" DelayLoad="true"  ViewID="a6A50000000XaU1EAK" 
+ EnableNewButton="true"  EnableNewInline="true"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true" 
+ EnableStickyViews="true"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+ <CRMC_PP:DrillUp /> 
+ </div>
+
+</div>
+<script>
+$(document).ready(function() {
+    $("#tabstrip").kendoTabStrip();
+    $("#tabstrip").css("display", "block");
+});
+ </script>
+</apex:page>

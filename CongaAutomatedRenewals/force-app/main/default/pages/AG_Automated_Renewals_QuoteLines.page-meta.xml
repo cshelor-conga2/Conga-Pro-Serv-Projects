@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApexPage xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>46.0</apiVersion>
+    <availableInTouch>false</availableInTouch>
+    <confirmationTokenRequired>false</confirmationTokenRequired>
+    <description>AG Showing primary quote lines related to an Opportunity&apos;s primary quote. For Automated Renewals grid June 2019.</description>
+    <label>Primary Quote Lines</label>
+    <packageVersions>
+        <majorNumber>2</majorNumber>
+        <minorNumber>55</minorNumber>
+        <namespace>CRMC_PP</namespace>
+    </packageVersions>
+    <packageVersions>
+        <majorNumber>222</majorNumber>
+        <minorNumber>7</minorNumber>
+        <namespace>SBQQ</namespace>
+    </packageVersions>
+</ApexPage>

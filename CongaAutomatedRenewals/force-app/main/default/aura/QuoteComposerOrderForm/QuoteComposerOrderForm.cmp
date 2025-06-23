@@ -1,0 +1,15 @@
+<aura:component implements="force:lightningQuickActionWithoutHeader,force:hasRecordId" controller="QuoteComposerOrderFormController" access="global" >
+    <!-- ATTRIBUTES -->
+    <aura:attribute name="recordId" type="String" />
+    <!--/ ATTRIBUTES -->
+
+    <!-- HANDLERS -->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <!--/ HANDLERS -->	
+
+    <lightning:card title="Composer">
+        <p class="slds-p-horizontal_small">
+            Opening Composer window...
+        </p>
+    </lightning:card>
+</aura:component>

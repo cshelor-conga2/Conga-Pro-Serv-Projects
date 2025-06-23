@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApexPage xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>44.0</apiVersion>
+    <availableInTouch>false</availableInTouch>
+    <confirmationTokenRequired>false</confirmationTokenRequired>
+    <description>Visualforce paged used to show related Novatus Usage Records on an Assets Grid.</description>
+    <label>Novatus Usage</label>
+    <packageVersions>
+        <majorNumber>2</majorNumber>
+        <minorNumber>55</minorNumber>
+        <namespace>CRMC_PP</namespace>
+    </packageVersions>
+</ApexPage>

@@ -1,0 +1,95 @@
+<aura:component controller="CongaPlatformUserController" implements="force:lightningQuickActionWithoutHeader,force:hasRecordId">
+    <meta name="author" content="James Hafer"></meta>
+
+    <aura:attribute Name="contacts" type="object[]" access="private" />
+    <aura:attribute Name="assets" type="object[]" access="private" />
+    <aura:attribute Name="usersToCreate" type="object[]" access="private" />
+    <aura:attribute Name="userContext" type="string" />
+    <aura:attribute Name="isSaving" type="boolean" default="false" />
+    <aura:html tag="style">
+        .cuf-content {
+            padding: 0 0rem !important;
+        }
+        .slds-p-around--medium {
+            padding: 0rem !important;
+        }
+        .slds-modal__container{
+            width:unset !important;
+            max-width:50% !important;
+        }    
+        .slds-modal__content{
+            overflow-y:hidden !important;
+            height:unset !important;
+            max-height:unset !important;
+        }
+    </aura:html>
+    <section role="dialog">
+            <header class="slds-modal__header">
+                <div class="slds-page-header" role="banner">
+                    <h1 class="slds-page-header__title slds-m-right--small
+                        slds-truncate slds-align-left">Create New Conga Users</h1>
+                </div>
+            </header>
+             <!-- MAKE SPINNER COMPONENT POSITION RELATIVE TO COVER THE SPINNER WHOLE PAGE -->
+            <aura:if isTrue="{!v.isSaving}">
+                <div role="status" class="slds-spinner slds-spinner_medium">
+                    <span class="slds-assistive-text">Saving</span>
+                    <div class="slds-spinner__dot-a"></div>
+                    <div class="slds-spinner__dot-b"></div>
+                </div>
+            </aura:if>
+            <div class="slds-modal__content slds-p-around_large">
+                <div class="slds">      
+                    <div class="slds-form-element"> 
+                        <div class="slds-form-element__control"> 
+                            <div class="slds-grid slds-wrap">
+                                <div class="slds-col slds-size_1-of-12 slds-p-vertical_small slds-text-heading_small">
+								</div>
+                                <div class="slds-col slds-size_2-of-12 slds-p-vertical_small slds-text-heading_small">
+                                    <h3>Name</h3>
+                                </div>
+                                <div class="slds-col slds-size_3-of-12 slds-p-vertical_small slds-text-heading_small">
+                                    <h3>Email</h3>
+                                </div>
+                                <div class="slds-col slds-size_6-of-12 slds-p-vertical_small slds-text-heading_small">
+                                    <h3>Role</h3>
+								</div>
+								<div class="slds-col slds-size_12-of-12">
+                                    <div class="slds-grid slds-wrap slds-scrollable_y" style="max-height:15rem">
+										<aura:iteration items="{!v.contacts}" var="contact" indexVar="i">
+											<div class="slds-col slds-size_1-of-12 slds-p-vertical_small slds-border_top">
+												<span class="slds-radio">
+													<lightning:input type="radio" name="contactGroup" checked="{!contact.IsChecked}" value="{!contact}" onchange="{!c.radioChangeHandler}"/>
+												</span>
+											</div>
+											<div class="slds-col slds-size_2-of-12 slds-p-vertical_small slds-border_top">
+												<div class="slds-truncate">
+													<ui:outputText value="{!contact.DisplayName}"/>
+												</div>  
+											</div>
+											<div class="slds-col slds-size_3-of-12 slds-p-vertical_small slds-border_top">
+												<div class="slds-truncate">
+													<ui:outputText value="{!contact.Email}"/>
+												</div>
+											</div>
+											<div class="slds-col slds-size_6-of-12 slds-p-vertical_small slds-border_top">
+												<div class="slds-truncate" >
+													<ui:outputText value="{!contact.Roles}"/>
+												</div>
+											</div>
+										</aura:iteration> 
+									</div>
+								</div>
+								
+                            </div>
+                        </div> 
+                    </div>
+                </div>
+            </div>
+            <footer class="slds-modal__footer">   
+                <button class="slds-button slds-button_neutral" onclick="{!c.handleCancel}">Cancel</button>
+                <button class="slds-button slds-button_brand" onclick="{!c.handleCreateUsers}">Create Conga Users</button>
+            </footer>
+    </section>
+    <aura:handler name="init" value="{!this}" action="{!c.serverCall}" /> 
+</aura:component>

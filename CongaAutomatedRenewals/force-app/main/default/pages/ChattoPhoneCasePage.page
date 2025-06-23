@@ -1,0 +1,30 @@
+<apex:page StandardController="Case" Extensions="ChattoPhoneCaseController" >
+  <apex:form id="frm">
+   <apex:includeScript value="/support/console/20.0/integration.js"/>
+   <script type="text/javascript">
+         function go() { 
+            sforce.console.openPrimaryTab(null,'/{!NewCase.Id}',true,'Chat to Phone-{!NewCase.CaseNumber}', openSuccess, 'CaseTab');         
+        }
+        var openSuccess = function openSuccess(result){
+            if(result.success == true){
+                //alert('Primary tab opened');
+            }else{
+                //alert('Nope');
+            }
+        }
+  </script>
+
+     <!-- <A HREF="#" onClick="openPrimaryTab();return false">Open A Primary Tab</A> -->
+
+  <apex:pagemessages ></apex:pagemessages>
+  <apex:pageBlock title="Would You Like to Change Case Status?" rendered="{!NOT(InitialCase.IsClosed)}">
+      <apex:pageBlockSection >
+        <apex:inputField value="{!DummyCase.Status}" />
+      </apex:pageBlockSection>
+      <div align="Center">
+        <br />
+        <apex:commandButton value="Create" action="{!CreateChatToPhoneCase}" rerender="frm" oncomplete="go();" />
+      </div>
+  </apex:pageBlock>
+  </apex:form>
+</apex:page>

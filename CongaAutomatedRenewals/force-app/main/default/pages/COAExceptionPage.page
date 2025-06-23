@@ -1,0 +1,44 @@
+<apex:page controller="COAExceptionPageController">
+    <apex:sectionHeader title="COA Exceptions" subtitle="Queued Opportunities"/>
+    <apex:form id="oppForm">
+    <apex:pageMessages />
+    <apex:pageBlock id="tableDetails">
+    	<apex:pageBlockTable value="{!exceptions}" var="exception">
+            <apex:column >
+                <apex:facet name="header">
+                    <apex:commandLink id="nameBtn" action="{!sortByColumn}" value="Opportunity Name">
+                        <apex:param value="Name" name="nameCol" assignTo="{!sortExpression}"/>
+                    </apex:commandLink>
+                </apex:facet>
+                <apex:outputLink target="_blank" value="/{!exception.Related_Opportunity__c}">{!exception.Opportunity_Name__c}</apex:outputLink>
+            </apex:column>
+            <apex:column headerValue="Type" value="{!exception.Opportunity_Type__c}"/>
+            <apex:column >
+                <apex:facet name="header">
+                    <apex:commandLink id="orgIdBtn" action="{!sortByColumn}" value="Customer Org Id">
+                        <apex:param value="Customer_Org_Id__c" name="orgIdCol" assignTo="{!sortExpression}"/>
+                    </apex:commandLink>
+                </apex:facet>
+                {!exception.Customer_Org_Id__c}
+            </apex:column>
+            <apex:column headerValue="Sales Ops Approved" value="{!exception.Opportunity_Sales_Op_Approved__c}"/>
+            <apex:column headerValue="Segmented Deal" value="{!exception.Segmented_Deal__c}"/>
+            <apex:column >
+                <apex:facet name="header">
+                    <apex:commandLink id="statusBtn" action="{!sortByColumn}" value="Status">
+                        <apex:param value="Status__c" name="statusCol" assignTo="{!sortExpression}"/>
+                    </apex:commandLink>
+                </apex:facet>
+                {!exception.Status__c}
+            </apex:column>
+        </apex:pageBlockTable>
+        <apex:pageBlockButtons >
+            <apex:commandButton value="First Page" rerender="tableDetails" action="{!first}" disabled="{!prev}"/>
+            <apex:commandButton value="Previous" rerender="tableDetails" action="{!previous}" disabled="{!prev}"/>
+            <apex:commandButton value="Next" rerender="tableDetails" action="{!next}" disabled="{!nxt}"/>
+            <apex:commandButton value="Last Page" rerender="tableDetails" action="{!last}" disabled="{!nxt}"/>
+            <apex:outputLabel style="float:right;text-align:center" value="Total Records: {!TotalRecords}"/>
+        </apex:pageBlockButtons>
+    </apex:pageBlock>
+    </apex:form>
+</apex:page>

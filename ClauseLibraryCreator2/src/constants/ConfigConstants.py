@@ -1,0 +1,6 @@
+SALESFORCE_CONFIG = 'SALESFORCE_CONFIG'
+SF_INSTANCE_URL = 'sf_instance_url'
+SF_USERNAME = 'sf_username'
+SF_PASSWORD = 'sf_password'
+SF_SECURITY_TOKEN = 'sf_security_token'
+SF_TOKEN_VALIDITY_IN_SECONDS = 'sf_token_validity_in_seconds'

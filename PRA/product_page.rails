@@ -1,0 +1,235 @@
+<div data-show-if-group="bundle_or_page_true">
+	<div data-show-if="" data-show-if-group="default_layout">
+		<h1>{{Teaser_Octiv__c}}</h1>
+		<h3>{{Name_External__c}}</h3>
+		<p>{{SBQQ__Description__c}}</p>
+		<p data-hide-if="Spec_Octiv__c IS BLANK"><strong>{{Spec_Octiv__c}}</strong></p>
+	</div>
+	<div data-show-if="" data-show-if-group="tour_activity_layout">
+		<div class="grid">
+			<div class="unit half">
+				<p><span allowstyling="true" data-name="Image_URL_F__c" data-type="image" data-variable-content="image" data-source="" data-raw-value="" class="inline-variable mceEditable" data-id="e2acb986-6aa8-4038-9d63-8d65a14d172e" data-parsable-variable-names="" data-unit="" data-textcase="" data-format="" data-label="Image URL" data-value="Image_URL_F__c" data-precision="" data-delimiter="" data-width="300" data-height="500" data-text="" data-locale="" data-href="" data-hreftype="url"><img src="https://via.placeholder.com/300x500?text=Placeholder" width="300" height="500" /></span>&nbsp;</p>
+				<p><span allowstyling="true" data-name="Image_URL_2_F__c" data-type="image" data-variable-content="image" data-source="" data-raw-value="" class="inline-variable mceEditable" data-id="e2acb986-6aa8-4038-9d63-8d65a14d172e" data-parsable-variable-names="" data-unit="" data-textcase="" data-format="" data-label="Image URL" data-value="Image_URL_2_F__c" data-precision="" data-delimiter="" data-width="300" data-height="250" data-text="" data-locale="" data-href="" data-hreftype="url"><img src="https://via.placeholder.com/300x250?text=Placeholder" width="300" height="250" /></span>&nbsp;</p>
+				<p><span allowstyling="true" data-name="Image_URL_3_F__c" data-type="image" data-variable-content="image" data-source="" data-raw-value="" class="inline-variable mceEditable" data-id="e2acb986-6aa8-4038-9d63-8d65a14d172e" data-parsable-variable-names="" data-unit="" data-textcase="" data-format="" data-label="Image URL" data-value="Image_URL_3_F__c" data-precision="" data-delimiter="" data-width="300" data-height="250" data-text="" data-locale="" data-href="" data-hreftype="url"><img src="https://via.placeholder.com/300x250?text=Placeholder" width="300" height="250" /></span>&nbsp;</p>
+			</div>
+			<div class="unit half">
+				<p>&nbsp;</p>
+				<h1>{{Teaser_Octiv__c}}</h1>
+				<h3>{{Name_External__c}}</h3>
+				<p></p>
+				<p>{{SBQQ__Description__c}}</p>
+				<div data-hide-if="Spec_Octiv__c IS BLANK" style="background-color: #76bd22; padding-left: 20px; padding-top: 20px; padding-bottom: 20px;">
+					<p><span color="#ffffff" style="color: #ffffff;"><b>{{Spec_Octiv__c}}</b></span></p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Food & Beverage Layout -->
+	<div data-show-if="" data-show-if-group="food_beverage_layout">
+		<div class="grid">
+			<div class="unit half no-gutters">
+				<table style="width: 100%; height: 269px;">
+					<tbody>
+						<tr style="height: 118px;">
+							<td rowspan="2" style="width: 55%; border-color: #ffffff; vertical-align: top; height: 269px;">
+								<p><span allowstyling="true" data-name="Image_URL_F__c" data-type="image" data-variable-content="image" data-source="" data-raw-value="" class="inline-variable mceEditable" data-id="e2acb986-6aa8-4038-9d63-8d65a14d172e" data-parsable-variable-names="" data-unit="" data-textcase="" data-format="" data-label="Image URL" data-value="Image_URL_F__c" data-precision="" data-delimiter="" data-width="150" data-height="310" data-text="" data-locale="" data-href="" data-hreftype="url"><img src="https://via.placeholder.com/150x310?text=Placeholder" width="150" height="310" /></span></p>
+							</td>
+							<td style="width: 45%; border-color: #ffffff; height: 118px;">
+								<p><span allowstyling="true" data-name="Image_URL_2_F__c" data-type="image" data-variable-content="image" data-source="" data-raw-value="" class="inline-variable mceEditable" data-id="e2acb986-6aa8-4038-9d63-8d65a14d172e" data-parsable-variable-names="" data-unit="" data-textcase="" data-format="" data-label="Image URL" data-value="Image_URL_2_F__c" data-precision="" data-delimiter="" data-width="150" data-height="150" data-text="" data-locale="" data-href="" data-hreftype="url"><img src="https://via.placeholder.com/150x150?text=Placeholder" width="150" height="150" /></span></p>
+							</td>
+						</tr>
+						<tr style="height: 151px;">
+							<td style="width: 45%; border-color: #ffffff; height: 151px;">
+								<p><span allowstyling="true" data-name="Image_URL_3_F__c" data-type="image" data-variable-content="image" data-source="" data-raw-value="" class="inline-variable mceEditable" data-id="e2acb986-6aa8-4038-9d63-8d65a14d172e" data-parsable-variable-names="" data-unit="" data-textcase="" data-format="" data-label="Image URL" data-value="Image_URL_3_F__c" data-precision="" data-delimiter="" data-width="150" data-height="150" data-text="" data-locale="" data-href="" data-hreftype="url"><img src="https://via.placeholder.com/150x150?text=Placeholder" width="150" height="150" /></span></p>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="unit half">
+				<p>&nbsp;</p>
+				<h1>{{Teaser_Octiv__c}}</h1>
+				<p>{{SBQQ__Description__c}}</p>
+			</div>
+		</div>
+	</div>
+	<!-- Tranportation Layout -->
+	<div data-show-if="" data-show-if-group="transportation_layout">
+		<div class="grid">
+			<div class="unit half">
+				<p><span allowstyling="true" data-name="Image_URL_F__c" data-type="image" data-variable-content="image" data-source="" data-raw-value="" class="inline-variable mceEditable" data-id="e2acb986-6aa8-4038-9d63-8d65a14d172e" data-parsable-variable-names="" data-unit="" data-textcase="" data-format="" data-label="Image URL" data-value="Image_URL_F__c" data-precision="" data-delimiter="" data-width="350" data-height="800" data-text="" data-locale="" data-href="" data-hreftype="url"><img src="https://via.placeholder.com/350x800?text=Placeholder" width="350" height="800" /></span></p>
+			</div>
+			<div class="unit half">
+				<p>&nbsp;</p>
+				<h1>{{Teaser_Octiv__c}}</h1>
+				<h3>{{Name_External__c}}</h3>
+				<p></p>
+				<p>{{SBQQ__Description__c}}</p>
+			</div>
+		</div>
+	</div>
+	<!-- Decor Layout -->
+	<div data-show-if="" data-show-if-group="decor_layout">
+		<h1>{{Teaser_Octiv__c}}</h1>
+		<h3>{{Name_External__c}}</h3>
+		<div class="unit one-third">
+			<h3>&nbsp;</h3>
+			<p></p>
+			<div class="grid">
+				<div class="unit half">
+					<p><span allowstyling="true" data-name="Image_URL_F__c" data-type="image" data-variable-content="image" data-source="" data-raw-value="" class="inline-variable mceEditable" data-id="e2acb986-6aa8-4038-9d63-8d65a14d172e" data-parsable-variable-names="" data-unit="" data-textcase="" data-format="" data-label="Image URL" data-value="Image_URL_F__c" data-precision="" data-delimiter="" data-width="350" data-height="200" data-text="" data-locale="" data-href="" data-hreftype="url"><img src="https://via.placeholder.com/350x200?text=Placeholder" width="350" height="200" /></span></p>
+				</div>
+				<div class="unit one-quarter">
+					<p><span allowstyling="true" data-name="Image_URL_2_F__c" data-type="image" data-variable-content="image" data-source="" data-raw-value="" class="inline-variable mceEditable" data-id="e2acb986-6aa8-4038-9d63-8d65a14d172e" data-parsable-variable-names="" data-unit="" data-textcase="" data-format="" data-label="Image URL" data-value="Image_URL_2_F__c" data-precision="" data-delimiter="" data-width="150" data-height="150" data-text="" data-locale="" data-href="" data-hreftype="url"><img src="https://via.placeholder.com/150x150?text=Placeholder" width="150" height="150" /></span></p>
+				</div>
+				<div class="unit one-quarter">
+					<p><span allowstyling="true" data-name="Image_URL_3_F__c" data-type="image" data-variable-content="image" data-source="" data-raw-value="" class="inline-variable mceEditable" data-id="e2acb986-6aa8-4038-9d63-8d65a14d172e" data-parsable-variable-names="" data-unit="" data-textcase="" data-format="" data-label="Image URL" data-value="Image_URL_3_F__c" data-precision="" data-delimiter="" data-width="150" data-height="150" data-text="" data-locale="" data-href="" data-hreftype="url"><img src="https://via.placeholder.com/150x150?text=Placeholder" width="150" height="150" /></span></p>
+				</div>
+			</div>
+			<div class="grid">
+				<div class="unit one-quarter">
+					<p><span allowstyling="true" data-name="Image_URL_4_F__c" data-type="image" data-variable-content="image" data-source="" data-raw-value="" class="inline-variable mceEditable" data-id="e2acb986-6aa8-4038-9d63-8d65a14d172e" data-parsable-variable-names="" data-unit="" data-textcase="" data-format="" data-label="Image URL" data-value="Image_URL_4_F__c" data-precision="" data-delimiter="" data-width="150" data-height="150" data-text="" data-locale="" data-href="" data-hreftype="url"><img src="https://via.placeholder.com/150x150?text=Placeholder" width="150" height="150" /></span></p>
+				</div>
+				<div class="unit half">
+					<p style="text-align: center;">&nbsp;{{SBQQ__Description__c}}</p>
+				</div>
+				<div class="unit one-quarter">
+					<p><span allowstyling="true" data-name="ImImage_URL_5_F__c" data-type="image" data-variable-content="image" data-source="" data-raw-value="" class="inline-variable mceEditable" data-id="e2acb986-6aa8-4038-9d63-8d65a14d172e" data-parsable-variable-names="" data-unit="" data-textcase="" data-format="" data-label="Image URL" data-value="ImImage_URL_5_F__c" data-precision="" data-delimiter="" data-width="150" data-height="150" data-text="" data-locale="" data-href="" data-hreftype="url"><img src="https://via.placeholder.com/150x150?text=Placeholder" width="150" height="150" /></span></p>
+				</div>
+			</div>
+			<div class="grid">
+				<div class="unit one-quarter">
+					<p><span allowstyling="true" data-name="Image_URL_F__c" data-type="image" data-variable-content="image" data-source="" data-raw-value="" class="inline-variable mceEditable" data-id="e2acb986-6aa8-4038-9d63-8d65a14d172e" data-parsable-variable-names="" data-unit="" data-textcase="" data-format="" data-label="Image URL" data-value="Image_URL_F__c" data-precision="" data-delimiter="" data-width="150" data-height="150" data-text="" data-locale="" data-href="" data-hreftype="url"><img src="https://via.placeholder.com/150x150?text=Placeholder" width="150" height="150" /></span></p>
+				</div>
+				<div class="unit half">
+					<p><span allowstyling="true" data-name="Image_URL_F__c" data-type="image" data-variable-content="image" data-source="" data-raw-value="" class="inline-variable mceEditable" data-id="e2acb986-6aa8-4038-9d63-8d65a14d172e" data-parsable-variable-names="" data-unit="" data-textcase="" data-format="" data-label="Image URL" data-value="Image_URL_F__c" data-precision="" data-delimiter="" data-width="400" data-height="150" data-text="" data-locale="" data-href="" data-hreftype="url"><img src="https://via.placeholder.com/400x150?text=Placeholder" width="400" height="150" /></span></p>
+				</div>
+				<div class="unit one-quarter">
+					<p><span allowstyling="true" data-name="Image_URL_F__c" data-type="image" data-variable-content="image" data-source="" data-raw-value="" class="inline-variable mceEditable" data-id="e2acb986-6aa8-4038-9d63-8d65a14d172e" data-parsable-variable-names="" data-unit="" data-textcase="" data-format="" data-label="Image URL" data-value="Image_URL_F__c" data-precision="" data-delimiter="" data-width="150" data-height="150" data-text="" data-locale="" data-href="" data-hreftype="url"><img src="https://via.placeholder.com/150x150?text=Placeholder" width="150" height="150" /></span></p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Venu Fees Layout -->
+	<div data-show-if="" data-show-if-group="venue_layout">
+		<div class="grid">
+			<div class="unit half">
+				<p><span allowstyling="true" data-name="Image_URL_F__c" data-type="image" data-variable-content="image" data-source="" data-raw-value="" class="inline-variable mceEditable" data-id="e2acb986-6aa8-4038-9d63-8d65a14d172e" data-parsable-variable-names="" data-unit="" data-textcase="" data-format="" data-label="Image URL" data-value="Image_URL_F__c" data-precision="" data-delimiter="" data-width="325" data-height="125" data-text="" data-locale="" data-href="" data-hreftype="url"><img src="https://via.placeholder.com/325x125?text=Placeholder" width="325" height="125" /></span></p>
+				<div class="grid">
+					<div class="unit half">
+						<p>&nbsp;</p>
+					</div>
+					<div class="unit half">
+						<p><span allowstyling="true" data-name="Image_URL_2_F__c" data-type="image" data-variable-content="image" data-source="" data-raw-value="" class="inline-variable mceEditable" data-id="e2acb986-6aa8-4038-9d63-8d65a14d172e" data-parsable-variable-names="" data-unit="" data-textcase="" data-format="" data-label="Image URL" data-value="Image_URL_2_F__c" data-precision="" data-delimiter="" data-width="150" data-height="150" data-text="" data-locale="" data-href="" data-hreftype="url"><img src="https://via.placeholder.com/150x150?text=Placeholder" width="150" height="150" /></span></p>
+					</div>
+				</div>
+				<div class="grid">
+					<div class="unit half">
+						<p></p>
+					</div>
+					<div class="unit half">
+						<p><span allowstyling="true" data-name="Image_URL_3_F__c" data-type="image" data-variable-content="image" data-source="" data-raw-value="" class="inline-variable mceEditable" data-id="e2acb986-6aa8-4038-9d63-8d65a14d172e" data-parsable-variable-names="" data-unit="" data-textcase="" data-format="" data-label="Image URL" data-value="Image_URL_3_F__c" data-precision="" data-delimiter="" data-width="150" data-height="150" data-text="" data-locale="" data-href="" data-hreftype="url"><img src="https://via.placeholder.com/150x150?text=Placeholder" width="150" height="150" /></span></p>
+					</div>
+				</div>
+				<p><span allowstyling="true" data-name="Image_URL_4_F__c" data-type="image" data-variable-content="image" data-source="" data-raw-value="" class="inline-variable mceEditable" data-id="e2acb986-6aa8-4038-9d63-8d65a14d172e" data-parsable-variable-names="" data-unit="" data-textcase="" data-format="" data-label="Image URL" data-value="Image_URL_4_F__c" data-precision="" data-delimiter="" data-width="150" data-height="100" data-text="" data-locale="" data-href="" data-hreftype="url"><img src="https://via.placeholder.com/150x100?text=Placeholder" width="150" height="100" /></span></p>
+			</div>
+			<div class="unit half">
+				<p>&nbsp;</p>
+				<h1>{{Teaser_Octiv__c}}</h1>
+				<h3>{{Name_External__c}}</h3>
+				<p></p>
+				<p>{{SBQQ__Description__c}}</p>
+				<div data-hide-if="Spec_Octiv__c IS BLANK" style="background-color: #76bd22; padding-left: 20px; padding-top: 20px; padding-bottom: 20px;">
+					<p><span color="#ffffff" style="color: #ffffff;"><b>{{Spec_Octiv__c}}</b></span></p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div data-show-if="" data-show-if-group="">
+		<div class="grid">
+			<div class="unit half">
+				<p>&nbsp;</p>
+			</div>
+			<div class="unit half">
+				<h2>&nbsp;{{Teaser_Octiv__c}}</h2>
+			</div>
+		</div>
+		<p>&nbsp;</p>
+	</div>
+	<!-- Highlighted Products. Shows any child products of header bundle that are marked "Highlight Octiv" -->
+	<div data-show-if="Highlight_Octiv__c == 'True'" data-source="SBQQ__Quote_Lines__r"><hr />
+		<h3><strong><span>{{Name_External__c}}</span> Highlights</strong></h3>
+		<p></p>
+		<div class="grid">
+			<div class="unit half" data-repeat="product in SBQQ__Quote_Lines__r" data-filter="Highlight_Octiv__c == 'True' AND SBQQ__Hidden__c == 'False'">
+				<table style="width: 100%; height: 175px;">
+					<tbody>
+						<tr>
+							<td style="width: 40% !important; border-color: #ffffff;">
+								<p class="html">[product.Image_URL_HTML__c]</p>
+							</td>
+							<td style="width: 60% !important; border-color: #ffffff;">
+								<p><strong>[product.Name_External__c]</strong></p>
+								<p class="html">[product.SBQQ__Description__c]</p>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<p></p>
+			</div>
+			<p></p>
+		</div>
+		<p></p>
+		<p></p>
+	</div>
+	<!-- Hide the inclusion table if there are no products in it -->
+	<div data-repeat="family in SBQQ__Quote_Lines__r" data-group-by="SBQQ__Quote__c" data-filter="SBQQ__Hidden__c == 'false' AND SBQQ__Optional__c == 'false'"><!-- Inclusion table v2 --><hr />
+	<h3><strong>{{Name_External__c}} Inclusions</strong></h3>
+	<table style="width: 100%;">
+		<thead>
+			<tr>
+				<td style="width: 85%;"></td>
+				<td style="width: 15%; text-align: center;">Quantity</td>
+			</tr>
+		</thead>
+		<!-- Loops through products associated with the header bundle and displays the family name -->
+		<tbody data-repeat="family in SBQQ__Quote_Lines__r" data-filter="SBQQ__Hidden__c == 'false' AND SBQQ__Optional__c == 'false'" data-group-by="SBQQ__Product__r_Family">
+			<tr>
+				<td style="width: 85%;"><strong>[family.SBQQ__Product__r_Family]</strong></td>
+				<td style="width: 15%; text-align: center;"></td>
+			</tr>
+			<!-- Loops through products associated with the family displayed in the row above and displays product name and quantity -->
+			<tr data-repeat="product in SBQQ__Quote_Lines__r" data-filter="SBQQ__Product__r_Family == family.SBQQ__Product__r_Family AND SBQQ__Hidden__c != 'true'">
+				<td style="width: 85%; padding-left: 30px;">[product.Name_External__c]<br /><span data-show-if="product.SBQQ__Optional__c == 'true'" style="font-size: 10px;"><em>Optional</em></span></td>
+				<td style="width: 15%; text-align: center;" class="integer">[product.SBQQ__Quantity__c]</td>
+			</tr>
+			<!-- SUMs all the products associated with the current family -->
+			<tr>
+				<td style="width: 85%; padding-left: 30px;"><em>Total cost for [family.SBQQ__Product__r_Family] - <span class="money">[SUM(SBQQ__NetTotal__c)]</span></em></td>
+				<td style="width: 15%; text-align: center;"></td>
+			</tr>
+		</tbody>
+		<!-- Loops through all the products associated with the header bundle and displays that total -->
+		<tfoot data-repeat="sum in SBQQ__Quote_Lines__r" data-filter="SBQQ__Hidden__c == 'false' AND SBQQ__Optional__c == 'false'" data-group-by="SBQQ__RequiredBy__c">
+		<tr>
+			<td style="width: 85%; background-color: #c4c4c4;"><strong>OVERALL TOTAL: <span class="money">[SUM(SBQQ__NetTotal__c)]</span></strong></td>
+			<td style="width: 15%; background-color: #c4c4c4; text-align: center;"></td>
+		</tr>
+		</tfoot>
+	</table>
+</div>
+<p></p>
+<div class="grid">
+	<div class="unit one-third">
+		<p><span allowstyling="true" data-name="client_logo" data-type="image" data-variable-content="image" data-source="scoped_variables" data-raw-value="client_logo" class="inline-variable mceEditable" data-id="1bd49d9f-9090-461a-be2b-1ed3f5c83132" data-parsable-variable-names="" data-unit="" data-textcase="" data-format="" data-label="client_logo" data-value="client_logo" data-precision="" data-delimiter="" data-width="75" data-height="75" data-text="" data-locale="" data-href="" data-hreftype="url"><img src="client_logo" width="75" height="75" /></span>&nbsp;</p>
+	</div>
+	<div class="unit one-third">
+		<p></p>
+		<p style="text-align: center;"><span allowstyling="true" data-name="Quote__c_Opportunity2__r_Name" data-type="string" data-variable-content="inline" data-source="scoped_variables" data-raw-value="Quote__c_Opportunity2__r_Name" class="inline-variable mceEditable" data-id="101476c6-2b70-49ca-9cb7-bd5ed5aea5f8" data-parsable-variable-names="">Quote__c_Opportunity2__r_Name</span></p>
+	</div>
+	<div class="unit one-third">
+		<p>&nbsp;</p>
+	</div>
+</div>
+<div style="page-break-after: always;"><span style="display: none;">&nbsp;</span></div>
+</div>

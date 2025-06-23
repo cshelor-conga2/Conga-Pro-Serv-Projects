@@ -1,0 +1,19 @@
+<apex:page standardController="Order" extensions="OrderCreditMemoController">
+	<apex:form >
+		<apex:pageMessages ></apex:pageMessages>
+		<apex:pageBlock >
+			<apex:pageBlockButtons location="bottom">
+				<apex:commandButton value="Save" action="{!AutoRun}" />
+				<apex:commandButton value="Cancel" action="{!Cancel}" />
+			</apex:pageBlockButtons>
+			<apex:pageBlockSection collapsible="false" title="Credit Memo Details" columns="1">
+				<apex:outputField value="{!InvoicesToClone[0].TotalAmount}" />
+				<apex:inputField value="{!InvoicesToClone[0].Status}" />
+				<apex:inputText label="% of Order Total" value="{!PercentApplied}" html-placeholder="100" />
+				<apex:outputText label="OR" />
+				<apex:inputText label="$ Amount of Order Total" html-placeholder="{!InvoicesToClone[0].TotalAmount}" value="{!DollarsApplied}" /> 
+				<apex:inputCheckbox label="Apply to Discount" value="{!ApplyToDiscount}" disabled="true" />
+			</apex:pageBlockSection>
+		</apex:pageBlock>
+	</apex:form>
+</apex:page>

@@ -1,0 +1,93 @@
+<apex:page standardController="Opportunity" showHeader="false" docType="html-4.01-strict">
+<div id="tabstrip" style="display:none;"> <ul> 
+<li class="k-state-active">Contact Roles</li>
+<li>Selling Team</li>
+<li>Open Activites</li>
+<li>Activity History</li>
+<li>Products</li>
+<li>Competitors</li>
+<li>Notes</li>
+<li>Attachments</li>
+<li>DocuSign Status</li>
+
+</ul>
+<!-- Contact Roles -->
+<div style="overflow:hidden;"> 
+<CRMC_PP:Grid ObjectName="OpportunityContactRole" FKName="OpportunityId" FKValue="{!Opportunity.Id}"  DelayLoad="false"  ViewID="a6A50000000GldFEAS" 
+ EnableNewButton="true"  EnableNewInline="true"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true" 
+ EnableStickyViews="true"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+ <CRMC_PP:DrillUp /> 
+ </div>
+ 
+ <!-- Selling Team -->
+<div style="overflow:hidden;"> 
+<CRMC_PP:Grid ObjectName="Selling_Team__c" FKName="Opportunity__c" FKValue="{!Opportunity.Id}"  DelayLoad="true"  ViewID="a6A4B00000002T6UAI" 
+ EnableNewButton="true"  EnableNewInline="true"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true" 
+ EnableStickyViews="true"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+ <CRMC_PP:DrillUp /> 
+ </div>
+
+<!-- Open Activities -->
+<div style="overflow:hidden;"> 
+<CRMC_PP:Grid ObjectName="Task" FKName="WhatId" FKValue="{!Opportunity.Id}"  DelayLoad="true"  ViewID="a6A50000000GldKEAS" 
+ EnableNewButton="true"  EnableNewInline="true"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true" 
+ EnableStickyViews="true"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+ <CRMC_PP:DrillUp /> 
+ </div>
+
+<!-- Activity History -->
+<div style="overflow:hidden;"> 
+<CRMC_PP:Grid ObjectName="Event" FKName="WhatId" FKValue="{!Opportunity.Id}"  DelayLoad="true"  ViewID="a6A50000000GldPEAS" 
+ EnableNewButton="true"  EnableNewInline="true"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true" 
+ EnableStickyViews="true"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+ <CRMC_PP:DrillUp /> 
+ </div>
+
+<!-- Products -->
+<div style="overflow:hidden;"> 
+<CRMC_PP:Grid ObjectName="OpportunityLineItem" FKName="OpportunityId" FKValue="{!Opportunity.Id}"  DelayLoad="true"  ViewID="a6A50000000GldUEAS" 
+ EnableNewButton="true"  EnableNewInline="true"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true" 
+ EnableStickyViews="true"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+ <CRMC_PP:DrillUp /> 
+ </div>
+ 
+ <!-- Competitive_Intelligence -->
+<div style="overflow:hidden;">
+<CRMC_PP:Grid ObjectName="Competitive_Intel__c" FKName="Opportunity__c" FKValue="{!Opportunity.Id}"  DelayLoad="true"  ViewID=""
+ EnableNewButton="true"  EnableNewInline="true"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true"
+ EnableStickyViews="true"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+<CRMC_PP:DrillUp />
+ </div>
+ 
+<!-- Notes -->
+<div style="overflow:hidden;"> 
+<CRMC_PP:Grid ObjectName="Note" FKName="ParentId" FKValue="{!Opportunity.Id}"  DelayLoad="true"  ViewID="a6A50000000GldZEAS" 
+ EnableNewButton="true"  EnableNewInline="true"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true" 
+ EnableStickyViews="true"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+ <CRMC_PP:DrillUp /> 
+ </div>
+
+<!-- Attachments -->
+<div style="overflow:hidden;"> 
+<CRMC_PP:Grid ObjectName="Attachment" FKName="ParentId" FKValue="{!Opportunity.Id}"  DelayLoad="true"  ViewID="a6A50000000GldeEAC" 
+ EnableNewButton="true"  EnableNewInline="true"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true" 
+ EnableStickyViews="true"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+ <CRMC_PP:DrillUp /> 
+ </div>
+
+<!-- DocuSign Status -->
+<div style="overflow:hidden;"> 
+<CRMC_PP:Grid ObjectName="01I50000000BdEA" FKName="dsfs__Opportunity__c" FKValue="{!Opportunity.Id}"  DelayLoad="true"  ViewID="a6A50000000GldjEAC" 
+ EnableNewButton="true"  EnableNewInline="true"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true" 
+ EnableStickyViews="true"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+ <CRMC_PP:DrillUp /> 
+ </div>
+
+</div>
+<script>
+$(document).ready(function() {
+    $("#tabstrip").kendoTabStrip();
+    $("#tabstrip").css("display", "block");
+});
+ </script>
+</apex:page>

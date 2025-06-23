@@ -1,0 +1,4 @@
+<aura:event access="global" type="COMPONENT" description="Event template">
+	<aura:attribute name="editMode" type="Boolean" default="false"/>
+	<aura:attribute name="currentUserId" type="Id"/>
+</aura:event>

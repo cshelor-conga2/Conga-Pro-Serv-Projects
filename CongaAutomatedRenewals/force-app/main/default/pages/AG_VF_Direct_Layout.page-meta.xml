@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApexPage xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>34.0</apiVersion>
+    <availableInTouch>true</availableInTouch>
+    <confirmationTokenRequired>false</confirmationTokenRequired>
+    <description>AG_OpportunityContactRole;AG_Task;AG_Event;AG_OpportunityLineItem;AG_Note;AG_Attachment;AG_dsfs__DocuSign_Status__c
+ AG Related Lists for Direct Layouts</description>
+    <label>AG VF  - Direct Layout</label>
+    <packageVersions>
+        <majorNumber>2</majorNumber>
+        <minorNumber>55</minorNumber>
+        <namespace>CRMC_PP</namespace>
+    </packageVersions>
+</ApexPage>

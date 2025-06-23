@@ -1,0 +1,100 @@
+<!--
+  @File Name          : ApprovalReportLightning.cmp
+  @Description        : 
+  @Author             : MS Simplus August
+  @Group              : 
+  @Last Modified By   : MS Simplus August
+  @Last Modified On   : 21/11/2019, 1:19:04 am
+  @Modification Log   : 
+  Ver       Date            Author      		    Modification
+  1.0    07/11/2019   MS Simplus August     Initial Version
+-->
+<aura:component controller="ApprovalReportController" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <!-- attributes -->
+    <aura:attribute name="columns" type="List" default="[]"/>
+    <aura:attribute name="data" type="List" default="[]"/>
+    <aura:attribute name="keyField" type="String" default="id"/>
+    <aura:attribute name="hideCheckboxColumn" type="Boolean" default="false"/>
+    <aura:attribute name="selectedRowsCount" type="Integer" default="0"/>
+    <aura:attribute name="isLoading" type="Boolean" default="false"/>
+    <aura:attribute name="resizeColumnDisabled" type="Boolean" default="false"/>
+    <aura:attribute name="minColumnWidth" type="Integer"/>
+    <aura:attribute name="maxColumnWidth" type="Integer"/>
+    <aura:attribute name="sortedBy" type="String"/>
+    <aura:attribute name="sortedDirection" type="String"/>
+    <aura:attribute name="defaultSortDirection" type="String"/>
+    <aura:attribute name="showRowNumberColumn" type="Boolean" default="false"/>
+    <aura:attribute name="rowNumberOffset" type="Integer" default="0"/>
+    <aura:attribute name="initialRows" type="Integer" default="10"/>
+    <aura:attribute name="rowsToAdd" type="Integer" default="10"/>
+    <aura:attribute name="dataTableSchema" type="Object"/>
+
+    <!-- Imports -->
+    <!--aura:import library="lightningcomponentdemo:mockdataFaker" property="mockdataLibrary"/-->
+
+    <!-- handlers-->
+    <aura:handler name="init" value="{! this }" action="{! c.init }"/>
+
+
+    <div class="slds-is-relative">
+        <!-- toolbox 
+        <div class="slds-m-vertical_small">
+            <h1 class="slds-m-vertical_small">Total Rows: {! v.data.length }</h1>
+            <h1 class="slds-m-vertical_small">Selected Rows: {! v.selectedRowsCount }</h1>
+
+            <div class="input-group">
+                <lightning:input type="toggle" label="Disable Column Resize" name="inputResizable" checked="{! v.resizeColumnDisabled }"/>
+            </div>
+
+            <div class="input-group">
+                <lightning:input type="toggle" label="Hide Checkbox Column" name="inputSelectable" checked="{! v.hideCheckboxColumn }"/>
+            </div>
+
+            <div class="input-group">
+                <lightning:input type="toggle" label="Show Row Number Column" name="inputRowNumber" checked="{! v.showRowNumberColumn }"/>
+                <lightning:input type="number" label="Row number offset" name="inputRowNumberOffset" value="{! v.rowNumberOffset }"/>
+            </div>
+
+            <div class="input-group">
+                <lightning:input type="number" label="Rows To Add" name="inputRowsToAdd" value="{! v.rowsToAdd }"/>
+                <lightning:button label="Add to the beginning" onclick="{! c.addRowsToBeginning }"/>
+                <lightning:button label="Add to the end" onclick="{! c.addRowsToEnd }"/>
+                <lightning:button label="Clear Rows" onclick="{! c.clearRows }"/>
+            </div>
+
+            <div class="input-group">
+                <lightning:button label="Reset Columns" onclick="{! c.resetColumns }"/>
+            </div>
+        </div>
+
+        
+                
+        -->
+        <!-- the container element determine the height of the datatable -->
+        <div style="height: 300px">
+            <lightning:datatable
+                columns="{! v.columns }"
+                data="{! v.data }"
+                keyField="{! v.keyField }"
+                hideCheckboxColumn="{! v.hideCheckboxColumn }"
+                resizeColumnDisabled="{! v.resizeColumnDisabled }"
+                minColumnWidth="{! v.minColumnWidth }"
+                maxColumnWidth="{! v.maxColumnWidth }"
+                resizeStep="20"
+                sortedBy="{! v.sortedBy }"
+                sortedDirection="{! v.sortedDirection }"
+                defaultSortDirection="{! v.defaultSortDirection }"
+                showRowNumberColumn="{! v.showRowNumberColumn }"
+                rowNumberOffset="{! v.rowNumberOffset }"
+                onrowselection="{! c.updateSelectedText }"
+                onrowaction="{! c.handleRowAction }"
+                onresize="{! c.storeColumnWidths }"
+                onsort="{! c.updateColumnSorting }"
+                />
+        </div>
+        <aura:if isTrue="{! v.isLoading }">
+            <lightning:spinner alternativeText="Loading"/>
+        </aura:if>
+    </div>
+    
+</aura:component>

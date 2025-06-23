@@ -1,0 +1,6 @@
+<apex:page standardController="Opportunity" showHeader="false" docType="html-4.01-strict">
+<CRMC_PP:Grid ObjectName="SBQQ__Quote__c" FKName="SBQQ__Opportunity2__c" FKValue="{!Opportunity.Id}"  DelayLoad="false"  ViewID="a6A1T000000P8DlUAK" 
+ EnableNewButton="true"  EnableNewInline="true"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true" 
+ EnableStickyViews="true"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+<CRMC_PP:DrillUp />
+</apex:page>

@@ -1,0 +1,45 @@
+<apex:page applyHtmlTag="false" applyBodyTag="false" showHeader="false" docType="html-5.0" lightningStylesheets="true" sidebar="false" standardStylesheets="false">
+   <html>
+      <head>
+         <apex:includeLightning />
+      </head>
+      <body class="slds-scope">
+         <div id="flowContainer" class="slds-align_absolute-center" style="width: 60%" />
+         <script>
+            var statusChange = function (event) {
+               if(event.getParam("status") === "FINISHED") {
+                  // Control what happens when the interview finishes
+ 
+                  var outputVariables = event.getParam("outputVariables");
+                   /*for(var i = 0; i < outputVariables.length; i++) {
+                      if(outputVariables[i].name === "") {
+                      }
+                  }*/
+                   
+                   document.location.href = '/partners';
+               }
+            };
+            $Lightning.use("c:CommunityPartnerRegistration", function() {
+               // Create the flow component and set the onstatuschange attribute
+               $Lightning.createComponent("lightning:flow", {"onstatuschange":statusChange},
+                  "flowContainer",
+                  function (component) {
+                     // Set the input variables
+                     var inputVariables = [
+                         /*{
+                           name : 'myInput',
+                           type : 'String',
+                           value : "Hello, world"
+                        }*/
+                     ];
+                     
+                     // Start an interview in the flowContainer div, and 
+                     // initializes the input variables.
+                     component.startFlow("Community_Partner_Registration", inputVariables);
+                  }
+               );
+            });
+         </script>
+      </body>
+   </html>
+</apex:page>

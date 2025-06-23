@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApexPage xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>50.0</apiVersion>
+    <availableInTouch>true</availableInTouch>
+    <confirmationTokenRequired>false</confirmationTokenRequired>
+    <description>AG_Salesforce_Org__c;AG_sfLma__License__c</description>
+    <label>AG MultiTab Salesforce_Org__c</label>
+    <packageVersions>
+        <majorNumber>3</majorNumber>
+        <minorNumber>7</minorNumber>
+        <namespace>CRMC_PP</namespace>
+    </packageVersions>
+</ApexPage>

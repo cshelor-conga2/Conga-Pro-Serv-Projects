@@ -1,0 +1,66 @@
+<apex:page showHeader="false" id="SiteTemplate" standardStylesheets="false">
+    <apex:stylesheet value="{!URLFOR($Resource.pymt__PaymentConnect,'styles/sites_default.css')}" />
+    
+    <link rel="stylesheet" type="text/css" href="{!URLFOR($Resource.pymt__PaymentConnect,'styles/sites_basic.css')}" />
+<link rel="stylesheet" type="text/css" href="{!URLFOR($Resource.pymt__PaymentConnect,'styles/sites_basic_responsive.css')}" /> 
+
+<!-- <link rel="stylesheet" type="text/css" href="{!URLFOR($Resource.pymt__PaymentConnect,'styles/trust_logos.css')}" /> -->
+
+<link rel="stylesheet" type="text/css" href="{!URLFOR($Resource.quot__QuotesAndInvoices,'styles/sites_basic.css')}" />
+    
+    <apex:stylesheet value="https://www.congamerge.com/styles/main.css" />
+    <style>
+        h1, p, h2, td, .pc_quote_amount_box, .pc_quote_expiration { text-align:left }
+        h1, h2 { font-size:13px }
+        p, td, th { font-size:12px }
+        .pc_frame { background-color:transparent; border:none }
+        .pc_page_content { background-color:#FFF; margin:57px 0 0 0; padding:1px 0 0 0 }
+        .pc_frame_top { margin:30px 0 0 20px;  }
+        .pc_quote_description { display: none; }
+        .button { height:30px; width:110px; text-align:center; cursor:pointer; outline:none }
+        .labelColumn { float:right; margin-right: 50px; }
+        .labelCol { float:right; margin-right: 100px; }
+        img { border:none }
+        input[type="button"] { margin-left: 210px; margin-top: 10px; height:30px; width:130px; text-align: center; cursor:pointer; outline:none }
+        
+        #quote_number_box {
+        
+        display:none;
+        
+        }
+        
+    </style>
+    
+    <div class="pc_frame">
+    <div class="pc_frame_inner">
+    
+    <apex:insert name="header">
+        <!--  Add custom banner and navigation here -->
+        <div class="pc_frame_top">
+            <a title="AppExtremes Home" href="https://www.congamerge.com/"><img height="100px" src="https://getconga.com/wp-content/uploads/2016/07/Conga-color.png" id="logo" /></a>
+        </div>
+    </apex:insert>
+
+    <apex:insert name="body"/>
+
+    <div style="text-align:right;width:100%;font-size:10px;font-weight:bold;font:Verdana;color:#A4A4A4; margin:0 0 10px 0">Powered by Linvio PaymentConnect</div>
+    <!-- (c) 2005, 2010. Authorize.Net is a registered trademark of CyberSource Corporation -->  <div style="margin-left:315px;"><div class="AuthorizeNetSeal">  <script type="text/javascript" language="javascript">var ANS_customer_id="618bb7c5-aec5-4e15-b839-8a3bab734d38";</script>  <script type="text/javascript" language="javascript" src="//verify.authorize.net/anetseal/seal.js" ></script>  <a href="http://www.authorize.net/" id="AuthorizeNetText" target="_blank">E-Commerce Solutions</a> </div> </div>
+    <apex:insert name="footer">
+   
+    </apex:insert>
+    <div style="height:20px; background-color:#FFF"></div>
+    
+    </div><!--  end pc_frame_inner -->
+    
+    </div>
+         <div class="footer">
+        <!--  Add custom footer here -->
+        <div id="footerWrap">
+            <!-- <img src="https://home.appextremes.com/images/windmill.gif" /> -->
+            <a href="https://www.congamerge.com/about">About Us</a> | <a href="https://www.congamerge.com/privacy">Privacy Statement</a> | <a href="https://www.congamerge.com/terms-conditions">Terms of Use</a> | <a href="https://sites.force.com/appexchange/listingDetail?listingId=a0N300000016b7FEAQ&ac=reviewTabLink" target="_blank">Read Our Reviews</a><br />
+        
+            <span style="font-weight:bold">100% Wind Powered</span>
+        </div>
+    </div><!--  end pc_frame -->
+
+</apex:page>

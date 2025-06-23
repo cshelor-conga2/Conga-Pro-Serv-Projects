@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApexPage xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>36.0</apiVersion>
+    <availableInTouch>false</availableInTouch>
+    <confirmationTokenRequired>false</confirmationTokenRequired>
+    <description>AG_Account;AG_Opportunity
+This page is designed to be called from an Opportnity Reading Pane to show an editable Account form</description>
+    <label>Account Detail</label>
+</ApexPage>

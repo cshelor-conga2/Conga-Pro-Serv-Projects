@@ -1,0 +1,187 @@
+<apex:page docType="html-5.0" standardController="Time_Card_Header__c" extensions="EmployeeTimeCardController" showHeader="{!NOT(IsMobile)}" sidebar="{!NOT(IsMobile)}">
+<!-- 	<apex:outputPanel rendered="{!IsMobile}"> -->
+<!-- 		<meta name="viewport" content="width=device-width, initial-scale=1,minimum-scale=1, maximum-scale=1, user-scalable=no" /> -->
+<!-- 		<link rel="stylesheet" href="{!URLFOR($Resource.SF_Bootstrap, 'dist/css/bootstrap-namespaced.min.css')}" media="all" /> -->
+<!-- 	</apex:outputPanel> -->
+	<link rel="stylesheet" href="{!URLFOR($Resource.EmployeeTimeCard, 'employeetimecard.css')}" />
+	<apex:form id="frm" styleClass="no-enter" style="overflow:auto!important;">
+		<apex:actionFunction name="onFormSubmit" status="actionLoading" action="{!ResetForm}" reRender="bdy" />
+		<apex:actionStatus id="actionLoading" stopText="">
+			<apex:facet name="start">
+				<apex:outputPanel styleClass="popupBackground" layout="block">
+					<apex:outputPanel styleClass="custPopup" layout="block">
+						<div style=" margin-left: auto; margin-right: auto;display:block; text-align:center; font-size: 1.3em;">
+							<h1>Please wait...</h1>
+							<br />
+						</div>
+						<div style=" margin-left: auto; margin-right: auto;display:block;text-align:center;">
+							<apex:image url="{!$Resource.LoadingImage}" width="30px" />
+						</div>
+					</apex:outputPanel>
+				</apex:outputPanel>
+			</apex:facet>
+		</apex:actionStatus>
+		<apex:pageBlock id="hdr" title="Time Card">
+			<apex:pageBlockButtons >
+				<apex:commandButton value="Save" reRender="bdy" action="{!Save}" status="actionLoading" disabled="{!NOT(IsEditable)}" />
+				<apex:commandButton value="Cancel" reRender="bdy" action="{!Cancel}" status="actionLoading" />
+				<apex:commandButton value="Submit For Approval" reRender="frm" action="{!Submit}" status="actionLoading" disabled="{!NOT(IsEditable)}" />
+			</apex:pageBlockButtons>
+			<apex:outputPanel >
+				<table>
+					<tr>
+						<td style="vertical-align:middle;">Employee</td>
+						<td colspan="2">
+							<apex:inputField value="{!DummyTimeCardHeader.UserId__c}" required="true">
+								<apex:actionSupport event="onchange" action="{!ResetUser}" status="actionLoading" />
+							</apex:inputField>
+						</td>
+					</tr>
+					<tr>
+						<td style="vertical-align:middle;">Period</td>
+						<td>
+							<apex:inputField value="{!DummyTimeCardHeader.PeriodId__c}" label="Period" required="true">
+								<apex:actionSupport event="onchange" action="{!ResetPeriod}" status="actionLoading" />
+							</apex:inputField>
+						</td>
+						<td style="vertical-align:middle;">- Status: {!TimeCardHeader.Status__c} - {!if(IsEditable,'','Time Card Is Locked')}</td>
+						<td style="vertical-align:middle;"> </td>
+					</tr>
+				</table>
+			</apex:outputPanel>
+			<apex:pageBlockSection id="bdy">
+				<apex:facet name="header">
+					<apex:outputPanel >
+						<h3>Details&nbsp;</h3>
+						<apex:commandButton value="Add Project" reRender="bdy" action="{!AddProject}" disabled="{!NOT(IsEditable) || (DummyTimeCardHeader.UserId__c == null || DummyTimeCardHeader.PeriodId__c == null)}" immediate="true" status="actionLoading" />
+						<apex:outputPanel >
+							<div name="multiButton" id="buttonMultiCopy" class="menuButton">
+								<div class="menuButtonButton" onmouseover="divHover = 'menuMultiCopy';" onmouseout="divHover = '';">Copy From Last Period</div>
+								<div name="multiButtonOpts" id="menuMultiCopy" style="margin:0px 30px; display:none; background-color:rgba(0,0,0,80);">
+									<apex:commandButton value="Only Milestones" reRender="bdy" action="{!CopyLastPeriod}" disabled="{!NOT(IsEditable) || (DummyTimeCardHeader.UserId__c == null || DummyTimeCardHeader.PeriodId__c == null)}" immediate="true" status="actionLoading" style="width:145px;margin:1px;">
+										<apex:param name="WithHoursAndNotes" value="false"></apex:param>
+									</apex:commandButton>
+									<br /> 
+									<apex:commandButton value="With Hours And Notes" reRender="bdy" action="{!CopyLastPeriod}" disabled="{!NOT(IsEditable) || (DummyTimeCardHeader.UserId__c == null || DummyTimeCardHeader.PeriodId__c == null)}" immediate="true" status="actionLoading" style="width:145px;margin:1px;">
+										<apex:param name="WithHoursAndNotes" value="true"></apex:param>
+									</apex:commandButton>
+								</div>
+							</div>
+						</apex:outputPanel>
+					</apex:outputPanel>
+				</apex:facet>
+				<apex:pageBlockTable id="pbTable" value="{!TimeCardGroups}" var="td">
+					<apex:column footerClass="footerRowBlank">
+						<apex:facet name="header">
+							<apex:outputPanel >
+								<div style="margin:2px 5px">Project</div>
+							</apex:outputPanel>
+						</apex:facet>
+						<apex:facet name="footer">
+							<apex:outputPanel >
+								<div>&nbsp;</div>
+							</apex:outputPanel>
+						</apex:facet>
+						<apex:inputField value="{!td.GroupMilestone.ProjectId__c}" style="width:175px;" rendered="{!IsEditable }">
+							<apex:actionSupport event="onchange" reRender="pbTable" status="actionLoading" />
+						</apex:inputField>
+						<apex:outputField value="{!td.GroupMilestone.ProjectId__c}" style="width:175px;" rendered="{!NOT(IsEditable) }" />
+					</apex:column>
+					<apex:column footerClass="footerRowBlank">
+						<apex:facet name="header">
+							<apex:outputPanel >
+								<div style="margin:2px 5px">Milestone</div>
+							</apex:outputPanel>
+						</apex:facet>
+						<apex:facet name="footer">
+							<apex:outputPanel >
+								<div>&nbsp;</div>
+							</apex:outputPanel>
+						</apex:facet>
+						<span title="{!TEXT(td.RemainingHours) + ' Hours Remaining'}">
+							<apex:selectList id="selMilestones" value="{!td.GroupMilestone.MilestoneId__c}" style="width:150px;" multiselect="false" size="1" rendered="{!IsEditable }">
+								<apex:selectOptions value="{!td.AvailableProjectMilestones}"></apex:selectOptions>
+								<apex:actionSupport event="onchange" reRender="pbTable" status="actionLoading"></apex:actionSupport>
+							</apex:selectList>
+							<apex:outputField value="{!td.GroupMilestone.MilestoneId__c}" rendered="{!NOT(IsEditable) }" style="width:150px;"></apex:outputField>
+							<apex:outputPanel rendered="{!false && IsEditable && td.RemainingHours < 0}">
+								<div style="Background-color:Yellow;Color:DarkRed;font-weight:bold;">
+									This Milestone is over by&nbsp;
+									<apex:outputText value="{!td.RemainingHours}"></apex:outputText>
+									hours
+								</div>
+							</apex:outputPanel>
+						</span>
+					</apex:column>
+					<apex:repeat value="{!TimeCardDetailsKeySetValues}" var="tcd">
+						<apex:column footerClass="footerRow">
+							<apex:facet name="header">
+								<apex:outputPanel >
+									<div style="margin:2px 5px; min-width:60px;">{!tcd}</div>
+								</apex:outputPanel>
+							</apex:facet>
+							<apex:facet name="footer">
+								<apex:outputPanel >
+									<div style="margin:2px 5px;text-align:right;">{!TimeCardDetailsAggregates[tcd]}</div>
+								</apex:outputPanel>
+							</apex:facet>
+							<apex:outputPanel >
+								<apex:inputField value="{!td.TimeCardDetails[tcd].Detail.Hours_Entered__c}" style="width:25px;" rendered="{!IsEditable}" styleClass="{!IF(td.TimeCardDetails[tcd].isFocused,'focused','')}" />
+								<apex:outputField value="{!td.TimeCardDetails[tcd].Detail.Hours_Entered__c}" style="width:25px;" rendered="{!NOT(IsEditable)}" />
+								<input type="button" value="..." onclick="javascript:if(this.nextSibling.nextSibling.style.display=='none'){this.nextSibling.nextSibling.style.display='block';}else{this.nextSibling.nextSibling.style.display='none';}" /> 
+								<div style="display:none">
+									<apex:inputField styleClass="no-enter" value="{!td.TimeCardDetails[tcd].Detail.Notes__c}" rendered="{!IsEditable}" style="width:175px;" />
+									<apex:outputField value="{!td.TimeCardDetails[tcd].Detail.Notes__c}" rendered="{!NOT(IsEditable)}" style="width:175px;" />
+								</div>
+								<apex:outputPanel id="doDetailValidation">
+									<apex:outputPanel rendered="{!NOT(IsBlank(td.TimeCardDetails[tcd].Detail.Hours_Entered__c)) && IsBlank(td.TimeCardDetails[tcd].Detail.Notes__c)}">
+										<div style="color:RED"><b>*Notes Needed</b></div>
+									</apex:outputPanel>
+								</apex:outputPanel>
+							</apex:outputPanel>
+						</apex:column>
+					</apex:repeat>
+					<apex:column style="width:32px;" rendered="{!IsEditable}" footerClass="footerRowBlank">
+						<apex:facet name="header">
+							<apex:outputPanel >
+								<div style="margin:2px 5px">Delete</div>
+							</apex:outputPanel>
+						</apex:facet>
+						<apex:commandButton id="btnDelete" action="{!RemoveItem}" image="/img/func_icons/remove12_on.gif" style="width:16px" reRender="pbTable" status="actionLoading" onclick="if(!confirm('Do you really want to delete all of these ticket details?')){return;}">
+							<apex:param name="selectedRemoveKey" value="{!td.Guid}" />
+						</apex:commandButton>
+					</apex:column>
+					<apex:column style="width:32px;" headerValue="Copy" rendered="{!IsEditable}" footerClass="footerRowBlank">
+						<apex:facet name="header">
+							<apex:outputPanel >
+								<div style="margin:2px 5px">Copy</div>
+							</apex:outputPanel>
+						</apex:facet>
+						<apex:commandButton id="btnCommand" action="{!CopyItem}" image="{!$Resource.CopyImage}" style="width:16px" reRender="pbTable" status="actionLoading">
+							<apex:param name="selectedCopyKey" value="{!td.Guid}" />
+						</apex:commandButton>
+					</apex:column>
+					<apex:column footerClass="footerRow">
+						<apex:facet name="header">
+							<apex:outputPanel >
+								<div style="margin:2px 5px">Hours</div>
+							</apex:outputPanel>
+						</apex:facet>
+						<apex:facet name="footer">
+							<apex:outputPanel >
+								<div style="margin:2px 5px;text-align:right;">{!TotalHours}</div>
+							</apex:outputPanel>
+						</apex:facet>
+						<apex:outputPanel >
+							<div style="margin:2px 5px;width:50px;text-align:right;">{!td.TotalHours}</div>
+						</apex:outputPanel>
+					</apex:column>
+				</apex:pageBlockTable>
+				<br /> 
+				<apex:pageMessages />
+			</apex:pageBlockSection>
+		</apex:pageBlock>
+	</apex:form>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+	<script src="{!URLFOR($Resource.EmployeeTimeCard, 'employeetimecard.js')}"></script>
+</apex:page>

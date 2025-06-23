@@ -1,0 +1,4 @@
+<apex:page applyBodyTag="false" applyHtmlTag="false" sidebar="false" docType="html-5.0"  standardStylesheets="false" showHeader="false">
+Start_Of_SessionId:sessionId={!$Api.Session_ID}:End_Of_SessionId
+Start_Of_ServerUrl:ServerUrl={!$Api.Partner_Server_URL_80}:End_Of_ServerUrl
+</apex:page>

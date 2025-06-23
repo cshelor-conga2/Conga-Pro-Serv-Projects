@@ -1,0 +1,32 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes,force:hasRecordId" access="global" >
+  
+  <!-- this is what is displayed on page -->
+	<div class="slds-grid slds-wrap">
+		<div class="slds-col slds-p-horizontal_medium slds-p-bottom_large slds-xx-small-size_0-of-12 slds-x-small-size_0-of-12 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-text-align_center">
+		</div>
+		<div class="slds-col slds-p-horizontal_medium slds-p-bottom_large slds-xx-small-size_12-of-12 slds-x-small-size_12-of-12 slds-medium-size_3-of-12 slds-large-size_3-of-12 slds-text-align_center">
+    		<button class="slds-button slds-button slds-button_neutral case-edit-button" onclick="{!c.openModal}">Edit</button>
+    	</div>
+    </div>
+
+  
+  <!-- modal is hidden -->
+  <div role="dialog" id="modaldialog" tabindex="-1" aria-labelledby="header43" class="slds-modal slds-fade-in-open" style="display:none;">
+    <div class="slds-modal__container">
+      <div class="slds-modal__header">
+        <button class="slds-button slds-modal__close " title="Close" onclick="{!c.closeModal}">
+          <lightning:icon iconName="utility:close" size="small" variant="bare"/>
+          <span class="slds-assistive-text">Close</span>
+        </button>
+        <h2 id="header43" class="slds-text-heading--medium">Edit Case
+        	<lightning:recordViewForm recordId="{!v.recordId}" objectApiName="Case">
+        		<lightning:outputField fieldName="CaseNumber"/> 
+        	</lightning:recordViewForm></h2>
+      </div>
+      <div class="slds-modal__content slds-p-around--medium">
+        <c:CaseEditForm aura:id="child" recordId="{!v.recordId}"/>
+      </div>
+    </div>
+  </div>
+  <div id="dialogbackdrop" class="slds-backdrop slds-backdrop--open" style="display:none;"></div>   
+</aura:component>

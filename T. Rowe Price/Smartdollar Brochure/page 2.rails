@@ -1,0 +1,152 @@
+<style><!--
+#content_editor .custombg-blue, .pdf-page-content .custombg-blue {
+	background-color: #3cc0da;
+	}
+#content_editor .custombg-grey, .pdf-page-content .custombg-grey {
+	background-color: #5a5a5a;
+	}
+#content_editor .box-padding, .pdf-page-content .box-padding {
+	padding: 10px; padding-right: 20px;
+	}
+.pdf-page-content .box-padding {
+	margin-left: 20%;
+	}
+.pdf-page-content .box-padding ul > li {
+	line-height: 150%;
+}
+
+/* builds the small blue triangle on the "Periodic Smartdollar Aggregate Reporting" blue block */
+#content_editor .triangle, .pdf-page-content .triangle {position: relative;z-index: 1;}
+#content_editor .triangle:after, .pdf-page-content .triangle:after {
+	content: '';
+	background-image: url(https://mytinder.s3.amazonaws.com/assets/medias/570040_original.PNG?1510250066);
+	background-size: 100%;
+	position: absolute;
+	z-index: 2;
+	top: 10%;
+	right: 100%;
+	width: 8%;
+	height: 100%;
+	background-repeat: no-repeat;
+}
+.pdf-page-content .triangle {
+	right: 1in;
+}
+/* ---- end of blue triangle CSS --------------------- */
+
+.pdf-page-content .grey-box {
+	position: relative;
+	right: 1in;
+}
+/* sets formatting for white list in blue and grey boxes */
+#content_editor .list, .pdf-page-content .list {
+	padding-left: 15px;
+	list-style-type: square;
+}
+#content_editor .list li, .pdf-page-content .list li, #content_editor .list li > span, .pdf-page-content .list li > span {
+	color: #ffffff;
+	font-size: 13px;
+}
+/* ----------------------- */
+/* sets formatting for lists with blue bullets */
+.blue-bullet-page2 {
+	list-style-type: square;
+	padding-left: 25px;
+}
+.blue-bullet-page2 li {
+	color: #05c5de;
+}
+.blue-bullet-page2 li span {
+	color: #4f4f4f;
+}
+/* flex box not supported in our docraptor PDF integration so we have to re-create it using a table */
+.pdf-page-content .blue-bullet-page2 li {
+	font-size: 12px;
+	display: table;
+	margin-left: -1em;
+}
+.pdf-page-content .blue-bullet-page2 li:before {
+	content: "\25A0";
+	padding-right: 1em;
+	color: #05c5de;
+	display: table-cell;
+}
+.pdf-page-content .higher-text {
+	position: relative;
+	bottom: .25in;
+}
+/* Adjust margins for PDF output */
+.pdf-page-content .small-pdf-margins {
+	margin-top: -.05in;
+	margin-bottom: -.2in;
+}
+--></style>
+<div class="small-pdf-margins">
+<h5>DELIVERING FINANCIAL WELLNESS THAT WORKS</h5>
+<p class="print-only"></p>
+<div class="grid">
+	<div class="unit one-third">
+		<h6 style="text-align: left;"><span style="color: #05c5de;"><img src="https://mytinder.s3.amazonaws.com/assets/medias/575549_web.png?1511879820" width="57" height="58" data-org-media-source-id="575549" data-org-media-type="web" data-org-media-extension="png" /><span class="higher-text">Highly Engaging</span></span></h6>
+		<ul class="blue-bullet-page2">
+			<li><span>Engages through on-demand video lessons, educational materials, and coaching<br /><br /></span></li>
+			<li><span>Offers mobile-friendly tools to help employees implement what they've learned</span></li>
+		</ul>
+	</div>
+	<div class="unit one-third">
+		<h6><span style="color: #05c5de;"><img src="https://mytinder.s3.amazonaws.com/assets/medias/575550_web.png?1511879821" width="60" height="57" data-org-media-source-id="575550" data-org-media-type="web" data-org-media-extension="png" /><span class="higher-text">Proven Results</span></span></h6>
+		<ul class="blue-bullet-page2">
+			<li><span>Yields results, with the average person paying off $5,300 in debt and saving $2,700 in the frst 90 days of the program<sup>1<br /><br /></sup></span></li>
+			<li><span>Builds momentum and longterm commitment by helping employees get small wins early on through the seven Baby Steps</span></li>
+		</ul>
+	</div>
+	<div class="unit one-third">
+		<h6><span style="color: #05c5de;"><img src="https://mytinder.s3.amazonaws.com/assets/medias/575548_web.png?1511879820" width="64" height="61" data-org-media-source-id="575548" data-org-media-type="web" data-org-media-extension="png" /><span class="higher-text">Easy Integration</span></span></h6>
+		<ul class="blue-bullet-page2">
+			<li><span>Integrates easily into the existing Retire With Confidence&reg; participant experience<br /><br /></span></li>
+			<li><span>Complements our cash flow management tool that allows employees to automate many of the SmartDollar steps</span></li>
+		</ul>
+	</div>
+</div>
+<p></p>
+<h5>REPORTING IS A KEY ASPECT OF THE PLAN SPONSOR EXPERIENCE</h5>
+<p><span style="font-size: 13px;">You'll receive reports on how your employees are using the service and how the experience affects retirement behavior.</span></p>
+<p><span style="font-size: 13px;"></span></p>
+<div class="grid">
+	<div class="unit two-fifths no-gutters">
+		<p><img src="https://mytinder.s3.amazonaws.com/assets/medias/578713_original.png?1512596716" width="212" height="315" data-org-media-source-id="575551" data-org-media-type="web" data-org-media-extension="jpg" /></p>
+	</div>
+	<div class="unit two-fifths no-gutters">
+		<div class="custombg-blue box-padding triangle">
+			<h6><span style="color: #ffffff;">PERIODIC SMARTDOLLAR AGGREGATE REPORTING</span></h6>
+			<ul class="list">
+				<li><span>Change in overall financial wellness score</span></li>
+				<li><span>SmartDollar participation rate</span></li>
+				<li><span>Total/average debt eliminated</span></li>
+				<li><span>Total/average savings added</span></li>
+			</ul>
+		</div>
+		<p style="line-height: 20%;"></p>
+		<div class="custombg-grey box-padding grey-box">
+			<h6><span style="color: #ffffff;">T. ROWE PRICE REPORTING AT THE PLAN LEVEL</span></h6>
+			<ul class="list">
+				<li><span>Loan volumes</span></li>
+				<li><span>Retirement plan participation rates</span></li>
+				<li><span>Contribution rates</span></li>
+				<li><span>Retirement readiness</span></li>
+			</ul>
+		</div>
+	</div>
+	<div class="unit one-fifth">
+		<p>&nbsp;</p>
+	</div>
+</div>
+<p></p>
+<h5><span>SMARTDOLLAR AND YOUR PLAN</span></h5>
+<p><span style="font-size: 13px;">SmartDollar is an optional service available to all T. Rowe Price full-service recordkeeping clients.</span></p>
+<p><span style="font-size: 13px;">There is an annual subscription fee of $12 per participant, paid by the plan sponsor directly to SmartDollar. T. Rowe Price does not receive payment for the service. With the assistance of ERISA counsel, plan sponsors may determine to pay for the SmartDollar service using their ERISA budgets.</span></p>
+<p><span style="font-size: 13px;"></span></p>
+<p><span style="font-size: 13px;"><strong><span style="color: #05c5de;">To learn more, contact your T. Rowe Price representative.</span></strong></span></p>
+<p><span style="font-size: 13px;">SmartDollar is a third-party service provider and not affiliated with T. Rowe Price.</span><br /><span style="font-size: 8px;"><sup>1</sup>Source: SmartDollar, 2015. The average person pays off $5,300 in debt and saves $2,700 in the frst 90 days of the program<br />
+CFHB53RF5<br />
+201710-286538</span></p>
+</div>

@@ -1,0 +1,173 @@
+<apex:page standardController="Support_Request__c" extensions="SupportRequestWizardController" showHeader="true" sidebar="true" lightningStylesheets="true">
+    <head>
+        <apex:slds />
+
+        <title>Conga | Create Support Request</title>
+        <link rel="icon" href="{!URLFOR($Resource.Favicon)}" type="image/x-icon" />
+
+        <style type="text/css">
+
+            div .low-padding {
+                padding-right: 2px;
+                padding-left: 2px;
+            }
+
+
+            .inpClass {
+                width: 400px !important;
+                height: 200px !important;
+            }
+
+            .cke_contents {
+                width: 400px !important;
+                height: 200px !important;
+            }
+        
+        </style>
+    </head> 
+
+             <!-- .pbTitle {
+                white-space: nowrap
+            } -->
+    <apex:form >
+        <div id="toppiece" style="width: 100%; height: 70px; background-color: black; padding-top: 7px; padding-left: 7px">
+            <apex:image id="theImage2" value="{!$Resource.ecsLogo}" width="500px" height="40px"/><br/>
+            <p style="color: white">Support Request</p>
+        </div>
+        <apex:pageMessages ></apex:pageMessages>
+
+     <apex:pageBlock title="We've moved!" mode="maindetail" rendered="{!step1}">
+            <apex:pageBlockSection columns="1">
+            <p>Support requests for the legacy Conga Enterprise Cloud Solutions team are moving.
+            If you need help with a technical issue related to this Salesforce environment, please email <b>Helpdesk@conga.com</b>
+            We'll respond to you there! If you already had a ticket open with the Conga 1.0 ECS team, the SR record will remain here until that issue is resolved, closed, or migrated.
+            </p>
+            </apex:pageBlockSection>
+     </apex:pageBlock>
+ 
+
+
+        <!-- Removed for Migration to Fresh Service --> 
+        <!-- First step for user is to chose the type
+        <apex:pageBlock title="What can we help with?" mode="maindetail" rendered="{!step1}">
+            <apex:pageBlockSection columns="1">
+                <apex:selectList value="{!selectedType}" size="1">
+                    <apex:selectOptions value="{!typeSelections}"></apex:selectOptions>
+                </apex:selectList>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+
+        <!-- This section is for the issue/bug type -->
+        <!-- Removed for Migration to Fresh Service 
+        <apex:pageBlock title="Briefly, what is the subject of this request?" mode="maindetail" rendered="{!issueBugCounter == 1}">
+            <apex:pageBlockSection columns="1">
+                <apex:inputField label="" value="{!newSR.Subject__c}"/>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+        <apex:pageBlock title="{!issueText}" mode="maindetail" rendered="{!issueBugCounter == 2}">
+            <apex:pageBlockSection columns="1">
+                <apex:inputField label="" value="{!newSR.Issue__c}"/>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+        <apex:pageBlock title="When was the first time you saw this issue?" mode="maindetail" rendered="{!issueBugCounter == 3}">
+            <apex:pageBlockSection columns="1">
+                <apex:inputField label="" value="{!newSR.Initial_Occurence__c}"/>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+        <apex:pageBlock title="What are the steps to reproduce this issue, so we can do some testing?" mode="maindetail" rendered="{!issueBugCounter == 4}">
+            <apex:pageBlockSection columns="1">
+                <apex:inputField styleClass="inpClass" label="" value="{!newSR.Steps_to_Reproduce__c}"/>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+        <apex:pageBlock title="What is your current workaround?" mode="maindetail" rendered="{!issueBugCounter == 5}">
+            <apex:pageBlockSection columns="1">
+                <apex:inputField styleClass="inpClass" label="" value="{!newSR.Current_Workaround__c}"/>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+        <apex:pageBlock title="Please provide an example link of where you are seeing this issue." mode="maindetail" rendered="{!issueBugCounter == 6}">
+            <apex:pageBlockSection columns="1">
+                <apex:inputField styleClass="inpClass" label="" value="{!newSR.Example_Record_Link__c}"/>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+
+        <!-- This section is for the enhancement type -->
+        <!-- Removed for Migration to Fresh Service 
+        <apex:pageBlock title="Briefly, what is the subject of this request?" mode="maindetail" rendered="{!enhancementCounter == 1}">
+            <apex:pageBlockSection columns="1">
+                <apex:inputField label="" value="{!newSR.Subject__c}"/>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+        <apex:pageBlock title="Please describe all pain points or gaps in your process that have led you to submit this enhancement request." mode="maindetail" rendered="{!enhancementCounter == 2}">
+            <apex:pageBlockSection columns="1">
+                <apex:inputField label="" value="{!newSR.Issue__c}"/>        
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+        <apex:pageBlock title="What is the desired outcome, and how will this change impact your business process?" mode="maindetail" rendered="{!enhancementCounter == 3}">
+            <apex:pageBlockSection columns="1">
+                <apex:inputField styleClass="inpClass" label="" value="{!newSR.Desired_State__c}"/>            
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+        <apex:pageBlock title="Please provide an example record or use case that will help us better understand your request." mode="maindetail" rendered="{!enhancementCounter == 4}">
+            <apex:pageBlockSection columns="1">
+                <apex:inputField styleClass="inpClass" label="" value="{!newSR.Example_Record_Link__c}"/>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+
+        <!-- This section is for the data type -->
+        <!-- Removed for Migration to Fresh Service 
+        <apex:pageBlock title="Briefly, what is the subject of this request?" mode="maindetail" rendered="{!dataCounter == 1}">
+            <apex:pageBlockSection columns="1">
+                <apex:inputField label="" value="{!newSR.Subject__c}"/>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+        <apex:pageBlock title="For dataload requests, please include the name of the object, fields, and a description of the data changes that you are requesting. For all other data management requests, please provide a link to the record(s), along with some details of your request." mode="maindetail" rendered="{!dataCounter == 2}">
+            <apex:pageBlockSection columns="1">
+                <apex:inputField label="" value="{!newSR.Issue__c}"/>        
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+        <apex:pageBlock title="For dataload requests, please attach a .csv file. This file must include the record ID of the records you would like updated, along with a column for each field which includes the new values. If you are not requesting a dataload, just click 'Submit'" mode="maindetail" rendered="{!dataCounter == 3}">
+            <apex:pageBlockSection columns="1">
+                <apex:inputfile value="{!newfile.versionData}" fileName="{!newfile.pathOnClient}" />
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+
+        <!-- Button show and hide here -->
+        <!-- Removed for Migration to Fresh Service 
+        <apex:pageBlock mode="maindetail" rendered="{!step1}">
+            <apex:commandButton action="{!choseType}" value="Next"/>
+        </apex:pageBlock>
+        <apex:pageBlock mode="maindetail" rendered="{!AND(issueBugCounter > 0,issueBugCounter < 6)}">
+            <apex:commandButton style="margin-left: 10px" action="{!issueBugBack}" value="Back"/>
+            <apex:commandButton action="{!issueBugNext}" value="Next"/>
+        </apex:pageBlock>
+        <apex:pageBlock mode="maindetail" rendered="{!AND(enhancementCounter > 0,enhancementCounter < 4)}">
+            <apex:commandButton style="margin-left: 10px" action="{!enhancementBack}" value="Back"/>
+            <apex:commandButton action="{!enhancementNext}" value="Next"/>
+        </apex:pageBlock>
+        <apex:pageBlock mode="maindetail" rendered="{!AND(dataCounter > 0,dataCounter < 3)}">
+            <apex:commandButton style="margin-left: 10px" action="{!dataBack}" value="Back"/>
+            <apex:commandButton action="{!dataNext}" value="Next"/>
+        </apex:pageBlock>
+
+        <apex:pageBlock mode="maindetail" rendered="{!issueBugCounter == 6}">
+            <apex:commandButton style="margin-left: 10px" action="{!issueBugBack}" value="Back"/>
+            <apex:commandButton action="{!submitSR}" value="Submit"/>
+        </apex:pageBlock>
+        <apex:pageBlock mode="maindetail" rendered="{!enhancementCounter == 4}">
+            <apex:commandButton style="margin-left: 10px" action="{!enhancementBack}" value="Back"/>
+            <apex:commandButton action="{!submitSR}" value="Submit"/>
+        </apex:pageBlock>
+        <apex:pageBlock mode="maindetail" rendered="{!dataCounter == 3}">
+            <apex:commandButton style="margin-left: 10px" action="{!dataBack}" value="Back"/>
+            <apex:commandButton action="{!submitSR}" value="Submit"/>
+        </apex:pageBlock>
+
+    
+        <apex:pageBlock title="Thank you. We’ve received your support request – The ECS Team" mode="maindetail" rendered="{!OR(issueBugCounter == 7,enhancementCounter == 5,dataCounter == 4)}">
+            <br/>
+            <apex:commandButton style="margin-left: 10px" action="{!pageContinue}" value="Done"/>
+        </apex:pageBlock>
+         -->
+        
+    </apex:form>
+</apex:page>

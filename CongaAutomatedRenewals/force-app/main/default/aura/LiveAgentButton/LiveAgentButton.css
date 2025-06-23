@@ -1,0 +1,47 @@
+.THIS .laBtn{
+  	background-color: #5cb85c !important;
+    border-color: #5cb85c !important;
+  	padding: 14px !important;
+  	height: auto !important;
+  	width: 100% !important;
+  	color: #fff;
+  	font-weight: bold;
+}
+.THIS .laBtn:hover{
+  	background-color: #449d44 !important;
+    border-color: #419641 !important;
+  	cursor: default !important;
+  	color: #fff;
+  	font-weight: bold;
+}
+
+.THIS .disabled{
+  	background-color: #d9534f !important;
+    border-color: #d9534f !important;
+  	cursor: default !important;
+    pointer-events: none;
+  	color: #fff;
+  	font-weight: bold;
+}
+
+.THIS .disabled:hover{
+  	background-color: #d9534f !important;
+    border-color: #d9534f !important;
+  	cursor: default !important;
+  	pointer-events: none;
+  	color: #fff;
+  	font-weight: bold;
+}
+
+.THIS .disabled:focus{
+  	background-color: #d9534f !important;
+  	border-color: #d9534f !important;
+  	cursor: default !important;
+  	pointer-events: none;
+  	color: #fff;
+  	font-weight: bold;
+}
+
+.THIS .toggle {
+    display: none !important;
+}

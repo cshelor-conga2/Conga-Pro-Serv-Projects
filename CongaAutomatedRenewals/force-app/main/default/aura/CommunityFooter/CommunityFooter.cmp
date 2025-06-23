@@ -1,0 +1,101 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,forceCommunity:availableForAllPageTypes" access="global">
+	<aura:attribute name="currentYear" type="String" />
+	<aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+	<footer role="contentinfo" class="footer">
+		<div class="footer-top"></div>
+		<div class="slds-p-around_large">
+			
+	  		<div class="slds-grid slds-wrap">
+	    		<div class="slds-col slds-p-horizontal_medium slds-p-bottom_large slds-xx-small-size_12-of-12 slds-x-small-size_12-of-12 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-text-align_center">
+	    			<img src="https://conga.com/themes/conga/images/logo.svg" alt="CONGA"/><br></br><br></br>
+	    			<a class="body-site-link main-site" href="https://support.conga.com/" target="_blank">WWW.SUPPORT.CONGA.COM</a>
+	    			<ul class="slds-m-top_large">
+	    				<li class="slds-m-top_x-small">
+	    					<p>
+	    						<span>AMERICAS</span><span class="location-phone slds-m-horizontal_x-small">303.465.1616</span>
+	    					</p>
+	    				</li>
+	    				<li class="slds-m-top_x-small">
+	    					<p>
+	    						<span>EMEA</span><span class="location-phone slds-m-horizontal_x-small">+44 (0) 203 608 0165</span>
+	    					</p>
+	    				</li>
+	    				<li class="slds-m-top_x-small">
+	    					<p>
+	    						<span>APAC</span><span class="location-phone slds-m-horizontal_x-small">+61 2 8417 2399</span>
+	    					</p>
+	    				</li>
+	    			</ul>
+	    			<ul class="slds-list_horizontal slds-align_absolute-center slds-m-top_large">
+					  	<li>
+					  		<a class="social-link slds-m-around_small" href="https://twitter.com/getconga" target="_blank">
+					  			<img src="{!$Resource.CommunityIcons + '/TwitterWhite.png'}" alt="View Conga's Twitter feed"/>
+					  		</a>
+					  	</li>
+					  	<li>
+							<a class="social-link slds-m-around_small" href="https://test.salesforce.com/icons/linkedin-white.png" target="_blank">
+								<img src="{!$Resource.CommunityIcons + '/LinkedInWhite.png'}" alt="View Conga's LinkedIn page"/>
+							</a>
+					  	</li>
+					  	<li>
+							<a class="social-link slds-m-around_small" href="https://facebook.com/getconga" target="_blank">
+								<img src="{!$Resource.CommunityIcons + '/FacebookWhite.png'}" alt="View Conga's Facebook page"/>
+							</a>
+					  	</li>
+					  	<li>
+							<a class="social-link slds-m-around_small" href="https://www.youtube.com/channel/UC5BG0JccvsxrAtdq6bkRlHg" target="_blank">
+								<img src="{!$Resource.CommunityIcons + '/YouTubeWhite.png'}" alt="View Conga's YouTube page"/>
+							</a>
+					  	</li>
+					</ul>
+	    		</div>
+				<div class="slds-col slds-p-horizontal_medium slds-p-bottom_large slds-xx-small-size_12-of-12 slds-x-small-size_12-of-12 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-text-align_center">
+					<h1 class="list-header">REFERENCES</h1>
+					<ul class="slds-m-top_large">
+						<li class="slds-m-top_medium">
+							<a class="footer-site-link" href="https://support.conga.com/content/reference/reference/product-installation-links" target="_blank">PRODUCT INSTALL LINKS</a>
+						</li>
+						<li class="slds-m-top_medium">
+							<a class="footer-site-link" href="https://support.conga.com/#products" target="_blank">PRODUCT GUIDES</a>
+						</li>
+						<li class="slds-m-top_medium">
+							<a class="footer-site-link" href="https://support.conga.com/content/release-notes/release-notes-for-conga-products" target="_blank">RELEASE NOTES</a>
+						</li>
+						<li class="slds-m-top_medium">
+							<a class="footer-site-link" href="http://videos.conga.com/" target="_blank">VIDEO LIBRARY</a>
+						</li>
+						<li class="slds-m-top_medium">
+							<a class="footer-site-link" href="https://university.conga.com/" target="_blank">CONGA UNIVERSITY</a>
+						</li>
+						<li class="slds-m-top_medium">
+							<a class="footer-site-link" href="https://support.conga.com/content/composer/composer-parameter-guide" target="_blank">COMPOSER PARAMETER GUIDE</a>
+						</li>
+					</ul>
+				</div>
+				<div class="slds-col slds-p-horizontal_medium slds-p-bottom_large slds-xx-small-size_12-of-12 slds-x-small-size_12-of-12 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-text-align_center">
+					<ul>
+						<!-- <li>
+							<h3>
+								<a class="footer-site-link" href="https://support.conga.com/submitcase">CONTACT SUPPORT</a>
+							</h3>
+						</li> -->
+						<li>
+							<h3>
+								<span><img class="slds-m-around_small" src="{!$Resource.CommunityIcons + '/LifeBouyWhite.png'}"/></span><a class="footer-site-link " href="http://status.congasphere.com/" target="_blank">SYSTEM STATUS</a>
+						<li class="slds-m-top_medium">
+							<a class="footer-site-link" href="https://www.getfeedback.com/r/ulsRzyj0" target="_blank">GIVE FEEDBACK</a>
+						</li>
+							</h3>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="slds-grid slds-text-align_center">
+				<div class="slds-col slds-xx-small-size_12-of-12 slds-x-small-size_12-of-12 slds-medium-size_12-of-12 slds-large-size_12-of-12 slds-grid-align_center">
+					
+				    <a class="footer-site-link bottom-nav" href="https://conga.com/privacy/" target="_blank">PRIVACY POLICY</a><span class="slds-m-horizontal_x-small">|</span><a class="footer-site-link bottom-nav" href="https://conga.com/legal/terms-conditions" target="_blank">TERMS AND CONDITIONS</a><span class="slds-m-horizontal_x-small">|</span><span class="bottom-nav copyright">&copy; {!v.currentYear} CONGA. ALL RIGHTS RESERVED.</span>
+			  	</div>
+		  	</div>
+		</div>
+	</footer>
+</aura:component>

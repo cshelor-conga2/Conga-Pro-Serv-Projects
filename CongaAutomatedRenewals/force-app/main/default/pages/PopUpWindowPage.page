@@ -1,0 +1,53 @@
+<apex:page controller="PopUpWindowController" showHeader="false" sidebar="false">
+    <apex:form >
+        <apex:pageMessages ></apex:pageMessages>
+
+        <br /><br /><br />
+        <div style="width: 100%" align="center">
+            <div style="width: 70%" align="center">
+                <apex:pageBlock >
+                    <apex:outputText value="Case {!C.CaseNumber} is still in the 'Working' status. Please close this window to acknowledge that you are still working on this case." style="font-size: 20px" />
+                    <apex:pageBlockSection title="Case Details" columns="1" collapsible="false">
+                        <apex:outputField value="{!C.Account.Name}" />
+                        <apex:outputField value="{!C.Subject}" />
+                        <apex:outputField value="{!C.Description}" />
+                    </apex:pageBlockSection>
+                    <div id="divCountdown" style="font-size: 20px"></div>
+                </apex:pageBlock>
+            </div>
+        </div>
+
+        <script src="/soap/ajax/28.0/connection.js" type="text/javascript"></script>
+        <script src="/soap/ajax/28.0/apex.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            var fifteenMin = 900000;
+            var expires = null; 
+
+            window.onload = function func(){
+                setTimeout(updateStatus, fifteenMin);
+                expires = Date.now() + fifteenMin;
+                setTimeout(displayTimeLeft,1000);
+            }
+
+            function updateStatus() {
+                CallApexMethod();
+            }
+            function displayTimeLeft(){ 
+                var minutes = Math.floor( ((expires - Date.now())/1000) / 60 );
+                var timeLeft = Math.floor( ((expires - Date.now())/1000) % 60 ); 
+                if(timeLeft >= 0){
+                    if(minutes >= 0){ 
+                        document.getElementById('divCountdown').innerHTML = minutes + ':' + timeLeft + ' left to acknowledge before Status is changed to "On Hold"';
+                    }else{ 
+                        document.getElementById('divCountdown').innerHTML = timeLeft + ' seconds left to acknowledge before Status is changed to "On Hold"';
+                    }
+                    setTimeout(displayTimeLeft,1000);
+                }else{
+                    document.getElementById('divCountdown').innerHTML =  ' Case Status Has Been Changed To "On Hold" -You can close this window';
+                }
+            }
+        </script>
+
+        <apex:actionFunction id="af" name="CallApexMethod" action="{!updateStatus}" reRender="af"/>
+    </apex:form>
+</apex:page>

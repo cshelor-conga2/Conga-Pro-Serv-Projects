@@ -1,0 +1,6 @@
+<apex:page standardController="Lead" showHeader="false" docType="html-4.01-strict">
+<CRMC_PP:Grid ObjectName="Task" FKName="WhoId" FKValue="{!Lead.Id}"  DelayLoad="false"  ViewID="a6A500000008mhZEAQ" 
+ EnableNewButton="true"  EnableNewInline="true"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true" 
+ EnableStickyViews="true"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+<CRMC_PP:DrillUp />
+</apex:page>

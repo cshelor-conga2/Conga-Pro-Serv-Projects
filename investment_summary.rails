@@ -1,0 +1,282 @@
+<div style="text-align: center;"></div>
+<!-- SHOW ALL LINE ITEM INFO. USED WHEN Pricing_output__c == Line Item -->
+<div data-repeat="group in SBQQ__LineItems__r" data-filter="Header_Bundle__c == 'true' AND Pricing_output__c == 'Line Item'" data-group-by="SBQQ__Group__c" data-sort="SBQQ__Number__c" style="page-break-inside: avoid;">
+	<table style="width: 100%;"><caption>
+		<h1 style="text-align: left;"><span style="font-size: 32px;">[group.SBQQ__Group__r.Name]</span></h1>
+		</caption>
+		<thead>
+			<tr>
+				<td style="width: 40%; background-color: #ffffff; border-color: #ffffff;"><span style="color: #000000;"></span></td>
+				<td style="width: 15%; background-color: #d8e6d9; text-align: center;"><span style="color: #000000; font-size: 11px;">Min Attendees</span></td>
+				<td style="width: 15%; background-color: #d8e6d9; text-align: center;"><span style="color: #000000; font-size: 11px;">Max Attendees</span></td>
+				<td style="width: 15%; background-color: #d8e6d9; text-align: center;"><span style="color: #000000; font-size: 11px;">Event Start</span></td>
+				<td style="width: 15%; background-color: #d8e6d9; text-align: center;"><span style="color: #000000; font-size: 11px;">Event End</span></td>
+			</tr>
+		</thead>
+	</table>
+	<!-- The layout is split into a new <div> and <table> here so that we can get the correct header to repeat across PDF page breaks.  Header bundle data-repeat. Only loop through products that have Header Bundle == true and are in the current group that we are on in the Group data-repeat above. Also make sure Pricing Output is set to Line Item -->
+	<div data-repeat="header in SBQQ__LineItems__r" data-filter="SBQQ__Group__c == group.SBQQ__Group__c AND Header_Bundle__c == 'true' AND Pricing_output__c == 'Line Item'" data-sort="SBQQ__Number__c">
+		<table>
+			<tbody>
+				<tr>
+					<td style="width: 40%; background-color: #76bd22;"><span style="color: #ffffff;"><strong>[header.Name_External__c]</strong></span></td>
+					<td style="width: 15%; background-color: #76bd22; text-align: center;"><span style="color: #ffffff;"><strong><span class="integer" data-show-if="" data-show-if-group="min_attendees_not_blank">[header.Min_Attendees__c]</span></strong></span></td>
+					<td style="width: 15%; background-color: #76bd22; text-align: center;"><span style="color: #ffffff;"><strong><span class="integer" data-show-if="" data-show-if-group="max_attendees_not_blank">[header.Max_Attendees__c]</span></strong></span></td>
+					<td style="width: 15%; background-color: #76bd22; text-align: center;"><span style="color: #ffffff;"><strong><span class="date" data-format="%-m/%-d/%Y" data-show-if="" data-show-if-group="event_start_date_not_blank">[header.Event_Start_Date__c]</span><span data-show-if="" data-show-if-group="event_start_time_not_blank"><br />[header.Event_Start_Time__c]</span></strong></span></td>
+					<td style="width: 15%; background-color: #76bd22; text-align: center;"><span style="color: #ffffff;"><strong><span class="date" data-format="%-m/%-d/%Y" data-show-if="" data-show-if-group="event_end_date_not_blank">[header.Event_End_Date__c]</span><span data-show-if="" data-show-if-group="event_end_time_not_blank"><br />[header.Event_End_Time__c]</span></strong></span></td>
+				</tr>
+			</tbody>
+		</table>
+		<table>
+			<thead><!-- This is the header that will repeat across page breaks -->
+			<tr>
+				<td style="width: 40%; padding-left: 30px; background-color: #d8e6d9; color: #ffffff;"><span style="color: #000000; font-size: 11px;"><em>Product Name</em></span></td>
+				<td style="width: 15%; text-align: center; background-color: #d8e6d9; color: #ffffff;"><span style="color: #000000; font-size: 11px;"><em>Quantity</em></span></td>
+				<td style="width: 15%; text-align: center; background-color: #d8e6d9; color: #ffffff;"><span style="color: #000000; font-size: 11px;"><em>Multiplier</em></span></td>
+				<td style="width: 15%; text-align: center; background-color: #d8e6d9; color: #ffffff;"><span style="color: #000000; font-size: 11px;"><em>Net Unit Price</em></span></td>
+				<td style="width: 15%; text-align: center; background-color: #d8e6d9; color: #ffffff;"><span style="color: #000000; font-size: 11px;"><em>Net Total</em></span></td>
+			</tr>
+		</thead>
+		<tbody><!-- This row loops through all products whose Required By field is populated with the ID of the header bundle product that we are on in the <tbody> data-repeat -->
+		<tr data-repeat="product in SBQQ__LineItems__r" data-filter="SBQQ__RequiredBy__c == header.Id AND Header_Bundle__c != 'true' AND SBQQ__Hidden__c == 'false'" data-sort="SBQQ__Number__c">
+			<td style="width: 40%; padding-left: 30px;"><span style="font-size: 11px;">[product.Name_External__c]<span data-show-if="" data-show-if-group="product_external_notes_not_blank" style="font-size: 10px;" class="product-notes"><br /><em><span class="html">[product.External_Notes__c]</span></em></span><span data-show-if="product.SBQQ__Optional__c == 'true'" style="font-size: 10px;"><br /><strong><em>Optional - cost not included in Total</em></strong></span></span></td>
+			<td style="width: 15; text-align: center;" class="integer"><span style="font-size: 11px;">[product.SBQQ__Quantity__c]</span></td>
+			<td style="width: 15%; text-align: center;" class="integer"><span style="font-size: 11px;">[product.Multiplier__c]</span></td>
+			<td style="width: 15%; text-align: center;" class="money"><span style="font-size: 11px;">[product.SBQQ__NetPrice__c]</span></td>
+			<td style="width: 15%; text-align: center;" class="money"><span data-show-if="product.SBQQ__Optional__c == 'false'" style="font-size: 11px;">[product.SBQQ__NetTotal__c]</span></td>
+		</tr>
+		<!-- This is the sum row for each header bundle. The data-group-by looks at the Required By ID to ensure that we only get one Total row per header bundle -->
+		<tr data-repeat="sum in SBQQ__LineItems__r" data-filter="SBQQ__Group__c == group.SBQQ__Group__c AND SBQQ__RequiredBy__c == header.Id AND SBQQ__Hidden__c == 'false' AND SBQQ__Optional__c == 'false'" data-group-by="SBQQ__RequiredBy__c">
+			<td style="width: 85%; background-color: #c4c4c4; text-align: right;" colspan="4"><strong>TOTAL</strong></td>
+			<td style="width: 15%; background-color: #c4c4c4; text-align: center;" class="money"><strong>[SUM(SBQQ__NetTotal__c)]</strong></td>
+		</tr>
+		<tr>
+			<td style="width: 85%; border-color: #ffffff;" colspan="4"></td>
+			<td style="width: 15%; border-color: #ffffff;"></td>
+		</tr>
+	</tbody>
+</table>
+<!--add separate table at end for external notes-->
+<table style="width: 100%;" data-show-if="" data-show-if-group="header_external_notes_not_blank">
+	<tbody>
+		<tr>
+			<td style="width: 100%; background-color: #ffffff; text-align: left;"><span style="font-size: 12px;" class="header-notes"><em><span class="html"><strong>[header.Name_External__c] Notes:</strong></span></em></span><span style="font-size: 12px;" class="header-notes"><em><span class="html">[header.External_Notes__c]</span></em></span></td>
+		</tr>
+	</tbody>
+</table>
+</div>
+<p></p>
+</div>
+<!-- PER PERSON OUTPUT FORMAT. USED WHEN Pricing_output__c == Per Person -->
+<div data-repeat="group in SBQQ__LineItems__r" data-filter="Header_Bundle__c == 'true' AND Pricing_output__c == 'Per Person'" data-group-by="SBQQ__Group__c" data-sort="SBQQ__Number__c">
+<table style="width: 100%; page-break-inside: avoid;"><caption>
+<h1 style="text-align: left;"><span style="font-size: 32px;">[group.SBQQ__Group__r.Name]</span></h1>
+</caption>
+<thead>
+	<tr>
+		<td style="width: 52%; background-color: #ffffff; border-color: #ffffff;"><span style="color: #000000;"></span></td>
+		<td style="width: 16%; background-color: #d8e6d9; text-align: center;"><span style="color: #000000; font-size: 11px;"></span></td>
+		<td style="width: 16%; background-color: #d8e6d9; text-align: center;"><span style="color: #000000; font-size: 11px;">Event Start</span></td>
+		<td style="width: 16%; background-color: #d8e6d9; text-align: center;"><span style="color: #000000; font-size: 11px;">Event End</span></td>
+	</tr>
+</thead>
+</table>
+<!-- The layout is split into a new <div> and <table> here so that we can get the correct header to repeat across PDF page breaks. This is the Header bundle data-repeat. Only loop through products that have Header Bundle == true and are in the current group that we are on in the Group data-repeat above. Also make sure Pricing Output is set to Per Person -->
+<div data-repeat="header in SBQQ__LineItems__r" data-filter="SBQQ__Group__c == group.SBQQ__Group__c AND Header_Bundle__c == 'true' AND Pricing_output__c == 'Per Person'" data-sort="SBQQ__Number__c">
+<table>
+	<tbody>
+		<tr>
+			<td style="width: 52%; background-color: #76bd22;"><span style="color: #ffffff;"><strong>[header.Name_External__c]</strong><br /></span></td>
+			<td style="width: 16%; background-color: #76bd22; text-align: center;"></td>
+			<td style="width: 16%; background-color: #76bd22; text-align: center;"><span style="color: #ffffff;"><strong><span class="date" data-format="%-m/%-d/%Y" data-show-if="" data-show-if-group="event_start_date_not_blank">[header.Event_Start_Date__c]</span><span data-show-if="" data-show-if-group="event_start_time_not_blank"><br />[header.Event_Start_Time__c]</span></strong></span></td>
+			<td style="width: 16%; background-color: #76bd22; text-align: center;"><span style="color: #ffffff;"><strong><span class="date" data-format="%-m/%-d/%Y" data-show-if="" data-show-if-group="event_end_date_not_blank">[header.Event_End_Date__c]</span><span data-show-if="" data-show-if-group="event_end_time_not_blank"><br />[header.Event_End_Time__c]</span></strong></span></td>
+		</tr>
+	</tbody>
+</table>
+<table><!-- This header will repeat across PDF page breaks -->
+<thead>
+	<tr>
+		<td style="width: 52%; padding-left: 30px; background-color: #d8e6d9; color: #ffffff;"></td>
+		<td style="width: 16%; text-align: center; background-color: #d8e6d9; color: #ffffff;"><span style="color: #000000; font-size: 11px;"><em>Quantity</em></span></td>
+		<td style="width: 16%; text-align: center; background-color: #d8e6d9; color: #ffffff;"><span style="color: #000000; font-size: 11px;"><em>Per Person Price</em></span></td>
+		<td style="width: 16%; text-align: center; background-color: #d8e6d9; color: #ffffff;"><span style="color: #000000; font-size: 11px;"><em>Net Total</em></span></td>
+	</tr>
+</thead>
+<!-- This row loops through all products whose Required By field is populated with the ID of the header bundle product that we are on in the <tbody> data-repeat -->
+<tbody><!--new-->
+<tr data-group-by="header.Id">
+	<td style="width: 52%; padding-left: 30px;"><span style="font-size: 11px;"><span style="font-size: 11px;">[header.Name_External__c], based on a minimum of [header.Min_Attendees__c] and maximum of [header.Max_Attendees__c] attendees.<br /><br /> <strong>Includes:</strong></span></span>
+	<ul>
+		<li style="font-size: 11px;" data-repeat="product in SBQQ__LineItems__r" data-filter="SBQQ__RequiredBy__c == header.Id AND Header_Bundle__c != 'true' AND SBQQ__Hidden__c == 'false'" data-sort="SBQQ__Number__c">[product.Name_External__c]<span data-show-if="product.SBQQ__Optional__c == 'true'" style="font-size: 10px;"><strong><em> (Optional - cost not included in Total)</em></strong></span><span data-show-if="" data-show-if-group="product_external_notes_not_blank" style="font-size: 10px;" class="product-notes"><em><span class="html"> - [product.External_Notes__c]</span></em></span></li>
+	</ul>
+</td>
+<td style="width: 16%; text-align: center;" class="integer"><span style="font-size: 11px;">[header.Min_Attendees__c]</span></td>
+<td style="width: 16%; text-align: center;" class="money"><span style="font-size: 11px;">[header.Package_Per_Person__c]</span></td>
+<td style="width: 16%; text-align: center;" class="money"><span style="font-size: 11px;">[header.SBQQ__PackageTotal__c]</span></td>
+</tr>
+<tr>
+<td style="width: 84%; border-color: #ffffff;" colspan="3"></td>
+<td style="width: 16%; border-color: #ffffff;"></td>
+</tr>
+</tbody>
+</table>
+<!--add separate table at end for external notes-->
+<table style="width: 100%;" data-show-if="" data-show-if-group="header_external_notes_not_blank">
+<tbody>
+<tr>
+<td style="width: 100%; background-color: #ffffff; text-align: left;"><span style="font-size: 12px;" class="header-notes"><em><span class="html">[header.External_Notes__c]</span></em></span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p></p>
+</div>
+<!-- FAMILY OUTPUT OPTION. ONLY SHOW TOTALS GROUPED BY FAMILY WITHIN EACH HEADER BUNDLE. FOR HEADER BUNDLE PRODUCTS WITH Pricing_output__c = Family -->
+<div data-repeat="group in SBQQ__LineItems__r" data-filter="Header_Bundle__c == 'true' AND Pricing_output__c == 'Family'" data-group-by="SBQQ__Group__c" data-sort="SBQQ__Number__c">
+<table style="width: 100%; page-break-inside: avoid;"><caption>
+<h1 style="text-align: left;"><span style="font-size: 32px;">[group.SBQQ__Group__r.Name]</span></h1>
+</caption>
+<thead>
+<tr>
+<td style="width: 40%; background-color: #ffffff; border-color: #ffffff;"><span style="color: #000000;"></span></td>
+<td style="width: 15%; text-align: center; background-color: #d8e6d9;"><span style="color: #000000; font-size: 11px;">Min Attendees</span></td>
+<td style="width: 15%; text-align: center; background-color: #d8e6d9;"><span style="color: #000000; font-size: 11px;">Max Attendees</span></td>
+<td style="width: 15%; text-align: center; background-color: #d8e6d9;"><span style="color: #000000; font-size: 11px;">Event Start</span></td>
+<td style="width: 15%; text-align: center; background-color: #d8e6d9;"><span style="color: #000000; font-size: 11px;">Event End</span></td>
+</tr>
+</thead>
+</table>
+<!-- The layout is split into a new <div> and <table> here so that we can get the correct header to repeat across PDF page breaks. Header bundle row. Only loop through products that have Header Bundle == true and are in the current group that we are on in the Group data-repeat above.  Also filters again so that we only get products with Pricing_output__c == Family -->
+<div data-repeat="header in SBQQ__LineItems__r" data-filter="SBQQ__Group__c == group.SBQQ__Group__c AND Header_Bundle__c == 'true' AND Pricing_output__c == 'Family'" data-sort="SBQQ__Number__c">
+<table>
+<tbody>
+<tr>
+<td style="width: 40%; background-color: #76bd22;"><span style="color: #ffffff;"><strong>[header.Name_External__c]</strong><br /></span></td>
+<td style="width: 15%; background-color: #76bd22; text-align: center;"><span style="color: #ffffff;"><strong><span class="integer" data-show-if="" data-show-if-group="min_attendees_not_blank">[header.Min_Attendees__c]</span></strong></span></td>
+<td style="width: 15%; background-color: #76bd22; text-align: center;"><span style="color: #ffffff;"><strong><span class="integer" data-show-if="" data-show-if-group="max_attendees_not_blank">[header.Max_Attendees__c]</span></strong></span></td>
+<td style="width: 15%; background-color: #76bd22; text-align: center;"><span style="color: #ffffff;"><strong><span class="date" data-format="%-m/%-d/%Y" data-show-if="" data-show-if-group="event_start_date_not_blank">[header.Event_Start_Date__c]</span><span data-show-if="" data-show-if-group="event_start_time_not_blank"><br />[header.Event_Start_Time__c]</span></strong></span></td>
+<td style="width: 15%; background-color: #76bd22; text-align: center;"><span style="color: #ffffff;"><strong><span class="date" data-format="%-m/%-d/%Y" data-show-if="" data-show-if-group="event_end_date_not_blank">[header.Event_End_Date__c]</span><span data-show-if="" data-show-if-group="event_end_time_not_blank"><br />[header.Event_End_Time__c]</span></strong></span></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<td style="background-color: #d8e6d9; width: 85%; color: #ffffff; padding-left: 30px;" colspan="4"><span style="color: #000000; font-size: 11px;"><em>Product Name</em></span></td>
+<td style="background-color: #d8e6d9; width: 15%; color: #ffffff; text-align: center;"><span style="color: #000000; font-size: 11px;"><em>Net Total</em></span></td>
+</tr>
+</thead>
+<tbody><!-- This row loops through all products whose Required By field is populated with the ID of the header bundle product that we are on in the data-repeat on the <tbody> -->
+<tr data-repeat="product in SBQQ__LineItems__r" data-filter="SBQQ__RequiredBy__c == header.Id AND Header_Bundle__c != 'true' AND SBQQ__Hidden__c == 'false'" data-group-by="SBQQ__ProductFamily__c">
+<td style="width: 85%; padding-left: 30px;" colspan="4"><span style="font-size: 11px;">[product.SBQQ__ProductFamily__c]</span></td>
+<td style="width: 15%; text-align: center;" class="money"><span style="font-size: 11px;">[SUM(SBQQ__NetTotal__c)]</span></td>
+</tr>
+<!-- This is the sum row for each header bundle. The data-group-by looks at the Required By ID to ensure that we only get one Total row per header bundle -->
+<tr data-repeat="sum in SBQQ__LineItems__r" data-filter="SBQQ__Group__c == group.SBQQ__Group__c AND SBQQ__RequiredBy__c == header.Id AND SBQQ__Optional__c == 'false' AND SBQQ__Hidden__c == 'false'" data-group-by="SBQQ__RequiredBy__c">
+<td style="width: 85%; background-color: #c4c4c4; text-align: right;" colspan="4"><strong>TOTAL</strong></td>
+<td style="width: 15%; background-color: #c4c4c4; text-align: center;" class="money"><strong>[SUM(SBQQ__NetTotal__c)]</strong></td>
+</tr>
+<tr data-repeat="product in SBQQ__LineItems__r" data-filter="SBQQ__RequiredBy__c == header.Id AND Header_Bundle__c != 'true' AND SBQQ__Hidden__c == 'false'" data-group-by="SBQQ__RequiredBy__c">
+<td style="border-color: #ffffff;" colspan="5"><span data-show-if="product.SBQQ__Optional__c == 'true'" style="font-size: 10px;"><strong><em>Contains at least one optional item - optional item not included in Total</em></strong></span></td>
+</tr>
+</tbody>
+</table>
+<!--add separate table at end for external notes-->
+<table style="width: 100%;" data-show-if="" data-show-if-group="header_external_notes_not_blank">
+<tbody>
+<tr>
+<td style="width: 100%; background-color: #ffffff; text-align: left;"><span style="font-size: 12px;" class="header-notes"><em><span class="html">[header.External_Notes__c]</span></em></span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p></p>
+</div>
+<!-- ONLY SHOW TOTALS BY HEADER BUNDLE. FOR HEADER BUNDLE PRODUCTS WITH Pricing_output__c = Lot Cost -->
+<div data-repeat="group in SBQQ__LineItems__r" data-group-by="SBQQ__Group__c" data-filter="Pricing_output__c == 'Lot Cost' AND Header_Bundle__c == 'true'" data-sort="SBQQ__Number__c">
+<table style="width: 100%; page-break-inside: avoid;"><caption>
+<h1 style="text-align: left;"><span style="font-size: 32px;">[group.SBQQ__Group__r.Name]</span></h1>
+</caption>
+<thead>
+<tr>
+<td style="width: 25%; background-color: #ffffff; border-color: #ffffff;"><span style="color: #000000;"></span></td>
+<td style="width: 15%; text-align: center; background-color: #d8e6d9;"><span style="color: #000000; font-size: 11px;">Max Attendees</span></td>
+<td style="width: 15%; text-align: center; background-color: #d8e6d9;"><span style="color: #000000; font-size: 11px;">Min Attendees</span></td>
+<td style="width: 15%; text-align: center; background-color: #d8e6d9;"><span style="color: #000000; font-size: 11px;">Event Start</span></td>
+<td style="width: 15%; text-align: center; background-color: #d8e6d9;"><span style="color: #000000; font-size: 11px;">Event End</span></td>
+<td style="width: 15%; text-align: center; background-color: #d8e6d9;"><span style="color: #000000; font-size: 11px;">Net Total</span></td>
+</tr>
+</thead>
+<!-- Header bundle row. Only loop through products that have Header Bundle == true and are in the current group that we are on in the Group data-repeat above. Filter again to only include products with Pricing output = Lot Cost -->
+<tbody data-repeat="header in SBQQ__LineItems__r" data-filter="SBQQ__Group__c == group.SBQQ__Group__c AND Header_Bundle__c == 'true' AND Pricing_output__c == 'Lot Cost'" data-sort="SBQQ__Number__c">
+<tr>
+<td style="width: 25%; background-color: #76bd22;"><span style="color: #ffffff;"><strong>[header.Name_External__c]</strong><br /></span></td>
+<td style="width: 15%; background-color: #76bd22; text-align: center;"><span style="color: #ffffff;"><strong><span class="integer" data-show-if="" data-show-if-group="min_attendees_not_blank">[header.Min_Attendees__c]</span></strong></span></td>
+<td style="width: 15%; background-color: #76bd22; text-align: center;"><span style="color: #ffffff;"><strong><span class="integer" data-show-if="" data-show-if-group="max_attendees_not_blank">[header.Max_Attendees__c]</span></strong></span></td>
+<td style="width: 15%; background-color: #76bd22; text-align: center;"><span style="color: #ffffff;"><strong><span class="date" data-format="%-m/%-d/%Y" data-show-if="" data-show-if-group="event_start_date_not_blank">[header.Event_Start_Date__c]</span><span data-show-if="" data-show-if-group="event_start_time_not_blank"><br />[header.Event_Start_Time__c]</span></strong></span></td>
+<td style="width: 15%; background-color: #76bd22; text-align: center;"><span style="color: #ffffff;"><strong><span class="date" data-format="%-m/%-d/%Y" data-show-if="" data-show-if-group="event_end_date_not_blank">[header.Event_End_Date__c]</span><span data-show-if="" data-show-if-group="event_end_time_not_blank"><br />[header.Event_End_Time__c]</span></strong></span></td>
+<!-- This is the sum cell for the header bundle. The data-group-by looks at the Required By ID to ensure that we only get one Total per header bundle -->
+<td style="width: 15%; background-color: #76bd22; text-align: center;" class="money"><strong><span style="color: #ffffff;" class="money" data-repeat="sum in SBQQ__LineItems__r" data-filter="SBQQ__Group__c == group.SBQQ__Group__c AND SBQQ__RequiredBy__c == header.Id AND SBQQ__Optional__c == 'false' AND SBQQ__Hidden__c == 'false'" data-group-by="SBQQ__RequiredBy__c">[SUM(SBQQ__NetTotal__c)]</span></strong></td>
+</tr>
+</tbody>
+<tfoot><!-- Sums all the products in a single group -->
+<tr data-repeat="sum in SBQQ__LineItems__r" data-filter="SBQQ__Group__c == group.SBQQ__Group__c AND SBQQ__Optional__c == 'false' AND SBQQ__Hidden__c == 'false'" data-group-by="SBQQ__Group__c">
+<td style="width: 85%; background-color: #c4c4c4; text-align: right;" colspan="5"><strong>TOTAL</strong></td>
+<td style="width: 15%; background-color: #c4c4c4; text-align: center;" class="money"><strong class="money">[SUM(SBQQ__NetTotal__c)]</strong></td>
+</tr>
+</tfoot>
+</table>
+<!--add separate table at end for external notes-->
+<table style="width: 100%;" data-show-if="" data-show-if-group="header_external_notes_not_blank">
+<tbody>
+<tr>
+<td style="width: 100%; background-color: #ffffff; text-align: left;"><span style="font-size: 12px;" class="header-notes"><em><span class="html">[header.External_Notes__c]</span></em></span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- DISPLAYS ALL LINE ITEMS THAT AREN'T HEADER BUNDLES AND AREN'T IN A HEADER BUNDLE -->
+<div data-repeat="group in SBQQ__LineItems__r" data-filter="Header_Bundle__c == 'false' AND SBQQ__RequiredBy__c IS BLANK" data-group-by="SBQQ__Group__c" data-sort="SBQQ__Number__c">
+<table style="width: 100%; page-break-inside: avoid;"><caption>
+<h1 style="text-align: left;"><span style="font-size: 32px;">[group.SBQQ__Group__r.Name]</span></h1>
+</caption>
+<thead>
+<tr>
+<td style="width: 40%; padding-left: 30px; background-color: #d8e6d9; color: #ffffff;"><span style="color: #000000; font-size: 11px;"><em>Product Name</em></span></td>
+<td style="width: 15%; text-align: center; background-color: #d8e6d9; color: #ffffff;"><span style="color: #000000; font-size: 11px;"><em>Quantity</em></span></td>
+<td style="width: 15%; text-align: center; background-color: #d8e6d9; color: #ffffff;"><span style="color: #000000; font-size: 11px;"><em>Multiplier</em></span></td>
+<td style="width: 15%; text-align: center; background-color: #d8e6d9; color: #ffffff;"><span style="color: #000000; font-size: 11px;"><em>Net Unit Price</em></span></td>
+<td style="width: 15%; text-align: center; background-color: #d8e6d9; color: #ffffff;"><span style="color: #000000; font-size: 11px;"><em>Net Total</em></span></td>
+</tr>
+</thead>
+<tbody><!-- This row loops through all products whose Required By field is populated with the ID of the header bundle product that we are on in the 2nd <div> data-repeat -->
+<tr data-repeat="product in SBQQ__LineItems__r" data-filter="SBQQ__Group__c == group.SBQQ__Group__c AND Header_Bundle__c == 'false' AND SBQQ__Hidden__c == 'false' AND SBQQ__RequiredBy__c IS BLANK" data-sort="SBQQ__Number__c">
+<td style="width: 40%; padding-left: 30px;"><span style="font-size: 11px;">[product.Name_External__c]<br /><span data-show-if="" data-show-if-group="product_external_notes_not_blank" style="font-size: 10px;" class="product-notes"><em><span class="html">[product.External_Notes__c]</span></em></span><br /><span data-show-if="product.SBQQ__Optional__c == 'true'" style="font-size: 10px;"><strong><em>Optional - cost not included in Total</em></strong></span></span></td>
+<td style="width: 15; text-align: center;" class="integer"><span style="font-size: 11px;">[product.SBQQ__Quantity__c]</span></td>
+<td style="width: 15%; text-align: center;" class="integer"><span style="font-size: 11px;">[product.Multiplier__c]</span></td>
+<td style="width: 15%; text-align: center;" class="money"><span style="font-size: 11px;">[product.SBQQ__NetPrice__c]</span></td>
+<td style="width: 15%; text-align: center;" class="money"><span style="font-size: 11px;" data-show-if="product.SBQQ__Optional__c == 'false'">[product.SBQQ__NetTotal__c]</span></td>
+</tr>
+<!-- This is the sum row for each header bundle. The data-group-by looks at the Required By ID to ensure that we only get one Total row per header bundle -->
+<tr data-repeat="sum in SBQQ__LineItems__r" data-filter="SBQQ__Group__c == group.SBQQ__Group__c AND Header_Bundle__c == 'false' AND SBQQ__RequiredBy__c IS BLANK AND SBQQ__Hidden__c == 'false' AND SBQQ__Optional__c == 'false'" data-group-by="SBQQ__Group__c">
+<td style="width: 85%; background-color: #c4c4c4; text-align: right;" colspan="4"><strong>TOTAL</strong></td>
+<td style="width: 15%; background-color: #c4c4c4; text-align: center;" class="money"><strong>[SUM(SBQQ__NetTotal__c)]</strong></td>
+</tr>
+<tr>
+<td style="width: 85%; border-color: #ffffff;" colspan="4"></td>
+<td style="width: 15%; border-color: #ffffff;"></td>
+</tr>
+</tbody>
+</table>
+<p></p>
+</div>
+<table style="width: 100%; height: 21px;">
+<tbody>
+<tr style="height: 21px;">
+<td style="width: 85%; height: 21px; background-color: #c4c4c4; text-align: right;"><strong>QUOTE TOTAL</strong></td>
+<td style="width: 15%; height: 21px; background-color: #c4c4c4; text-align: center;"><strong><span allowstyling="true" data-name="Quote__c_NetAmount__c" data-type="currency" data-variable-content="inline" data-source="" data-raw-value="" class="inline-variable mceNonEditable" data-id="47044af0-3220-448d-abcb-3502de89456b" data-parsable-variable-names="" data-unit="" data-textcase="" data-format="" data-label="Quote__c_NetAmount__c" data-value="" data-precision="2" data-delimiter="" data-width="" data-height="" data-text="" data-locale="" data-href="" data-hreftype="url"></span>&nbsp;</strong></td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<div style="page-break-after: always;"><span style="display: none;">&nbsp;</span></div>

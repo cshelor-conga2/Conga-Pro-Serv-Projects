@@ -1,0 +1,123 @@
+<!-- Second set of tables for when Show Retail Price is false -->
+<div data-show-if="Parent_Opportunity__c_Show_Retail_Price_on_Proposal__c == 'true'">
+	<h1>Monthly Fees</h1>
+	<table style="width: 100%;" border="0">
+		<thead>
+			<tr style="height: 21px;">
+				<th class="name" style="width: 30.0781%;">Name</th>
+				<th class="retail" style="width: 15.9219%;">&nbsp;Quantity</th>
+				<th class="retail" style="width: 19%;">Retail price</th>
+				<th class="sale" style="width: 37%;">Sale price</th>
+			</tr>
+		</thead>
+		<tbody>
+			<!-- This filter makes sure we only loop through products that are in a package (i.e. they are NOT a package themselves), then only displays the package name one time for all of those products -->
+			<tr data-repeat="row1 in All_Opportunity_Product__r" data-filter="One_Time_Fee__c == false AND Setup_Fee__c == false AND ProductIsParent__c == 'F'" data-group-by="Source_Package_Product__r.Name">
+				<td class="name" style="width: 30.0781%;">[row1.Source_Package_Product__r.Name] row 1</td>
+				<!-- This cell uses a data-repeat because we need to re-loop through all products and then only grab those that are a package.  We only want to count the number of packages, not the number of products in a package -->
+				<td style="width: 15.9219%; text-align: center;"><span class="integer" data-repeat="product in All_Opportunity_Product__r" data-filter="Octiv_Display_Name__c == row1.Source_Package_Product__r.Name AND One_Time_Fee__c == false AND Setup_Fee__c == false AND ProductIsParent__c == 'T'" data-group-by="Octiv_Display_Name__c">[SUM(Quantity)]</span></td>
+				<td class="money retail" style="width: 19%;">[SUM(List_Price_Formula__c)]</td>
+				<td class="money sale" style="width: 37%;">[SUM(TotalPrice)]</td>
+			</tr>
+			<tr data-repeat="row2 in All_Opportunity_Product__r" data-filter="One_Time_Fee__c == false AND Setup_Fee__c == false AND ProductIsParent__c = 'F' AND Source_Package_Product__r IS BLANK" data-group_by="Octiv_Display_Name__c">
+				<td class="name" style="width: 30.0781%;">[row2.Octiv_Display_Name__c] row 2</td>
+				<td class="integer" style="width: 15.9219%;">[COUNT(Quantity)]</td>
+				<td class="money retail" style="width: 19%;">[row2.List_Price_Formula__c]</td>
+				<td class="money sale" style="width: 37%;">[row2.TotalPrice]</td>
+			</tr>
+		</tbody>
+		<tfoot data-show-if="Parent_Opportunity__c_Show_Sales_Tax_on_Proposal__c == 'true'" data-repeat="product in All_Opportunity_Product__r" data-filter="One_Time_Fee__c == false AND Setup_Fee__c == false" data-group-by="Parent_Opty__c">
+		<tr>
+			<td class="name" style="width: 30.0781%; height: 39px;"><strong>Subtotal Monthly price:</strong></td>
+			<td class="money retail" style="width: 15.9219%;"></td>
+			<td class="money retail" style="width: 19%;"><strong>[SUM(List_Price_Formula__c)]</strong></td>
+			<td class="money sale" style="width: 37%;"><strong>[SUM(TotalPrice)]</strong></td>
+		</tr>
+		<tr>
+			<td class="name" colspan="3" rowspan="1" style="width: 65%;"><strong>Sales Tax Monthly price:</strong></td>
+			<td class="money sale" style="width: 37%;"><strong>[SUM(TNOPPST__LineTax__c)]</strong></td>
+		</tr>
+		<tr>
+			<td class="name" style="width: 30.0781%;"><strong>Total Monthly price:</strong></td>
+			<td class="money retail" style="width: 15.9219%;"></td>
+			<td class="money retail" style="width: 19%;"><strong>[SUM(List_Price_Formula__c)]</strong></td>
+			<td class="money sale" style="width: 37%;"><strong>[SUM(TotalPrice) + SUM(TNOPPST__LineTax__c)]</strong></td>
+		</tr>
+		</tfoot>
+		<tfoot data-hide-if="Parent_Opportunity__c_Show_Sales_Tax_on_Proposal__c == 'true'" data-repeat="product in All_Opportunity_Product__r" data-filter="One_Time_Fee__c == false AND Setup_Fee__c == false" data-group-by="Parent_Opty__c">
+		<tr>
+			<td class="name" style="width: 30.0781%; height: 40px;"><strong>Total Monthly price:</strong></td>
+			<td class="money retail" style="width: 15.9219%; height: 40px;"></td>
+			<td style="width: 19%; height: 40px;"><strong><span class="money retail">[SUM(List_Price_Formula__c)]</span></strong></td>
+			<td style="width: 37%; height: 40px;"><strong><span class="money sale">[SUM(TotalPrice)]</span></strong></td>
+		</tr>
+		</tfoot>
+	</table>
+	<p></p>
+	<p></p>
+	<h1>One-Time Setup</h1>
+	<table class="custom_pricing pricing" style="width: 100%;" border="0" data-filter="One_Time_Fee__c = false AND Setup_Fee__c = true" data-source="All_Opportunity_Product__r">
+		<thead>
+			<tr style="height: 21px;">
+				<th class="name" style="width: 30.0781%;">Name</th>
+				<th class="retail" style="width: 15.9219%;">&nbsp;Quantity</th>
+				<th class="retail" style="width: 19%;">Retail price</th>
+				<th class="sale" style="width: 37%;">Sale price</th>
+			</tr>
+		</thead>
+		<tbody>
+			<!-- This filter makes sure we only loop through products that are in a package (i.e. they are NOT a package themselves), then only displays the package name one time for all of those products -->
+			<tr data-filter="Source_Package_Product__r IS PRESENT" data-group_by="Source_Package_Product__r.Name">
+				<td class="name" style="width: 30.0781%;">[Source_Package_Product__r.Name]</td>
+				<!-- This cell uses a data-repeat because we need to re-loop through all products and then only grab those that are a package.  We only want to count the number of packages, not the number of products in a package -->
+				<td data-repeat="product in All_Opportunity_Product__r" data-filter="ProductIsParent__c == 'T'" data-group-by="Octiv_Display_Name__c" class="integer" style="width: 15.9219%;">[COUNT(Quantity)]</td>
+				<td class="money retail" style="width: 19%;">[SUM(List_Price_Formula__c)]</td>
+				<td class="money sale" style="width: 37%;">[SUM(TotalPrice)]</td>
+			</tr>
+			<tr data-filter="ProductIsParent__c = 'F'  AND  Source_Package_Product__r IS BLANK" data-group_by="Octiv_Display_Name__c">
+				<td class="name" style="width: 30.0781%;">[Octiv_Display_Name__c]</td>
+				<td class="integer" style="width: 15.9219%;">[COUNT(Quantity)]</td>
+				<td class="money retail" style="width: 19%;">[List_Price_Formula__c]</td>
+				<td class="money sale" style="width: 37%;">[TotalPrice]</td>
+			</tr>
+		</tbody>
+		<tfoot data-show-if="Parent_Opportunity__c_Show_Sales_Tax_on_Proposal__c == 'true'">
+		<tr>
+			<td class="name" style="width: 30.0781%; height: 39px;"><strong>Subtotal Monthly price:</strong></td>
+			<td class="money retail" style="width: 15.9219%;"></td>
+			<td class="money retail" style="width: 19%;"><strong>[SUM(List_Price_Formula__c)]</strong></td>
+			<td class="money sale" style="width: 37%;"><strong>[SUM(TotalPrice)]</strong></td>
+		</tr>
+		<tr>
+			<td class="name" colspan="3" rowspan="1" style="width: 65%;"><strong>Sales Tax Monthly price:</strong></td>
+			<td class="money sale" style="width: 37%;"><strong>[SUM(TNOPPST__LineTax__c)]</strong></td>
+		</tr>
+		<tr>
+			<td class="name" style="width: 30.0781%;"><strong>Total Monthly price:</strong></td>
+			<td class="money retail" style="width: 15.9219%;"></td>
+			<td class="money retail" style="width: 19%;"><strong>[SUM(List_Price_Formula__c)]</strong></td>
+			<td class="money sale" style="width: 37%;"><strong>[SUM(TotalPrice) + SUM(TNOPPST__LineTax__c)]</strong></td>
+		</tr>
+		</tfoot>
+		<tfoot data-hide-if="Parent_Opportunity__c_Show_Sales_Tax_on_Proposal__c == 'true'">
+		<tr>
+			<td class="name" style="width: 30.0781%; height: 40px;"><strong>Total Monthly price:</strong></td>
+			<td class="money retail" style="width: 15.9219%; height: 40px;"></td>
+			<td class="money retail" style="width: 19%; height: 40px;"><strong>[SUM(List_Price_Formula__c)]</strong></td>
+			<td class="money sale" style="width: 37%; height: 40px;"><strong>[SUM(TotalPrice)]</strong></td>
+		</tr>
+		</tfoot>
+	</table>
+	<p></p>
+	<table class="pricing" style="width: 100%;" border="1" cellspacing="1" cellpadding="1">
+	<thead></thead>
+	<tfoot>
+	<tr>
+		<td scope="col">Total Due Upfront to Start</td>
+		<td class="retail" scope="col"><span>{number_to_currency(opportunity_total_list_price_roll__c)}}</span></td>
+		<td class="sale" scope="col"><span>{{number_to_currency(opportunity_invoice_total3__c)}}</span></td>
+	</tr>
+	</tfoot>
+</table>
+</div>
+<h1><br /><br /></h1>

@@ -1,0 +1,435 @@
+<apex:page showHeader="false" sidebar="false" applyHtmlTag="false" applyBodyTag="false" docType="html-5.0" standardStyleSheets="false" controller="AccountContactUtilities">
+<html lang="en">
+        <head>
+            <meta charset="utf-8"></meta>
+            <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+            <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+            <meta name="description" content=""></meta>
+            <meta name="author" content="James Hafer"></meta>
+
+            <!-- Import the Design System style sheet -->
+            <apex:slds />
+
+            <title>Conga | Create Contact Roles</title>
+            <link rel="icon" href="{!URLFOR($Resource.Favicon)}" type="image/x-icon" />
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" />
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" />
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" />
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css" />
+            <link rel="stylesheet" href="https://unpkg.com/ng-table@2.0.2/bundles/ng-table.min.css" />
+			<link rel="stylesheet" href="{!URLFOR($Resource.AccountContactTable, 'opportunityContactRole.css')}" />
+			<!--<apex:stylesheet value="{!URLFOR($Resource.pi__font_awesome_4_2_0, 'font-awesome-4.2.0/css/font-awesome.min.css')}" />-->
+
+		
+            <style type="text/css">
+                .modal {
+                    display:    none;
+                    position:   absolute;
+                    z-index:    1999;
+                    top:        0;
+                    left:       0;
+                    height:     100%;
+                    width:      100%;
+                    background: rgba( 255, 255, 255, .8 )
+                                50% 50%
+                                no-repeat;
+                }
+
+                #myPage.loading {
+                    overflow: hidden;
+                }
+
+                #myPage.loading .modal {
+                    display: block;
+                }
+
+                #modal-create-contact.loading{
+                    overflow: hidden;
+                }
+
+                #modal-create-contact.loading{
+                    overflow: hidden;
+                }
+
+                #modal-create-contact .modal {
+                    display: block;
+                }
+
+                div .low-padding {
+                    padding-right: 2px;
+                    padding-left: 2px;
+                }
+				th.header{
+					cursor: pointer;
+				}
+			</style>
+			
+        </head>
+        <body id="ControllerAccountContactTable" ng-app="appAccountContactTable" ng-controller="ControllerAccountContactTable">
+        <div id="myPage">
+            <div class="slds-scope">
+                <div style="position: fixed; top: 50%; left: 50%; z-index: 2000">
+                    <div id="spinner" role="status" class="slds-spinner slds-spinner_large slds-hidden" style="z-index: 2001">
+                        <span class="slds-assistive-text">Loading</span>
+                        <div class="slds-spinner__dot-a"></div>
+                        <div class="slds-spinner__dot-b"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Controller Properties - Begin -->
+            <input type="hidden" id="opportunityId" value="{!opportunityId}" />
+            <input type="hidden" id="accountId" value="{!accountId}" />
+            <input type="hidden" id="accountContactRelationshipMaintenancePage" value="{!isForAccountContactRelationshipMaintenance}"/>
+            <input type="hidden" id="opportunityContactRoleMaintenancePage" value="{!isForOpportunityContactRoleMaintenance}"/>
+            <!-- Controller Properties - End -->
+
+            <div id="alert-error" class="alert alert-danger hidden-conga" role="alert">
+                <button id="close-alert-error" type="button" class="close" aria-label="Close"><span aria-hidden="true">×</span></button>
+                <strong>Alert!&#32;</strong><span id="alert-error-message"></span>
+            </div>
+            <div id="alert-success" class="alert alert-success hidden-conga" role="alert">
+                <button id="close-alert-success" type="button" class="close" aria-label="Close"><span aria-hidden="true">×</span></button>
+                <span id="alert-success-message"></span>
+            </div>
+            <div class="modal fade" id="modal-create-contact" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="slds-scope">
+                            <div id="spinner-modal" role="status" class="slds-spinner slds-spinner_large slds-hidden" style="z-index: 2001">
+                                <span class="slds-assistive-text">Loading</span>
+                                <div class="slds-spinner__dot-a"></div>
+                                <div class="slds-spinner__dot-b"></div>
+                            </div>
+                        </div>
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                            </button>
+                            <h3 class="modal-title subheading">New Contact</h3>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <fieldset>
+                                    <div class="form-group-row sm-margin">
+                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                            <label for="contact-search">Search Existing Contacts:</label>
+                                            <input type="text" id="contact-search" class="form-control" placeholder="Search Contacts" autofocus="true"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                                            <label for="firstName">First Name:</label>
+                                            <input id="firstName" class="form-control required" type="text" ng-model="contact.FirstName" required="true"></input>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                                            <label for="lastName">Last Name:</label>
+                                            <input id="lastName" class="form-control required" type="text" ng-model="contact.LastName" required="true"></input>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                                            <label for="contatTitle">Title:</label>
+                                            <input id="contatTitle" class="form-control" type="text" ng-model="contact.Title"></input>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                                            <label for="contactJobLevel">Job Level:</label>
+                                            <select class="form-control" ng-options="option as option for option in contactJobLevel" ng-model="JobLevel" id="contactJobLevel"></select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                                            <label for="email">Email:</label>
+                                            <input id="email" class="form-control required" type="email" ng-model="contact.Email" required="true"></input>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                                            <label for="phone">Phone:</label>
+                                            <input class="form-control" type="phone" ng-model="contact.Phone"></input>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                                            <label for="contactRole">Role:</label>
+                                            <select class="form-control js-example-basic-multiple" ng-options="option as option for option in contactRoles" ng-model="roles" id="contactRole" multiple="true" style="width:100%"/>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                                            <label for="contactPersona">Persona:</label>
+                                            <select class="form-control" ng-options="option as option for option in contactPersona" ng-model="Persona" id="contactPersona"></select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                                            <label for="contactStatus">Status:</label>
+                                            <select class="form-control" ng-options="option as option for option in contactStatus" ng-model="Status" id="contactStatus"></select>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <i id="fa-loader-create-contact" class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+                            <button id="addNewButton" type="button" class="btn btn-success" ng-click="insertContact(true)">Add New</button>
+                            <button id="saveChangesButton" type="button" class="btn btn-primary" ng-click="insertContact(false)">Save Changes</button>
+                            <button type="button" class="btn" data-dismiss="modal" aria-label="Close">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="jumbotron">
+                <p class="container">
+                    <img id="img-logo-header" src="{!URLFOR($Resource.congaLogo)}" class="img-responsive" />
+                </p>
+            </div>
+            <!-- PAGE MESSAGES -->
+            <apex:pageMessages />
+            <!-- PAGE MESSAGES -->
+            <apex:outputPanel styleclass="container marketing" layout="block" style="width: 96%; text-align: center;" rendered="{!isValid}">
+                <apex:outputPanel layout="block" rendered="{!isForOpportunityContactRoleMaintenance}">
+                    <h2 class="conga-red-header">Opportunity Contact Management</h2>
+                    <h4>
+                        <ol style="text-align: left">
+                            <li><b>Add</b> or <b>Modify</b> contact relationships on this screen</li><br></br>
+                            <!--<li>Use the checkboxes on the left to select who will be <b>added</b> to this opportunity</li><br></br>-->
+                            <li>Use the checkboxes on the left to select all contacts who have been involved from the start of this opportunity and identify the role(s) they played.</li><br></br>
+                            <li>Select a <b>Primary Contact</b> on the right (a Primary Contact must also have a <b>Role</b>)</li><br></br>
+                            <li>Use the <b>Add Contact</b> button to create new contacts for this account or add contacts from other accounts</li><br></br>
+                            <li>Click the <b>Save</b> button</li><br></br>
+                        </ol>
+                    </h4>
+                </apex:outputPanel>
+                <apex:outputPanel styleclass="container marketing" layout="block" style="width: 96%; text-align: center;" rendered="{!isForAccountContactRelationshipMaintenance}">             
+                    <h2 class="conga-red-header">Account Contact Management</h2>
+                    <h4>
+                        <ol style="text-align: left">
+                            <li><b>Add</b> or <b>Modify</b> contact relationships on this screen</li><br></br>
+                            <li>Use the <b>‘Add Contact’</b> button to create new contacts for this account or add contacts from other accounts</li><br></br>
+                            <li>Click the <b>Save</b> button</li><br></br>
+                        </ol>
+                    </h4>
+                    <h5 class="conga-red-header italic-font"><i>NOTE: If a contact has departed, <b>uncheck</b> them as Primary and set their status to <b>‘No Longer at Company’</b></i></h5>
+                </apex:outputPanel>
+                <hr class="featurette-divider"></hr>
+                <!--<div class="row text-center">
+                    <apex:outputPanel layout="block" styleClass="col-xs-12 col-sm-1 col-md-1 col-lg-1 low-padding" rendered="{!isForOpportunityContactRoleMaintenance}">
+                        <label data-toggle="tooltip" data-placement="top" title="">Select All
+                            <input type="checkbox" id="selectAll" ng-click="selectAll()"></input>
+                        </label>
+                    </apex:outputPanel>
+                    <div class="col-xs-12 col-sm-1 col-md-1 col-lg-{!if(isForOpportunityContactRoleMaintenance,'1','2')} low-padding">
+                        <label data-toggle="tooltip" data-placement="top" title="">Name</label>
+                    </div>
+                    <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2 low-padding">
+                        <label data-toggle="tooltip" data-placement="top" title="">Title</label>
+                    </div>
+                    <div class="col-xs-12 col-sm-1 col-md-1 col-lg-1 low-padding">
+                        <label data-toggle="tooltip" data-placement="top" title="Contact’s authority at company (closest approximation).">Job Level</label>
+                    </div>
+                    <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2 low-padding">
+                        <label data-toggle="tooltip" data-placement="top" title="">Email</label>
+                    </div>
+                    <div class="col-xs-12 col-sm-1 col-md-1 col-lg-1 low-padding">
+                        <label data-toggle="tooltip" data-placement="top" title="Contact’s role at company (what they do at their company).">Persona</label>
+                    </div>
+                    <div class="col-xs-12 col-sm-1 col-md-1 col-lg-1 low-padding">
+                        <label data-toggle="tooltip" data-placement="top" title="Used to describe the current state of communication between Conga and the contact.">Status</label>
+                    </div>
+                    <div class="col-xs-12 col-sm-1 col-md-1 col-lg-{!if(isForOpportunityContactRoleMaintenance,'1','2')} low-padding">
+                        <label data-toggle="tooltip" data-placement="top" title="Contact’s role in relation to Conga (how Conga works with them)">Role</label>
+                    </div>
+                    <apex:outputPanel layout="block" styleClass="col-xs-12 col-sm-1 col-md-1 col-lg-1 low-padding" rendered="{!isForOpportunityContactRoleMaintenance}">
+                        <label data-toggle="tooltip" data-placement="top" title="The main point of contact for this opportunity. One per opportunity.">Primary for Opportunity</label>
+                    </apex:outputPanel>
+                    <div class="col-xs-12 col-sm-1 col-md-1 col-lg-1 low-padding">
+                        <label data-toggle="tooltip" data-placement="top" title="The main point(s) of contact for this account.">Primary for Account</label>
+                    </div>
+                </div>
+                <div id="mainForm" ng-repeat="record in opportunityContactRoles" class="row margin-less hover-background row-striped text-center">
+                    <div class="row">
+                        <span ng-show="false" ng-bind="record.Id"></span>
+                        <apex:outputPanel layout="block" styleClass="col-xs-12 col-sm-1 col-md-1 col-lg-1 low-padding" rendered="{!isForOpportunityContactRoleMaintenance}">
+                            <input type="checkbox" ng-model="record.Selected"></input>
+                        </apex:outputPanel>
+                        <div class="col-xs-12 col-sm-1 col-md-1 col-lg-{!if(isForOpportunityContactRoleMaintenance,'1','2')} contactNameContainer low-padding">
+                            <h5 ng-bind-html="record.Name" ng-model="record.Name" class="contactName"></h5>
+                        </div>
+                        <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2 low-padding">
+                            <h5 ng-bind-html="record.Title" ng-model="record.Title" class="contactName"></h5>
+                        </div>
+                        <div class="col-xs-12 col-sm-1 col-md-1 col-lg-1 low-padding">
+                            <select class="form-control" ng-options="option as option for option in contactJobLevel" ng-model="record.JobLevel" ng-change="setChanged({{record.primaryOppRoleIndex}})"/>
+                        </div>
+                        <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2 low-padding">
+                            <input type="email" ng-bind-html="record.Email" ng-model="record.Email" class="form-control" ng-change="setChanged({{record.primaryOppRoleIndex}})"></input>
+                        </div>
+                        <div class="col-xs-12 col-sm-1 col-md-1 col-lg-1 low-padding">
+                            <select class="form-control" ng-options="option as option for option in contactPersona" ng-model="record.Persona" ng-change="setChanged({{record.primaryOppRoleIndex}})"/>
+                        </div>
+                        <div class="col-xs-12 col-sm-1 col-md-1 col-lg-1 low-padding">
+                            <select class="form-control" ng-options="option as option for option in contactStatus" ng-model="record.Status" ng-change="setChanged({{record.primaryOppRoleIndex}})"/>
+                        </div>
+                        <div class="col-xs-12 col-sm-1 col-md-1 col-lg-{!if(isForOpportunityContactRoleMaintenance,'1','2')} low-padding">
+                            <select class="form-control js-example-basic-multiple" ng-options="option as option for option in contactRoles" ng-model="record.Role" multiple="true" ng-change="setChanged({{record.primaryOppRoleIndex}})"/>
+                        </div>
+                        <apex:outputPanel layout="block" styleClass="col-xs-12 col-sm-1 col-md-1 col-lg-1 low-padding" rendered="{!isForOpportunityContactRoleMaintenance}" style="text-align: center">
+                            <input type="radio" ng-value="{{record.primaryOppRoleIndex}}" ng-model="$parent.primaryOppRoleSelected" id="primaryOppRole-{{record.primaryOppRoleIndex}}" ng-change="setAccountPrimary({{record.primaryOppRoleIndex}})"></input>
+                        </apex:outputPanel>
+                        <div class="col-xs-12 col-sm-1 col-md-1 col-lg-1 low-padding" style="text-align: center">
+                            <input type="checkbox" ng-disabled="{!isForOpportunityContactRoleMaintenance}" ng-model="record.IsPrimaryAccountRelation"></input>
+                        </div>
+                    </div>
+                </div>-->
+                <script id="selectAllHeader" type="text/ng-template">
+                    <label data-toggle="tooltip" data-placement="top" title="Select All">Select All
+                        <input type="checkbox" id="selectAll" ng-click="selectAll()"></input>
+                    </label>
+                </script>
+                <div class="input-append">
+					<i class="fa fa-search"></i>
+					<input type="search" style="width: 300px" ng-model="searchText" placeholder="Search"/>
+                	<!--<span class="add-on"><i class="icon-search"></i></span>-->
+                </div>
+                <table ng-table="tableParams" class="table" show-filter="true">
+                    <thead>
+                        <tr>
+                            <th class="Id" >
+                                <span ng-show="false">Id</span>
+							</th>
+							<th align = "left" ng-if="{!isForOpportunityContactRoleMaintenance}">
+								<label data-toggle="tooltip" data-placement="top" title="Select All">Select All
+									<input type="checkbox" id="selectAll" ng-click="selectAll()"></input>
+								</label>
+							</th>
+                            <th class="name header"  ng-click="sort_by('Name')">Name
+                                <span ng-show="sortingOrder == 'Name' && !reverse" class="fa fa-sort-amount-asc"></span>
+                                <span ng-show="sortingOrder == 'Name' && reverse" class="fa fa-sort-amount-desc"></span>
+                            </th>
+                            <th class="title header" ng-click="sort_by('Title')">Title
+                                <span ng-show="sortingOrder == 'Title' && !reverse" class="fa fa-sort-amount-asc"></span>
+                                <span ng-show="sortingOrder == 'Title' && reverse" class="fa fa-sort-amount-desc"></span>
+                            </th>
+                            <th class="jobLevel header" ng-click="sort_by('JobLevel')">Job Level
+                                <span ng-show="sortingOrder == 'JobLevel' && !reverse" class="fa fa-sort-amount-asc"></span>
+                                <span ng-show="sortingOrder == 'JobLevel' && reverse" class="fa fa-sort-amount-desc"></span>
+                            </th>
+                            <th class="email header" ng-click="sort_by('Email')">Email
+                                <span ng-show="sortingOrder == 'Email' && !reverse" class="fa fa-sort-amount-asc"></span>
+                                <span ng-show="sortingOrder == 'Email' && reverse" class="fa fa-sort-amount-desc"></span>
+                            </th>
+                            <th class="persona header" ng-click="sort_by('Persona')">Persona
+                                <span ng-show="sortingOrder == 'Persona' && !reverse" class="fa fa-sort-amount-asc"></span>
+                                <span ng-show="sortingOrder == 'Persona' && reverse" class="fa fa-sort-amount-desc"></span>
+                            </th>
+                            <th class="status header" ng-click="sort_by('Status')">Status
+                                <span ng-show="sortingOrder == 'Status' && !reverse" class="fa fa-sort-amount-asc"></span>
+                                <span ng-show="sortingOrder == 'Status' && reverse" class="fa fa-sort-amount-desc"></span>
+                            </th>
+							<th class="role header" ng-click="sort_by('Role')">Role
+                                <span ng-show="sortingOrder == 'Role' && !reverse" class="fa fa-sort-amount-asc"></span>
+                                <span ng-show="sortingOrder == 'Role' && reverse" class="fa fa-sort-amount-desc"></span>
+                            </th>
+							<th class="primaryOpp header" ng-click="sort_by('Opp')" ng-if="{!isForOpportunityContactRoleMaintenance}">Primary for Opportunity
+                                <span ng-show="sortingOrder == 'Opp' && !reverse" class="fa fa-sort-amount-asc"></span>
+                                <span ng-show="sortingOrder == 'Opp' && reverse" class="fa fa-sort-amount-desc"></span>
+                            </th>
+                            <th class="primary header" ng-click="sort_by('IsPrimaryAccountRelation')">Primary for Account
+                                <span ng-show="sortingOrder == 'IsPrimaryAccountRelation' && !reverse" class="fa fa-sort-amount-asc"></span>
+                                <span ng-show="sortingOrder == 'IsPrimaryAccountRelation' && reverse" class="fa fa-sort-amount-desc"></span>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tr ng-repeat="record in $data | orderBy:sortingOrder:reverse | filter:searchText | filter : statusFilter()">
+                        <td>
+                            <span ng-show="false" ng-bind="record.Id"></span>
+                        </td>
+                        <td title="'Select'" header="'selectAllHeader'" header-title="'The main point(s) of contact for this account.'" ng-if="{!isForOpportunityContactRoleMaintenance}">
+                            <div class="low-padding">
+                                <input type="checkbox" ng-model="record.Selected" ng-change="setChanged({{record.primaryOppRoleIndex}})"/>
+                            </div>
+                        </td>
+                        <td title="'Name'"  header-title="'The main point(s) of contact for this account.'" >
+                            <div class="contactNameContainer low-padding" style="text-align: left">
+                                <h5 ng-bind-html="record.Name" ng-model="record.Name" class="contactName"></h5>
+                            </div>
+                        </td>
+                        <td title="'Title'" header-title="'The main point(s) of contact for this account.'" >
+                            <div class="low-padding" style="text-align: left">
+                                <h5 ng-bind-html="record.Title" ng-model="record.Title" class="contactName"></h5>
+                            </div>
+                        </td>
+                        <td title="'Job Level'" header-title="'Contact’s authority at company (closest approximation).'" >
+                            <div class="low-padding">
+                                <select class="form-control" ng-options="option as option for option in contactJobLevel" ng-model="record.JobLevel" ng-change="setChanged({{record.primaryOppRoleIndex}})"/>
+                            </div>
+                        </td>
+                        <td title="'Email'" header-title="'The main point(s) of contact for this account.'" >
+                            <div class="low-padding">
+                                <input type="email" ng-bind-html="record.Email" ng-model="record.Email" class="form-control" ng-change="setChanged({{record.primaryOppRoleIndex}})"></input>
+                            </div>
+                        </td>
+                        <td title="'Persona'" header-title="'Contact’s role at company (what they do at their company).'" >
+                            <div class="low-padding">
+                                <select class="form-control" ng-options="option as option for option in contactPersona" ng-model="record.Persona" ng-change="setChanged({{record.primaryOppRoleIndex}})"/>
+                            </div>
+                        </td>
+                        <td title="'Status'" header-title="'Used to describe the current state of communication between Conga and the contact.'">
+                            <div class="low-padding">
+                                <select class="form-control" ng-options="option as option for option in contactStatus" ng-model="record.Status" ng-change="setChanged({{record.primaryOppRoleIndex}})"/>
+                            </div>
+                        </td>
+                        <td title="'Role'" header-title="'Contact’s role in relation to Conga (how Conga works with them)'" >
+                            <div class="low-padding">
+                                <select class="form-control js-example-basic-multiple" ng-options="option as option for option in contactRoles" ng-model="record.Role" multiple="true" ng-change="setChanged({{record.primaryOppRoleIndex}})"/>
+                            </div>
+                        </td>
+                        <td title="'Primary for Opportunity'" header-title="'The main point of contact for this opportunity. One per opportunity.'" ng-if="{!isForOpportunityContactRoleMaintenance}">
+                            <div class="low-padding" style="text-align: center">
+                                <input type="radio" name="primaryForOpp" ng-value="{{record.primaryOppRoleIndex}}" ng-model="$parent.primaryOppRoleSelected" id="primaryOppRole-{{record.primaryOppRoleIndex}}" ng-change="setAccountPrimary({{record.primaryOppRoleIndex}})"/>
+                            </div>
+                        </td>
+                        <td title="'Primary for Account'" header-title="'The main point(s) of contact for this account.'" >
+                            <div class="low-padding" style="text-align: center">
+                                <input type="checkbox" ng-disabled="{!isForOpportunityContactRoleMaintenance}" ng-model="record.IsPrimaryAccountRelation" ng-change="setChanged({{record.primaryOppRoleIndex}})"/>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+                <i id="fa-loader-process-changes" class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+                <apex:outputPanel layout="block" rendered="{!isForOpportunityContactRoleMaintenance}">
+                    <h5 class="conga-red-header italic-font">NOTE: These relationship designations will carry over to the associated account</h5>
+                </apex:outputPanel>
+                <div class="pull-right" id="buttonContainer">
+                    <button role="button" class="btn btn-success" id="addContact" ng-click="addContact()">Add Contact</button>
+                    <button role="button" class="btn btn-primary" id="submitSave" ng-click="saveContactRoles()">Save</button>
+                    <button role="button" class="btn btn-secodary" id="cancel" ng-click="cancel()">Close</button>
+                </div>
+            </apex:outputPanel>
+            <footer class="footer">
+                <p class="pull-right">
+                    <a id="back-to-top" href="#">Back to top</a>
+                </p>
+                <p>&copy; <span ng-bind-html="currentYear"></span> Conga. All rights reserved.</p>
+            </footer>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+            <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/momentjs/2.14.1/moment.min.js"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore-min.js"></script>
+            <script src="https://cdn.jsdelivr.net/angularjs/1.5.5/angular.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/angularjs/1.5.5/angular-animate.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/angularjs/1.5.5/angular-sanitize.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+            <script src="https://unpkg.com/ng-table@2.0.2/bundles/ng-table.min.js"></script>
+            <script src="{!URLFOR($Resource.AccountContactTable, 'opportunityContactRole.js')}"></script>
+
+            <!-- GM - 2019/01/17 - begin -->
+            <script src="/soap/ajax/29.0/connection.js"></script> 
+            <script src="/soap/ajax/29.0/apex.js"></script>             
+            <!-- GM - 2019/01/17 - end -->
+
+            <div class="modal"><!-- Place at bottom of page --></div>
+        </div>
+        </body>
+    </html>
+</apex:page>

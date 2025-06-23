@@ -1,0 +1,90 @@
+<style><!--
+#content_editor .no-margins {margin-top: -1.7em;margin-left: -30px;margin-right: -30px; margin-bottom: -30px;}
+.pdf-page-content .no-margins {margin-top: -.5in;margin-left: -.45in;margin-right: 0in;}
+#content_editor .grey-background,
+.pdf-page-content .grey-background {background-color: #e0e0e0;}
+.pdf-page-content .grey-background {height: 11in;}
+/* sets formatting for lists with blue bullets */
+.blue-bullet {
+ 	list-style: none;
+  	padding-left: 0;
+}
+.blue-bullet li {
+	font-size: 13px;
+  	display: -webkit-box;
+  	display: -ms-flexbox;
+  	display: flex;
+}
+.blue-bullet li:before {
+  	content: "\25A0";
+  	margin-right: 1em;
+	color: #05c5de;
+}
+/* flex box not supported in our docraptor PDF integration so we have to re-create it using a table */
+.pdf-page-content .blue-bullet li {
+	font-size: 13px;
+  	display: table;
+}
+.pdf-page-content .blue-bullet li:before {
+  	content: "\25A0";
+  	padding-right: 1em;
+	color: #05c5de;
+	display: table-cell;
+}
+--></style>
+<div class="grid no-margins">
+	<div class="unit one-quarter grey-background">
+		<p>&nbsp;</p>
+		<p></p>
+		<p><br /><img src="https://mytinder.s3.amazonaws.com/assets/medias/206913_web.png?1494162753" data-org-media-source-id="206913" data-org-media-type="web" data-org-media-extension="png" /></p>
+		<p></p>
+		<h5><strong>COMPREHENSIVE FINANCIAL WELLNESS</strong></h5>
+		<p>T. Rowe Price's three-part financial wellness offer connects engagement<br />with action to help employees build a firm financial foundation.</p>
+		<p></p>
+		<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<img src="https://mytinder.s3.amazonaws.com/assets/medias/575546_web.png?1511879820" width="62" height="59" data-org-media-source-id="575546" data-org-media-type="web" data-org-media-extension="png" /></p>
+		<h6>Assessing current financial health</h6>
+		<p>Determining where each individual is on his or her financial wellness journey</p>
+		<p></p>
+		<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<img src="https://mytinder.s3.amazonaws.com/assets/medias/575545_web.png?1511879820" width="69" height="70" data-org-media-source-id="575545" data-org-media-type="web" data-org-media-extension="png" /></p>
+		<h6>Setting meaningful financial goals</h6>
+		<p>Creating a path to<br />financial wellness</p>
+		<p></p>
+		<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<img src="https://mytinder.s3.amazonaws.com/assets/medias/575547_web.png?1511879820" width="75" height="71" data-org-media-source-id="575547" data-org-media-type="web" data-org-media-extension="png" /></p>
+		<h6>Make reaching<br />goals automatic</h6>
+		<p>Taking purposeful steps through cash flow management</p>
+		<p></p>
+		<p></p>
+		<p></p>
+		<p></p>
+	</div>
+	<div class="unit three-quarters">
+		<p>&nbsp;</p>
+		<p></p>
+		<p><img style="float: right;" src="https://mytinder.s3.amazonaws.com/assets/medias/206912_web.png?1494162753" width="66" height="68" data-org-media-source-id="206912" data-org-media-type="web" data-org-media-extension="png" /></p>
+		<p></p>
+		<p></p>
+		<p></p>
+		<p></p>
+		<div class="grid">
+			<div class="unit whole no-gutters">
+				<h3><strong><img style="float: left; margin-right: .6em" src="https://mytinder.s3.amazonaws.com/assets/medias/575545/3c3c2ba3-4a00-4262-a777-c92da624b026.png?1511882260672" width="66" height="75" data-org-media-source-id="575545" data-org-media-type="web" data-org-media-extension="png" data-uniq-edit-id="3c3c2ba3-4a00-4262-a777-c92da624b026" />SMARTDOLLAR PROVIDES A PATH TO</strong><br /><strong>FINANCIAL WELLNESS AND RETIREMENT</strong><br /><strong>PREPAREDNESS</strong></h3>
+			</div>
+		</div>
+		<p></p>
+		<h5>A FINANCIAL WELLNESS TOOL THAT DRIVES BEHAVIOR</h5>
+		<p style="line-height: 150%;"><span style="font-size: 16px;">A goal isn't usually reached by one large leap but by multiple, meaningful steps. SmartDollar is an optional, fee-based service built to inspire true behavior change through innovative tools and engaging lessons.</span></p>
+		<h5>EDUCATION THAT INSPIRES&mdash;TOOLS THAT EQUIP</h5>
+		<p><span style="font-size: 13px;">SmartDollar is designed to create and maintain engagement, moving participants</span><br /><span style="font-size: 13px;">along a path to financial success.</span></p>
+		<p><span style="font-size: 13px;">From foundational principles, such as building an emergency fund, to more advanced&nbsp;</span><span style="font-size: 13px;">activities, including funding college and paying oﬀ mortgages, SmartDollar participants&nbsp;</span><span style="font-size: 13px;">will learn and take progressive steps toward fnancial wellness. These seven steps,&nbsp;</span><span style="font-size: 13px;">called Baby Steps, are intended to get participants small wins early, which builds&nbsp;</span><span style="font-size: 13px;">momentum and long-term commitment to the program.</span></p>
+		<p><span style="font-size: 13px;">SmartDollar also features:</span></p>
+			<ul class="blue-bullet">
+				<li><span>Studio-quality video content in varying formats to maximize engagement.</span></li>
+				<li><span>A wellness points system to add a gamification element to the experience.</span></li>
+				<li><span>Budgeting with EveryDollar, a budget app that allows your employees to create budgeting categories and track expenses with ease and complete privacy.</span></li>
+			</ul>
+			<p></p>
+			<h5>SMARTDOLLAR'S SEVEN BABY STEPS TO FINANCIAL WELLNESS</h5>
+			<p></p>
+			<p><span><img src="https://mytinder.s3.amazonaws.com/assets/medias/571139_web.png?1510592275" /></span></p>
+	</div>
+</div>

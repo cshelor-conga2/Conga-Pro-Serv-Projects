@@ -1,0 +1,412 @@
+<div data-hide-if="HY_Prod_Count__c == 0">
+	<h1>Pricing Summary</h1>
+	<p></p>
+	<h4><span>With HealthiestYou, every consult (visit) is FREE! There are no call limits or time limits. Below is your summary based on your PEPM (per employee per month) cost.</span></h4>
+	<p></p>
+	<table style="width: 100%;" data-source="SBQQ__LineItems__r">
+		<tbody>
+			<tr>
+				<td style="width: 57.3281%; background-color: #ffffff; border-color: #ffffff;">
+					<h3><strong><span style="font-size: 16px;">DESCRIPTION</span></strong></h3>
+				</td>
+				<td style="width: 41.6719%; border-color: #ffffff; background-color: #ffffff;">
+					<h3><strong><span style="font-size: 16px;">DETAILS</span></strong></h3>
+				</td>
+			</tr>
+			<tr data-filter="SBQQ__ProductCode__c == 'HY'">
+				<td style="padding-left: 15px; width: 57.3281%; border-color: #f6f6f6;">
+					<h4>PER EMPLOYEE PER MONTH (PEPM)</h4>
+				</td>
+				<td style="padding-left: 15px; width: 41.6719%; border-color: #f6f6f6;" class="money">
+					<h4>[Membership_Fee__c]</h4>
+				</td>
+			</tr>
+			<tr data-filter="SBQQ__ProductCode__c == 'HY'">
+				<td style="padding-left: 15px; width: 57.3281%; border-color: #f6f6f6;">
+					<h4>NUMBER OF BILLABLE LIVES</h4>
+				</td>
+				<td style="padding-left: 15px; width: 41.6719%; border-color: #f6f6f6;" class="integer">
+					<h4>[SBQQ__Quantity__c]</h4>
+				</td>
+			</tr>
+			<tr data-filter="SBQQ__ProductCode__c == 'HY'">
+				<td style="padding-left: 15px; width: 57.3281%; border-color: #bfbfbf; background-color: #bfbfbf;">
+					<h4><strong>TOTAL MONTHLY COST</strong></h4>
+				</td>
+				<td style="padding-left: 15px; width: 41.6719%; border-color: #bfbfbf; background-color: #bfbfbf;" class="money">
+					<h4>[Membership_Fee__c * &nbsp; ]</h4>
+				</td>
+			</tr>
+			<tr data-filter="SBQQ__ProductCode__c == 'HY'">
+				<td style="width: 57.3281%; border-color: #ffffff; background-color: #ffffff;">
+					<h4 style="text-align: right;">EFFECTIVE DATE</h4>
+				</td>
+				<td style="width: 41.6719%; border-color: #ffffff; background-color: #ffffff;">
+					<h4><strong>{{opportunity_closedate.to_formatted_date("%m/%d/%Y")}}</strong></h4>
+				</td>
+			</tr>
+			<tr>
+				<td style="width: 57.3281%; border-color: #ffffff; background-color: #ffffff; text-align: right;">
+					<h4>CONTRACT TERM</h4>
+				</td>
+				<td style="width: 41.6719%; border-color: #ffffff; background-color: #ffffff;">
+					<h4><strong>{{opportunity_proposal_contract_term_years__c.to_i}} Year(s)</strong></h4>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<p></p>
+	<table class="custom_pricing" style="width: 100%;">
+		<tbody>
+			<tr data-filter="SBQQ__ProductCode__c == 'HY'">
+				<td style="border-color: #ffffff; background-color: #ffffff;" class="integer">
+					<div class="grid">
+						<div class="unit half">
+							<h3><strong>PEPM PRICE INCLUDES:</strong></h3>
+							<ul style="padding-left: 15px;">
+								<li>[Initial_Utilization_Cap__c]% Utilization</li>
+								<li>Free multi-purpose healthcare app</li>
+								<li>Industry-leading engagement, <br />marketing and utilization</li>
+								<li>24x7 doctor access to diagnose, <br />treat and prescribe</li>
+								<li>An entire Client Success Team<br />dedicated to high utilization</li>
+							</ul>
+						</div>
+						<div class="unit half" style="padding-left: 0px;">
+							<h3>&nbsp;</h3>
+							<ul style="padding-left: 0px;">
+								<li>Admin Portal for monitoring and<br />reporting</li>
+								<li>Fulfillment kit for members<br />and administrators</li>
+								<li>24/7 member support</li>
+								<li>Much, much more</li>
+							</ul>
+						</div>
+					</div>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<p>&nbsp;</p>
+	<p></p>
+	<h5><span>The PEPM price includes an agreed-upon annual utilization, &ldquo;The Utilization Target.&rdquo; If actual utilization for a year exceeds the current year&rsquo;s Utilization Target, the PEPM may increase by $0.50 for each 10% increment of Utilization in excess of the Utilization Target for the next Renewal Term. A new Utilization Target will be set by rounding up the actual utilization in the plan year to the nearest 10% for the next year. For example, if utilization in year 1 is 27%, the Utilization Target in year 2 would be 30%, and the PEPM would rise by $0.50 over the prior year price. &nbsp;Notwithstanding the above, Teladoc reserves the right to increase the PEPM by up to 5% for the next Renewal Term.</span></h5>
+	<div style="page-break-after: always;"><span style="display: none;">&nbsp;</span></div>
+</div>
+<div data-show-if="GM_Product_Count__c != 0 AND GM_Included_Count__c == 0">
+	<div data-source="SBQQ_LineItems__r">
+		<p style="text-align: center;"></p>
+		<h1 style="text-align: center;"><span style="font-size: 30px;">Fees - Standard Pricing Model</span></h1>
+		<p></p>
+		<p><img src="https://mytinder.s3.amazonaws.com/assets/medias/519929_web.PNG?1504032559" /></p>
+		<div class="grid">
+			<div class="unit one-quarter">
+				<p></p>
+				<p><span style="font-size: 11px;"><span></span></span></p>
+				<p><span style="font-size: 11px;"><span>Our General Medical offering includes the underlying products at no additional PEPM.</span></span></p>
+			</div>
+			<div class="unit three-quarters">
+				<table style="width: 100%; border-color: #000000;" data-source="SBQQ__LineItems__r">
+					<tbody>
+						<tr>
+							<td style="width: 20%; background-color: #ffffff; border-color: #000000;">
+								<h3><span style="font-size: 11px;"><strong>Service</strong></span></h3>
+							</td>
+							<td style="width: 16%; background-color: #ffffff; border-color: #000000;">
+								<h3><span style="font-size: 11px;"><strong>Enrolled Employees</strong></span></h3>
+							</td>
+							<td style="width: 16%; background-color: #ffffff; border-color: #000000;" class="money">
+								<h3><span style="font-size: 11px;"><strong>PEPM</strong></span></h3>
+							</td>
+							<td style="width: 16%; background-color: #ffffff; border-color: #000000;" class="money">
+								<h3><span style="font-size: 11px;"><strong>Total Monthly Cost</strong></span></h3>
+							</td>
+							<td style="width: 16%; background-color: #ffffff; border-color: #000000;" class="money">
+								<h3><span style="font-size: 11px;"><strong>Visit Fee</strong></span></h3>
+							</td>
+							<td style="width: 16%; background-color: #ffffff; border-color: #000000;">
+								<h3><span style="font-size: 11px;"><strong>Case Rate</strong></span></h3>
+							</td>
+						</tr>
+						<tr data-show-if="SBQQ__ProductName__c LIKE 'General Medical'">
+							<td style="width: 20%; background-color: #ffffff; border-color: #000000;"><span style="font-size: 11px;"><strong>General Medical</strong></span></td>
+							<td style="width: 16%; background-color: #ffffff; border-color: #000000;" class="integer"><span style="font-size: 11px;">[SBQQ__Quantity__c]</span></td>
+							<td style="width: 16%; background-color: #ffffff; border-color: #000000;" class="money"><span style="font-size: 11px;">[Membership_Fee__c]</span></td>
+							<td style="width: 16%; background-color: #ffffff; border-color: #000000;" class="money"><span style="font-size: 11px;">[Membership_Fee__c * SBQQ__Quantity__c]</span></td>
+							<!-- We have to do a data-repeat here because the Consult_Fees_Calculated__c value is coming from a different product -->
+							<td style="width: 16%; background-color: #ffffff; border-color: #000000;"><span class="money" data-repeat="product in SBQQ__LineItems__r" data-filter="SBQQ__ProductName__c LIKE 'GM - Consult Fee'" style="font-size: 11px;">[product.Consult_Fees_Calculated__c]</span></td>
+							<td style="width: 16%; background-color: #ffffff; border-color: #000000;"><span style="font-size: 11px;">--</span></td>
+						</tr>
+						<tr data-show-if="SBQQ__ProductName__c LIKE 'Derm Fee/Visit'">
+							<td style="width: 20%; background-color: #ffffff; border-color: #000000;"><span style="font-size: 11px;"><strong>Dermatology</strong></span></td>
+							<td style="width: 16%; background-color: #ffffff; border-color: #000000;" class="integer"><span style="font-size: 11px;"><span>[SBQQ__Quantity__c]</span></span></td>
+							<td style="width: 16%; background-color: #ffffff; border-color: #000000;" class="money"><span style="font-size: 11px;">--</span></td>
+							<td style="width: 16%; background-color: #ffffff; border-color: #000000;" class="money"><span style="font-size: 11px;">--</span></td>
+							<td style="width: 16%; background-color: #ffffff; border-color: #000000;" class="money"><span style="font-size: 11px;">[Consult_Fees_Calculated__c]</span></td>
+							<td style="width: 16%; background-color: #ffffff; border-color: #000000;"><span style="font-size: 11px;">--</span></td>
+						</tr>
+						<tr data-show-if="SBQQ__ProductName__c LIKE 'Tobacco Cessation'">
+							<td style="width: 20%; background-color: #ffffff; border-color: #000000;"><span style="font-size: 11px;"><strong>Tobacco Cessation</strong></span></td>
+							<td style="width: 16%; background-color: #ffffff; border-color: #000000;" class="integer"><span style="font-size: 11px;"><span>[SBQQ__Quantity__c]</span></span></td>
+							<td style="width: 16%; background-color: #ffffff; border-color: #000000;" class="money"><span style="font-size: 11px;">--</span></td>
+							<td style="width: 16%; background-color: #ffffff; border-color: #000000;" class="money"><span style="font-size: 11px;">--</span></td>
+							<td style="width: 16%; background-color: #ffffff; border-color: #000000;" class="money"><span style="font-size: 11px;">--</span></td>
+							<td style="width: 16%; background-color: #ffffff; border-color: #000000;" class="money"><span style="font-size: 11px;">[Consult_Fees_Calculated__c]</span></td>
+						</tr>
+						<tr data-show-if="SBQQ__ProductName__c LIKE 'Sexual Health'">
+							<td style="width: 20%; background-color: #ffffff; border-color: #000000;"><span style="font-size: 11px;"><strong>Sexual Health</strong></span></td>
+							<td style="width: 16%; background-color: #ffffff; border-color: #000000;" class="integer"><span style="font-size: 11px;"><span>[SBQQ__Quantity__c]</span></span></td>
+							<td style="width: 16%; background-color: #ffffff; border-color: #000000;" class="money"><span style="font-size: 11px;">--</span></td>
+							<td style="width: 16%; background-color: #ffffff; border-color: #000000;" class="money"><span style="font-size: 11px;">--</span></td>
+							<td style="width: 16%; background-color: #ffffff; border-color: #000000;" class="money"><span style="font-size: 11px;">--</span></td>
+							<td style="width: 16%; background-color: #ffffff; border-color: #000000;"><span style="font-size: 11px;">--</span></td>
+						</tr>
+						<!-- This row uses the same SBQQ_Quantity__c value as the General Medical product -->
+						<tr data-filter="SBQQ__ProductName__c LIKE 'General Medical'">
+							<td style="width: 20%; background-color: #ffffff; border-color: #000000;"><span style="font-size: 11px;"><strong>Caregiver</strong></span></td>
+							<td style="width: 16%; background-color: #ffffff; border-color: #000000;" class="integer"><span style="font-size: 11px;"><span>[SBQQ__Quantity__c]</span></span></td>
+							<td style="width: 16%; background-color: #ffffff; border-color: #000000;" class="money"><span style="font-size: 11px;">--</span></td>
+							<td style="width: 16%; background-color: #ffffff; border-color: #000000;" class="money"><span style="font-size: 11px;">--</span></td>
+							<td style="width: 16%; background-color: #ffffff; border-color: #000000;" class="money"><span style="font-size: 11px;">$45.00</span></td>
+							<td style="width: 16%; background-color: #ffffff; border-color: #000000; text-align: left;"><span style="font-size: 11px;">--</span></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div class="grid">
+			<div data-source="SBQQ__LineItems__r" data-show-if="SBQQ__ProductName__c LIKE 'Behavioral Health'">
+				<div class="unit one-quarter">
+					<p></p>
+					<p></p>
+					<p><span style="font-size: 11px;"><span>Employers can also add Behavioral Health services at an additional PEPM fee.</span></span></p>
+				</div>
+				<div class="unit three-quarters">
+					<table style="width: 100%;" data-source="SBQQ__LineItems__r">
+						<tbody>
+							<tr>
+								<td style="padding-left: 15px; width: 20%; background-color: #ffffff; border-color: #000000;">
+									<h3><span style="font-size: 11px;"><strong>Service</strong></span></h3>
+								</td>
+								<td style="width: 16%; background-color: #ffffff; border-color: #000000;">
+									<h3><span style="font-size: 11px;"><strong>Enrolled Employees</strong></span></h3>
+								</td>
+								<td style="width: 16%; background-color: #ffffff; border-color: #000000;" class="money">
+									<h3><span style="font-size: 11px;"><strong>PEPM</strong></span></h3>
+								</td>
+								<td style="width: 16%; background-color: #ffffff; border-color: #000000;" class="money">
+									<h3><span style="font-size: 11px;"><strong>Total Monthly Cost</strong></span></h3>
+								</td>
+								<td style="width: 16%; background-color: #ffffff; border-color: #000000;" class="money">
+									<h3><span style="font-size: 11px;"><strong>Visit Fee</strong></span></h3>
+								</td>
+								<td style="width: 16%; background-color: #ffffff; border-color: #ffffff;"></td>
+							</tr>
+							<tr data-show-if="SBQQ__ProductName__c LIKE 'Behavioral Health'">
+								<td style="width: 20%; background-color: #ffffff; border-color: #000000;"><span style="font-size: 11px;"><strong>Behavioral Health*</strong></span></td>
+								<td style="width: 16%; background-color: #ffffff; border-color: #000000;" class="integer"><span style="font-size: 11px;">[SBQQ__Quantity__c]</span></td>
+								<td style="width: 16%; background-color: #ffffff; border-color: #000000;" class="money"><span style="font-size: 11px;">[Membership_Fee__c]</span></td>
+								<td style="width: 16%; background-color: #ffffff; border-color: #000000;" class="money"><span style="font-size: 11px;">[Membership_Fee__c * SBQQ__Quantity__c]</span></td>
+								<td style="width: 16%; background-color: #ffffff; border-color: #000000;" class="money"><span style="font-size: 11px;">--</span></td>
+								<td style="width: 16%; background-color: #ffffff; border-color: #ffffff;"></td>
+							</tr>
+							<tr data-filter="SBQQ__ProductCode__c == 'BHP1T'">
+								<td style="padding-left: 15px; width: 20%; background-color: #ffffff; border-color: #000000;"><span style="font-size: 11px;"><strong>Psychiatrist (First Visit)</strong></span></td>
+								<td style="width: 16%; background-color: #ffffff; border-color: #000000;" class="money"><span style="font-size: 11px;">--</span></td>
+								<td style="width: 16%; background-color: #ffffff; border-color: #000000;" class="money"><span style="font-size: 11px;">--</span></td>
+								<td style="width: 16%; background-color: #ffffff; border-color: #000000;" class="money"><span style="font-size: 11px;">--</span></td>
+								<td style="width: 16%; background-color: #ffffff; border-color: #000000;" class="money"><span style="font-size: 11px;">[Consult_Fees_Calculated__c]</span></td>
+								<td style="width: 16%; background-color: #ffffff; border-color: #ffffff;"></td>
+							</tr>
+							<tr data-filter="SBQQ__ProductCode__c == 'BHPOT'">
+								<td style="padding-left: 15px; width: 20%; background-color: #ffffff; border-color: #000000;"><span style="font-size: 11px;"><strong>Ongoing Psychiatrist</strong></span></td>
+								<td style="width: 16%; background-color: #ffffff; border-color: #000000;" class="money"><span style="font-size: 11px;">--</span></td>
+								<td style="width: 16%; background-color: #ffffff; border-color: #000000;" class="money"><span style="font-size: 11px;">--</span></td>
+								<td style="width: 16%; background-color: #ffffff; border-color: #000000;" class="money"><span style="font-size: 11px;">--</span></td>
+								<td style="width: 16%; background-color: #ffffff; border-color: #000000;" class="money"><span style="font-size: 11px;">[Consult_Fees_Calculated__c]</span></td>
+								<td style="width: 16%; background-color: #ffffff; border-color: #ffffff;"></td>
+							</tr>
+							<tr data-filter="SBQQ__ProductCode__c == 'BHNPT'">
+								<td style="padding-left: 15px; width: 20%; background-color: #ffffff; border-color: #000000;"><span style="font-size: 11px;"><strong>Therapist</strong></span></td>
+								<td style="width: 16%; background-color: #ffffff; border-color: #000000;" class="money"><span style="font-size: 11px;">--</span></td>
+								<td style="width: 16%; background-color: #ffffff; border-color: #000000;" class="money"><span style="font-size: 11px;">--</span></td>
+								<td style="width: 16%; background-color: #ffffff; border-color: #000000;" class="money"><span style="font-size: 11px;">--</span></td>
+								<td style="width: 16%; background-color: #ffffff; border-color: #000000;" class="money"><span style="font-size: 11px;">[Consult_Fees_Calculated__c]</span></td>
+								<td style="width: 16%; background-color: #ffffff; border-color: #ffffff;"></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+		<table>
+			<tbody>
+				<tr>
+					<td style="padding: 10px; width: 44.3521%; border-color: #efeded; background-color: #efeded; vertical-align: top;">
+						<h3><span style="font-size: 12px;"><strong>PEPM price includes:</strong></span></h3>
+						<ul>
+							<li><span style="font-size: 11px;">Fully integrated, multi-channel member marketing program</span></li>
+							<li><span style="font-size: 11px;">Engagement consulting and in-house design support to assist with the development of your own custom marketing and engagement programs</span></li>
+						</ul>
+					</td>
+					<td style="width: 48.6479%; border-color: #efeded; background-color: #efeded;">
+						<ul>
+							<li><span style="font-size: 11px;"><span>Access to a secure digital communications portal </span></span></li>
+							<li><span style="font-size: 11px;"><span>1-800 member service center support, 24/7 </span></span></li>
+							<li><span style="font-size: 11px;"><span>Online registration and medical history (MH) </span></span></li>
+							<li><span style="font-size: 11px;"><span>Free portable Electronic Health Record (EHR)</span><br /></span></li>
+						</ul>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<p><img style="width: 100%;" src="https://mytinder.s3.amazonaws.com/assets/medias/349061_thumb.PNG?1471375335" alt="" height="3" /></p>
+		<div data-repeat="products in SBQQ__LineItems__r" data-filter="SBQQ__ProductCode__c == 'GMCF'">
+			<h5><span>*For these services, the Plan Sponsor can determine how much of the Visit Fee is paid by the member versus the plan. Generally, plan designs with low or no member contribution result in high utilization and therefore the greater ROI. The PEPM is based upon the estimated number of enrolled employees listed above and may be subject to change based upon actual enrollment. </span></h5>
+			<h5><span>**Sexual Health lab fees and Caregiver visit fees paid by member.</span></h5>
+		</div>
+	</div>
+	<div style="page-break-after: always;"><span style="display: none;">&nbsp;</span></div>
+</div>
+<div data-show-if="GM_Product_Count__c != 0 AND GM_Included_Count__c != 0">
+	<div data-source="SBQQ_LineItems__r"><!-- This print-only is so that spacing on the PDF is good -->
+	<div class="print-only">
+		<p>&nbsp;</p>
+	</div>
+	<h1 style="text-align: center;"><span style="font-size: 30px;">Fees - Visits Included Model</span></h1>
+	<p></p>
+	<p><span><img src="https://mytinder.s3.amazonaws.com/assets/medias/519958_web.PNG?1504034828" /></span></p>
+	<div class="grid">
+		<div class="unit two-thirds">
+			<p><span style="font-size: 11px;">Our General Medical offering includes the following products at no additional PEPM.</span></p>
+			<table style="width: 100%;" data-source="SBQQ__LineItems__r">
+				<tbody>
+					<tr>
+						<td style="width: 22%; background-color: #ffffff; border-color: #000000;">
+							<h3><span style="font-size: 11px;"><strong>Service</strong></span></h3>
+						</td>
+						<td style="width: 20%; background-color: #ffffff; border-color: #000000;">
+							<h3><span style="font-size: 11px;"><strong>Enrolled Employees</strong></span></h3>
+						</td>
+						<td style="width: 20%; background-color: #ffffff; border-color: #000000;" class="money">
+							<h3><span style="font-size: 11px;"><strong>PEPM</strong></span></h3>
+						</td>
+						<td style="width: 20%; background-color: #ffffff; border-color: #000000;" class="money">
+							<h3><span style="font-size: 11px;"><strong>Total Monthly Cost</strong></span></h3>
+						</td>
+						<td style="width: 18%; background-color: #ffffff; border-color: #000000;">
+							<h3><span style="font-size: 11px;"><strong>Visit Fee</strong></span></h3>
+						</td>
+					</tr>
+					<tr data-show-if="SBQQ__ProductName__c LIKE 'General Medical'">
+						<td style="width: 22%; background-color: #ffffff; border-color: #000000;"><span style="font-size: 11px;"><strong>General Medical*</strong></span></td>
+						<td style="width: 20%; background-color: #ffffff; border-color: #000000;" class="integer"><span style="font-size: 11px;">[SBQQ__Quantity__c]</span></td>
+						<td style="width: 20%; background-color: #ffffff; border-color: #000000;" class="money"><span style="font-size: 11px;">[Membership_Fee__c]</span></td>
+						<td style="width: 20%; background-color: #ffffff; border-color: #000000;" class="money"><span style="font-size: 11px;">[Membership_Fee__c * SBQQ__Quantity__c]</span></td>
+						<!-- We have to do a data-repeat here because the Consult_Fees_Calculated__c value is coming from a different product -->
+						<td style="width: 18%; background-color: #ffffff; border-color: #000000;"><span class="money" data-repeat="product in SBQQ__LineItems__r" data-filter="SBQQ__ProductName__c LIKE 'GM - Consult Fee'" style="font-size: 11px;">[product.Consult_Fees_Calculated__c]</span></td>
+					</tr>
+					<tr data-show-if="SBQQ__ProductName__c LIKE 'Derm Fee/Visit'">
+						<td style="width: 22%; background-color: #ffffff; border-color: #000000;"><span style="font-size: 11px;"><strong>Dermatology**</strong></span></td>
+						<td style="width: 20%; background-color: #ffffff; border-color: #000000;" class="integer"><span style="font-size: 11px;"><span>[SBQQ__Quantity__c]</span></span></td>
+						<td style="width: 20%; background-color: #ffffff; border-color: #000000;" class="money"><span style="font-size: 11px;">--</span></td>
+						<td style="width: 20%; background-color: #ffffff; border-color: #000000;" class="money"><span style="font-size: 11px;">--</span></td>
+						<td style="width: 18%; background-color: #ffffff; border-color: #000000;" class="money"><span style="font-size: 11px;">[Consult_Fees_Calculated__c]</span></td>
+					</tr>
+					<tr data-show-if="SBQQ__ProductName__c LIKE 'Sexual Health'">
+						<td style="width: 22%; background-color: #ffffff; border-color: #000000;"><span style="font-size: 11px;"><strong>Sexual Health**</strong></span></td>
+						<td style="width: 20%; background-color: #ffffff; border-color: #000000;" class="integer"><span style="font-size: 11px;"><span>[SBQQ__Quantity__c]</span></span></td>
+						<td style="width: 20%; background-color: #ffffff; border-color: #000000;" class="money"><span style="font-size: 11px;">--</span></td>
+						<td style="width: 20%; background-color: #ffffff; border-color: #000000;" class="money"><span style="font-size: 11px;">--</span></td>
+						<td style="width: 18%; background-color: #ffffff; border-color: #000000;" class="money"><span style="font-size: 11px;">[Consult_Fees_Calculated__c]</span></td>
+					</tr>
+					<!-- This row uses the same SBQQ_Quantity__c value as the General Medical product -->
+					<tr data-filter="SBQQ__ProductName__c LIKE 'General Medical'">
+						<td style="width: 22%; background-color: #ffffff; border-color: #000000;"><span style="font-size: 11px;"><strong>Caregiver**</strong></span></td>
+						<td style="width: 20%; background-color: #ffffff; border-color: #000000;" class="integer"><span style="font-size: 11px;">[SBQQ__Quantity__c]</span></td>
+						<td style="width: 20%; background-color: #ffffff; border-color: #000000;" class="money"><span style="font-size: 11px;">--</span></td>
+						<td style="width: 20%; background-color: #ffffff; border-color: #000000;" class="money"><span style="font-size: 11px;">--</span></td>
+						<td style="width: 18%; background-color: #ffffff; border-color: #000000;" class="money"><span style="font-size: 11px;"><span>$45.00</span></span></td>
+					</tr>
+				</tbody>
+			</table>
+			<div data-show-if="SBQQ__ProductName__c LIKE 'Behavioral Health'" data-source="SBQQ__LineItems__r">
+				<p><span style="font-size: 11px;"></span></p>
+				<p><span style="font-size: 11px;">Employers can also add Behavioral Health services at no&nbsp;</span><span style="font-size: 11px;">additional PEPM fee.</span></p>
+				<table style="width: 100%;" data-source="SBQQ__LineItems__r">
+					<tbody>
+						<tr>
+							<td style="padding-left: 15px; width: 22%; background-color: #ffffff; border-color: #000000;">
+								<h3><span style="font-size: 11px;"><strong>Service</strong></span></h3>
+							</td>
+							<td style="width: 20%; background-color: #ffffff; border-color: #000000;">
+								<h3><span style="font-size: 11px;"><strong>Enrolled Employees</strong></span></h3>
+							</td>
+							<td style="width: 20%; background-color: #ffffff; border-color: #000000;">
+								<h3><span style="font-size: 11px;"><strong>PEPM</strong></span></h3>
+							</td>
+							<td style="width: 20%; background-color: #ffffff; border-color: #000000;">
+								<h3><span style="font-size: 11px;"><strong>Total Monthly&nbsp;</strong></span><span style="font-size: 11px;"><strong>Cost</strong></span></h3>
+							</td>
+							<td style="width: 18%; background-color: #ffffff; border-color: #000000;" class="money">
+								<h3><span style="font-size: 11px;"><strong>Visit Fee</strong></span></h3>
+							</td>
+						</tr>
+						<tr data-filter="SBQQ__ProductName__c LIKE 'Behavioral Health'">
+							<td style="width: 22%; background-color: #ffffff; border-color: #000000;"><span style="font-size: 11px;"><strong>Behavioral Health*</strong></span></td>
+							<td style="width: 20%; background-color: #ffffff; border-color: #000000;" class="integer"><span style="font-size: 11px;">[SBQQ__Quantity__c]</span></td>
+							<td style="width: 20%; background-color: #ffffff; border-color: #000000;" class="money"><span style="font-size: 11px;">[Membership_Fee__c]</span></td>
+							<td style="width: 20%; background-color: #ffffff; border-color: #000000;" class="money"><span style="font-size: 11px;">[Membership_Fee__c * SBQQ__Quantity__c]</span></td>
+							<td style="width: 18%; background-color: #ffffff; border-color: #000000;" class="money"><span style="font-size: 11px;">--</span></td>
+						</tr>
+						<tr data-filter="SBQQ__ProductCode__c == 'BHP1T'">
+							<td style="padding-left: 15px; width: 22%; background-color: #ffffff; border-color: #000000;"><span style="font-size: 11px;"><strong>Psychiatrist (First Visit)</strong></span></td>
+							<td style="width: 20%; background-color: #ffffff; border-color: #000000;"><span style="font-size: 11px;">--</span></td>
+							<td style="width: 20%; background-color: #ffffff; border-color: #000000;"><span style="font-size: 11px;">--</span></td>
+							<td style="width: 20%; background-color: #ffffff; border-color: #000000;"><span style="font-size: 11px;">--</span></td>
+							<td style="width: 18%; background-color: #ffffff; border-color: #000000;" class="money"><span style="font-size: 11px;">[Consult_Fees_Calculated__c]</span></td>
+						</tr>
+						<tr data-filter="SBQQ__ProductCode__c == 'BHPOT'">
+							<td style="padding-left: 15px; width: 20.4144%; background-color: #ffffff; border-color: #000000;"><span style="font-size: 11px;"><strong>Ongoing Psychiatrist</strong></span></td>
+							<td style="width: 18%; background-color: #ffffff; border-color: #000000;"><span style="font-size: 11px;">--</span></td>
+							<td style="width: 18%; background-color: #ffffff; border-color: #000000;"><span style="font-size: 11px;">--</span></td>
+							<td style="width: 18%; background-color: #ffffff; border-color: #000000;"><span style="font-size: 11px;">--</span></td>
+							<td style="width: 18%; background-color: #ffffff; border-color: #000000;" class="money"><span style="font-size: 11px;">[Consult_Fees_Calculated__c]</span></td>
+						</tr>
+						<tr data-filter="SBQQ__ProductCode__c == 'BHNPT'">
+							<td style="padding-left: 15px; width: 20.4144%; background-color: #ffffff; border-color: #000000;"><span style="font-size: 11px;"><strong>Therapist</strong></span></td>
+							<td style="width: 18%; background-color: #ffffff; border-color: #000000;"><span style="font-size: 11px;">--</span></td>
+							<td style="width: 18%; background-color: #ffffff; border-color: #000000;"><span style="font-size: 11px;">--</span></td>
+							<td style="width: 18%; background-color: #ffffff; border-color: #000000;"><span style="font-size: 11px;">--</span></td>
+							<td style="width: 18%; background-color: #ffffff; border-color: #000000;" class="money"><span style="font-size: 11px;">[Consult_Fees_Calculated__c]</span></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div class="unit one-third">
+			<table class="custom_pricing" style="width: 100%;" data-source="SBQQ__LineItems__r" data-filter="Initial_Utilization_Cap__c IS PRESENT">
+				<tbody>
+					<tr>
+						<td style="width: 100%; border-color: #ffffff; background-color: #ffffff;" class="integer">
+							<h3>&nbsp;</h3>
+							<h3>&nbsp;</h3>
+							<h3>&nbsp;</h3>
+							<h3><span><strong>PEPM price includes:</strong><br /></span></h3>
+							<ul>
+								<li><span style="font-size: 11px;">[Initial_Utilization_Cap__c]% Uitilization Cap</span></li>
+								<li><span style="font-size: 11px;"><span>Fully integrated, multi-channel member marketing program</span></span></li>
+								<li><span style="font-size: 11px;"><span>Access to a secure digital communications portal</span></span></li>
+								<li><span style="font-size: 11px;"><span>1-800 member service center support, 24/7</span></span></li>
+								<li><span style="font-size: 11px;"><span>Online registration and Medical History (MH)</span></span></li>
+								<li><span style="font-size: 11px;"><span>Free portable Electronic Health Record (EHR)</span></span></li>
+							</ul>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<p><img style="font-size: 11px; width: 100%;" src="https://mytinder.s3.amazonaws.com/assets/medias/349061_thumb.PNG?1471375335" alt="" /></p>
+	<h5><span>*The PEPM price includes an agreed-upon annual utilization, &ldquo;The Utilization Cap.&rdquo; If actual utilization for a year exceeds the current year&rsquo;s Utilization Cap, the PEPM shall increase by $0.25 for each 5% increment of Utilization more than the Utilization Cap for the next Renewal Term. A new Utilization Cap will be set by rounding up the actual utilization in the plan year to the nearest 5% for the next year. For example, if utilization in year 1 is 23%, the Utilization Cap in year 2 would be 25%, and the PEPM would rise by $0.25 over the prior year price. If actual utilization for a year does not exceed the agreed upon Utilization Cap, Teladoc reserves the right to increase the PEPM by up to 5% for the next Renewal Term. The PEPM is based upon the estimated number of enrolled employees listed above and may be subject to change based upon actual enrollment. </span></h5>
+	<h5><span>**Sexual Health lab fees, Dermatology and Caregiver visit fees paid by member.</span></h5>
+	<div style="page-break-after: always;"><span style="display: none;">&nbsp;</span></div>
+</div>
+</div>

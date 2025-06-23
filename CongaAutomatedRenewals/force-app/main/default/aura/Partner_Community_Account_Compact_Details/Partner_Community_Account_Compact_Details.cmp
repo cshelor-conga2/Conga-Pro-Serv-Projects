@@ -1,0 +1,7 @@
+<aura:component implements="force:appHostable,forceCommunity:availableForAllPageTypes" access="global">
+    <lightning:recordViewForm recordId="{!CurrentUser.accountId}" objectApiName="Account">
+        <div class="slds-box">
+            <lightning:outputField fieldName="Name" />
+        </div>
+    </lightning:recordViewForm>
+</aura:component>

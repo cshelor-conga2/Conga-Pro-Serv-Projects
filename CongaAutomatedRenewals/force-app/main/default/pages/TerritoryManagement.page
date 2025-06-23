@@ -1,0 +1,161 @@
+<apex:page controller="TerritoryManagementController" showHeader="true" sidebar="true">
+    <style>
+        .centerAlign {
+            text-align: center;
+        }
+
+        .pbSubheader {
+            margin-top: 3px;
+            margin-bottom: 3px;
+        }
+    </style>
+    <apex:form id="frm" >
+        <apex:pageMessages ></apex:pageMessages>
+        <apex:pageBlock id="pgBlk" title="Conga Territory Management">
+            <apex:pageBlockSection id="filters" columns="1">
+
+                <apex:pageBlockSectionItem >
+                    <apex:outputlabel value="Select Geo: " />
+                    <apex:selectList id="geoList" size="1" value="{!SelectedGeo}" disabled="{!SelectedGeo = 'NoGeos'}" >
+                        <apex:selectOptions value="{!Geos}"/>
+                        <apex:actionSupport event="onchange" action="{!loadRegions}" reRender="regionList, terrSegmentsSection, terrDivisionsSection" status="loadingStatus" />
+                    </apex:selectList>
+                </apex:pageBlockSectionItem>
+
+                <apex:pageBlockSectionItem >
+                    <apex:outputlabel value="Select Region: " />
+                    <apex:selectList id="regionList" size="1" value="{!SelectedRegion}" disabled="{!SelectedRegion = 'ChooseGeo' || SelectedRegion = 'NoRegions'}" >
+                        <apex:selectOptions value="{!Regions}"/>
+                        <apex:actionSupport event="onchange" action="{!loadSegments}" reRender="terrSegmentsSection, terrDivisionsSection" status="loadingStatus" />
+                    </apex:selectList>
+                </apex:pageBlockSectionItem>
+
+          <!--       <apex:pageBlockSectionItem>
+                    <apex:outputlabel value="Select Territory: " />
+                    <apex:selectList id="territoryList" size="1" value="{!SelectedTerritory}"  disabled="{!SelectedTerritory = 'ChooseRegion' || SelectedTerritory = 'NoTerritories'}" >
+                        <apex:selectOptions value="{!Territories}"/>
+                        <apex:actionSupport event="onchange" action="{!loadSegments}" reRender="terrSegmentsSection, terrDivisionsSection" status="loadingStatus" />
+                    </apex:selectList>
+                </apex:pageBlockSectionItem> -->
+
+            </apex:pageBlockSection>
+            <apex:actionStatus id="loadingStatus" startText="Loading..." stopText="" startStyle="font-size: 1.2em; font-weight: bold; text-align: left;" />
+            <apex:actionStatus id="savingStatus" startText="Saving..." stopText="" startStyle="font-size: 1.2em; font-weight: bold; text-align: left;" />
+            <br/><br/>
+            <apex:pageBlockSection id="terrSegmentsSection" columns="1">
+
+                <apex:pageBlockSectionItem >
+                    <apex:outputlabel value="Select Segment: " />
+                    <apex:selectList id="segmentList" size="1" value="{!SelectedSegment}"  disabled="{!SelectedRegion = 'ChooseRegion' || SelectedRegion = 'NoRegions' || SelectedRegion = 'ChooseGeo'}" >
+                        <apex:selectOptions value="{!Segments}"/>
+                        <apex:actionSupport event="onchange" action="{!loadTerritorySegments}" reRender="terrSegmentsSection" status="loadingStatus" />
+                    </apex:selectList>
+                </apex:pageBlockSectionItem>
+
+                <apex:facet name="header">
+                    <apex:outputText style="font-size: 1.2em; font-weight: bolder; color: #ffffff" value="Segment Territories" />
+                </apex:facet>
+                <apex:outputText style="color: red; text-align: right;" value="*** CLM User changes will only affect opportunities created hereafter." rendered="{!TerrSegmentWrappers != null && TerrSegmentWrappers.size > 0}"/>
+
+                <apex:repeat id="terrSegmentsRepeat" value="{!TerrSegmentWrappers}" var="territorySegment" rendered="{!TerrSegmentWrappers != null && TerrSegmentWrappers.size > 0}">
+                    <apex:pageBlockSection id="terrSegmentsRepeatedSection" columns="1">
+                    <script> twistSection(document.getElementById('img_{!$Component.terrSegmentsRepeatedSection}')); </script>
+                        <apex:facet name="header">
+                            <apex:outputPanel layout="inline">
+                                <apex:outputLink style="font-size: 1.1em; font-weight: bold; color: #ffffff;" target="_blank" value="/{!territorySegment.RecordId}" > {!territorySegment.RecordName}</apex:outputLink>
+                            </apex:outputPanel>
+                        </apex:facet>
+                        <apex:commandButton id="addTSEntry" value="Add Entry to {!territorySegment.RecordName}" reRender="segmentUsersTable" action="{!addTSUserEntry}" status="loadingStatus">
+                            <apex:param name="tsId" value="{!territorySegment.RecordId}" assignTo="{!NewEntryTSId}" />
+                        </apex:commandButton>
+                        <apex:pageBlockTable id="segmentUsersTable" value="{!territorySegment.UserWrappers}" var="userWrapper" columnsWidth="15%,30%,20%,35%">
+
+                            <apex:column styleClass="centerAlign" headerValue="Assigned TM User" headerClass="centerAlign">
+                                <apex:selectList size="1" value="{!userWrapper.SelectedTMUserId}" id="TMList" >
+                                    <apex:selectOptions value="{!TMUsers}" />
+                                    <apex:actionSupport event="onchange" reRender="segmentUserMessages" />
+                                </apex:selectList>
+                            </apex:column>
+
+                            <apex:column styleClass="centerAlign" headerValue="Industries" headerClass="centerAlign">
+                                <apex:inputField label="Industry" value="{!userWrapper.IndustriesRecord.Applicable_Industries__c}" required="false">
+                                    <apex:actionSupport event="onchange" reRender="segmentUserMessages" />
+                                </apex:inputField>
+                            </apex:column>
+
+                            <apex:column styleClass="centerAlign" headerValue="Assigned CLM User" headerClass="centerAlign" >
+                                <apex:selectList size="1" value="{!userWrapper.SelectedCLMUserId}" id="CLMList"  >
+                                    <apex:selectOptions value="{!CLMUsers}" />
+                                    <apex:actionSupport event="onchange" reRender="segmentUserMessages" />
+                                </apex:selectList>
+                            </apex:column>
+
+                            <apex:column id="segmentUserMessages" style="text-align: center; font-weight: bold; color: red" headerValue="- Pending Changes -" headerClass="centerAlign">
+                                <apex:outputText value="{!IF(userWrapper.RecordId != null && userWrapper.SelectedTMUserId != userWrapper.OriginalTMUserId, 'Assigned TM Changed', '')}" />
+                                <br/><br/><br/>
+                                <apex:outputText value="{!IF(userWrapper.RecordId != null && userWrapper.OriginalIndustries != userWrapper.IndustriesRecord.Applicable_Industries__c, 'Industries Changed', '')}" />
+                                <apex:outputText value="{!IF(userWrapper.RecordId == null, 'NEW', '')}" />
+                                <br/><br/><br/>
+                                <apex:outputText value="{!IF(userWrapper.RecordId != null && userWrapper.SelectedCLMUserId != userWrapper.OriginalCLMUserId, 'Assigned CLM Changed ***', '')}" />
+                            </apex:column>  
+
+                        </apex:pageBlockTable>
+                    </apex:pageBlockSection>
+                </apex:repeat>
+            </apex:pageBlockSection>
+
+            <apex:pageBlockSection id="terrDivisionsSection" columns="1">
+
+                <apex:pageBlockSectionItem >
+                    <apex:outputlabel value="Select Division: " />
+                    <apex:selectList id="divisionList" size="1" value="{!SelectedDivision}"  disabled="{!SelectedRegion = 'ChooseRegion' || SelectedRegion = 'NoRegions' || SelectedRegion = 'ChooseGeo'}" >
+                        <apex:selectOptions value="{!Divisions}"/>
+                        <apex:actionSupport event="onchange" action="{!loadTerritoryDivisions}" reRender="terrDivisionsSection" status="loadingStatus" />
+                    </apex:selectList>
+                </apex:pageBlockSectionItem>
+
+                <apex:facet name="header">
+                    <apex:outputText style="font-size: 1.2em; font-weight: bolder; color: #ffffff" value="Division Territories" />
+                </apex:facet>
+                    <apex:repeat id="terrDivisionsRepeat" value="{!TerrDivisionWrappers}" var="territoryDivision" rendered="{!TerrDivisionWrappers != null && TerrDivisionWrappers.size > 0}">
+                        <apex:pageBlockSection id="terrDivisionsRepeatedSection" columns="1">
+                        <script> twistSection(document.getElementById('img_{!$Component.terrDivisionsRepeatedSection}')); </script>
+                            <apex:facet name="header">
+                                <apex:outputPanel layout="inline">
+                                    <apex:outputLink style="font-size: 1.1em; font-weight: bold; color: #ffffff;" target="_blank" value="/{!territoryDivision.RecordId}" > {!territoryDivision.RecordName}</apex:outputLink>
+                                </apex:outputPanel>
+                            </apex:facet>
+                            <apex:pageBlockTable id="divisionUsersTable" value="{!territoryDivision.UserWrappers}" var="userWrapper" columnsWidth="15%,30%,20%,35%">
+                                
+                                <apex:column styleClass="centerAlign" headerValue="Assigned CSM User" headerClass="centerAlign">
+                                    <apex:selectList id="availableCSMList" size="1" value="{!userWrapper.SelectedCSMUserId}">
+                                        <apex:selectOptions value="{!CSMUsers}"/>
+                                        <apex:actionSupport event="onchange" reRender="divisionUserMessages" />
+                                    </apex:selectList>
+                                </apex:column>
+
+                                <apex:column styleClass="centerAlign" headerValue="Assigned RM User" headerClass="centerAlign">
+                                    <apex:selectList id="availableRMList" size="1" value="{!userWrapper.SelectedRMUserId}">
+                                        <apex:selectOptions value="{!RMUsers}"/>
+                                        <apex:actionSupport event="onchange" reRender="divisionUserMessages" />
+                                    </apex:selectList>
+                                </apex:column>
+
+                                <apex:column id="divisionUserMessages" style="text-align:center; font-weight:bold; color:red" headerValue="- Pending Changes -" headerClass="centerAlign">
+                                    <apex:outputText value="{!IF(userWrapper.SelectedCSMUserId != userWrapper.OriginalCSMUserId, 'Assigned CSM Changed', '')}" />
+                                    <br/>
+                                    <apex:outputText value="{!IF(userWrapper.SelectedRMUserId != userWrapper.OriginalRMUserId, 'Assigned RM Changed', '')}" />
+                                </apex:column>
+
+                            </apex:pageBlockTable>
+                        </apex:pageBlockSection>
+                    </apex:repeat>
+                </apex:pageBlockSection>
+            <br/>
+            <apex:pageBlockButtons id="buttons">
+                <apex:commandButton id="saveButton" value="Save Changes" action="{!saveChanges}" reRender="frm" status="savingStatus" />
+                <apex:commandButton id="revertButton" value="Revert" action="{!revertChanges}" reRender="frm" status="loadingStatus" />
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

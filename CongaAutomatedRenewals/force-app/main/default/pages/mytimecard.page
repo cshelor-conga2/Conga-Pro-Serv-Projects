@@ -1,0 +1,291 @@
+<apex:page docType="html-5.0" controller="EmployeeTimeCardController" showHeader="false" sidebar="false" applyHtmlTag="false" applyBodyTag="false" standardStyleSheets="false">
+    <html lang="en">
+        <head>
+            <meta charset="utf-8"></meta>
+            <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+            <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+            <meta name="description" content="Describes the MyTimeCard App"></meta>
+            <meta name="author" content="Joseph Markey"></meta>
+            <title>Conga | My Time Card</title>
+            <link rel="icon" href="{!URLFOR($Resource.Favicon)}" type="image/x-icon" />
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+            <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.0.1/fullcalendar.min.css" />
+            <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/smoothness/jquery-ui.css" />
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.min.css" />
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" />
+            <link rel="stylesheet" href="{!URLFOR($Resource.EmployeeTimeCard, 'employeetimecard.css')}" />
+            <!--[if lt IE 9]>
+                <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+                <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+            <![endif]-->
+        </head>
+        <body id="ControllerMyTimeCard" ng-app="AppMyTimeCard" ng-controller="ControllerMyTimeCard">
+            <input type="hidden" id="param-projectId" value="{!project.Id}" />
+            <input type="hidden" id="param-supportRequestId" value="{!supportRequest.Id}" />
+
+            <div id="alert-error" class="alert alert-danger hidden-mytimecard" role="alert">
+                <button id="close-alert-error" type="button" class="close" aria-label="Close"><span aria-hidden="true">×</span></button>
+                <strong>Alert!&#32;</strong><span id="alert-error-message"></span>
+            </div>
+            <div class="modal fade" id="modal-week-notes" tabindex="-1" role="dialog" aria-labelledby="modal-label-selected-user">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <h4 class="modal-title" id="modal-label-selected-user">Add Notes for Entire Period</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p>
+                                <label for="textarea-week-notes">Enter Your Notes for the Entire Period</label>
+                                <textarea id="textarea-week-notes" class="form-control" required="true" placeholder="Enter Your Notes for the Entire Period" ng-model="weekNotes"></textarea>
+                            </p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary" ng-click="updatePeriodNotes()">Save</button>
+                       </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project dialog -->
+            <div class="modal fade" id="modal-project" tabindex="-1" role="dialog" aria-labelledby="modal-label-selected-user">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <h4 class="modal-title" id="modal-label-selected-user"><span ng-bind-html="isEditTimeCardEntry ? 'Edit' : 'Add'"></span> Time Card Entry - Project <span class="conga-red" ng-bind-html="selectedTimeCardEntry.Name" ng-show="isEditTimeCardEntry"></span> (<span class="conga-red" ng-bind="selectedDate | date:'EEEE, MMMM d, y'"></span>)</h4>
+                            <p>Selected Project: <span ng-bind-html="selectedProject.Name"></span></p>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div id="project" class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                                    <h4 class="d-inline-block header-project margin-small">Project</h4>
+                                    <div class="checkbox d-inline-block margin-small">
+                                        <label><input type="checkbox" value="" ng-model="activeOnly" ng-change="changeActive()" />Active Only</label>
+                                    </div>
+                                    <div class="checkbox d-inline-block margin-small">
+                                        <label>Type <select ng-model="projectType" ng-options="x for x in projectTypes" id="project-types" class="form-control" autofocus="true" ng-change="changeProjectType()"></select></label>
+                                    </div>
+                                    <hr class="featurette-divider featurette-divider-small featurette-divider-xs" />
+                                    <input type="text" id="search-projects" placeholder="Search Projects" class="form-control" ng-model="searchProjects" />
+                                    <i id="fa-loader-get-projects" class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+                                    <ul id="ul-projects">
+                                        <li class="hover-hand hover-background" ng-repeat="project in projects | filter: searchProjects" ng-click="selectProject(project, true)">
+                                            <span ng-show="false" ng-bind-html="project.Id"></span><span ng-class="project.Is_Active__c ? '' : 'conga-red'" ng-bind-html="project.Name"></span><span ng-show="!project.Is_Active__c" class="conga-red"> (inactive)</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div id="milestone" class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                                    <h4 class="margin-small">Milestone</h4>
+                                    <hr class="featurette-divider featurette-divider-small" />
+                                    <input type="text" placeholder="Search Milestones" class="form-control" ng-model="searchMilestones" />
+                                    <i id="fa-loader-get-milestones" class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+                                    <ul id="ul-milestones">
+                                        <li class="hover-hand hover-background" ng-repeat="milestone in milestones | filter: searchMilestones" ng-click="selectMilestone(milestone, false)">
+                                            <span ng-show="false" ng-bind-html="milestone.Id"></span><span ng-bind-html="milestone.Name"></span> (<i><small>Hours Remaining: <span ng-bind-html="milestone.Hours_RemainingFx__c" ng-class="milestone.Hours_RemainingFx__c>0 ? 'text-success' : 'conga-red'"></span></small></i>)
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div id="assignment" class="col-xs-12 col-sm-4 col-md-4 col-lg-4 hidden-mytimecard">
+                                    <h4 class="margin-small">Assignment</h4>
+                                    <hr class="featurette-divider featurette-divider-small" />
+                                    <input type="text" placeholder="Search Assignments" class="form-control" ng-model="searchAssignments" />
+                                    <i id="fa-loader-get-assignments" class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+                                    <ul id="ul-assignments">
+                                        <li class="hover-hand hover-background" ng-repeat="assignment in assignments | filter: searchAssignments" ng-click="selectAssignment(assignment, false)">
+                                            <span ng-show="false" ng-bind-html="assignment.Id"></span><a ng-href="/{{assignment.Id}}" target="_blank">{{assignment.Name}} </a><span ng-bind-html="assignment.Subject__c"></span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div id="account" class="col-xs-12 col-sm-4 col-md-4 col-lg-4 hidden-mytimecard">
+                                    <h4 class="margin-small">Account</h4>
+                                    <hr class="featurette-divider featurette-divider-small" />
+                                    <input type="text" id="search-accounts" placeholder="Search Accounts" class="form-control" />
+                                    <i id="fa-loader-get-milestones" class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div id="project-details" ng-class="projectType=='Client Project' ? 'col-xs-12 col-sm-12 col-md-4 col-lg-4' : 'col-xs-12 col-sm-12 col-md-6 col-lg-6'">
+                                    <label for="edit-hours">Hours</label>
+                                    <input type="number" min="0" max="40" step=".25" id="edit-hours" class="form-control" required="true" placeholder="Hours" ng-model="selectedTimeCardEntry.Hours_Entered__c" />
+
+                                    <label for="edit-date">Date</label>
+                                    <input id="edit-date" type="text" class="form-control" ng-model="selectedDate" datepicker="true" />
+                                </div>
+
+                                <div id="project-notes" ng-class="projectType=='Client Project' ? 'col-xs-12 col-sm-12 col-md-4 col-lg-4' : 'col-xs-12 col-sm-12 col-md-6 col-lg-6'">
+                                    <label for="edit-week-notes"><span ng-show="projectType=='Client Project'">Client Facing Invoice Details</span><span ng-show="projectType=='Internal Project'">Notes</span></label>
+                                    <textarea id="edit-week-notes" class="form-control" required="true" placeholder="{{projectType=='Client Project' ? 'Client Facing Invoice Details' : ''}}" ng-model="selectedTimeCardEntry.Notes__c"></textarea>
+                                </div>
+                                <div  id="project-internal-notes" ng-class="projectType=='Client Project' ? 'col-xs-12 col-sm-12 col-md-4 col-lg-4' : 'hidden'">
+                                    <label for="edit-internal-comments">Internal Comments</label>
+                                    <textarea id="edit-internal-comments" class="form-control" required="true" placeholder="Internal Comments (optional comment to let the Project Manager know if a discount might be warranted and why)" ng-model="selectedTimeCardEntry.Internal_Comments__c"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <div class="btn-group" role="group">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-danger" ng-click="deleteTimeCardEntry(selectedTimeCardEntry.Id)" ng-show="isEditTimeCardEntry">Delete</button>
+                                <button type="button" class="btn btn-success" ng-click="completeWeek(selectedTimeCardEntry.Id)" ng-show="isEditTimeCardEntry && isMonday() && selectedTimeCardEntry.ProjectId__r.Is_Active__c">Complete Week</button>
+                                <button type="button" class="btn btn-warning" ng-click="cloneTimeCardEntry(selectedTimeCardEntry.Id)" ng-show="isEditTimeCardEntry">Clone</button>
+                                <button type="button" class="btn btn-success" ng-click="saveAndNew()" ng-show="!isEditTimeCardEntry" ng-disabled="!selectedProject.Is_Active__c || !selectedMilestone.Id">Save &amp; New</button>
+                                <button type="button" class="btn btn-primary" ng-click="updateTimeCardEntry()" ng-disabled="!selectedProject.Is_Active__c || !selectedMilestone.Id">Save</button>
+                            </div>
+                       </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Support Request dialog -->
+            <div class="modal fade" id="modal-supportRequest" tabindex="-1" role="dialog" aria-labelledby="modal-label-selected-user">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <h4 class="modal-title" id="modal-label-selected-user"><span ng-bind-html="isEditTimeCardEntry ? 'Edit' : 'Add'"></span> Time Card Entry - Support Request <span class="conga-red" ng-bind-html="selectedTimeCardEntry.Name" ng-show="isEditTimeCardEntry"></span> (<span class="conga-red" ng-bind="selectedDate | date:'EEEE, MMMM d, y'"></span>)</h4>
+                            <p>Selected Support Request: <span ng-bind-html="selectedSupportRequest.Name"></span></p>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div id="supportRequest" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                    <h4 class="d-inline-block header-supportRequest margin-small">Support Request</h4>
+                                    <!-- <div class="checkbox d-inline-block margin-small">
+                                        <label>Status <select ng-model="supportRequestStatus" ng-options="x for x in supportRequestStatuses" id="support-request-statuses" class="form-control" autofocus="true" ng-change="changeSupportRequestStatus()"></select><i id="fa-loader-get-supportRequestStatuses" class="fa fa-spinner fa-pulse fa-3x fa-fw"></i></label>
+                                    </div> -->
+                                    <hr class="featurette-divider featurette-divider-small featurette-divider-xs" />
+                                    <input type="text" id="search-supportRequests" placeholder="Search Support Requests" class="form-control" ng-model="searchSupportRequests" />
+                                    <i id="fa-loader-get-supportRequests" class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+                                    <ul id="ul-supportRequests">
+                                        <li class="hover-hand hover-background" ng-repeat="supportRequest in supportRequests | filter: searchSupportRequests" ng-click="selectSupportRequest(supportRequest, true)">
+                                            <span ng-show="false" ng-bind-html="supportRequest.Id"></span><span ng-class="supportRequest.Status__c != 'Closed' ? '' : 'conga-red'" ng-bind-html="supportRequest.Name + ' (' + supportRequest.Status__c + ')'" />
+                                        </li>
+                                    </ul>
+                                    <i id="supportRequestDetails" class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+                                </div>
+                                <!-- <div id="milestone" class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                                    <h4 class="margin-small">Milestone</h4>
+                                    <hr class="featurette-divider featurette-divider-small" />
+                                    <input type="text" placeholder="Search Milestones" class="form-control" ng-model="searchMilestones" />
+                                    <ul id="ul-milestones">
+                                        <li class="hover-hand hover-background" ng-repeat="milestone in milestones | filter: searchMilestones" ng-click="selectMilestone(milestone, false)">
+                                            <span ng-show="false" ng-bind-html="milestone.Id"></span><span ng-bind-html="milestone.Name"></span> (<i><small>Hours Remaining: <span ng-bind-html="milestone.Hours_RemainingFx__c" ng-class="milestone.Hours_RemainingFx__c>0 ? 'text-success' : 'conga-red'"></span></small></i>)
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div id="account" class="col-xs-12 col-sm-4 col-md-4 col-lg-4 hidden-mytimecard">
+                                    <h4 class="margin-small">Account</h4>
+                                    <hr class="featurette-divider featurette-divider-small" />
+                                    <input type="text" id="search-accounts" placeholder="Search Accounts" class="form-control" />
+                                    <i id="fa-loader-get-milestones" class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+                                </div> -->
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                    <label for="edit-hours">Hours</label>
+                                    <input type="number" min="0" max="40" step=".25" id="edit-hours" class="form-control" required="true" placeholder="Hours" ng-model="selectedTimeCardEntry.Hours_Entered__c" />
+
+                                    <label for="edit-date">Date</label>
+                                    <input id="edit-date" type="text" class="form-control" ng-model="selectedDate" datepicker="true" />
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                    <label for="edit-week-notes">Notes</label>
+                                    <textarea id="edit-week-notes" class="form-control" required="true" ng-model="selectedTimeCardEntry.Notes__c"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <div class="btn-group" role="group">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-danger" ng-click="deleteTimeCardEntry(selectedTimeCardEntry.Id)" ng-show="isEditTimeCardEntry">Delete</button>
+                                <button type="button" class="btn btn-success" ng-click="completeWeek(selectedTimeCardEntry.Id)" ng-show="isEditTimeCardEntry && isMonday() && selectedTimeCardEntry.ProjectId__r.Is_Active__c">Complete Week</button>
+                                <button type="button" class="btn btn-warning" ng-click="cloneTimeCardEntry(selectedTimeCardEntry.Id)" ng-show="isEditTimeCardEntry">Clone</button>
+                                <button type="button" class="btn btn-success" ng-click="saveAndNew()" ng-show="!isEditTimeCardEntry" ng-disabled="!selectedProject.Is_Active__c || !selectedMilestone.Id">Save &amp; New</button>
+                                <button type="button" class="btn btn-primary" ng-click="updateTimeCardEntry()" ng-disabled="!selectedProject.Is_Active__c || !selectedMilestone.Id">Save</button>
+                            </div>
+                       </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="jumbotron">
+               <div class="container">
+                    <img id="img-logo" src="{!URLFOR($Resource.EmployeeTimeCard, 'conga_logo.png')}" class="img-responsive" />
+                    <h1 class="page-header"><span ng-bind-html="user.FirstName"></span>'s Time Card</h1>
+               </div>
+            </div>
+            <div class="marketing container relative">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <h2>Time Card Configuration</h2>
+                        <hr class="featurette-divider" />
+                        <p>
+                            <label for="search-employees">Employee</label>
+                            <input type="text" id="search-employees" placeholder="Search Employees" class="form-control" ng-model="userFullName" autofocus="true" />
+                            <i id="fa-loader-get-user" class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+                        </p>
+                        <p>
+                            <label for="search-periods">Period</label><i>(<label>Status:</label><span ng-class="timeCardHeader.Status__c==='Open' ? 'text-success' : 'conga-red'" ng-bind-html="timeCardHeader.Status__c"></span>)</i> <span ng-bind="period.Start_Date__c | date : 'fullDate' : 'utc'"></span> - <span ng-bind="period.End_Date__c | date : 'fullDate' : 'utc'"></span>
+                            <input type="text" id="search-periods" placeholder="Search Periods" class="form-control" ng-model="period.Name" autofocus="true" />
+                            <i id="fa-loader-get-period" class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+                        </p>
+                        <p>
+                            <label for="time-entry-types">Time Entry Type</label>
+                            <select ng-model="timeEntryType" ng-options="x for x in timeEntryTypes" id="time-entry-types" placeholder="Search Employees" class="form-control" autofocus="true"></select>
+                            <i id="fa-loader-get-timeEntryType" class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+                        </p>
+                        <p class="btn-group">
+                            <button type="button" class="btn btn-default" ng-click="getPreviousPeriod(period)">&laquo;</button>
+                            <button type="button" class="btn btn-default" ng-click="getNextPeriod(period)">&raquo;</button>
+                            <button type="button" class="btn btn-default" ng-click="getCurrentPeriod()">Current Period</button>
+                        </p>
+                        <h2>Time Card Entries</h2>
+                        <hr class="featurette-divider" />
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6"> 
+                                <div class="btn-group" role="group">
+                                    <button type="button" class="btn btn-default" ng-click="backToSalesforce()">« Salesforce</button>
+                                    <button type="button" class="btn btn-danger" ng-click="submitForApproval()" ng-hide="timeCardHeader.Status__c!='Open'">Submit for Approval</button>
+                                    <!--<button type="button" class="btn btn-warning" ng-click="addNotes()" ng-hide="timeCardHeader.Status__c!='Open'">Add Period Notes</button>-->
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 text-right">
+                                <h4 class="d-inline-block period-total">Period Total Hours: </h4><h4 class="d-inline-block" ng-class="getHoursClass()" ng-bind-html="periodTotal"></h4>
+                            </div>
+                        </div>
+                        <p>
+                            <div id="time-card-entry-container">
+                                <i id="fa-loader-time-card-entry" class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+                               <p>
+                                    <div id="calendar"></div>
+                                </p>
+                            </div>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <footer>
+                <p class="pull-right">
+                    <a id="back-to-top" href="#">Top</a>
+                </p>
+                <p>&copy; Copyright 2006–{{currentYear}}. Conga. All Rights Reserved. Various Trademarks Held by Their Respective Owners.</p>
+            </footer>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+            <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js" />
+            <script src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.0.1/fullcalendar.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
+            <script src="//cdn.jsdelivr.net/angularjs/1.5.5/angular.min.js"></script>
+            <script src="//cdn.jsdelivr.net/angularjs/1.5.5/angular-sanitize.min.js"></script>
+            <script src="{!URLFOR($Resource.EmployeeTimeCard, 'employeetimecard.js')}"></script>
+        </body>
+    </html>
+</apex:page>

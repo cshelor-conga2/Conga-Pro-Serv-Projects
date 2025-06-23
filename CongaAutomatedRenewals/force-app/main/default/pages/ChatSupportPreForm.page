@@ -1,0 +1,153 @@
+<apex:page showHeader="false" sidebar="false" applyHtmlTag="false" applyBodyTag="false" standardStylesheets="false" docType="html-5.0">
+<html>
+    <head>
+        <title>Chat Prerequisites</title>        
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    </head>  
+    <body>
+        <div class="container">
+           
+            <p class="lead">
+                To better serve you, please answer the following questions:
+            </p>
+            <form method="post" id="prechatForm">
+                <!--<input type="hidden" name="liveagent.setName(contactFirstName)"/>-->
+    
+                <div class="form-group">
+                    <label for="contactFirstName">First Name*</label>
+                    <input id="contactFirstName" class="form-control" type="text" name="liveagent.prechat:contactFirstName" required="true"/>
+                </div>
+                
+                <div class="form-group">
+                    <label for="contactLastName">Last Name*</label>
+                    <input id="contactLastName" class="form-control" type="text" name="liveagent.prechat:contactLastName" required="true"/>
+                </div>
+                
+                <div class="form-group">
+                    <label for="company">Company*</label>
+                    <input id="company" class="form-control" type="text" name="liveagent.prechat:company" required="true"/>
+                </div>                
+
+                <div class="form-group">
+                    <label for="company">Email*</label>
+                    <input id="company" class="form-control" type="email" name="liveagent.prechat:contactEmail" required="true"/>
+                </div> 
+                
+                <div class="form-group">
+                    <label for="product">Product*</label>
+                    <select id="product" class="form-control" name="liveagent.prechat:product" required="true">
+                        <option value="" selected="true"/>
+                        <option value="Batch">Batch</option> 
+                        <option value="CLM Suit">CLM Suite</option>
+                        <option value="Collaborate">Collaborate</option>
+                        <option value="Composer 7">Composer 7</option> 
+                        <option value="Composer 8">Composer 8</option> 
+                        <option value="Conductor 7">Conductor 7</option>
+                        <option value="Conga Invoice Generation">Conga Invoice Generation</option>
+                        <option value="Conga Quote Generation">Conga Quote Generation</option>
+                        <option value="Contracts">Contracts</option>
+                        <option value="Contracts for Salesforce">Contracts for Salesforce</option>
+                        <option value="Courier">Courier</option>
+                        <option value="Grid">Grid</option>
+                        <option value="Mail Merge">Mail Merge</option>
+                        <option value="Mix">Mix</option>
+                        <option value="Orchestrate">Orchestrate</option>
+                        <option value="Pulse">Pulse</option>
+                        <option value="SalesConnect">SalesConnect</option>
+                        <option value="Sign">Sign</option>
+                        <option value="Trigger">Trigger</option>
+                        <option value="Workflow 7">Workflow 7</option>                            
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="question">Question*</label>
+                    <textarea id="question" class="form-control" name="liveagent.prechat:caseSubject" rows="4" required="true" maxlength="250"/>
+                    <small>250 character limit</small>
+                </div>
+          
+                
+                <!-- Used to set the visitor's name for the agent in the Console -->
+                <input type="hidden" name="liveagent.prechat.name" id="prechat_field_name" />
+                
+                <!-- Map the detail inputs to the Contact fields -->
+                <input type="hidden" name="liveagent.prechat.findorcreate.map:Contact" value="FirstName,contactFirstName;LastName,contactLastName;Email,contactEmail;RecordTypeId,01250000000E0pn" />
+                
+                
+                <!-- Try to find the Contact by email (exact match) -->
+                <input type="hidden" name="liveagent.prechat.findorcreate.map.doFind:Contact" value="Email,true;" />
+                <input type="hidden" name="liveagent.prechat.findorcreate.map.isExactMatch:Contact" value="Email,true;" />
+                
+                <!-- Save the Contact if not found -->
+                <!--<input type="hidden" name="liveagent.prechat.findorcreate.map.doCreate:Contact" value="FirstName,true;LastName,true;Email,true;RecordTypeId,true"/>-->
+            
+                <!-- Save the Contact on the Live Chat Transcript's Contact Loookup -->
+                <input type="hidden" name="liveagent.prechat.findorcreate.saveToTranscript:Contact" value="Contact" />
+                <input type="hidden" name="liveagent.prechat.findorcreate.saveToTranscript:Company__c" value="company" />
+                <input type="hidden" name="liveagent.prechat.findorcreate.saveToTranscript:Product__c" value="product" />
+                
+                <!-- Show the Contact when it is found or created -->
+                <input type="hidden" name="liveagent.prechat.findorcreate.showOnCreate:Contact" value="true" />
+                
+                <!-- Create a Case every time -->
+                <input type="hidden" name="liveagent.prechat:caseOrigin" value="Chat" />
+                <input type="hidden" name="liveagent.prechat.findorcreate.map:Case" value="Origin,caseOrigin;Subject,caseSubject;" />
+                <input type="hidden" name="liveagent.prechat.findorcreate.map.doCreate:Case" value="Origin,true;Subject,true;" />
+                <input type="hidden" name="liveagent.prechat.findorcreate.saveToTranscript:Case" value="Case" />
+                <input type="hidden" name="liveagent.prechat.findorcreate.showOnCreate:Case" value="true" />
+                
+                <!-- Link the Contact to the Case -->
+                <input type= "hidden" name="liveagent.prechat.findorcreate.linkToEntity:Contact" value="Case,ContactId" />
+                <input type= "hidden" name="liveagent.prechat.findorcreate.linkToEntity:Account" value="Case,AccountId" />
+                
+                <button type="submit" class="btn btn-primary" onclick="setName()">Request Chat</button>
+            </form>
+        </div>
+        
+        <script type="text/javascript">
+            (function() {
+                function handlePageLoad() {
+                    var endpointMatcher = new RegExp("[\\?\\&]endpoint=([^&#]*)");
+                    document.getElementById('prechatForm').setAttribute('action',
+                        decodeURIComponent(endpointMatcher.exec(document.location.search)[1]));//'https://d.la2c1cs.salesforceliveagent.com/chat/rest/');
+                    
+                    var product = getCookie('congaliveagentprechatproduct');
+                    if(product) {
+                        document.getElementById('product').value = product;
+                    }
+                }
+                
+                if (window.addEventListener) {
+                    window.addEventListener('load', handlePageLoad, false);
+                } else {
+                    window.attachEvent('onload', handlePageLoad, false);
+                }
+            })();
+        </script>
+        
+        <!-- Set the visitor's name for the agent in the Console to first and last name provided by the customer -->
+        <script type="text/javascript">
+            function setName() {
+                document.getElementById("prechat_field_name").value = document.getElementById("contactFirstName").value + " " + document.getElementById("contactLastName").value;
+            }
+        
+            function getCookie(cname) {
+              var name = cname + "=";
+              var decodedCookie = decodeURIComponent(document.cookie);
+              var ca = decodedCookie.split(';');
+              for(var i = 0; i <ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0) == ' ') {
+                  c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                  return c.substring(name.length, c.length);
+                }
+              }
+              return "";
+            }
+        </script>
+    </body>
+</html>
+</apex:page>

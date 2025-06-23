@@ -1,0 +1,53 @@
+<apex:page standardController="Opportunity" extensions="OctivTemplateController" title="RTU Template Selection" >
+<script type='text/javascript'>
+    function noenter(ev)  {
+        if (window.event && window.event.keyCode == 13 || ev.which == 13) {
+            doSearchAF();
+            return false;
+         } else {
+              return true;
+         }
+     }
+</script>
+  <apex:form id="theForm" >
+    <apex:outputPanel layout="block" id="templateChooser" rendered="{!isPageVisible}" >
+    <apex:pageBlock title="Choose a Template" mode="edit" >
+      <apex:actionFunction name="doSearchAF" action="{!nameSearch}" />  
+      <apex:actionFunction name="updateTemplates" action="{!categorySearch}" rerender="octivTemplates" />
+      <apex:actionFunction name="nameSearch" action="{!nameSearch}" rerender="octivTemplateNames" />
+      <apex:tabPanel switchType="client" selectedTab="categories" id="theTabPanel" >
+        <apex:tab label="Category Search" name="categories" id="categoriesTab" onTabEnter="updateTemplates()" > 
+          <apex:pageBlockSection title="RTU Template Categories" columns="3" id="octivTemplates" >
+            <apex:outputLabel value="Template Categories" for="availableCategories" />
+            <apex:selectRadio id="availableCategories" value="{!selectedcategory}" onchange="updateTemplates()" layout="pageDirection" >
+              <apex:selectOptions value="{!availableCategories}" />
+            </apex:selectRadio>
+            <apex:outputText value="" />
+            <apex:outputLabel value="RTU Templates" for="availableTemplates" />
+            <apex:selectList id="availableTemplates" value="{!categorySearchTemplate}" size="1" >
+              <apex:selectOptions value="{!availableTemplates}" />
+            </apex:selectList>
+            <apex:commandButton id="btnGo" action="{!submitCategorySearch}" value="Generate Proposal" />
+          </apex:pageBlockSection>
+        </apex:tab>
+        <apex:tab label="Name Search" name="searchName" id="searchName" onTabEnter="nameSearch()" >
+          <apex:pageBlockSection title="RTU Keyword Search" columns="3" id="octivTemplateNames" >
+            <apex:outputLabel value="Enter Search Keyword" for="nameSearch" />
+            <apex:inputText id="nameSearch" value="{!nameSearch}" onkeypress="return noenter(event);" />
+            <apex:commandButton action="{!nameSearch}" value="Search" rerender="searchTemplates" id="btnSrch" />
+            <apex:outputLabel value="RTU Templates" for="searchTemplates" />
+            <apex:selectList style="{!if(availableTemplates.size> 1, '', 'width:173px')}" id="searchTemplates" value="{!nameSearchTemplate}" size="20" >
+              <apex:selectOptions value="{!availableTemplates}" />         
+            </apex:selectList>
+            <apex:commandButton id="btnSrchGo" action="{!submitNameSearch}" value="Generate Proposal" />
+          </apex:pageBlockSection>
+        </apex:tab>
+      </apex:tabPanel>
+    </apex:pageBlock>
+    </apex:outputPanel>
+    <apex:outputPanel id="errorPage" layout="block" rendered="{!!isPageVisible}" >
+      <apex:outputText value="We're sorry, but this page has been restricted to specific profiles. If you need access to this functionality, please contact an admin for approval." />
+      <apex:commandLink action="{!navBackToOpportunity}" value="Click here to return to the opportunity." />
+    </apex:outputPanel>
+  </apex:form>
+</apex:page>

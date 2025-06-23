@@ -1,0 +1,40 @@
+<!--
+  @File Name          : AAApprovalValidation.cmp
+  @Description        : 
+  @Author             : MS Simplus August
+  @Group              : 
+  @Last Modified By   : MS Simplus August
+  @Last Modified On   : 23/11/2019, 3:29:21 am
+  @Modification Log   : 
+  Ver       Date            Author      		    Modification
+  1.0    23/11/2019   MS Simplus August     Initial Version
+-->
+<aura:component controller="QuoteWarningValidationCheckController" implements="force:hasRecordId,force:lightningQuickActionWithoutHeader" access="global" >
+    <!-- Define Attribute For Current recordId -->
+    <!-- <aura:attribute name="recordId" type="Id" /> -->
+    <!-- Define Attribute For Immediate Action --> 
+    <aura:handler name="init" value="{!this}" action="{!c.quoteValidation}"/>
+    <!-- Define Attribute For Display String -->
+    <aura:attribute name="setMeOnInit" type="String"/>
+    <aura:attribute name="redirectTrue" type="Boolean"/>
+    <!--aura:handler name="change" value="{!redirectTrue}" action="{!c.quoteRefresh}"/-->
+    <aura:attribute name="isProcessing" type="Boolean" default="false" />
+    
+    <force:recordData aura:id="quoteRecord" recordId="{!v.recordId}" layoutType="FULL" />
+    
+    <!-- Add Component Description -->
+    <div class="spinnerOverlay">
+        <div style="text-align:center" class="slds-is-relative">   
+            <lightning:spinner class="{!((v.isProcessing) ? '' : 'slds-hide')}" size="large" />
+        </div>
+    </div>
+    
+    <div class="modal-header slds-modal__header slds-size_1-of-1">
+        <h4 class="title slds-text-heading--medium"> Submit for Approval </h4>
+    </div>
+    <div class="slds-col modal-body slds-p-around--medium">
+        <div>
+            {!v.setMeOnInit}
+        </div>
+    </div> 
+</aura:component>

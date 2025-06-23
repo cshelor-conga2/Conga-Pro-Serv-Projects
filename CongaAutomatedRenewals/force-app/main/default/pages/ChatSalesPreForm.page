@@ -1,0 +1,95 @@
+<apex:page showHeader="false" sidebar="false" applyHtmlTag="false" applyBodyTag="false" standardStylesheets="false" docType="html-5.0">
+<html>
+    <head>
+		<title>Chat Prerequisites</title>        
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    </head>  
+	<body>
+        <div class="container">
+           
+            <p class="lead">
+                To better serve you, please answer the following questions:
+            </p>
+            <form method="post" id="prechatForm">
+                <input type="hidden" name="liveagent.setName(contactFirstName)"/>
+    
+                <div class="form-group">
+                    <label for="contactFirstName">First Name*</label>
+                    <input id="contactFirstName" class="form-control" type="text" name="liveagent.prechat:contactFirstName" required="true"/>
+                </div>
+                
+                <div class="form-group">
+                    <label for="contactLastName">Last Name*</label>
+                    <input id="contactLastName" class="form-control" type="text" name="liveagent.prechat:contactLastName" required="true"/>
+                </div>
+                
+                <div class="form-group">
+                    <label for="company">Company*</label>
+                    <input id="company" class="form-control" type="text" name="liveagent.prechat:company" required="true"/>
+                </div>                
+
+                <div class="form-group">
+                    <label for="company">Email*</label>
+                    <input id="company" class="form-control" type="email" name="liveagent.prechat:contactEmail" required="true"/>
+                </div> 
+                
+                <div class="form-group">
+                    <label for="question">Question*</label>
+                    <textarea id="question" class="form-control" name="liveagent.prechat:caseSubject" rows="4" required="true"/>
+                </div>
+                
+                <!-- Map the detail inputs to the Lead fields -->
+                <input type="hidden" name="liveagent.prechat.findorcreate.map:Lead" value="FirstName,contactFirstName;LastName,contactLastName;Email,contactEmail;Company,company" />
+                                
+                <!-- Try to find the Lead by email (exact match) -->
+                <input type="hidden" name="liveagent.prechat.findorcreate.map.doFind:Lead" value="Email,true;" />
+                <input type="hidden" name="liveagent.prechat.findorcreate.map.isExactMatch:Lead" value="Email,true;" />
+                
+                <!-- Save the Lead if not found -->
+                <input type="hidden" name="liveagent.prechat.findorcreate.map.doCreate:Lead" value="FirstName,true;LastName,true;Email,true;Company,true" />
+            
+                <!-- Save the Lead on the Live Chat Transcript's Lead Loookup -->
+                <input type="hidden" name="liveagent.prechat.findorcreate.saveToTranscript:Lead" value="Lead" />
+                <input type="hidden" name="liveagent.prechat.findorcreate.saveToTranscript:Company__c" value="company" />
+                
+                <!-- Associate the Lead with a Campaign -->
+                <input type="hidden" name="liveagent.prechat:campaign" value="70150000001UEU7" />
+                <input type="hidden" name="liveagent.prechat.findorcreate.map:CampaignMember" value="CampaignId,campaign;" />
+                <input type="hidden" name="liveagent.prechat.findorcreate.linkToEntity:Lead" value="CampaignMember,LeadId" />
+                <input type="hidden" name="liveagent.prechat.findorcreate.map.doCreate:CampaignMember" value="CampaignId,true;LeadId,true;" />
+                
+                <!-- Show the Lead when it is found or created -->
+                <input type="hidden" name="liveagent.prechat.findorcreate.showOnCreate:Lead" value="true" />
+                
+                <!-- Create a Case every time -->
+                <!--
+                <input type="hidden" name="liveagent.prechat:caseOrigin" value="Chat" />
+                <input type="hidden" name="liveagent.prechat.findorcreate.map:Case" value="Origin,caseOrigin;Subject,caseSubject;" />
+                <input type="hidden" name="liveagent.prechat.findorcreate.map.doCreate:Case" value="Origin,true;Subject,true;" />
+                <input type="hidden" name="liveagent.prechat.findorcreate.saveToTranscript:Case" value="Case" />
+                <input type="hidden" name="liveagent.prechat.findorcreate.showOnCreate:Case" value="true" />
+                -->
+                
+                <button type="submit" class="btn btn-primary">Request Chat</button>
+            </form>
+        </div>
+        
+        <script type="text/javascript">
+            (function() {
+                function handlePageLoad() {
+                    var endpointMatcher = new RegExp("[\\?\\&]endpoint=([^&#]*)");
+                    document.getElementById('prechatForm').setAttribute('action',
+                        decodeURIComponent(endpointMatcher.exec(document.location.search)[1]));//'https://d.la2c1cs.salesforceliveagent.com/chat/rest/');
+                }
+                
+                if (window.addEventListener) {
+                    window.addEventListener('load', handlePageLoad, false);
+                } else {
+                    window.attachEvent('onload', handlePageLoad, false);
+                }
+            })();
+        </script> 
+	</body>
+</html>
+</apex:page>

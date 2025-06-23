@@ -1,0 +1,29 @@
+/* Custom Ordered Lists */
+body.document .document-container .document-content .content-container .nested ol { 
+  counter-reset: item;
+}
+body.document .document-container .document-content .content-container .nested ol li { 
+  margin:2px 0 12px 0;
+  display: block;
+}
+body.document .document-container .document-content .content-container .nested ol li:before {
+  content: counters(item, ".") ". ";
+  counter-increment: item;
+}
+body.document .document-container .document-content .content-container .nested ol li li:before {
+  content: counters(item, ".") " ";
+  counter-increment: item;
+}
+
+/* Lower-Roman Ordered Lists                                                                      */
+/* This CSS allows us to turn off the nested ordering that is happening in the .nested class.     */
+/* It resets the counter and then allows us to define what list-style-type we want to use.        */
+/* In this case, we are resetting at the third level in the list.  This could be adapted to work  */
+/* for the second level as well                                                                   */
+body.document .document-container .document-content .content-container ol li .lower-roman { 
+  counter-reset: roman;
+}
+body.document .document-container .document-content .content-container ol li .lower-roman li:before { 
+  content: counter(roman, lower-roman) ". ";
+  counter-increment: roman
+}

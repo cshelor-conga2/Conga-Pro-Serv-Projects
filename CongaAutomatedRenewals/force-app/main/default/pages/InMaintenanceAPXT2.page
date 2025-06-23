@@ -1,0 +1,33 @@
+<apex:page showHeader="false" title="{!$Label.site.in_maintenance}" cache="false">
+  <apex:composition template="KBExceptionTemplateAPXT">
+<!--    <apex:define name="icon">
+      <apex:image url="{!URLFOR($Resource.SiteSamplesAPXT, 'img/logo2.gif')}"/>
+    </apex:define> -->
+    
+    <apex:define name="error">
+<!--     OLD ERROR MESSAGING COMMENTED OUT 
+      <apex:outputText escape="false" styleClass="title" value="{!$Label.site.down_for_maintenance}">
+      <apex:param value="{!$Site.CurrentSiteUrl}"/>
+      </apex:outputText> 
+      END - OLD ERROR MESSAGING COMMENTED OUT-->
+      <apex:panelGrid bgcolor="white" columns="1">
+      <span style="font-size:24px;">The AppExtremes Knowledge Base has really been relocated {!$CurrentPage.Name}</span>
+      <br/>
+      <br/>
+      <a href="http://knowledge.appextremes.com/appextremes/ext/kbsearch.aspx?cdmode=closed&mode=searchresults&rpp=10">  
+      <span style="font-size:24px;">Please click here to access the new Knowledge Base</span> </a>
+      <br/>
+      
+<!--  OLD ERROR MESSAGING COMMENTED OUT
+      <apex:outputText value="{!$Label.site.sorry_for_inconvenience_back_shortly}"/>
+      <apex:outputText value="KB Down"/>
+      <apex:outputText escape="false" value=" {!$Label.site.get_in_touch}">
+      <apex:param value="mailto:{!$Site.AdminEmailAddress}"/>
+      <apex:param value="{!$Label.site.email_us}"/> 
+      </apex:outputText> 
+      END - OLD ERROR MESSAGING COMMENTED OUT-->
+    </apex:panelGrid>
+   </apex:define>
+  </apex:composition>
+  <site:previewAsAdmin ></site:previewAsAdmin>
+</apex:page>

@@ -1,0 +1,125 @@
+<apex:page sidebar="false" showHeader="true" docType="html-4.01-strict">
+<div id="tabstrip" style="display:none;"> <ul> 
+<li class="k-state-active">Projects: Active</li>
+<li>Products: Services</li>
+<li>Projects: PS Resourcing</li>
+<li>Projects: Onboarding</li>
+<li>Projects: Dates</li>
+<li>Assignments: Backlog</li>
+<li>Time Entries: Last Week</li>
+<li>Time Card: Last Week</li>
+<li>Orders: Services</li>
+<li>Oppty: Needs Onboarding</li>
+<li>Oppty: Paid Services</li>
+<li>Oppty: PS Opps</li>
+
+</ul>
+<!-- Projects: Active -->
+<div style="overflow:hidden;"> 
+<CRMC_PP:Grid ObjectName="PS_Project__c" DelayLoad="false"  ViewID="a6A500000009IsREAU" 
+ EnableNewButton="true"  EnableNewInline="true"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true" 
+ EnableStickyViews="true"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+ <CRMC_PP:DrillUp /> 
+ </div>
+
+<!-- Products: Services -->
+<div style="overflow:hidden;"> 
+<CRMC_PP:Grid ObjectName="PS_Project__c" DelayLoad="true"  ViewID="a6A500000009IkhEAE" 
+ EnableNewButton="true"  EnableNewInline="true"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true" 
+ EnableStickyViews="true"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+ <CRMC_PP:DrillUp /> 
+ </div>
+ 
+ <!-- Projects: PS Resourcing -->
+<div style="overflow:hidden;"> 
+<CRMC_PP:Grid ObjectName="PS_Project__c" DelayLoad="true"  ViewID="a6A500000009IlGEAU" 
+ EnableNewButton="true"  EnableNewInline="true"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true" 
+ EnableStickyViews="true"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+ <CRMC_PP:DrillUp /> 
+ </div>
+
+<!-- Projects: Onboarding -->
+<div style="overflow:hidden;"> 
+<CRMC_PP:Grid ObjectName="PS_Project__c" DelayLoad="true"  ViewID="a6A50000000boDnEAI" 
+ EnableNewButton="true"  EnableNewInline="true"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true" 
+ EnableStickyViews="true"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+ <CRMC_PP:DrillUp /> 
+ </div>
+
+<!-- Projects: Dates -->
+<div style="overflow:hidden;"> 
+<CRMC_PP:Grid ObjectName="PS_Project__c" DelayLoad="true"  ViewID="a6A50000000boQcEAI" 
+ EnableNewButton="true"  EnableNewInline="true"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true" 
+ EnableStickyViews="true"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+ <CRMC_PP:DrillUp /> 
+ </div>
+ 
+ <!-- Assignments: Backlog -->
+<div style="overflow:hidden;"> 
+<CRMC_PP:Grid ObjectName="Assignment__c" DelayLoad="true"  ViewID="a6A500000009KHXEA2" 
+ EnableNewButton="true"  EnableNewInline="true"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true" 
+ EnableStickyViews="true"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+ <CRMC_PP:DrillUp /> 
+ </div>
+ 
+<!-- Time Entries: Last Week -->
+<div style="overflow:hidden;"> 
+<CRMC_PP:Grid ObjectName="Time_Card_Entry__c" DelayLoad="true"  ViewID="a6A500000008hdeEAA" 
+ EnableNewButton="true"  EnableNewInline="true"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true" 
+ EnableStickyViews="true"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+ <CRMC_PP:DrillUp /> 
+ </div>
+
+<!-- Time Card: Last Week -->
+<div style="overflow:hidden;"> 
+<CRMC_PP:Grid ObjectName="Time_Card_Header__c" DelayLoad="true"  ViewID="a6A500000008hppEAA" 
+ EnableNewButton="true"  EnableNewInline="true"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true" 
+ EnableStickyViews="true"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+ <CRMC_PP:DrillUp /> 
+ </div>
+ 
+<!-- Orders: Services -->
+<div style="overflow:hidden;"> 
+<CRMC_PP:Grid ObjectName="Order" DelayLoad="true"  ViewID="a6A500000008hmWEAQ" 
+ EnableNewButton="true"  EnableNewInline="true"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true" 
+ EnableStickyViews="true"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+ <CRMC_PP:DrillUp /> 
+ </div>
+
+<!-- Opportunity: Needs Onboarding< -->
+<div style="overflow:hidden;"> 
+<CRMC_PP:Grid ObjectName="Opportunity" DelayLoad="true"  ViewID="a6A50000000boITEAY" 
+ EnableNewButton="true"  EnableNewInline="true"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true" 
+ EnableStickyViews="true"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+ <CRMC_PP:DrillUp /> 
+ </div>
+
+ 
+ <!-- Opportunity: Service Products -->
+<div style="overflow:hidden;"> 
+<CRMC_PP:Grid ObjectName="OpportunityLineItem" DelayLoad="true"  ViewID="a6A500000008hPXEAY" 
+ EnableNewButton="true"  EnableNewInline="true"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true" 
+ EnableStickyViews="true"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+ <CRMC_PP:DrillUp /> 
+ </div>
+
+ <!-- Opportunity: PS Opps -->
+<div style="overflow:hidden;"> 
+<CRMC_PP:Grid ObjectName="Opportunity" DelayLoad="true"  ViewID="a6A500000009IwnEAE" 
+ EnableNewButton="true"  EnableNewInline="true"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true" 
+ EnableStickyViews="true"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+ <CRMC_PP:DrillUp /> 
+ </div>
+
+</div>
+<script>
+$(document).ready(function() {
+    $("#tabstrip").kendoTabStrip({
+      activate: function(e){
+        setTimeout(function(){          $(window).resize();        });
+      }
+    });
+    $("#tabstrip").css("display", "block");
+});
+ </script>
+</apex:page>

@@ -1,0 +1,16 @@
+{
+  "proposal": {
+    "name": "API Embed PDF",
+    "sections": [
+      {
+        "name": "PDF Section",
+        "pages": [
+          {
+            "document": "https://mytinder.s3.amazonaws.com/contents/media/708629/documents/original/25ea41a1-06f5-48cd-abcd-b4abbda22920/API_PDF_Content?1545155462",
+            "name": "Embedded PDF Page"
+          }
+        ]
+      }
+    ]
+  }
+}

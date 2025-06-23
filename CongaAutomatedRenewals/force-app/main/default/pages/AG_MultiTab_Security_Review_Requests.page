@@ -1,0 +1,60 @@
+<apex:page sidebar="false" showHeader="true" docType="html-4.01-strict">
+<div id="tabstrip" style="display:none;"> <ul> 
+<li class="k-state-active">Security Review Requests Queue</li>
+<li>Questionnaire/Risk Assessment</li>
+<li>Documentation Request</li>
+<li>Customer Questions</li>
+<li>All Security Review Requests</li>
+</ul>
+<!-- Security Review Requests Queue -->
+<div style="overflow:hidden;"> 
+<CRMC_PP:Grid ObjectName="Support_Request__c" DelayLoad="false"  ViewID="a6A1T000000btfEUAQ" 
+ EnableNewButton="true"  EnableNewInline="true"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true" 
+ EnableStickyViews="true"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+ <CRMC_PP:DrillUp /> 
+ </div>
+
+<!-- Questionnaire/Risk Assessment -->
+<div style="overflow:hidden;"> 
+<CRMC_PP:Grid ObjectName="Support_Request__c" DelayLoad="true"  ViewID="a6A1T000000btfGUAQ" 
+ EnableNewButton="true"  EnableNewInline="true"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true" 
+ EnableStickyViews="true"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+ <CRMC_PP:DrillUp /> 
+ </div>
+
+<!-- Documentation Request -->
+<div style="overflow:hidden;"> 
+<CRMC_PP:Grid ObjectName="Support_Request__c" DelayLoad="true"  ViewID="a6A1T000000btfDUAQ" 
+ EnableNewButton="true"  EnableNewInline="true"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true" 
+ EnableStickyViews="true"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+ <CRMC_PP:DrillUp /> 
+ </div>
+
+<!-- Customer Questions -->
+<div style="overflow:hidden;"> 
+<CRMC_PP:Grid ObjectName="Support_Request__c" DelayLoad="true"  ViewID="a6A1T000000btfFUAQ" 
+ EnableNewButton="true"  EnableNewInline="true"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true" 
+ EnableStickyViews="true"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+ <CRMC_PP:DrillUp /> 
+ </div>
+ 
+ <!-- All Security Review Requests -->
+<div style="overflow:hidden;"> 
+<CRMC_PP:Grid ObjectName="Support_Request__c" DelayLoad="true"  ViewID="a6A1T000000btfCUAQ" 
+ EnableNewButton="true"  EnableNewInline="true"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true" 
+ EnableStickyViews="true"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+ <CRMC_PP:DrillUp /> 
+ </div>
+
+</div>
+<script>
+$(document).ready(function() {
+    $("#tabstrip").kendoTabStrip({
+      activate: function(e){
+        setTimeout(function(){          $(window).resize();        });
+      }
+    });
+    $("#tabstrip").css("display", "block");
+});
+ </script>
+</apex:page>

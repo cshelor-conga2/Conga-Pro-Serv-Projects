@@ -1,0 +1,5 @@
+<design:component label="Separator">
+    <design:attribute name="height" label="Height" description="Height of the separator. Example: 2px" />
+    <design:attribute name="margin" label="Margin" description="Margin around the separator. Example: 2px" />
+    <design:attribute name="color" label="Color" description="Color of the separator. Use HTML Hex codes or names. Example: 'white' or '#FFFFFF'" />
+</design:component>

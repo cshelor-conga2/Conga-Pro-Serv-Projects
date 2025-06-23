@@ -1,0 +1,8 @@
+<aura:component implements="flexipage:availableForAllPageTypes,forceCommunity:availableForAllPageTypes" access="global">
+    <aura:attribute name="height" type="String" default="2px"/>
+    <aura:attribute name="margin" type="String" default="2px"/>
+    <aura:attribute name="color" type="String" default="#FFFFFF"/>	
+    
+    <div style="{!'height: ' + v.height + '; margin: ' + v.margin + '; background-color: ' + v.color}">
+    </div>
+</aura:component>

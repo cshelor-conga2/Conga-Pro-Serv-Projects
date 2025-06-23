@@ -1,0 +1,102 @@
+02-24 11:12:59 - CLGen - DEBUG -  ==========  BULK APXT_Redlining__Clause_Type__c INSERT RESULT =========
+02-24 11:12:59 - CLGen - DEBUG - success=True, created=True, id=a9D4C000000GsVIUA0
+02-24 11:12:59 - CLGen - DEBUG - Final clauses for insertion
+02-24 11:12:59 - CLGen - DEBUG - [{'Name': 'CT-C1', 'APXT_Redlining__Clause_Type__c': 'a9D4C000000GsVIUA0', 'APXT_Redlining__Text__c': 'Clause 1', 'APXT_Redlining__Text_Rich__c': 'Clause 1'}]
+02-24 11:13:11 - CLGen - DEBUG -  ==========  BULK APXT_Redlining__Clause__c INSERT RESULT =========
+02-24 11:13:11 - CLGen - DEBUG - success=True, created=True, id=a9E4C0000008YbXUAU
+02-24 11:13:11 - CLGen - DEBUG - ,[MSA-Term[MSATerm]]0Q_006UAA408984
+02-24 11:13:11 - CLGen - DEBUG - ,[OrderForm-Travel[OFTravel]]0Q_041UAA252500
+02-24 11:13:11 - CLGen - DEBUG - ,[MSA-Appointment[MSAAppointment]]0Q_005UAA201318
+02-24 11:13:11 - CLGen - DEBUG - ,[Opportunity]0Q_000UAA703901
+02-24 11:13:11 - CLGen - DEBUG - ,[NDA [NDA]]0Q_002UAA925272
+02-24 11:13:11 - CLGen - DEBUG - ,[MSA-Definitions[MSADefinitions]]0Q_003UAA480582
+02-24 11:13:11 - CLGen - DEBUG - ,[MSA-EXA-RefFees[MSAExARefFees]]0Q_009UAA532507
+02-24 11:13:11 - CLGen - DEBUG - ,[MSA-EXA-Services[MSAExAServices]]0Q_010UAA532507
+02-24 11:13:11 - CLGen - DEBUG - ,[MSA-GeneralProvisions[MSAGeneralProv]]0Q_011UAA532507
+02-24 11:13:11 - CLGen - DEBUG - ,[MSA-Limitation[MSALimitation]]0Q_012UAA532506
+02-24 11:13:11 - CLGen - DEBUG - ,[MSA-Indemnity[MSAIndemnity]]0Q_013UAA532506
+02-24 11:13:11 - CLGen - DEBUG - ,[MSA-ReferralsFees[MSAReferFees]]0Q_014UAA532506
+02-24 11:13:11 - CLGen - DEBUG - ,[MSA-EXA-Reporting[MSAExAReporting]]0Q_015UAA532506
+02-24 11:13:11 - CLGen - DEBUG - ,[OrderForm-Definitions[OFDefinitions]]0Q_035UAA321270
+02-24 11:13:11 - CLGen - DEBUG - ,[CT-AB[CTAB]]0Q_036UAA044357
+02-24 11:13:11 - CLGen - DEBUG - ,[CT-CD[CTCD]]0Q_037UAA044357
+02-24 11:13:11 - CLGen - DEBUG - ,[MSA-OwnershipRights[MSAOwnership]]0Q_007UAA587205
+02-24 11:13:11 - CLGen - DEBUG - ,[MSA-RegisteredLeads[MSARegisteredLeads]]0Q_008UAA180082
+02-24 11:13:11 - CLGen - DEBUG - ,[OrderForm-Agreement[OFAgreement]]0Q_023UAA861884
+02-24 11:13:11 - CLGen - DEBUG - ,[OrderForm-SubscriptionTerm[OFSubscriptionTerm]]0Q_024UAA861884
+02-24 11:13:11 - CLGen - DEBUG - ,[OrderForm-Invoicing[OFInvoicing]]0Q_025UAA861884
+02-24 11:13:11 - CLGen - DEBUG - ,[OrderForm-Payment[OFPayment]]0Q_026UAA861884
+02-24 11:13:11 - CLGen - DEBUG - ,[OrderForm-TripLogHardware[OFTripLogHardware]]0Q_027UAA861884
+02-24 11:13:11 - CLGen - DEBUG - ,[OrderForm-EmbursePaywithTransferWise[OFEmbursePaywith]]0Q_028UAA861884
+02-24 11:13:11 - CLGen - DEBUG - ,[OrderForm-EmburseCards[OFEmburseCards]]0Q_029UAA861884
+02-24 11:13:11 - CLGen - DEBUG - ,[OrderForm-SubscriptionPlan[OFSubscriptionPlan]]0Q_030UAA396189
+02-24 11:13:11 - CLGen - DEBUG - ,[OrderForm-AdditionalTerms[OFAdditionalTerms]]0Q_031UAA396189
+02-24 11:13:11 - CLGen - DEBUG - ,[OrderForm-Definitions[OFDefinitions]]0Q_032UAA396189
+02-24 11:13:11 - CLGen - DEBUG - ,[QuoteLine [QuoteLine]]0Q_039UAA165007
+02-24 11:13:11 - CLGen - DEBUG - ,[Account [Account]]0Q_001UAA852936
+02-24 11:13:11 - CLGen - DEBUG - ,[Quote [Quote]]0Q_038UAA075630
+02-24 11:13:11 - CLGen - DEBUG - Final queries for insertion
+02-24 11:13:11 - CLGen - DEBUG - []
+02-24 11:13:12 - CLGen - DEBUG - ,[MSA-Term[MSATerm]]0Q_006UAA408984
+02-24 11:13:12 - CLGen - DEBUG - ,[OrderForm-Travel[OFTravel]]0Q_041UAA252500
+02-24 11:13:12 - CLGen - DEBUG - ,[MSA-Appointment[MSAAppointment]]0Q_005UAA201318
+02-24 11:13:12 - CLGen - DEBUG - ,[Opportunity]0Q_000UAA703901
+02-24 11:13:12 - CLGen - DEBUG - ,[NDA [NDA]]0Q_002UAA925272
+02-24 11:13:12 - CLGen - DEBUG - ,[MSA-Definitions[MSADefinitions]]0Q_003UAA480582
+02-24 11:13:12 - CLGen - DEBUG - ,[MSA-EXA-RefFees[MSAExARefFees]]0Q_009UAA532507
+02-24 11:13:12 - CLGen - DEBUG - ,[MSA-EXA-Services[MSAExAServices]]0Q_010UAA532507
+02-24 11:13:12 - CLGen - DEBUG - ,[MSA-GeneralProvisions[MSAGeneralProv]]0Q_011UAA532507
+02-24 11:13:12 - CLGen - DEBUG - ,[MSA-Limitation[MSALimitation]]0Q_012UAA532506
+02-24 11:13:12 - CLGen - DEBUG - ,[MSA-Indemnity[MSAIndemnity]]0Q_013UAA532506
+02-24 11:13:12 - CLGen - DEBUG - ,[MSA-ReferralsFees[MSAReferFees]]0Q_014UAA532506
+02-24 11:13:12 - CLGen - DEBUG - ,[MSA-EXA-Reporting[MSAExAReporting]]0Q_015UAA532506
+02-24 11:13:12 - CLGen - DEBUG - ,[OrderForm-Definitions[OFDefinitions]]0Q_035UAA321270
+02-24 11:13:12 - CLGen - DEBUG - ,[CT-AB[CTAB]]0Q_036UAA044357
+02-24 11:13:12 - CLGen - DEBUG - ,[CT-CD[CTCD]]0Q_037UAA044357
+02-24 11:13:12 - CLGen - DEBUG - ,[MSA-OwnershipRights[MSAOwnership]]0Q_007UAA587205
+02-24 11:13:12 - CLGen - DEBUG - ,[MSA-RegisteredLeads[MSARegisteredLeads]]0Q_008UAA180082
+02-24 11:13:12 - CLGen - DEBUG - ,[OrderForm-Agreement[OFAgreement]]0Q_023UAA861884
+02-24 11:13:12 - CLGen - DEBUG - ,[OrderForm-SubscriptionTerm[OFSubscriptionTerm]]0Q_024UAA861884
+02-24 11:13:12 - CLGen - DEBUG - ,[OrderForm-Invoicing[OFInvoicing]]0Q_025UAA861884
+02-24 11:13:12 - CLGen - DEBUG - ,[OrderForm-Payment[OFPayment]]0Q_026UAA861884
+02-24 11:13:12 - CLGen - DEBUG - ,[OrderForm-TripLogHardware[OFTripLogHardware]]0Q_027UAA861884
+02-24 11:13:12 - CLGen - DEBUG - ,[OrderForm-EmbursePaywithTransferWise[OFEmbursePaywith]]0Q_028UAA861884
+02-24 11:13:12 - CLGen - DEBUG - ,[OrderForm-EmburseCards[OFEmburseCards]]0Q_029UAA861884
+02-24 11:13:12 - CLGen - DEBUG - ,[OrderForm-SubscriptionPlan[OFSubscriptionPlan]]0Q_030UAA396189
+02-24 11:13:12 - CLGen - DEBUG - ,[OrderForm-AdditionalTerms[OFAdditionalTerms]]0Q_031UAA396189
+02-24 11:13:12 - CLGen - DEBUG - ,[OrderForm-Definitions[OFDefinitions]]0Q_032UAA396189
+02-24 11:13:12 - CLGen - DEBUG - ,[QuoteLine [QuoteLine]]0Q_039UAA165007
+02-24 11:13:12 - CLGen - DEBUG - ,[Account [Account]]0Q_001UAA852936
+02-24 11:13:12 - CLGen - DEBUG - ,[Quote [Quote]]0Q_038UAA075630
+03-01 12:30:26 - CLGen - DEBUG -  ==========  BULK APXT_Redlining__Clause_Type__c INSERT RESULT =========
+03-01 12:30:26 - CLGen - DEBUG - success=True, created=True, id=a5e7g0000005inhAAA
+03-01 12:30:26 - CLGen - DEBUG - success=True, created=True, id=a5e7g0000005iniAAA
+03-01 12:30:26 - CLGen - DEBUG - Final clauses for insertion
+03-01 12:30:26 - CLGen - DEBUG - [{'Name': 'CT-AB-C1', 'APXT_Redlining__Clause_Type__c': 'a5e7g0000005inhAAA', 'APXT_Redlining__Text__c': 'Clause 1', 'APXT_Redlining__Text_Rich__c': 'Clause 1'}, {'Name': 'CT-AB-C2', 'APXT_Redlining__Clause_Type__c': 'a5e7g0000005inhAAA', 'APXT_Redlining__Text__c': 'Clause 2', 'APXT_Redlining__Text_Rich__c': 'Clause 2'}, {'Name': 'CT-CD-C3', 'APXT_Redlining__Clause_Type__c': 'a5e7g0000005iniAAA', 'APXT_Redlining__Text__c': 'Clause 3', 'APXT_Redlining__Text_Rich__c': 'Clause 3'}]
+03-01 12:30:31 - CLGen - DEBUG -  ==========  BULK APXT_Redlining__Clause__c INSERT RESULT =========
+03-01 12:30:31 - CLGen - DEBUG - success=True, created=True, id=a5f7g0000001PeMAAU
+03-01 12:30:31 - CLGen - DEBUG - success=True, created=True, id=a5f7g0000001PeNAAU
+03-01 12:30:31 - CLGen - DEBUG - success=True, created=True, id=a5f7g0000001PeOAAU
+03-01 12:30:31 - CLGen - DEBUG - ,[SO Exhibit X [exhibit]]0Q_009UAE369928
+03-01 12:30:31 - CLGen - DEBUG - ,[Opportunity Primary Contact [primary]]0Q_001UAE219374
+03-01 12:30:31 - CLGen - DEBUG - ,[Opportunity Products [product]]0Q_002UAE559979
+03-01 12:30:31 - CLGen - DEBUG - ,[Opportunity Primary Contact [QVar1]]0Q_004UAE194530
+03-01 12:30:31 - CLGen - DEBUG - ,[Salesforce File [QVar0]]0Q_005UAE531074
+03-01 12:30:31 - CLGen - DEBUG - ,[Opportunity [oppty]]0Q_000UAE115480
+03-01 12:30:31 - CLGen - DEBUG - ,[Service Order Clauses [clauses1]]0Q_006UAE576303
+03-01 12:30:31 - CLGen - DEBUG - ,[Service Order Clauses [clauses2]]0Q_008UAE293862
+03-01 12:30:31 - CLGen - DEBUG - Final queries for insertion
+03-01 12:30:31 - CLGen - DEBUG - [{'APXTConga4__Name__c': 'CT-AB[CTAB]', 'APXTConga4__Description__c': "Gets clauses with 'CT-AB' clause type", 'APXTConga4__Query__c': "SELECT Id, APXT_Redlining__Text_Rich__c, APXT_Redlining__Order__c FROM APXT_Redlining__Managed_Clause__c WHERE APXT_Redlining__Contract_Agreement__r.ID = '{pv0}' AND APXT_Redlining__Clause_Type__c = 'CT-AB' ORDER BY APXT_Redlining__Order__c ASC"}, {'APXTConga4__Name__c': 'CT-CD[CTCD]', 'APXTConga4__Description__c': "Gets clauses with 'CT-CD' clause type", 'APXTConga4__Query__c': "SELECT Id, APXT_Redlining__Text_Rich__c, APXT_Redlining__Order__c FROM APXT_Redlining__Managed_Clause__c WHERE APXT_Redlining__Contract_Agreement__r.ID = '{pv0}' AND APXT_Redlining__Clause_Type__c = 'CT-CD' ORDER BY APXT_Redlining__Order__c ASC"}]
+03-01 12:30:37 - CLGen - DEBUG -  ==========  BULK APXTConga4__Conga_Merge_Query__c INSERT RESULT =========
+03-01 12:30:37 - CLGen - DEBUG - success=True, created=True, id=a4C7g0000007pDEEAY
+03-01 12:30:37 - CLGen - DEBUG - success=True, created=True, id=a4C7g0000007pDFEAY
+03-01 12:30:37 - CLGen - DEBUG - ,[SO Exhibit X [exhibit]]0Q_009UAE369928
+03-01 12:30:37 - CLGen - DEBUG - ,[Opportunity Primary Contact [primary]]0Q_001UAE219374
+03-01 12:30:37 - CLGen - DEBUG - ,[Opportunity Products [product]]0Q_002UAE559979
+03-01 12:30:37 - CLGen - DEBUG - ,[Opportunity Primary Contact [QVar1]]0Q_004UAE194530
+03-01 12:30:37 - CLGen - DEBUG - ,[Salesforce File [QVar0]]0Q_005UAE531074
+03-01 12:30:37 - CLGen - DEBUG - ,[Opportunity [oppty]]0Q_000UAE115480
+03-01 12:30:37 - CLGen - DEBUG - ,[Service Order Clauses [clauses1]]0Q_006UAE576303
+03-01 12:30:37 - CLGen - DEBUG - ,[CT-AB[CTAB]]0Q_010UAE323200
+03-01 12:30:37 - CLGen - DEBUG - ,[CT-CD[CTCD]]0Q_011UAE323200
+03-01 12:30:37 - CLGen - DEBUG - ,[Service Order Clauses [clauses2]]0Q_008UAE293862

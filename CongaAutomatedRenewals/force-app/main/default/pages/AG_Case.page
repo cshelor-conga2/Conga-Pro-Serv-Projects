@@ -1,0 +1,61 @@
+<apex:page standardcontroller="User" sidebar="false" showHeader="True" docType="html-4.01-strict">
+<div id="tabstrip" style="display:none;"><ul> 
+<li class="k-state-active">Cases</li>
+<li>Tier II Queue</li>
+<li>My Cases</li>
+<li>Case Time Entry</li>
+<li>Case Emails</li>
+</ul>
+
+<!-- Cases - All -->
+<div style="overflow:hidden;"> 
+<CRMC_PP:Grid ObjectName="Case" DelayLoad="false"  ViewID="a6A1T000000bqvwUAA" 
+ EnableNewButton="true"  EnableNewInline="true"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true" 
+ EnableStickyViews="true"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+<CRMC_PP:DrillUp />
+ </div>
+ 
+  <!-- Tier II Queue - All -->
+<div style="overflow:hidden;"> 
+<CRMC_PP:Grid ObjectName="Case" DelayLoad="true"  ViewID="a6A1T000000P9Sb" 
+ EnableNewButton="true"  EnableNewInline="true"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true" 
+ EnableStickyViews="true"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+<CRMC_PP:DrillUp />
+ </div>
+ 
+ <!-- My Cases -->
+<div style="overflow:hidden;"> 
+<CRMC_PP:Grid ObjectName="Case" DelayLoad="true"  ViewID="a6A50000000HxbvEAC" 
+ EnableNewButton="true"  EnableNewInline="true"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true" 
+ EnableStickyViews="true"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+ <CRMC_PP:DrillUp /> 
+ </div>
+ 
+<!-- Case Time Entry - My -->
+<div style="overflow:hidden;"> 
+<CRMC_PP:Grid ObjectName="Case_Time_Entry__c" DelayLoad="false"  ViewID="" 
+ EnableNewButton="true"  EnableNewInline="true"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true" 
+ EnableStickyViews="true"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+ <CRMC_PP:DrillUp /> 
+ </div>
+ 
+ <!-- Case Emails - My -->
+<div style="overflow:hidden;"> 
+<CRMC_PP:Grid ObjectName="EmailMessage" DelayLoad="false"  ViewID="a6A1T000000bptQUAQ" 
+ EnableNewButton="true"  EnableNewInline="true"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true" 
+ EnableStickyViews="true"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+ <CRMC_PP:DrillUp /> 
+ </div>
+
+</div>
+<script>
+$(document).ready(function() {
+    $("#tabstrip").kendoTabStrip({
+      activate: function(e){
+        setTimeout(function(){          $(window).resize();        });
+      }
+    });
+    $("#tabstrip").css("display", "block");
+});
+ </script>
+</apex:page>

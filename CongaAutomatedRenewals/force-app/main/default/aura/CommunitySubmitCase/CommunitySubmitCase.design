@@ -1,0 +1,4 @@
+<design:component label="Contact Customer Support">
+	<design:attribute name="caseRecordTypeId" label="Case Record Type ID" required="true" description="Id of the Case record type to use for each new case" />
+    <design:attribute name="caseOrigin" label="Case Origin" required="true" description="Case Origin to use for each new case" />
+</design:component>

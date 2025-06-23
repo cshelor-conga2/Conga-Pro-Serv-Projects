@@ -1,0 +1,150 @@
+02-19 16:28:53 - CLGen - DEBUG -  ==========  BULK APXT_Redlining__Clause_Type__c INSERT RESULT =========
+02-19 16:28:53 - CLGen - DEBUG - success=True, created=True, id=a9D4C000000GsUtUAK
+02-19 16:28:53 - CLGen - DEBUG - success=True, created=True, id=a9D4C000000GsUuUAK
+02-19 16:28:53 - CLGen - DEBUG - success=True, created=True, id=a9D4C000000GsUvUAK
+02-19 16:30:09 - CLGen - DEBUG - Final clauses for insertion
+02-19 16:30:10 - CLGen - DEBUG - [{'Name': 'OrderForm-SubscriptionPlan', 'APXT_Redlining__Clause_Type__c': 'a9D4C000000GsUtUAK', 'APXT_Redlining__Text__c': 'If the Service ordered above indicates a Subscription Plan, the terms below shall apply to such plan:\nProfessional Plan: The Abacus Professional Plan includes the ability of Customer to approve expenses for [QUANTITY] Candidates for each Billing Period.', 'APXT_Redlining__Text_Rich__c': 'If the Service ordered above indicates a Subscription Plan, the terms below shall apply to such plan:\nProfessional Plan: The Abacus Professional Plan includes the ability of Customer to approve expenses for [QUANTITY] Candidates for each Billing Period.'}, {'Name': 'OrderForm-AdditionalTermsA', 'APXT_Redlining__Clause_Type__c': 'a9D4C000000GsUuUAK', 'APXT_Redlining__Text__c': 'Customer shall ensure that each Authorized User of the Abacus Service complies with the following requirements: (a) is at least eighteen (18) years of age; (b) is registered under the individual’s legal name; (c) has their primary residence located in the United States; (d) is not located in a country that is subject to a U.S. Government embargo, or that has been designated by the U.S. Government as a “terrorist supporting” country; (e) is not listed on any U.S. Government list of prohibited or restricted parties; and (f) the bank account(s) and/or payment card(s) registered in the Authorized Users account is owned by such user, is issued in such users name and is in good standing.', 'APXT_Redlining__Text_Rich__c': 'Customer shall ensure that each Authorized User of the Abacus Service complies with the following requirements: (a) is at least eighteen (18) years of age; (b) is registered under the individual’s legal name; (c) has their primary residence located in the United States; (d) is not located in a country that is subject to a U.S. Government embargo, or that has been designated by the U.S. Government as a “terrorist supporting” country; (e) is not listed on any U.S. Government list of prohibited or restricted parties; and (f) the bank account(s) and/or payment card(s) registered in the Authorized Users account is owned by such user, is issued in such users name and is in good standing.'}, {'Name': 'OrderForm-AdditionalTermsB', 'APXT_Redlining__Clause_Type__c': 'a9D4C000000GsUuUAK', 'APXT_Redlining__Text__c': 'Each Authorized User must register for a user account using accurate and complete information. Customer shall ensure that such account information is regularly updated by the Authorized Users. Customer shall not permit an Authorized User: (i) select or use as a username a name of another person with the intent to impersonate that person; (ii) use as a username a name subject to any rights of a person other than you without appropriate authorization; or (iii) use, as a username, a name that is otherwise offensive, vulgar or obscene. Customer will notify Emburse immediately of: (a) any change in an Authorized Users eligibility to use the Abacus Service (including any changes to or revocation of any licenses from state authorities), or (b) a breach of security involving or unauthorized use of a users account, registration information, or the Abacus Service.', 'APXT_Redlining__Text_Rich__c': 'Each Authorized User must register for a user account using accurate and complete information. Customer shall ensure that such account information is regularly updated by the Authorized Users. Customer shall not permit an Authorized User: (i) select or use as a username a name of another person with the intent to impersonate that person; (ii) use as a username a name subject to any rights of a person other than you without appropriate authorization; or (iii) use, as a username, a name that is otherwise offensive, vulgar or obscene. Customer will notify Emburse immediately of: (a) any change in an Authorized Users eligibility to use the Abacus Service (including any changes to or revocation of any licenses from state authorities), or (b) a breach of security involving or unauthorized use of a users account, registration information, or the Abacus Service.'}, {'Name': 'OrderForm-AdditionalTermsC', 'APXT_Redlining__Clause_Type__c': 'a9D4C000000GsUuUAK', 'APXT_Redlining__Text__c': 'With respect to each expense submitted through the Service for reimbursement, Customer shall ensure that: (i) the information is current, accurate and complete; and (ii) each expense request is for the payment of a business expense and is not a personal, family or household expense.', 'APXT_Redlining__Text_Rich__c': 'With respect to each expense submitted through the Service for reimbursement, Customer shall ensure that: (i) the information is current, accurate and complete; and (ii) each expense request is for the payment of a business expense and is not a personal, family or household expense.'}, {'Name': 'OrderForm-AdditionalTermsD', 'APXT_Redlining__Clause_Type__c': 'a9D4C000000GsUuUAK', 'APXT_Redlining__Text__c': 'Customer shall be responsible for resolving all disputes with Authorized Users regarding amounts credited or debited to the underlying payment method for each user account. Customer will reasonably cooperate with Abacus and any other parties involved in processing approved expenses to recover funds credited to Customer or an Authorized User in error. Customer and its Authorized Users are responsible for all instructions provided to Emburse and any results therefrom with respect to the return of funds.', 'APXT_Redlining__Text_Rich__c': 'Customer shall be responsible for resolving all disputes with Authorized Users regarding amounts credited or debited to the underlying payment method for each user account. Customer will reasonably cooperate with Abacus and any other parties involved in processing approved expenses to recover funds credited to Customer or an Authorized User in error. Customer and its Authorized Users are responsible for all instructions provided to Emburse and any results therefrom with respect to the return of funds.'}, {'Name': 'OrderForm-AdditionalTermsE', 'APXT_Redlining__Clause_Type__c': 'a9D4C000000GsUuUAK', 'APXT_Redlining__Text__c': 'Customer shall ensure that each Authorized User provides Emburse with current, complete and accurate information for any bank account or payment method that registered in a User Account. If an Authorized User provides credit card information for purposes of generating expense reimbursement requests using the Services, such user authorizes Emburse to access and use the related credit card transaction data for purposes of providing the Services. Customer or an Authorized User will promptly notify Emburse or the payment processor if a payment method is canceled (e.g., for loss or theft) or upon become aware of a potential breach of security, such as the unauthorized disclosure or use of a username or password.', 'APXT_Redlining__Text_Rich__c': 'Customer shall ensure that each Authorized User provides Emburse with current, complete and accurate information for any bank account or payment method that registered in a User Account. If an Authorized User provides credit card information for purposes of generating expense reimbursement requests using the Services, such user authorizes Emburse to access and use the related credit card transaction data for purposes of providing the Services. Customer or an Authorized User will promptly notify Emburse or the payment processor if a payment method is canceled (e.g., for loss or theft) or upon become aware of a potential breach of security, such as the unauthorized disclosure or use of a username or password.'}, {'Name': 'OrderForm-Definitions-Annual', 'APXT_Redlining__Clause_Type__c': 'a9D4C000000GsUvUAK', 'APXT_Redlining__Text__c': '“Annual Period” means each 12-month period beginning on the Subscription Billing Start Date specified above.', 'APXT_Redlining__Text_Rich__c': '“Annual Period” means each 12-month period beginning on the Subscription Billing Start Date specified above.'}, {'Name': 'OrderForm-Definitions-Candid', 'APXT_Redlining__Clause_Type__c': 'a9D4C000000GsUvUAK', 'APXT_Redlining__Text__c': '“Candidate” means a User who is not an employee or contractor of Customer.', 'APXT_Redlining__Text_Rich__c': '“Candidate” means a User who is not an employee or contractor of Customer.'}, {'Name': 'OrderForm-Definitions-SubFee', 'APXT_Redlining__Clause_Type__c': 'a9D4C000000GsUvUAK', 'APXT_Redlining__Text__c': '“Subscription Fee” means the recurring fee set forth above for subscription-based services ordered under this Order Form.', 'APXT_Redlining__Text_Rich__c': '“Subscription Fee” means the recurring fee set forth above for subscription-based services ordered under this Order Form.'}, {'Name': 'OrderForm-Definitions-Trans-Ex', 'APXT_Redlining__Clause_Type__c': 'a9D4C000000GsUvUAK', 'APXT_Redlining__Text__c': 'Expense: An expense report; provided, however, that all submissions and re-submissions of a single expense report shall be counted as a single Transaction.', 'APXT_Redlining__Text_Rich__c': 'Expense: An expense report; provided, however, that all submissions and re-submissions of a single expense report shall be counted as a single Transaction.'}, {'Name': 'OrderForm-Definitions-Trans-TD', 'APXT_Redlining__Clause_Type__c': 'a9D4C000000GsUvUAK', 'APXT_Redlining__Text__c': 'Transferwise – Domestic: a payment initiated by Customer and paid to a payee in a single currency through the Transferwise Service.', 'APXT_Redlining__Text_Rich__c': 'Transferwise – Domestic: a payment initiated by Customer and paid to a payee in a single currency through the Transferwise Service.'}, {'Name': 'OrderForm-Definitions-Trans-TC', 'APXT_Redlining__Clause_Type__c': 'a9D4C000000GsUvUAK', 'APXT_Redlining__Text__c': 'Transferwise – Cross-border: a payment initiated by Customer in one currency and paid to a payee in an different currency through the Transferwise Service.', 'APXT_Redlining__Text_Rich__c': 'Transferwise – Cross-border: a payment initiated by Customer in one currency and paid to a payee in an different currency through the Transferwise Service.'}, {'Name': 'OrderForm-Definitions-Trans-TL', 'APXT_Redlining__Clause_Type__c': 'a9D4C000000GsUvUAK', 'APXT_Redlining__Text__c': 'TripLog: An expense report; provided, however, that all submissions and re-submissions of a single expense report shall be counted as a single Transaction.', 'APXT_Redlining__Text_Rich__c': 'TripLog: An expense report; provided, however, that all submissions and re-submissions of a single expense report shall be counted as a single Transaction.'}, {'Name': 'OrderForm-Definitions-User', 'APXT_Redlining__Clause_Type__c': 'a9D4C000000GsUvUAK', 'APXT_Redlining__Text__c': '“User” means a named user added to Customer’s account, which user may be activated or deactivated at any time.', 'APXT_Redlining__Text_Rich__c': '“User” means a named user added to Customer’s account, which user may be activated or deactivated at any time.'}]
+02-19 16:30:58 - CLGen - DEBUG -  ==========  BULK APXT_Redlining__Clause__c INSERT RESULT =========
+02-19 16:30:58 - CLGen - DEBUG - success=True, created=True, id=a9E4C0000008YZNUA2
+02-19 16:30:58 - CLGen - DEBUG - success=True, created=True, id=a9E4C0000008YZOUA2
+02-19 16:30:58 - CLGen - DEBUG - success=True, created=True, id=a9E4C0000008YZPUA2
+02-19 16:30:58 - CLGen - DEBUG - success=True, created=True, id=a9E4C0000008YZQUA2
+02-19 16:30:58 - CLGen - DEBUG - success=True, created=True, id=a9E4C0000008YZRUA2
+02-19 16:30:58 - CLGen - DEBUG - success=True, created=True, id=a9E4C0000008YZSUA2
+02-19 16:30:58 - CLGen - DEBUG - success=True, created=True, id=a9E4C0000008YZTUA2
+02-19 16:30:58 - CLGen - DEBUG - success=True, created=True, id=a9E4C0000008YZUUA2
+02-19 16:30:58 - CLGen - DEBUG - success=True, created=True, id=a9E4C0000008YZVUA2
+02-19 16:30:58 - CLGen - DEBUG - success=True, created=True, id=a9E4C0000008YZWUA2
+02-19 16:30:58 - CLGen - DEBUG - success=True, created=True, id=a9E4C0000008YZXUA2
+02-19 16:30:58 - CLGen - DEBUG - success=True, created=True, id=a9E4C0000008YZYUA2
+02-19 16:30:58 - CLGen - DEBUG - success=True, created=True, id=a9E4C0000008YZZUA2
+02-19 16:30:58 - CLGen - DEBUG - success=True, created=True, id=a9E4C0000008YZaUAM
+02-19 16:31:00 - CLGen - DEBUG - ,[MSA-Term[MSATerm]]0Q_006UAA408984
+02-19 16:31:00 - CLGen - DEBUG - ,[MSA-Appointment[MSAAppointment]]0Q_005UAA201318
+02-19 16:31:00 - CLGen - DEBUG - ,[Opportunity]0Q_000UAA703901
+02-19 16:31:00 - CLGen - DEBUG - ,[NDA [NDA]]0Q_002UAA925272
+02-19 16:31:00 - CLGen - DEBUG - ,[MSA-Definitions[MSADefinitions]]0Q_003UAA480582
+02-19 16:31:00 - CLGen - DEBUG - ,[MSA-EXA-RefFees[MSAExARefFees]]0Q_009UAA532507
+02-19 16:31:00 - CLGen - DEBUG - ,[MSA-EXA-Services[MSAExAServices]]0Q_010UAA532507
+02-19 16:31:00 - CLGen - DEBUG - ,[MSA-GeneralProvisions[MSAGeneralProv]]0Q_011UAA532507
+02-19 16:31:00 - CLGen - DEBUG - ,[MSA-Limitation[MSALimitation]]0Q_012UAA532506
+02-19 16:31:00 - CLGen - DEBUG - ,[MSA-Indemnity[MSAIndemnity]]0Q_013UAA532506
+02-19 16:31:00 - CLGen - DEBUG - ,[MSA-ReferralsFees[MSAReferFees]]0Q_014UAA532506
+02-19 16:31:00 - CLGen - DEBUG - ,[MSA-EXA-Reporting[MSAExAReporting]]0Q_015UAA532506
+02-19 16:31:00 - CLGen - DEBUG - ,[MSA-OwnershipRights[MSAOwnership]]0Q_007UAA587205
+02-19 16:31:00 - CLGen - DEBUG - ,[MSA-RegisteredLeads[MSARegisteredLeads]]0Q_008UAA180082
+02-19 16:31:00 - CLGen - DEBUG - ,[OrderForm-Agreement[OFAgreement]]0Q_023UAA861884
+02-19 16:31:00 - CLGen - DEBUG - ,[OrderForm-SubscriptionTerm[OFSubscriptionTerm]]0Q_024UAA861884
+02-19 16:31:00 - CLGen - DEBUG - ,[OrderForm-Invoicing[OFInvoicing]]0Q_025UAA861884
+02-19 16:31:00 - CLGen - DEBUG - ,[OrderForm-Payment[OFPayment]]0Q_026UAA861884
+02-19 16:31:00 - CLGen - DEBUG - ,[OrderForm-TripLogHardware[OFTripLogHardware]]0Q_027UAA861884
+02-19 16:31:00 - CLGen - DEBUG - ,[OrderForm-EmbursePaywithTransferWise[OFEmbursePaywith]]0Q_028UAA861884
+02-19 16:31:00 - CLGen - DEBUG - ,[OrderForm-EmburseCards[OFEmburseCards]]0Q_029UAA861884
+02-19 16:31:00 - CLGen - DEBUG - ,[Account]0Q_001UAA852936
+02-19 16:31:05 - CLGen - DEBUG - Final queries for insertion
+02-19 16:31:05 - CLGen - DEBUG - [{'APXTConga4__Name__c': 'OrderForm-SubscriptionPlan[OFSubscriptionPlan]', 'APXTConga4__Description__c': "Gets clauses with 'OrderForm-SubscriptionPlan' clause type", 'APXTConga4__Query__c': "SELECT Id, APXT_Redlining__Text_Rich__c, APXT_Redlining__Order__c FROM APXT_Redlining__Managed_Clause__c WHERE APXT_Redlining__Contract_Agreement__r.ID = '{pv0}' AND APXT_Redlining__Clause_Type__c = 'OrderForm-SubscriptionPlan' ORDER BY APXT_Redlining__Order__c ASC"}, {'APXTConga4__Name__c': 'OrderForm-AdditionalTerms[OFAdditionalTerms]', 'APXTConga4__Description__c': "Gets clauses with 'OrderForm-AdditionalTerms' clause type", 'APXTConga4__Query__c': "SELECT Id, APXT_Redlining__Text_Rich__c, APXT_Redlining__Order__c FROM APXT_Redlining__Managed_Clause__c WHERE APXT_Redlining__Contract_Agreement__r.ID = '{pv0}' AND APXT_Redlining__Clause_Type__c = 'OrderForm-AdditionalTerms' ORDER BY APXT_Redlining__Order__c ASC"}, {'APXTConga4__Name__c': 'OrderForm-Definitions[OFDefinitions]', 'APXTConga4__Description__c': "Gets clauses with 'OrderForm-Definitions' clause type", 'APXTConga4__Query__c': "SELECT Id, APXT_Redlining__Text_Rich__c, APXT_Redlining__Order__c FROM APXT_Redlining__Managed_Clause__c WHERE APXT_Redlining__Contract_Agreement__r.ID = '{pv0}' AND APXT_Redlining__Clause_Type__c = 'OrderForm-Definitions' ORDER BY APXT_Redlining__Order__c ASC"}, {'APXTConga4__Name__c': 'OrderForm-Definitions[OFDefinitionsTrans]', 'APXTConga4__Description__c': "Gets clauses with 'OrderForm-Definitions' clause type", 'APXTConga4__Query__c': "SELECT Id, APXT_Redlining__Text_Rich__c, APXT_Redlining__Order__c FROM APXT_Redlining__Managed_Clause__c WHERE APXT_Redlining__Contract_Agreement__r.ID = '{pv0}' AND APXT_Redlining__Clause_Type__c = 'OrderForm-Definitions' ORDER BY APXT_Redlining__Order__c ASC"}, {'APXTConga4__Name__c': 'OrderForm-Definitions[OFDefinitionsUser]', 'APXTConga4__Description__c': "Gets clauses with 'OrderForm-Definitions' clause type", 'APXTConga4__Query__c': "SELECT Id, APXT_Redlining__Text_Rich__c, APXT_Redlining__Order__c FROM APXT_Redlining__Managed_Clause__c WHERE APXT_Redlining__Contract_Agreement__r.ID = '{pv0}' AND APXT_Redlining__Clause_Type__c = 'OrderForm-Definitions' ORDER BY APXT_Redlining__Order__c ASC"}]
+02-19 16:31:39 - CLGen - DEBUG -  ==========  BULK APXTConga4__Conga_Merge_Query__c INSERT RESULT =========
+02-19 16:31:39 - CLGen - DEBUG - success=True, created=True, id=a8X4C000000tRv8UAE
+02-19 16:31:39 - CLGen - DEBUG - success=True, created=True, id=a8X4C000000tRv9UAE
+02-19 16:31:39 - CLGen - DEBUG - success=True, created=True, id=a8X4C000000tRvAUAU
+02-19 16:31:39 - CLGen - DEBUG - success=True, created=True, id=a8X4C000000tRvBUAU
+02-19 16:31:39 - CLGen - DEBUG - success=True, created=True, id=a8X4C000000tRvCUAU
+02-19 16:31:42 - CLGen - DEBUG - ,[MSA-Term[MSATerm]]0Q_006UAA408984
+02-19 16:31:42 - CLGen - DEBUG - ,[MSA-Appointment[MSAAppointment]]0Q_005UAA201318
+02-19 16:31:42 - CLGen - DEBUG - ,[Opportunity]0Q_000UAA703901
+02-19 16:31:42 - CLGen - DEBUG - ,[NDA [NDA]]0Q_002UAA925272
+02-19 16:31:42 - CLGen - DEBUG - ,[MSA-Definitions[MSADefinitions]]0Q_003UAA480582
+02-19 16:31:42 - CLGen - DEBUG - ,[MSA-EXA-RefFees[MSAExARefFees]]0Q_009UAA532507
+02-19 16:31:42 - CLGen - DEBUG - ,[MSA-EXA-Services[MSAExAServices]]0Q_010UAA532507
+02-19 16:31:42 - CLGen - DEBUG - ,[MSA-GeneralProvisions[MSAGeneralProv]]0Q_011UAA532507
+02-19 16:31:42 - CLGen - DEBUG - ,[MSA-Limitation[MSALimitation]]0Q_012UAA532506
+02-19 16:31:42 - CLGen - DEBUG - ,[MSA-Indemnity[MSAIndemnity]]0Q_013UAA532506
+02-19 16:31:42 - CLGen - DEBUG - ,[MSA-ReferralsFees[MSAReferFees]]0Q_014UAA532506
+02-19 16:31:42 - CLGen - DEBUG - ,[MSA-EXA-Reporting[MSAExAReporting]]0Q_015UAA532506
+02-19 16:31:42 - CLGen - DEBUG - ,[MSA-OwnershipRights[MSAOwnership]]0Q_007UAA587205
+02-19 16:31:42 - CLGen - DEBUG - ,[MSA-RegisteredLeads[MSARegisteredLeads]]0Q_008UAA180082
+02-19 16:31:42 - CLGen - DEBUG - ,[OrderForm-Agreement[OFAgreement]]0Q_023UAA861884
+02-19 16:31:42 - CLGen - DEBUG - ,[OrderForm-SubscriptionTerm[OFSubscriptionTerm]]0Q_024UAA861884
+02-19 16:31:42 - CLGen - DEBUG - ,[OrderForm-Invoicing[OFInvoicing]]0Q_025UAA861884
+02-19 16:31:42 - CLGen - DEBUG - ,[OrderForm-Payment[OFPayment]]0Q_026UAA861884
+02-19 16:31:42 - CLGen - DEBUG - ,[OrderForm-TripLogHardware[OFTripLogHardware]]0Q_027UAA861884
+02-19 16:31:42 - CLGen - DEBUG - ,[OrderForm-EmbursePaywithTransferWise[OFEmbursePaywith]]0Q_028UAA861884
+02-19 16:31:42 - CLGen - DEBUG - ,[OrderForm-EmburseCards[OFEmburseCards]]0Q_029UAA861884
+02-19 16:31:42 - CLGen - DEBUG - ,[OrderForm-SubscriptionPlan[OFSubscriptionPlan]]0Q_030UAA396189
+02-19 16:31:42 - CLGen - DEBUG - ,[OrderForm-AdditionalTerms[OFAdditionalTerms]]0Q_031UAA396189
+02-19 16:31:42 - CLGen - DEBUG - ,[OrderForm-Definitions[OFDefinitions]]0Q_032UAA396189
+02-19 16:31:42 - CLGen - DEBUG - ,[OrderForm-Definitions[OFDefinitionsTrans]]0Q_033UAA396189
+02-19 16:31:42 - CLGen - DEBUG - ,[OrderForm-Definitions[OFDefinitionsUser]]0Q_034UAA396189
+02-19 16:31:42 - CLGen - DEBUG - ,[Account]0Q_001UAA852936
+02-19 20:10:44 - CLGen - DEBUG -  ==========  BULK APXT_Redlining__Clause_Type__c INSERT RESULT =========
+02-19 20:10:44 - CLGen - DEBUG - success=True, created=True, id=a9D4C000000GsV8UAK
+02-19 20:10:44 - CLGen - DEBUG - success=True, created=True, id=a9D4C000000GsV9UAK
+02-19 20:10:44 - CLGen - DEBUG - Final clauses for insertion
+02-19 20:10:44 - CLGen - DEBUG - [{'Name': 'CT-C1', 'APXT_Redlining__Clause_Type__c': 'a9D4C000000GsV8UAK', 'APXT_Redlining__Text__c': 'Clause 1', 'APXT_Redlining__Text_Rich__c': 'Clause 1'}, {'Name': 'CT-C2', 'APXT_Redlining__Clause_Type__c': 'a9D4C000000GsV8UAK', 'APXT_Redlining__Text__c': 'Clause 2', 'APXT_Redlining__Text_Rich__c': 'Clause 2'}, {'Name': 'CT-C3', 'APXT_Redlining__Clause_Type__c': 'a9D4C000000GsV9UAK', 'APXT_Redlining__Text__c': 'Clause 3', 'APXT_Redlining__Text_Rich__c': 'Clause 3'}]
+02-19 20:10:51 - CLGen - DEBUG -  ==========  BULK APXT_Redlining__Clause__c INSERT RESULT =========
+02-19 20:10:51 - CLGen - DEBUG - success=True, created=True, id=a9E4C0000008YZgUAM
+02-19 20:10:51 - CLGen - DEBUG - success=True, created=True, id=a9E4C0000008YZhUAM
+02-19 20:10:51 - CLGen - DEBUG - success=True, created=True, id=a9E4C0000008YZiUAM
+02-19 20:10:52 - CLGen - DEBUG - ,[MSA-Term[MSATerm]]0Q_006UAA408984
+02-19 20:10:52 - CLGen - DEBUG - ,[MSA-Appointment[MSAAppointment]]0Q_005UAA201318
+02-19 20:10:52 - CLGen - DEBUG - ,[Opportunity]0Q_000UAA703901
+02-19 20:10:52 - CLGen - DEBUG - ,[NDA [NDA]]0Q_002UAA925272
+02-19 20:10:52 - CLGen - DEBUG - ,[MSA-Definitions[MSADefinitions]]0Q_003UAA480582
+02-19 20:10:52 - CLGen - DEBUG - ,[MSA-EXA-RefFees[MSAExARefFees]]0Q_009UAA532507
+02-19 20:10:52 - CLGen - DEBUG - ,[MSA-EXA-Services[MSAExAServices]]0Q_010UAA532507
+02-19 20:10:52 - CLGen - DEBUG - ,[MSA-GeneralProvisions[MSAGeneralProv]]0Q_011UAA532507
+02-19 20:10:52 - CLGen - DEBUG - ,[MSA-Limitation[MSALimitation]]0Q_012UAA532506
+02-19 20:10:52 - CLGen - DEBUG - ,[MSA-Indemnity[MSAIndemnity]]0Q_013UAA532506
+02-19 20:10:52 - CLGen - DEBUG - ,[MSA-ReferralsFees[MSAReferFees]]0Q_014UAA532506
+02-19 20:10:52 - CLGen - DEBUG - ,[MSA-EXA-Reporting[MSAExAReporting]]0Q_015UAA532506
+02-19 20:10:52 - CLGen - DEBUG - ,[OrderForm-Test[OrderFormTest]]0Q_035UAA321270
+02-19 20:10:52 - CLGen - DEBUG - ,[MSA-OwnershipRights[MSAOwnership]]0Q_007UAA587205
+02-19 20:10:52 - CLGen - DEBUG - ,[MSA-RegisteredLeads[MSARegisteredLeads]]0Q_008UAA180082
+02-19 20:10:52 - CLGen - DEBUG - ,[OrderForm-Agreement[OFAgreement]]0Q_023UAA861884
+02-19 20:10:52 - CLGen - DEBUG - ,[OrderForm-SubscriptionTerm[OFSubscriptionTerm]]0Q_024UAA861884
+02-19 20:10:52 - CLGen - DEBUG - ,[OrderForm-Invoicing[OFInvoicing]]0Q_025UAA861884
+02-19 20:10:52 - CLGen - DEBUG - ,[OrderForm-Payment[OFPayment]]0Q_026UAA861884
+02-19 20:10:52 - CLGen - DEBUG - ,[OrderForm-TripLogHardware[OFTripLogHardware]]0Q_027UAA861884
+02-19 20:10:52 - CLGen - DEBUG - ,[OrderForm-EmbursePaywithTransferWise[OFEmbursePaywith]]0Q_028UAA861884
+02-19 20:10:52 - CLGen - DEBUG - ,[OrderForm-EmburseCards[OFEmburseCards]]0Q_029UAA861884
+02-19 20:10:52 - CLGen - DEBUG - ,[OrderForm-SubscriptionPlan[OFSubscriptionPlan]]0Q_030UAA396189
+02-19 20:10:52 - CLGen - DEBUG - ,[OrderForm-AdditionalTerms[OFAdditionalTerms]]0Q_031UAA396189
+02-19 20:10:52 - CLGen - DEBUG - ,[OrderForm-Definitions[OFDefinitions]]0Q_032UAA396189
+02-19 20:10:52 - CLGen - DEBUG - ,[OrderForm-Definitions[OFDefinitionsTrans]]0Q_033UAA396189
+02-19 20:10:52 - CLGen - DEBUG - ,[OrderForm-Definitions[OFDefinitionsUser]]0Q_034UAA396189
+02-19 20:10:52 - CLGen - DEBUG - ,[Account]0Q_001UAA852936
+02-19 20:10:52 - CLGen - DEBUG - Final queries for insertion
+02-19 20:10:52 - CLGen - DEBUG - [{'APXTConga4__Name__c': 'CT-AB[CTAB]', 'APXTConga4__Description__c': "Gets clauses with 'CT-AB' clause type", 'APXTConga4__Query__c': "SELECT Id, APXT_Redlining__Text_Rich__c, APXT_Redlining__Order__c FROM APXT_Redlining__Managed_Clause__c WHERE APXT_Redlining__Contract_Agreement__r.ID = '{pv0}' AND APXT_Redlining__Clause_Type__c = 'CT-AB' ORDER BY APXT_Redlining__Order__c ASC"}, {'APXTConga4__Name__c': 'CT-CD[CTCD]', 'APXTConga4__Description__c': "Gets clauses with 'CT-CD' clause type", 'APXTConga4__Query__c': "SELECT Id, APXT_Redlining__Text_Rich__c, APXT_Redlining__Order__c FROM APXT_Redlining__Managed_Clause__c WHERE APXT_Redlining__Contract_Agreement__r.ID = '{pv0}' AND APXT_Redlining__Clause_Type__c = 'CT-CD' ORDER BY APXT_Redlining__Order__c ASC"}]
+02-19 20:10:58 - CLGen - DEBUG -  ==========  BULK APXTConga4__Conga_Merge_Query__c INSERT RESULT =========
+02-19 20:10:58 - CLGen - DEBUG - success=True, created=True, id=a8X4C000000tRvIUAU
+02-19 20:10:58 - CLGen - DEBUG - success=True, created=True, id=a8X4C000000tRvJUAU
+02-19 20:10:59 - CLGen - DEBUG - ,[MSA-Term[MSATerm]]0Q_006UAA408984
+02-19 20:10:59 - CLGen - DEBUG - ,[MSA-Appointment[MSAAppointment]]0Q_005UAA201318
+02-19 20:10:59 - CLGen - DEBUG - ,[Opportunity]0Q_000UAA703901
+02-19 20:10:59 - CLGen - DEBUG - ,[NDA [NDA]]0Q_002UAA925272
+02-19 20:10:59 - CLGen - DEBUG - ,[MSA-Definitions[MSADefinitions]]0Q_003UAA480582
+02-19 20:10:59 - CLGen - DEBUG - ,[MSA-EXA-RefFees[MSAExARefFees]]0Q_009UAA532507
+02-19 20:10:59 - CLGen - DEBUG - ,[MSA-EXA-Services[MSAExAServices]]0Q_010UAA532507
+02-19 20:10:59 - CLGen - DEBUG - ,[MSA-GeneralProvisions[MSAGeneralProv]]0Q_011UAA532507
+02-19 20:10:59 - CLGen - DEBUG - ,[MSA-Limitation[MSALimitation]]0Q_012UAA532506
+02-19 20:10:59 - CLGen - DEBUG - ,[MSA-Indemnity[MSAIndemnity]]0Q_013UAA532506
+02-19 20:10:59 - CLGen - DEBUG - ,[MSA-ReferralsFees[MSAReferFees]]0Q_014UAA532506
+02-19 20:10:59 - CLGen - DEBUG - ,[MSA-EXA-Reporting[MSAExAReporting]]0Q_015UAA532506
+02-19 20:10:59 - CLGen - DEBUG - ,[OrderForm-Test[OrderFormTest]]0Q_035UAA321270
+02-19 20:10:59 - CLGen - DEBUG - ,[CT-AB[CTAB]]0Q_036UAA044357
+02-19 20:10:59 - CLGen - DEBUG - ,[CT-CD[CTCD]]0Q_037UAA044357
+02-19 20:10:59 - CLGen - DEBUG - ,[MSA-OwnershipRights[MSAOwnership]]0Q_007UAA587205
+02-19 20:10:59 - CLGen - DEBUG - ,[MSA-RegisteredLeads[MSARegisteredLeads]]0Q_008UAA180082
+02-19 20:10:59 - CLGen - DEBUG - ,[OrderForm-Agreement[OFAgreement]]0Q_023UAA861884
+02-19 20:10:59 - CLGen - DEBUG - ,[OrderForm-SubscriptionTerm[OFSubscriptionTerm]]0Q_024UAA861884
+02-19 20:10:59 - CLGen - DEBUG - ,[OrderForm-Invoicing[OFInvoicing]]0Q_025UAA861884
+02-19 20:10:59 - CLGen - DEBUG - ,[OrderForm-Payment[OFPayment]]0Q_026UAA861884
+02-19 20:10:59 - CLGen - DEBUG - ,[OrderForm-TripLogHardware[OFTripLogHardware]]0Q_027UAA861884
+02-19 20:10:59 - CLGen - DEBUG - ,[OrderForm-EmbursePaywithTransferWise[OFEmbursePaywith]]0Q_028UAA861884
+02-19 20:10:59 - CLGen - DEBUG - ,[OrderForm-EmburseCards[OFEmburseCards]]0Q_029UAA861884
+02-19 20:10:59 - CLGen - DEBUG - ,[OrderForm-SubscriptionPlan[OFSubscriptionPlan]]0Q_030UAA396189
+02-19 20:10:59 - CLGen - DEBUG - ,[OrderForm-AdditionalTerms[OFAdditionalTerms]]0Q_031UAA396189
+02-19 20:10:59 - CLGen - DEBUG - ,[OrderForm-Definitions[OFDefinitions]]0Q_032UAA396189
+02-19 20:10:59 - CLGen - DEBUG - ,[OrderForm-Definitions[OFDefinitionsTrans]]0Q_033UAA396189
+02-19 20:10:59 - CLGen - DEBUG - ,[OrderForm-Definitions[OFDefinitionsUser]]0Q_034UAA396189
+02-19 20:10:59 - CLGen - DEBUG - ,[Account]0Q_001UAA852936

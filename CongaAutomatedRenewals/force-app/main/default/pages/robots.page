@@ -1,0 +1,7 @@
+<apex:page contentType="text/plain">
+User-agent: *
+Disallow: /pmtx/
+Disallow: /knowledgebase/
+Disallow: /knowledgebasesl/
+Sitemap: http://appextremes.force.com/sitemap
+</apex:page>

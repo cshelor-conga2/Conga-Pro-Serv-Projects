@@ -1,0 +1,11 @@
+<!-- 
+     This page is designed for use from an Activities grid which often has a mix of Contacts and Leads. This can be challenging 
+     because you want to see some details of the Contact or Lead but since the NAME field is a polymorphic we can't do a simple Details page.
+     Thus this page figures out whether to show Lead data or Contact data by calling one or the other additional VF Pages
+--> 
+ 
+
+<apex:page standardController="Task" showHeader="false" docType="html-4.01-strict">
+<apex:iframe height="1100px" src="/apex/AG_Lead_RPTab?id={!Task.WhoId}" rendered="{!Task.WhoId!=null && Task.Who.Type =='Lead'}"/>
+<apex:iframe height="920px" src="/apex/AG_Contact_RPTab?id={!Task.WhoId}" rendered="{!Task.WhoId!=null && Task.Who.Type =='Contact'}"/>
+</apex:page>

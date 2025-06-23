@@ -1,0 +1,71 @@
+<apex:page standardController="PS_Project__c" showHeader="true" docType="html-4.01-strict">
+<div id="tabstrip" style="display:none;"> <ul> 
+<li class="k-state-active">Milestones</li>
+<li>Assignments</li>
+<li>Journals</li>
+<li>Time Card Entries</li>
+<li>Project Teams</li>
+<li>Project Register</li>
+
+
+</ul>
+<!-- Milestone -->
+<div style="overflow:hidden;"> 
+<CRMC_PP:Grid ObjectName="Milestone__c" FKName="ProjectId__c" FKValue="{!PS_Project__c.Id}"  DelayLoad="true"  ViewID="a6A500000009IjyEAE" 
+ EnableNewButton="true"  EnableNewInline="true"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true" 
+ EnableStickyViews="true"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+ <CRMC_PP:DrillUp /> 
+ </div>
+
+<!-- Assignments -->
+<div style="overflow:hidden;"> 
+<CRMC_PP:Grid ObjectName="Assignment__c" FKName="ProjectId__c" FKValue="{!PS_Project__c.Id}"  DelayLoad="true"  ViewID="a6A1T000000P23VUAS" 
+ EnableNewButton="true"  EnableNewInline="true"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true" 
+ EnableStickyViews="true"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+ <CRMC_PP:DrillUp /> 
+ </div>
+
+<!-- Journals -->
+<div style="overflow:hidden;"> 
+<CRMC_PP:Grid ObjectName="Journal__c" FKName="ProjectId__c" FKValue="{!PS_Project__c.Id}"  DelayLoad="true"  ViewID="a6A500000009Ik3EAE" 
+ EnableNewButton="true"  EnableNewInline="true"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true" 
+ EnableStickyViews="true"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+ <CRMC_PP:DrillUp /> 
+ </div>
+
+<!-- Time Card Entries -->
+<div style="overflow:hidden;"> 
+<CRMC_PP:Grid ObjectName="Time_Card_Entry__c" FKName="ProjectId__c" FKValue="{!PS_Project__c.Id}"  DelayLoad="true"  ViewID="a6A500000008n5bEAA" 
+ EnableNewButton="true"  EnableNewInline="true"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true" 
+ EnableStickyViews="true"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+ <CRMC_PP:DrillUp /> 
+ </div>
+ 
+<!-- Project Teams -->
+<div style="overflow:hidden;"> 
+<CRMC_PP:Grid ObjectName="Project_Team__c" FKName="Project__c" FKValue="{!PS_Project__c.Id}"  DelayLoad="true"  ViewID="a6A1T0000004sWXUAY" 
+ EnableNewButton="true"  EnableNewInline="true"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true" 
+ EnableStickyViews="true"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+ <CRMC_PP:DrillUp /> 
+ </div>
+ 
+ <!-- Project Register -->
+<div style="overflow:hidden;"> 
+<CRMC_PP:Grid ObjectName="Deltas_and_Risks__c" FKName="Project__c" FKValue="{!PS_Project__c.Id}"  DelayLoad="true"  ViewID="a6A1T0000004sWSUAY" 
+ EnableNewButton="true"  EnableNewInline="true"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true" 
+ EnableStickyViews="true"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+ <CRMC_PP:DrillUp /> 
+ </div>
+ 
+</div>
+<script>
+$(document).ready(function() {
+    $("#tabstrip").kendoTabStrip({
+      activate: function(e){
+        setTimeout(function(){          $(window).resize();        });
+      }
+    });
+    $("#tabstrip").css("display", "block");
+});
+ </script>
+</apex:page>

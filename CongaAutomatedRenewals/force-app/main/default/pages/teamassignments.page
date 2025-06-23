@@ -1,0 +1,217 @@
+<apex:page showHeader="false" sidebar="false" applyHtmlTag="false" applyBodyTag="false" docType="html-5.0" standardStyleSheets="false" controller="TeamAssignmentsUtilities">
+    <html lang="en">
+        <head>
+            <meta charset="utf-8"></meta>
+            <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+            <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+            <meta name="description" content="Conga Team Assignments App"></meta>
+            <meta name="author" content="Joseph Markey"></meta>
+            <title>Conga | Team Assignments App</title>
+            <link rel="icon" href="{!URLFOR($Resource.Favicon)}" type="image/x-icon" />
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+            <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/smoothness/jquery-ui.css" />
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" />
+            <link rel="stylesheet" href="{!URLFOR($Resource.TeamAssignments, 'teamassignments.css')}" />
+            <!--[if lt IE 9]>
+                <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+                <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+            <![endif]-->
+        </head>
+        <body id="ControllerTeamAssignments" ng-app="NgAppTeamAssignments" ng-controller="ControllerTeamAssignments">
+            <input type="hidden" id="userType" value="{!userType}" /> 
+        	<div id="mask"></div>
+           	<div class="jumbotron">
+               	<div class="container">
+                	<img id="img-logo" src="{!URLFOR($Resource.EmployeeTimeCard, 'conga_logo.png')}" class="img-responsive" />
+                    <h1 class="page-header">Team Assignments</h1>
+               	</div>
+            </div>
+            <div id="alert-error" class="alert alert-danger hidden-conga" role="alert">
+            	<button id="close-alert-error" type="button" class="close" aria-label="Close"><span aria-hidden="true">×</span></button>
+                <strong>Alert!&#32;</strong><span id="alert-error-message"></span>
+            </div>
+            <div class="container marketing">
+                <div class="row relative">
+                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                        <h3>Open Assignments</h3>
+                        <hr class="featurette-divider" />
+                        <div class="row filter-section">
+                        	<div class="col-sm-12 col-md-12 col-lg-12">
+                                <div class="btn-group" role="group">
+                                    <button type="button" class="btn btn-default" ng-click="backToSalesforce()">« Salesforce</button>
+                                    <button type="button" class="btn btn-danger btn-clear-filters" ng-click="clearFilters()">Clear Filters</button> 
+                                </div>
+                    		</div>
+                            
+                             <!-- <div class="col-sm-4 col-md-4 col-lg-4">
+                            	<label for="selectOwner" class="hover-hand transition-gintzler-pink">Owner</label>
+                                <select id="selectOwner" class="hover-hand form-control" ng-model="ownerData.model" ng-change="selectOwner()">
+									<option ng-repeat="option in ownerData.availableOptions" value="{{option.Id}}">{{option.Name}}</option>
+                                </select>
+                            </div> -->
+                            <div class="col-sm-4 col-md-4 col-lg-4">
+                                <label for="selectAssignmentType" class="hover-hand transition-gintzler-pink">Record Type</label>
+                                <select id="selectAssignmentType" class="hover-hand form-control" ng-model="assignmentRecordTypes.model" ng-change="selectAssignmentRecordTypes()">
+									<option ng-repeat="option in assignmentRecordTypes.availableOptions" value="{{option}}">{{option}}</option> 
+                                </select>
+                            </div> 
+                           <!--  <div class="col-sm-4 col-md-4 col-lg-4">
+                                <label for="selectAssignmentType" class="hover-hand transition-gintzler-pink">Assignment Type</label>
+                                <select id="selectAssignmentType" class="hover-hand form-control" ng-model="projectManagersData.model" ng-change="selectAssignmentType()">
+                                    <option ng-repeat="option in projectManagersData.availableOptions" value="{{option.Name}}">{{option.Name}}</option>
+                                </select>
+                            </div> -->
+                            <div class="col-sm-4 col-md-4 col-lg-4">
+                                <label for="selectStatus" class="hover-hand transition-gintzler-pink">Level of Effort</label>
+                                <select id="selectStatus" class="hover-hand form-control" ng-model="levelOfEffortData.model" ng-change="selectStatus()">
+									<option ng-repeat="option in levelOfEffortData.availableOptions" value="{{option}}" ng-class="getLevelOfEffortClass(option)">{{option}}</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-4 col-md-4 col-lg-4">
+                                    <label for="showOverflow" class="hover-hand transition-gintzler-pink">Show&nbsp;Overflow&nbsp;Assignments</label>
+                                    <input type="checkbox" id="showOverflow" value="isOverflowAssignment" ng-model="isOverflowAssignment" ng-change="selectOverflow()" />
+                            </div>
+                        </div>
+                        <input type="text" placeholder="Search Open Assignments" class="form-control" ng-model="searchOpenAssignments" autofocus="true" />
+                        <i id="fa-loader-assignments" class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+                        <ul id="sortable-assignments" class="connectedSortable">
+                            <li ng-repeat="assignment in openAssignments |filter: searchOpenAssignments" data-id="{{assignment.Id}}" class="ui-state-default hover-hand hover-background relative">
+                                <div class="row">
+                                	<span class="assignment-id" ng-bind-html="assignment.Id" ng-show="false"></span>
+                                	<span class="owner-id" ng-bind-html="assignment.OwnerId" ng-show="false"></span>
+                                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 text-center" ng-if="assignment.RecordType.Name == 'Professional Services'">
+                                        <label class="hover-hand underline">Type:</label><span class="hover-hand" ng-bind-html="assignment.RecordType.Name" style="color: blue"></span>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 text-center" ng-if="assignment.RecordType.Name == 'Business Systems'">
+                                        <label class="hover-hand underline">Type:</label><span class="hover-hand" ng-bind-html="assignment.RecordType.Name" style="color: green" ></span>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 text-center">
+                                        <label class="hover-hand underline">Assignment:</label><a ng-href="/{{assignment.Id}}" target="_blank" class="hover-hand" ng-bind-html="assignment.Name"></a>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                        <label class="hover-hand">Subject:</label><span class="hover-hand" ng-bind-html="assignment.Subject__c"></span>
+                                    </div>
+                                    
+                                    <!-- <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                                        <label class="hover-hand">Owner:</label><span class="hover-hand" ng-bind-html="assignment.Owner.Name"></span>
+                                    </div> -->
+                                    <!-- <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                                        <label class="hover-hand">Status:</label><span class="hover-hand" ng-class="getStatusClass(assignment.Status__c)" ng-bind-html="assignment.Status__c"></span>
+                                    </div> -->
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                                        <label class="hover-hand">Account:</label><span class="hover-hand" ng-bind-html="assignment.AccountFx__c"></span>
+                                    </div>
+                                    <!-- <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                                        <label class="hover-hand">Project Manager:</label><span class="hover-hand" ng-bind-html="assignment.Project_ManagerFX__c"></span>
+                                    </div> -->
+                                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                                        <label class="hover-hand">Project:</label><span class="hover-hand" ng-bind-html="assignment.ProjectId__r.Name"></span>
+                                    </div>
+                                    <!-- <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                                        <label class="hover-hand">Milestone:</label><span class="hover-hand" ng-bind-html="assignment.MilestoneId__r.Name"></span>
+                                    </div> -->
+                                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                                        <label class="hover-hand">Skill Set:&nbsp;</label><span class="hover-hand skill-set" ng-bind-html="assignment.Skill_Set__c"></span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                	<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                                        <label class="hover-hand">Level of Effort:</label><span class="hover-hand" ng-class="getLevelOfEffortClass(assignment.Time_Level_of_Effort__c)" ng-bind-html="assignment.Time_Level_of_Effort__c"></span>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                                        <label class="hover-hand">Due Date:</label><span class="hover-hand" ng-bind-html="assignment.Due_Date__c | date : 'shortDate' : 'utc'"></span>
+                                    </div>
+                                    
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                        <label class="hover-hand">Description:</label><span class="hover-hand" ng-bind-html="assignment.Description__c"></span>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                        <h3>Team Members</h3>
+                        <hr class="featurette-divider" />
+                        <input type="text" placeholder="Search Team Members" class="form-control" ng-model="searchTeamMembers" />
+                        <i id="fa-loader-team-members" class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+                        <ul id="sortable-team-members">
+                            <li ng-repeat="tm in teamMembers |filter: searchTeamMembers" class="row">
+                            	<div class="hover-hand team-member-parent-container" data-id="{{tm.thisUser.Id}}">
+                            		<span class="new-owner-id" ng-bind-html="tm.thisUser.Id" ng-show="false"></span>
+	                                <h5 class="hover-hand bold team-member-name" ng-bind-html="tm.thisUser.Name"></h5>
+	                                <i class="fa fa-bars fa-2x pull-right"></i>
+                                </div>
+                                <ul class="child-connected-sortable connectedSortable">
+									<li ng-repeat="assignment in tm.assignments" data-id="{{assignment.Id}}" class="over-hand team-member-children-container">
+		                                <div class="row">
+		                                	<span class="assignment-id" ng-bind-html="assignment.Id" ng-show="false"></span>
+		                                	<span class="owner-id" ng-bind-html="assignment.OwnerId" ng-show="false"></span>
+		                                	<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 text-center">
+		                                        <label class="hover-hand underline">Assignment:</label><a class="hover-hand" ng-href="/{{assignment.Id}}" target="_blank" ng-bind-html="assignment.Name"></a> - <label class="hover-hand" ng-class="getStatusClass(assignment.Status__c)" ng-bind-html="assignment.Status__c"></label>
+		                                    </div>
+                                            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                                <label class="hover-hand">Subject:</label><span class="hover-hand" ng-bind-html="assignment.Subject__c"></span>
+                                            </div>
+		                                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+		                                        <label class="hover-hand">Account:</label><span class="hover-hand" ng-bind-html="assignment.AccountFx__c"></span>
+		                                    </div>
+		                                   	<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+		                                        <label class="hover-hand">Owner:</label><span class="hover-hand" ng-bind-html="assignment.Owner.Name"></span>
+		                                    </div>
+		                                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+		                                        <label class="hover-hand">Subject:</label><span class="hover-hand" ng-class="getStatusClass(assignment.Status__c)" ng-bind-html="assignment.Subject"></span>
+		                                    </div>
+		                                </div>
+		                                <div class="row">
+		                                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+		                                        <label class="hover-hand">Project Manager:</label><span class="hover-hand" ng-bind-html="assignment.Project_ManagerFX__c"></span>
+		                                    </div>
+		                                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+		                                        <label class="hover-hand">Project:</label><span class="hover-hand" ng-bind-html="assignment.ProjectId__r.Name"></span>
+		                                    </div>
+		                                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+		                                        <label class="hover-hand">Milestone:</label><span class="hover-hand" ng-bind-html="assignment.MilestoneId__r.Name"></span>
+		                                    </div>
+		                                </div>
+		                                <div class="row">
+		                                	<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+		                                        <label class="hover-hand">Level of Effort:</label><span class="hover-hand" ng-class="getLevelOfEffortClass(assignment.Time_Level_of_Effort__c)" ng-bind-html="assignment.Time_Level_of_Effort__c"></span>
+		                                    </div>
+		                                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+		                                        <label class="hover-hand">Due Date:</label><span class="hover-hand" ng-bind-html="assignment.Due_Date__c | date : 'shortDate' : 'utc'"></span>
+		                                    </div>
+		                                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+		                                        <label class="hover-hand">Skill Set:</label><span class="hover-hand skill-set" ng-bind-html="assignment.Skill_Set__c"></span>
+		                                    </div>
+		                                </div>
+		                                <div class="row">
+		                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+		                                        <label class="hover-hand">Description:</label><span class="hover-hand" ng-bind-html="assignment.Description__c"></span>
+		                                    </div>
+		                                </div>
+		                            </li>
+	                            </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <footer>
+                <p class="pull-right">
+                    <a id="back-to-top" href="#">Top</a>
+                </p>
+                <p>&copy; Copyright 2006 – <span ng-bind="currentYear"></span>. Conga. All Rights Reserved. Various Trademarks Held by Their Respective Owners.</p>
+            </footer>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+            <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script> 
+            <script src="https://cdn.jsdelivr.net/angularjs/1.5.5/angular.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/angularjs/1.5.5/angular-sanitize.min.js"></script>
+            <script src="{!URLFOR($Resource.TeamAssignments, 'teamassignments.js')}"></script>
+        </body>
+    </html>
+</apex:page>

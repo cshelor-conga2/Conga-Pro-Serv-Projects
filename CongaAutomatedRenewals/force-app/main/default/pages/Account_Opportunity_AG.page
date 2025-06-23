@@ -1,0 +1,6 @@
+<apex:page standardController="Account" showHeader="false" docType="html-4.01-strict">
+<CRMC_PP:Grid ObjectName="AccountContactRelation" FKName="AccountId" FKValue="{!Account.Id}"  DelayLoad="false"  ViewID="a6A1T000000P7uUUAS" 
+ EnableNewButton="true"  EnableNewInline="true"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true" 
+ EnableStickyViews="true"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+<CRMC_PP:DrillUp />
+</apex:page>

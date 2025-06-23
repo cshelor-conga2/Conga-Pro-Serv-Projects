@@ -1,0 +1,15 @@
+<apex:page standardController="SBQQ__Quote__c">
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    
+    <apex:detail subject="{!SBQQ__Quote__c.Id}" relatedList="true" title="true" relatedListHover="true" showChatter="true" inlineEdit="true" />
+    
+    <script type="text/javascript">       
+        $(document).ready(function() {
+            $('.pbButton input').each(function(){
+                if($(this).attr('name') == "piSubmit") {
+                    $(this).css("display","none");
+                }       
+            });
+        });        
+    </script>
+</apex:page>

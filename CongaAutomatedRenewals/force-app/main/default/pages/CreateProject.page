@@ -1,0 +1,4 @@
+<apex:page StandardController="Opportunity" extensions="CreateProjectController" recordSetVar="records" action="{!autoRun}">
+	<apex:form >
+	</apex:form>
+</apex:page>

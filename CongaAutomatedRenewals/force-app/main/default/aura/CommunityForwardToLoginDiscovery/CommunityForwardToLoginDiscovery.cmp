@@ -1,0 +1,12 @@
+<aura:component implements="lightning:isUrlAddressable,force:appHostable,forceCommunity:availableForAllPageTypes" access="global" >
+	<aura:attribute name="pageReference" type="Object"/>
+    <aura:attribute name="startURL" type="String" access="private"/>
+    
+    <aura:handler name="init" value="{!this}" action="{! c.onInit }"/>
+    
+	<div class="salesforceIdentityLoginForm2">
+        <a class="uiButton" href="javascript:void(0)" onclick="{!c.onLinkClicked}">
+            Login Using Your Email
+		</a>
+    </div>
+</aura:component>

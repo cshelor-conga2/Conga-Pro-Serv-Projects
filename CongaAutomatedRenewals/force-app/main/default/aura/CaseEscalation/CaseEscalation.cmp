@@ -1,0 +1,80 @@
+<aura:component implements="force:lightningQuickActionWithoutHeader,force:hasRecordId" controller="CaseEscalationController" access="global" >
+    <!-- ATTRIBUTES -->
+    <aura:attribute name="recordId" type="String" />
+    
+    <aura:attribute name="settings" type="Object" />
+    
+    <aura:attribute name="outageTemplateId" type="String" default="00X50000001c4Op" />
+    <aura:attribute name="supportEmail" type="String" default="tier3support@getconga.com" />
+    <aura:attribute name="CETID" type="String" default="a1250000003Ajk4" />
+    
+	<aura:attribute name="yesNoOptions" type="List" default="[
+        {'label': 'Yes', 'value': 'yes'},
+        {'label': 'No', 'value': 'no'}
+    ]"/>
+    <aura:attribute name="severityFilled" type="String" default="no"/>    
+    <aura:attribute name="systemOutage" type="String" default="no"/>
+    
+    <aura:attribute name="showSeverityQuestion" type="Boolean" default="true"/>    
+    <aura:attribute name="showSystemOutageQuestion" type="Boolean" default="false"/>
+    <aura:attribute name="showUpdateSeverity" type="Boolean" default="false"/>    
+    <aura:attribute name="showFinish" type="Boolean" default="false"/>
+    <!--/ ATTRIBUTES -->
+
+    <!-- HANDLERS -->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <!--/ HANDLERS -->
+    
+    <aura:renderIf isTrue="{!v.showSeverityQuestion}">
+        <lightning:card title="Case Escalation">        
+            <p class="slds-p-horizontal_small">            
+                <lightning:radioGroup name="radioGroup"
+                                      label="Are the product and severity fields filled out accurately on the case (yes/no)?"
+                                      options="{! v.yesNoOptions }"
+                                      value="{! v.severityFilled }"
+                                      type="radio"/>                        
+            </p>
+            <aura:set attribute="footer">
+                <lightning:button variant="brand" label="Continue" title="Continue" onclick="{! c.doContinueForSeverity }"/>
+            </aura:set>
+        </lightning:card>
+    </aura:renderIf>
+    
+	<aura:renderIf isTrue="{!v.showSystemOutageQuestion}">
+        <lightning:card title="Case Escalation">        
+            <p class="slds-p-horizontal_small">            
+                <lightning:radioGroup name="radioGroup"
+                                      label="Do you suspect this case is caused by a system outage or major performance issues?"
+                                      options="{! v.yesNoOptions }"
+                                      value="{! v.systemOutage }"
+                                      type="radio"/>                        
+            </p>
+            <aura:set attribute="footer">
+                <lightning:button variant="neutral" label="Back" title="Back" onclick="{! c.doBackForSystemOutage }"/>
+                <lightning:button variant="brand" label="Continue" title="Continue" onclick="{! c.doContinueForSystemOutage }"/>
+            </aura:set>
+        </lightning:card>
+    </aura:renderIf>
+    
+    <aura:renderIf isTrue="{!v.showUpdateSeverity}">
+        <lightning:card title="Case Escalation">        
+            <p class="slds-p-horizontal_small">            
+				 Please update the product and severity fields on the case                                      
+            </p>
+            <aura:set attribute="footer">
+                <lightning:button variant="brand" label="Reset" title="Reset" onclick="{! c.doReset }"/>
+            </aura:set>
+        </lightning:card>
+    </aura:renderIf>
+    
+	<aura:renderIf isTrue="{!v.showFinish}">
+        <lightning:card title="Case Escalation">        
+            <p class="slds-p-horizontal_small">            
+				                                   
+            </p>
+            <aura:set attribute="footer">
+                <lightning:button variant="brand" label="Reset" title="Reset" onclick="{! c.doReset }"/>
+            </aura:set>
+        </lightning:card>
+    </aura:renderIf>
+</aura:component>

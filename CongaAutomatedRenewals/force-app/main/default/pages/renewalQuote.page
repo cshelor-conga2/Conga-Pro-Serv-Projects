@@ -1,0 +1,15 @@
+<apex:page showHeader="false" sidebar="false" standardController="Opportunity" extensions="RenewalQuoteFromOpportunityController">
+    <script type="text/javascript">
+    window.onload=function(){
+        Visualforce.remoting.Manager.invokeAction('{!$RemoteAction.RenewalQuoteFromOpportunityController.generateRenewalQuote}','{!$CurrentPage.parameters.id}', checkForRedirect);
+    }
+    function checkForRedirect(result, event) {
+        var oppId = result.toString(); 
+        if(oppId != null && oppId.length == 18) sforce.one.navigateToSObject(oppId, 'detail');
+        else{
+            sforce.one.navigateToSObject('{!$CurrentPage.parameters.id}', 'detail');
+            alert(oppId);
+        }
+    }
+    </script>
+</apex:page>

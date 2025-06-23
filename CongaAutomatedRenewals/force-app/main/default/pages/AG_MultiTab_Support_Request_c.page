@@ -1,0 +1,150 @@
+<apex:page sidebar="false" showHeader="true" docType="html-4.01-strict">
+<div id="tabstrip" style="display:none;"> <ul> 
+<li class="k-state-active">Legal Team Requests</li>
+<li>ALL Legal Support Requests</li>
+<li>General Requests</li>
+<li>MSA Requests</li>
+<li>Order Form Requests</li>
+<li>NDA Requests</li>
+<li>Purchasing Requests</li>
+<li>Service Level Credit Requests</li>
+<li>Security/Privacy Requests</li>
+<li>RFP Requests</li>
+<li>SOW Requests</li>
+<li>Partner/Reseller Requests</li>
+<li>Accounting Department Requests</li>
+<li>Sales Ops Department Requests</li>
+<li>RFx Review/Response Support Requests</li>
+</ul>
+<!-- Legal Team Requests -->
+<div style="overflow:hidden;"> 
+<CRMC_PP:Grid ObjectName="Support_Request__c" DelayLoad="false"  ViewID="a6A1T000000xwA1UAI" 
+ EnableNewButton="true"  EnableNewInline="true"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true" 
+ EnableStickyViews="true"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+ <CRMC_PP:DrillUp /> 
+ </div>
+ 
+<!-- ALL Legal Support Requests -->
+<div style="overflow:hidden;"> 
+<CRMC_PP:Grid ObjectName="Support_Request__c" DelayLoad="false"  ViewID="a6A1T000000xwA2UAI" 
+ EnableNewButton="true"  EnableNewInline="true"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true" 
+ EnableStickyViews="true"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+ <CRMC_PP:DrillUp /> 
+ </div>
+
+<!-- General Requests -->
+<div style="overflow:hidden;"> 
+<CRMC_PP:Grid ObjectName="Support_Request__c" DelayLoad="true"  ViewID="a6A1T000000xwABUAY" 
+ EnableNewButton="true"  EnableNewInline="true"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true" 
+ EnableStickyViews="true"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+ <CRMC_PP:DrillUp /> 
+ </div>
+
+<!--MSA Requests -->
+<div style="overflow:hidden;"> 
+<CRMC_PP:Grid ObjectName="Support_Request__c" DelayLoad="true"  ViewID="a6A1T000000xwA7UAI" 
+ EnableNewButton="true"  EnableNewInline="true"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true" 
+ EnableStickyViews="true"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+ <CRMC_PP:DrillUp /> 
+ </div>
+
+<!-- Order Form Requests-->
+<div style="overflow:hidden;"> 
+<CRMC_PP:Grid ObjectName="Support_Request__c" DelayLoad="true"  ViewID="a6A1T000000xwA8UAI" 
+ EnableNewButton="true"  EnableNewInline="true"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true" 
+ EnableStickyViews="true"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+ <CRMC_PP:DrillUp /> 
+ </div>
+
+<!-- NDA Requests -->
+<div style="overflow:hidden;"> 
+<CRMC_PP:Grid ObjectName="Support_Request__c" DelayLoad="true"  ViewID="a6A1T000000xwA9UAI" 
+ EnableNewButton="true"  EnableNewInline="true"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true" 
+ EnableStickyViews="true"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+ <CRMC_PP:DrillUp /> 
+ </div>
+
+<!-- Purchasing Requests  -->
+<div style="overflow:hidden;"> 
+<CRMC_PP:Grid ObjectName="Support_Request__c" DelayLoad="true"  ViewID="a6A1T000000xwAAUAY" 
+ EnableNewButton="true"  EnableNewInline="true"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true" 
+ EnableStickyViews="true"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+ <CRMC_PP:DrillUp /> 
+ </div>
+
+<!-- Service Level Credit Requests -->
+<div style="overflow:hidden;"> 
+<CRMC_PP:Grid ObjectName="Support_Request__c" DelayLoad="true"  ViewID="a6A1T000000xwA4UAI" 
+ EnableNewButton="true"  EnableNewInline="true"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true" 
+ EnableStickyViews="true"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+ <CRMC_PP:DrillUp /> 
+ </div>
+
+<!-- Security/Privacy Requests -->
+<div style="overflow:hidden;"> 
+<CRMC_PP:Grid ObjectName="Support_Request__c" DelayLoad="true"  ViewID="a6A1T000000xwA6UAI" 
+ EnableNewButton="true"  EnableNewInline="true"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true" 
+ EnableStickyViews="true"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+ <CRMC_PP:DrillUp /> 
+ </div>
+
+<!-- RFP Requests -->
+<div style="overflow:hidden;"> 
+<CRMC_PP:Grid ObjectName="Support_Request__c" DelayLoad="true"  ViewID="a6A1T000000xwA5UAI" 
+ EnableNewButton="true"  EnableNewInline="true"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true" 
+ EnableStickyViews="true"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+ <CRMC_PP:DrillUp /> 
+ </div>
+
+<!-- SOW Requests  -->
+<div style="overflow:hidden;"> 
+<CRMC_PP:Grid ObjectName="Support_Request__c" DelayLoad="true"  ViewID="a6A1T000000xwA3UAI" 
+ EnableNewButton="true"  EnableNewInline="true"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true" 
+ EnableStickyViews="true"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+ <CRMC_PP:DrillUp /> 
+ </div>
+ 
+ <!-- Partner/Reseller Requests Requests  -->
+<div style="overflow:hidden;"> 
+<CRMC_PP:Grid ObjectName="Support_Request__c" DelayLoad="true"  ViewID="a6A1T000000xwACUAY" 
+ EnableNewButton="true"  EnableNewInline="true"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true" 
+ EnableStickyViews="true"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+ <CRMC_PP:DrillUp /> 
+ </div>
+ 
+  <!-- Accounting Department Requests  -->
+<div style="overflow:hidden;"> 
+<CRMC_PP:Grid ObjectName="Support_Request__c" DelayLoad="true"  ViewID="a6A1T000000xwAEUAY" 
+ EnableNewButton="true"  EnableNewInline="true"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true" 
+ EnableStickyViews="true"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+ <CRMC_PP:DrillUp /> 
+ </div>
+ 
+   <!-- Sales Ops Department Requests  -->
+<div style="overflow:hidden;"> 
+<CRMC_PP:Grid ObjectName="Support_Request__c" DelayLoad="true"  ViewID="a6A1T000000xwADUAY" 
+ EnableNewButton="true"  EnableNewInline="true"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true" 
+ EnableStickyViews="true"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+ <CRMC_PP:DrillUp /> 
+ </div>
+ 
+ <!-- RFx Review/Response Support Request  -->
+<div style="overflow:hidden;"> 
+<CRMC_PP:Grid ObjectName="Support_Request__c" DelayLoad="true"  ViewID="a6A1T000000btxlUAA" 
+ EnableNewButton="true"  EnableNewInline="true"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true" 
+ EnableStickyViews="true"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+ <CRMC_PP:DrillUp /> 
+ </div>
+
+</div>
+<script>
+$(document).ready(function() {
+    $("#tabstrip").kendoTabStrip({
+      activate: function(e){
+        setTimeout(function(){          $(window).resize();        });
+      }
+    });
+    $("#tabstrip").css("display", "block");
+});
+ </script>
+</apex:page>

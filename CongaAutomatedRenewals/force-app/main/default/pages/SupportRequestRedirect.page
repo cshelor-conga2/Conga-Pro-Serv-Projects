@@ -1,0 +1,4 @@
+<apex:page standardController="Support_Request__c" extensions="SupportRequestRedirectController" action="{!redirect}">
+	<apex:form >
+	</apex:form>
+</apex:page>

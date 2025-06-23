@@ -1,0 +1,76 @@
+<apex:page controller="ApprovalReportController">
+    <apex:form >
+        <apex:pageblock title="All Pending Quote Approvals">
+            <div style="overflow:scroll;">
+                <apex:pageBlockTable style="width:?px; height:?px; word-wrap:break-word;" value="{!allPendingApprovals}" var="app">
+                    <apex:column headerValue="Approve/Reject/Reassign">                    
+                    <apex:commandButton style="background:LightBlue;width:60px;" value="Approve" onclick="window.open('/apex/sbaa__Approve?id={!app.approvalName.Id}','_blank');"> </apex:commandButton>
+                    <apex:commandButton style="background:LightBlue;width:60px;" value="Reject" onclick="window.open('/apex/sbaa__Reject?id={!app.approvalName.Id}','_blank');"> </apex:commandButton>
+                    <apex:commandButton style="background:LightBlue;width:60px;" value="Reassign" onclick="window.open('/apex/sbaa__Reassign?id={!app.approvalName.Id}','_blank');"> </apex:commandButton>
+                    </apex:column> 
+                  
+                    <!-- 
+                    <apex:column headerValue="Actions" value="{!app.approvalName.sbaa__Actions__c}"/>  
+                    -->         
+                    <apex:column headerValue="Approval" style="width: 10%">
+                        <apex:outputlink onclick="window.open('/{!app.approvalName.Id}','_blank');">{!app.approvalName.Name}</apex:outputlink>
+                    </apex:column>
+                    <apex:column headerValue="Quote" style="width: 10%">
+                        <apex:outputlink onclick="window.open('/{!app.relatedToId}','_blank');">{!app.relatedTo}</apex:outputlink>
+                    </apex:column>
+                    
+                    
+                    <!--
+                    <apex:column headerValue="Group Name" >
+                    <apex:outputlink onclick="window.open('/setup/own/groupdetail.jsp?id='+'{!app.groupId}','_blank');">{!app.groupName}</apex:outputlink>
+                    </apex:column> 
+                    -->
+                    <!--
+                    <apex:column headerValue="Actions">
+                        <apex:outputlink onclick="window.open('/{!app.approvalName.Id}','_blank');">Approve</apex:outputlink> 
+                        <apex:outputText >&nbsp;|&nbsp;</apex:outputText>
+                        <apex:outputlink onclick="window.open('/{!app.approvalName.Id}','_blank');">Reject</apex:outputlink>
+                    </apex:column>
+                    -->
+                    <!--
+                    <apex:column headerValue="Actions" >
+                        <apex:outputText value="{!app.relatedToActions}" escape="false"></apex:outputText>
+                    </apex:column>
+                    -->
+                    
+                    <!--
+                    <apex:column headerValue="Actions" >
+                        
+                        <apex:commandButton styleClass="slds-button slds-button--brand" rerender="err" action="{!onApprove}" value="{!$Label.sbaa__lbl_approve}" onclick="disableOnSubmit(this)" oncomplete="invalidateCache('{!recordId}');"/>
+                        <apex:outputText >&nbsp;|&nbsp;</apex:outputText>
+                        
+                        <apex:commandButton styleClass="slds-button slds-button--brand" rerender="err" action="{!onReject}" value="{!$Label.sbaa__lbl_reject}" onclick="disableOnSubmit(this)" oncomplete="invalidateCache('{!recordId}');"/>
+                    </apex:column>
+                    -->
+                    <apex:column headerValue="Opportunity" style="width: 15%">
+                        <apex:outputlink onclick="window.open('/{!app.relatedToOpportunity}','_blank');">{!app.relatedToOpportunityName}</apex:outputlink>
+                    </apex:column>
+                    
+
+   
+                    <apex:column headerValue="Approval Rule" style="width: 15%">
+                        <apex:outputlink onclick="window.open('/{!app.relatedToRule}','_blank');">{!app.relatedToRuleName}</apex:outputlink>
+                    </apex:column>
+                    
+                    <apex:column style="width: 10%">
+                    <apex:facet name="header">Discount to be <br/> Approved <br/>(Subscriptions)
+                    </apex:facet>
+                    <apex:outputText value="{0, number, ###,##0}%">
+                        <apex:param value="{!app.relatedToNewProductsDiscount}"/>
+                    </apex:outputText>
+                    </apex:column>
+               
+                    
+                    <apex:column headerValue="Request Notes" style="width: 20%" value="{!app.relatedToRequestNotes}"/>
+                    <apex:column headerValue="Submitted" style="width: 10%" value="{!app.creationDate}"/>
+                    <apex:column headerValue="Approver" style="width: 10%" value="{!app.relatedToApproverName}"/>
+                </apex:pageBlockTable>
+            </div>
+        </apex:pageblock>
+    </apex:form>    
+</apex:page>

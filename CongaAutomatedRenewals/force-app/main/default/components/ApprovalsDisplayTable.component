@@ -1,0 +1,45 @@
+<apex:component controller="ApprovalsTableController" access="global">
+    <apex:attribute name="quoteId" description="Id of the quote" type="Id" assignTo="{!objId}" />
+    
+    <apex:dataTable value="{!approvalsList}" var="approval" styleClass="tableClass" border="1">
+        <!--
+        <apex:column width="25%" style="text-align:right;">
+            <apex:facet name="header">Approval Step</apex:facet>
+            <apex:outputLink value="{!LEFT($Api.Partner_Server_URL_140,FIND('.com',$Api.Partner_Server_URL_140)+4)+URLFOR($Action.User.View, approval.sbaa__ApprovedBy__c)}" rendered="{!IF(approval.sbaa__ApprovedBy__c != null, 'true', 'false')}">
+                {!approval.sbaa__ApprovedBy__c}
+            </apex:outputLink>
+        </apex:column>
+        
+        <apex:column width="25%" style="text-align:right;">
+            <apex:facet name="header">Rule Name</apex:facet>
+            <apex:outputLink value="{!LEFT($Api.Partner_Server_URL_140,FIND('.com',$Api.Partner_Server_URL_140)+4)+URLFOR($Action.sbaa__ApprovalRule__c.View, approval.sbaa__Rule__c )}" rendered="{!IF(approval.sbaa__Rule__c != null, 'true', 'false')}">
+            {!approval.sbaa__Rule__r.Name}
+            </apex:outputLink>
+        </apex:column>
+        -->
+        
+        <apex:column width="40%" style="text-align:left;">
+            <apex:facet name="header">Rule Name</apex:facet>
+            <apex:outputText value="{!approval.sbaa__Rule__r.Name}" />
+        </apex:column>
+        
+        <apex:column width="15%" style="text-align:left;">
+            <apex:facet name="header">Approver</apex:facet>
+            <apex:outputText value="{!approval.sbaa__Approver__r.Name}" />
+        </apex:column>
+        
+        <apex:column width="10%" style="text-align:center;">
+            <apex:facet name="header">Approval Step</apex:facet>
+            <apex:outputText value="{!approval.sbaa__ApprovalStep__c }"/>
+        </apex:column>
+        
+        <apex:column width="15%">
+            <apex:facet name="header">Approval Status</apex:facet>
+            <apex:outputText value="{!approval.sbaa__Status__c}" />
+        </apex:column>
+         <apex:column width="20%">
+            <apex:facet name="header">Comments</apex:facet>
+            <apex:outputText value="{!approval.sbaa__CommentsLong__c}" />
+        </apex:column>
+    </apex:dataTable>
+</apex:component>

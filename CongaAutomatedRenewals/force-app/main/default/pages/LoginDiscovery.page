@@ -1,0 +1,49 @@
+<apex:page controller="LoginDiscoveryController" applyBodyTag="false" applyHtmlTag="false" docType="html-5.0" showHeader="false" sidebar="false" standardStylesheets="false">
+<html>
+	<head>
+    	<apex:includeLightning />            
+        <apex:slds />
+        <link rel="stylesheet" type="text/css" href="/css/sfdc_210.css" />
+        <style type="text/css">a{color:#0070d2;}body{background-color:rgb(226, 241, 248);}#content,.container{background-color:#ffffff;}#header{color:#51606E;}#header,#footer{color:#000000;}.primary,.primary:hover,.primary:focus{background-color:#B9509B;}.primary{color:#FFFFFF;}.primary{border:#B9509B;}.formArea{text-align:center;}.errorMsg{text-align:left;color:#CF4F43}#RememberDeviceDiv{padding-right:20px;padding-bottom:20px;position:relative;}#RememberDeviceForLLDiv{padding-right:20px;padding-bottom:20px;position:relative;}#RememberDeviceCheckbox{border-radius:4px;float:left;margin-right:8px}#RememberDeviceLabel{position:relative;float:left;}</style>
+    </head>
+    <body>
+        <div id="wrapper" class="salesforceIdentityLoginBody2">
+            <div id="logo_wrapper" class="standard_logo_wrapper mb24">
+                <h1 style="height: 100%; display: table-cell; vertical-align: bottom;">
+                    <img data-aura-rendered-by="116:0" src="https://full-congacommunity.cs91.force.com/partners/servlet/servlet.ImageServer?id=0152F00000087mZ&oid=00D2F000000Dbz8&lastMod=1580159870000" class="communityLogo" alt="Conga Partner Community" />
+                </h1>
+            </div>
+            <h2 id="header" class="mb12" style="display: none;"></h2>
+            <div id="content" style="display: block; background-color: transparent">
+                <div id="theloginform" style="display: block;">
+                    <apex:form >		
+                        <apex:outputPanel styleClass="loginError" id="error" style="display: block;" rendered="{!showError}">{!$Label.Login_Discovery_Error}</apex:outputPanel>
+                        <div id="usernamegroup" class="inputgroup">
+                            <label for="username" class="label usernamelabel">{!$Label.Login_Discovery_Enter_Email}</label>
+                            <div id="username_container">
+                                <div id="idcard-container" class="mt8 mb16" style="display: none">
+                                    <div id="idcard">
+                                        <img id="idcard-avatar" class="avatar" alt="" />
+                                        <a href="javascript:void(0);" id="clear_link" class="clearlink" onclick="LoginHint.clearExistingIdentity();">
+                                            <img alt="Log In with a Different Username" class="clearicon" src="/img/clear.png" />
+                                        </a>
+                                        <span id="idcard-identity"></span>
+                                    </div>
+                                </div>
+                                <apex:input styleClass="input r4 wide mb16 mt8 username" type="email" value="{!email}" id="username" style="display: block;" />
+                            </div>
+                        </div>
+                        <apex:commandButton action="{!submit}" id="Login" styleClass="button r4 wide primary" value="{!$Label.Login_Discovery_Login_Button}"/>
+                    </apex:form>
+                    <div class="w0 links bt pt16 mb20">
+                        <a id="selfReg" class="fr small" href="/partners/s/registration?locale=us">{!$Label.Login_Discovery_Not_a_Member}</a></div>
+                    </div>
+            </div>
+        </div>
+        <div class="slds-scope">
+            
+            
+        </div>
+    </body>
+</html>    
+</apex:page>
