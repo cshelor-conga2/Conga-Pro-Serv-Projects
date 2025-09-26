@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <letterhead>APXTConga4__Conga_Email_Letterhead</letterhead>
+    <name>Send for Negotiation</name>
+    <style>freeForm</style>
+    <subject>{!APXT_Redlining__Contract_Agreement__c.APXT_Redlining__Account__c} | Request for your Feedback on {!APXT_Redlining__Contract_Agreement__c.APXT_Redlining__Type__c} Contract</subject>
+    <textOnly>Hello,
+A {!Organization.Name} associate requests your feedback on the attached contract agreement. To respond, please download the editable document, make your changes, and reply to this email with the modified file attached.
+If you have no changes, please reply with an unchanged copy of the attached file as no response will prevent the contract from advancing.
+Do not change the document name or modify the subject line in your reply or your response may not be received.
+If you have any questions, please reach out to {!APXT_Redlining__Contract_Agreement__c.OwnerFullName}.
+Thanks,
+{!APXT_Redlining__Contract_Agreement__c.OwnerFirstName}</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

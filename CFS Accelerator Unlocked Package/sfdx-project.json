@@ -1,0 +1,33 @@
+{
+  "packageDirectories": [
+    {
+      "versionName": "CFS Accelerator - Fall '25 Release",
+      "versionNumber": "1.0.0.0",
+      "path": "force-app",
+      "default": true,
+      "package": "CFS Accelerator",
+      "versionDescription": "Fall 25 Release v1.0.0.0 - Components for CFS Accelerator",
+      "dependencies": [
+        {
+          "package": "CongaComposer"
+        },
+        {
+          "package": "CongaContracts"
+        },
+        {
+          "package": "CongaGrid"
+        }
+      ]
+    }
+  ],
+  "name": "CFS Accelerator",
+  "namespace": "",
+  "sfdcLoginUrl": "https://login.salesforce.com",
+  "sourceApiVersion": "62.0",
+  "packageAliases": {
+    "CongaComposer": "04tKe000000syJwIAI",
+    "CongaContracts": "04tKk000000cCs2IAE",
+    "CongaGrid": "04tKg000000D2p4IAC",
+    "CFS Accelerator": "0HoKa0000008hLbKAI"
+  }
+}

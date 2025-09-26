@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomApplication xmlns="http://soap.sforce.com/2006/04/metadata">
+    <brand>
+        <headerColor>#0070D2</headerColor>
+        <logo>Conga_Logo_150px</logo>
+        <logoVersion>1</logoVersion>
+        <shouldOverrideOrgTheme>false</shouldOverrideOrgTheme>
+    </brand>
+    <description>App for Legal users to manage the contract lifecycle</description>
+    <formFactors>Small</formFactors>
+    <formFactors>Large</formFactors>
+    <isNavAutoTempTabsDisabled>false</isNavAutoTempTabsDisabled>
+    <isNavPersonalizationDisabled>false</isNavPersonalizationDisabled>
+    <isNavTabPersistenceDisabled>false</isNavTabPersistenceDisabled>
+    <isOmniPinnedViewEnabled>false</isOmniPinnedViewEnabled>
+    <label>Conga Legal</label>
+    <navType>Standard</navType>
+    <tabs>APXT_Redlining__Setup</tabs>
+    <tabs>APXT_Redlining__CongaContracts</tabs>
+    <tabs>APXT_Redlining__Contract_Agreement__c</tabs>
+    <tabs>Contract_Management_Center</tabs>
+    <tabs>standard-Dashboard</tabs>
+    <tabs>standard-Opportunity</tabs>
+    <tabs>standard-Account</tabs>
+    <tabs>standard-Contact</tabs>
+    <tabs>APXTConga4__Conga_Merge_Query__c</tabs>
+    <tabs>APXTConga4__Conga_Template__c</tabs>
+    <uiType>Lightning</uiType>
+    <utilityBar>Conga_Legal_UtilityBar</utilityBar>
+</CustomApplication>

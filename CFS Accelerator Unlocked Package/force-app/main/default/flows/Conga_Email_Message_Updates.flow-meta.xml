@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>64.0</apiVersion>
+    <decisions>
+        <description>Use the Id prefix from the Get element and compare to the Id prefix of the Related To field on the EmailMessage record</description>
+        <name>Email_on_Contract_Agreement</name>
+        <label>Email on Contract Agreement?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>Yes_onCA</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>fT_EmailOnContractAgreement</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Outgoing_or_Incoming</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Outgoing_or_Incoming</name>
+        <label>Outgoing or Incoming?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>Incoming</defaultConnectorLabel>
+        <rules>
+            <name>Outgoing</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Incoming</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_CA_Status_Negotiating</targetReference>
+            </connector>
+            <label>Outgoing</label>
+        </rules>
+    </decisions>
+    <description>Uses the EmailMessage object to execute Status updates on the Contract Agreement</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>fT_EmailOnContractAgreement</name>
+        <dataType>Boolean</dataType>
+        <expression>IF( LEFT( {!Get_Contract_Agreement_Prefix.Id}, 3) = LEFT( {!$Record.RelatedToId}, 3 ),
+     True,
+     False
+)</expression>
+    </formulas>
+    <interviewLabel>Conga - Email Message Updates {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Conga - Email Message Updates</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Get_Contract_Agreement_Prefix</name>
+        <label>Get Contract Agreement Prefix</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Email_on_Contract_Agreement</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>APXT_Redlining__Contract_Agreement__c</object>
+        <queriedFields>Id</queriedFields>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <description>Update Status to Negotiating</description>
+        <name>Update_CA_Status_Negotiating</name>
+        <label>Update CA Status</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.RelatedToId</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>APXT_Redlining__Status__c</field>
+            <value>
+                <stringValue>Negotiating</stringValue>
+            </value>
+        </inputAssignments>
+        <object>APXT_Redlining__Contract_Agreement__c</object>
+    </recordUpdates>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_Contract_Agreement_Prefix</targetReference>
+        </connector>
+        <object>EmailMessage</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>
