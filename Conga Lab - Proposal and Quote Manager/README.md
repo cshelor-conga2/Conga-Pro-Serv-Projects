@@ -21,7 +21,14 @@ This project is structured as a Salesforce DX application using the default `for
 
 `sfdx-project.json` includes package configuration and package dependencies on the Conga managed packages (Conga Composer and Conga Grid).
 
-### Component Manifest
+## Development and Maintenance
+
+Version development currently happens in the Conga PS Commercial Team DevHub. Access is managed by Tunille Fry, tfry@conga.com.
+
+### DevHub Information
+Org Id: `00D8c0000023OxA`
+
+## Component Manifest
 
 This package includes the following components:
 
