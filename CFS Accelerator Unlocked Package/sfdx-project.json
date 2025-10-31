@@ -2,11 +2,11 @@
   "packageDirectories": [
     {
       "versionName": "CFS Accelerator - Fall '25 Release",
-      "versionNumber": "1.0.0.0",
+      "versionNumber": "1.0.0.1",
       "path": "force-app",
       "default": true,
       "package": "CFS Accelerator",
-      "versionDescription": "Fall 25 Release v1.0.0.0 - Components for CFS Accelerator",
+      "versionDescription": "Fall 25 Release v1.0.0.1 - Components for CFS Accelerator",
       "dependencies": [
         {
           "package": "CongaComposer"
@@ -29,6 +29,7 @@
     "CongaContracts": "04tKk000000cCs2IAE",
     "CongaGrid": "04tKg000000D2p4IAC",
     "CFS Accelerator": "0HoKa0000008hLbKAI",
-    "CFS Accelerator@1.0.0.0": "04tKa000003BfsCIAS"
+    "CFS Accelerator@1.0.0.0": "04tKa000003BfsCIAS",
+    "CFS Accelerator@1.0.0.1": "04tKa000003BhmsIAC"
   }
 }

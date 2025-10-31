@@ -1,0 +1,49 @@
+<apex:page standardController="Opportunity" showHeader="true" docType="html-4.01-strict">
+
+<style> .fluidMedia { position: relative; padding-bottom: 40%; padding-top: 30px; 
+height: 0; overflow: hidden; } .fluidMedia iframe { position: absolute; top: 0; 
+left: 0; width: 100%; height: 100%; }</style>
+
+<!-- Set the OpportunityId and Pricebook2Id as variables that are used by the Product Picker Batch Add code so we don't have to prompt for the two values unnecessarily -->
+<script>
+window.OPPORTUNITY = {Id: "{!Opportunity.Id}", Pricebook2Id: "{!Opportunity.Pricebook2Id}" };
+</script>
+
+<div id="tabstrip" style="display:none;"><ul> 
+<li>Product Picker</li>
+<li class="k-state-active">Opportunity Cart</li>
+</ul>
+
+
+<!-- PriceBook Entrys for batch adding to Opp Line Items,  Keep the ViewId hardcoded so it doesn't use the default related list used on the Product object -->
+<!-- IMPORTANT:  The batch add code that goes with this depends on  the LINE 3 Code which sets the OppId and PriceBookId as variables that are then accessible to the Batch Add code: -->
+<!-- window.OPPORTUNITY = {Id: "{!Opportunity.Id}", Pricebook2Id: "{!Opportunity.Pricebook2Id}" }; -->
+<!-- Example of a totally disconnected/un-related lists. In this case we use ActionGrids SEARCH, FILTER and GROUPING to batch add Products (a.k.a. PriceBook Entries) to the Opportunity Line Items -->
+<!-- note that this is a disconnected list of Active PriceBook entries -->
+<div style="overflow:hidden;">
+<CRMC_PP:Grid ObjectName="PricebookEntry" FKName="Pricebook2Id" FKValue="{!Opportunity.Pricebook2Id}" ViewID="a1LDR000004Islb2AC" DelayLoad="true"   
+ EnableNewButton="true"  EnableNewInline="true"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true" 
+ EnableStickyViews="true"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+ <CRMC_PP:DrillUp /> 
+</div>
+
+<!-- Products -->
+<div style="overflow:hidden;"> 
+<CRMC_PP:Grid ObjectName="OpportunityLineItem" FKName="OpportunityId" FKValue="{!Opportunity.Id}"  DelayLoad="true"  ViewID="a1LDR000004IslW2AS" 
+ EnableNewButton="true"  EnableNewInline="true"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true" 
+ EnableStickyViews="true"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+ <CRMC_PP:DrillUp /> 
+ </div>
+</div>
+
+<script>
+$(document).ready(function() {
+    $("#tabstrip").kendoTabStrip({
+      activate: function(e){
+        setTimeout(function(){          $(window).resize();        });
+      }
+    });
+    $("#tabstrip").css("display", "block");
+});
+ </script>
+</apex:page>

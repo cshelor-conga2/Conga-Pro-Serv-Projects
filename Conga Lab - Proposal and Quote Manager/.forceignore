@@ -1,0 +1,11 @@
+# Ignore everything in a temp folder
+temp/**
+
+# Ignore all test metadata files
+**/__tests__/**
+
+# Ignore Composer managed package components
+**/webLinks/**/APXTConga4__*
+
+# Ignore Grid managed package components
+**/CRMC_PP__*

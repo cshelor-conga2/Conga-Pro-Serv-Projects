@@ -1,0 +1,29 @@
+{
+  "packageDirectories": [
+    {
+      "versionName": "Conga Lab - Proposal and Quote Manager Beta Version",
+      "versionNumber": "0.1.0.NEXT",
+      "path": "force-app",
+      "default": true,
+      "package": "Proposal and Quote Manager Package",
+      "versionDescription": "Beta Release: Conga Lab - Proposal and Quote Manager Package",
+      "dependencies": [
+        {
+          "package": "CongaComposer"
+        },
+        {
+          "package": "CongaGrid"
+        }
+      ]
+    }
+  ],
+  "name": "Proposal and Quote Manager Package",
+  "namespace": "",
+  "sfdcLoginUrl": "https://login.salesforce.com",
+  "sourceApiVersion": "64.0",
+  "packageAliases": {
+    "CongaComposer": "04tKe000000syJwIAI",
+    "CongaGrid": "04tKg000000D2p4IAC",
+    "Proposal and Quote Manager Package": "0HoKa0000008m5AKAQ"
+  }
+}
