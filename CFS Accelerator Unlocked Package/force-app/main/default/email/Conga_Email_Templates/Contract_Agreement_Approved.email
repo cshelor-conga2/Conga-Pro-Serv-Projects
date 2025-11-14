@@ -1,0 +1,6 @@
+<table border="0" cellpadding="5" width="550" cellspacing="5" height="400" >
+<tr valign="top" height="400" >
+<td tEditID="c1r1" style=" background-color:#FFFFFF; color:#000000; bEditID:r3st1; bLabel:main; font-size:12pt; font-family:arial;" aEditID="c1r1" locked="0" >
+<![CDATA[<span style="font-size: 12pt; background-color: rgb(255, 255, 255);">Hello,</span><div style="font-size: 12pt;"><br></div><div><font face="arial"><span style="font-size: 12pt;">The following Contract Agreement has been approved:&nbsp;</span>{!APXT_Redlining__Contract_Agreement__c.Name}</font><span style="font-size: 12pt;">&nbsp;-&nbsp;</span><font face="arial">{!APXT_Redlining__Contract_Agreement__c.APXT_Redlining__Account__c}<span style="font-size: 12pt;">.&nbsp;</span></font></div><div style="font-size: 12pt;"><br></div><div style="font-size: 12pt;">You can navigate to the Contract Agreement by clicking on&nbsp;<a href="{!APXT_Redlining__Contract_Agreement__c.Link}">{!APXT_Redlining__Contract_Agreement__c.Link}</a>.&nbsp;&nbsp;</div><div style="font-size: 12pt;"><br></div><div style="font-size: 12pt;"><span style="font-size: 12pt;">&nbsp;</span></div><div style="font-size: 12pt;"><span style="font-size: 12pt;">Thank you!</span></div>]]></td>
+</tr>
+</table>

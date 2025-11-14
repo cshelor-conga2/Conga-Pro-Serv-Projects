@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <letterhead>APXTConga4__Conga_Email_Letterhead</letterhead>
+    <name>Contract Agreement Approval Request</name>
+    <style>freeForm</style>
+    <subject>A Request for Your Review and Approval of a Contract Agreement {!APXT_Redlining__Contract_Agreement__c.Name} has been submitted</subject>
+    <textOnly>Hello,
+
+A request for your Review and Approval has been submitted for the following Contract Agreement: {!APXT_Redlining__Contract_Agreement__c.Name} - {!APXT_Redlining__Contract_Agreement__c.APXT_Redlining__Account__c}.
+
+You can review changes to the Contract Agreement by clicking on {!APXT_Redlining__Contract_Agreement__c.Link}.
+
+You can approve the request by clicking on {!ApprovalRequest.Internal_URL}.
+Thank you!</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

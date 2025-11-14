@@ -11,5 +11,11 @@
         <members>APXTConga4__Conga_Reports/Open_Contracts_by_Status_QIg</members>
         <name>Report</name>
     </types>
+    <types>
+        <members>Conga_Email_Templates/Contract_Agreement_Rejected</members>
+        <members>Conga_Email_Templates/Contract_Agreement_Approved</members>
+        <members>Conga_Email_Templates/Contract_Agreement_Approval_Request</members>
+        <name>EmailTemplate</name>
+    </types>
     <version>62.0</version>
 </Package>

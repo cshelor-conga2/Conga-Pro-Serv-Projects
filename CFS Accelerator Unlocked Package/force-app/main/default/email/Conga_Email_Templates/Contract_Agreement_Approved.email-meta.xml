@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <letterhead>APXTConga4__Conga_Email_Letterhead</letterhead>
+    <name>Contract Agreement Approved</name>
+    <style>freeForm</style>
+    <subject>Your Contract Agreement has been Approved {!APXT_Redlining__Contract_Agreement__c.Name}</subject>
+    <textOnly>Hello,
+
+The following Contract Agreement has been approved: {!APXT_Redlining__Contract_Agreement__c.Name} - {!APXT_Redlining__Contract_Agreement__c.APXT_Redlining__Account__c}.
+
+You can navigate to the Contract Agreement by clicking on {!APXT_Redlining__Contract_Agreement__c.Link}.
+
+Thank you!</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>
