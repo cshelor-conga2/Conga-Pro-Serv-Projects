@@ -1,7 +1,7 @@
 # 
 
 # Package post-installation steps
-1. Import the Grid zip file stored in this repo. Import all Views and the Page included in the zip file
+1. Import the Grid zip file, `CFS Accelerator - Grid Views v1.1.zip` stored in this folder. Import all Views and the Page included in the zip file
 2. Activate flexipages (Lightning pages) for the Conga Query, Conga Template, and Contract Agreement objects
 3. Assign page layouts for the Conga Template and Contract Agreement objects
 4. Assign Grid Visualforce Pages permission set to all Grid users
