@@ -1,18 +1,19 @@
 # 
 
 # Package post-installation steps
-1. Activate flexipages (Lightning pages) for the Conga Query, Conga Template, and Contract Agreement objects
-2. Assign page layouts for the Conga Template and Contract Agreement objects
-3. Assign Grid Visualforce Pages permission set to all Grid users
-4. Assign Conga CLM - Read Only permission set to any CFS users who are read-only
-5. Edit the Conga Legal app and make it visible to any profiles who need to access it
+1. Import the Grid zip file stored in this repo. Import all Views and the Page included in the zip file
+2. Activate flexipages (Lightning pages) for the Conga Query, Conga Template, and Contract Agreement objects
+3. Assign page layouts for the Conga Template and Contract Agreement objects
+4. Assign Grid Visualforce Pages permission set to all Grid users
+5. Assign Conga CLM - Read Only permission set to any CFS users who are read-only
+6. Edit the Conga Legal app and make it visible to any profiles who need to access it
 
 # Package version summary
 
 - Package name: `CFS Accelerator`
 - Version name: `CFS Accelerator - Fall '25 Release`
-- Version number: `1.0.0.0`
-- Version description: `Fall 25 Release v1.0.0.0 - Components for CFS Accelerator`
+- Version number: `1.1.0.1`
+- Version description: `Fall '25 Release v1.1.0.1 - Components for CFS Accelerator`
 - Source path: `force-app`
 - Source API version: `62.0`
 
@@ -31,7 +32,7 @@ All Salesforce metadata components included in this project came from the `force
 ## Summary
 
 - Root metadata folder: `force-app/main/default`
-- Total component files listed: 38 (metadata files and related contents)
+- Total component files listed: 41 (metadata files and related contents)
 
 ## Manifest (grouped by metadata type)
 
@@ -110,6 +111,9 @@ All Salesforce metadata components included in this project came from the `force
 - `force-app/main/default/email/Conga_Email_Templates.emailFolder-meta.xml`
 - `force-app/main/default/email/Conga_Email_Templates/CNG_Send_for_Negotiation.email`
 - `force-app/main/default/email/Conga_Email_Templates/CNG_Send_for_Negotiation.email-meta.xml`
+- `force-app/main/default/email/Conga_Email_Templates/Contract_Agreement_Rejected`
+- `force-app/main/default/email/Conga_Email_Templates/Contract_Agreement_Approved`
+- `force-app/main/default/email/Conga_Email_Templates/Contract_Agreement_Approval_Request`
 
 ### Objects (fields, list views, web links)
 
