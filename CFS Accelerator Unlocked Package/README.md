@@ -111,9 +111,12 @@ All Salesforce metadata components included in this project came from the `force
 - `force-app/main/default/email/Conga_Email_Templates.emailFolder-meta.xml`
 - `force-app/main/default/email/Conga_Email_Templates/CNG_Send_for_Negotiation.email`
 - `force-app/main/default/email/Conga_Email_Templates/CNG_Send_for_Negotiation.email-meta.xml`
-- `force-app/main/default/email/Conga_Email_Templates/Contract_Agreement_Rejected`
-- `force-app/main/default/email/Conga_Email_Templates/Contract_Agreement_Approved`
-- `force-app/main/default/email/Conga_Email_Templates/Contract_Agreement_Approval_Request`
+- `force-app/main/default/email/Conga_Email_Templates/Contract_Agreement_Approval_Request.email`
+- `force-app/main/default/email/Conga_Email_Templates/Contract_Agreement_Approval_Request.email-meta.xml`
+- `force-app/main/default/email/Conga_Email_Templates/Contract_Agreement_Approved.email`
+- `force-app/main/default/email/Conga_Email_Templates/Contract_Agreement_Approved.email-meta.xml`
+- `force-app/main/default/email/Conga_Email_Templates/Contract_Agreement_Rejected.email`
+- `force-app/main/default/email/Conga_Email_Templates/Contract_Agreement_Rejected.email-meta.xml`
 
 ### Objects (fields, list views, web links)
 
