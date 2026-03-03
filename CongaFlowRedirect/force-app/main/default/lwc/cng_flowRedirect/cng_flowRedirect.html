@@ -1,0 +1,15 @@
+<template>
+    <div class="slds-align_absolute-center slds-p-around_large">
+        <div class="slds-text-align_center">
+
+            <template if:true={shouldShowSpinner}>
+                <lightning-spinner alternative-text="Redirecting"></lightning-spinner>
+            </template>
+
+            <div class="slds-m-top_medium">
+                <lightning-formatted-rich-text value={message}></lightning-formatted-rich-text>
+            </div>
+
+        </div>
+    </div>
+</template>

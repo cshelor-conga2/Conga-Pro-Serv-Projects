@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>60.0</apiVersion>
+    <isExposed>true</isExposed>
+    <targets>
+        <target>lightning__FlowScreen</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightning__FlowScreen">
+            <property
+                name="recordId"
+                type="String"
+                label="Record Id"
+                description="Record Id to navigate to (optional)"
+                required="false"/>
+            <property
+                name="redirectUrl"
+                type="String"
+                label="Redirect URL"
+                description="Relative or full URL (optional)"
+                required="false"/>
+            <property
+                name="message"
+                type="String"
+                label="Display Message (Supports HTML)"
+                description="Message shown before redirect. Supports basic HTML like bold, line breaks, and links."
+                required="false"/>
+            <property
+                name="showSpinner"
+                type="Boolean"
+                label="Show Spinner"
+                description="Whether to display loading spinner"
+                required="false"/>
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>
