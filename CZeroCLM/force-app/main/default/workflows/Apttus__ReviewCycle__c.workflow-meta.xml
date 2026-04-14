@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <alerts>
+        <fullName>CNG_Parallel_Review_O365_Review_Cycle_Complete_Email_to_Sender</fullName>
+        <description>Parallel Review/O365 Review Cycle Complete Email to Sender</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Apttus__InitiatedBy__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>Apttus__ApttusEmailTemplates/CNG_Parallel_Review_O365_Review_Cycle_Complete</template>
+    </alerts>
+</Workflow>

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>picklist</bucketType>
+        <developerName>BucketField_4361969</developerName>
+        <masterLabel>Negotiated vs Standard</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>Apttus__Agreement_Clause__c.Apttus__Action__c</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Modified</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Deleted</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Swapped</sourceValue>
+            </sourceValues>
+            <value>Negotiated</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Inserted</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Used</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Original</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Final</sourceValue>
+            </sourceValues>
+            <value>Standard</value>
+        </values>
+    </buckets>
+    <columns>
+        <aggregateTypes>Unique</aggregateTypes>
+        <field>CUST_NAME</field>
+    </columns>
+    <columns>
+        <field>CHILD_NAME</field>
+    </columns>
+    <columns>
+        <field>Apttus__APTS_Agreement__c.Apttus__Related_Opportunity__c</field>
+    </columns>
+    <columns>
+        <field>Apttus__APTS_Agreement__c.Apttus__Status__c</field>
+    </columns>
+    <columns>
+        <field>Apttus__APTS_Agreement__c.Apttus__Status_Category__c</field>
+    </columns>
+    <columns>
+        <field>Apttus__Agreement_Clause__c.Apttus__Clause__c</field>
+    </columns>
+    <columns>
+        <field>Apttus__Agreement_Clause__c.Apttus__DiffText2__c</field>
+    </columns>
+    <columns>
+        <field>Apttus__Agreement_Clause__c.Apttus__Action__c</field>
+    </columns>
+    <columns>
+        <field>CHILD_LAST_UPDATE</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>CDF1</field>
+    </columns>
+    <currency>USD</currency>
+    <customDetailFormulas>
+        <calculatedFormula>IF( TEXT( Apttus__Agreement_Clause__c.Apttus__Action__c ) = &apos;Modified&apos; || TEXT( Apttus__Agreement_Clause__c.Apttus__Action__c ) = &apos;Deleted&apos; || TEXT( Apttus__Agreement_Clause__c.Apttus__Action__c ) = &apos;Swapped&apos;,
+1,
+0
+)</calculatedFormula>
+        <dataType>Double</dataType>
+        <developerName>CDF1</developerName>
+        <label>Negotiated Clauses</label>
+        <scale>2</scale>
+    </customDetailFormulas>
+    <filter>
+        <criteriaItems>
+            <column>Apttus__Agreement_Clause__c.Apttus__Clause__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>startsWith</operator>
+            <value>Fees (MSA,Fees &amp; Payment)</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Apttus__APTS_Agreement__c.Apttus__Status__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Cancelled Request,Terminated,Expired</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Apttus__APTS_Agreement__c.Apttus__Account__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>MSA Fees Clause</name>
+    <params>
+        <name>co</name>
+        <value>0</value>
+    </params>
+    <reportType>CustomEntityCustomEntity$Apttus__APTS_Agreement__c$Apttus__Agreement_Clause__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>false</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Apttus__APTS_Agreement__c.Apttus__Activated_Date__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

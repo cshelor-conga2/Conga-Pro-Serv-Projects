@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Notify_Sender_that_Review_is_Complete</name>
+        <label>Notify Sender that Review is Complete</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <actionName>Apttus__ReviewCycle__c.CNG_Parallel_Review_O365_Review_Cycle_Complete_Email_to_Sender</actionName>
+        <actionType>emailAlert</actionType>
+        <connector>
+            <targetReference>Which_Type</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Apttus__ReviewCycle__c.CNG_Parallel_Review_O365_Review_Cycle_Complete_Email_to_Sender</nameSegment>
+        <offset>0</offset>
+    </actionCalls>
+    <apiVersion>65.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <name>What_Happened</name>
+        <label>What Happened?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Review_Completed</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Apttus__ReviewStatus__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Completed</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Notify_Sender_that_Review_is_Complete</targetReference>
+            </connector>
+            <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+            <label>Review Completed</label>
+        </rules>
+        <rules>
+            <name>Review_Cancelled</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Apttus__ReviewStatus__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Cancelled</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Which_Type_Cancelled</targetReference>
+            </connector>
+            <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+            <label>Review Cancelled</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Which_Type</name>
+        <label>Which Type?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>MSA</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Apttus__OriginalDocumentVersionDetail__r.Agreement__r.APTS_Record_Type_Name__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>MSSA</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Agreement_Fields_MSA</targetReference>
+            </connector>
+            <label>MSA</label>
+        </rules>
+        <rules>
+            <name>MPA</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Apttus__OriginalDocumentVersionDetail__r.Agreement__r.APTS_Record_Type_Name__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>MPA</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Set_Status_to_Author_Contract</targetReference>
+            </connector>
+            <label>MPA</label>
+        </rules>
+        <rules>
+            <name>NDA_or_DPA</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Apttus__OriginalDocumentVersionDetail__r.Agreement__r.APTS_Record_Type_Name__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>NDA</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Apttus__OriginalDocumentVersionDetail__r.Agreement__r.APTS_Record_Type_Name__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>DPA</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_Legal_Queue</targetReference>
+            </connector>
+            <label>NDA or DPA</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Which_Type_Cancelled</name>
+        <label>Which Type?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>MPA_Cancelled</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Apttus__OriginalDocumentVersionDetail__r.Agreement__r.APTS_Record_Type_Name__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>MPA</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Set_Status_to_Author_Contract_Cancelled</targetReference>
+            </connector>
+            <label>MPA</label>
+        </rules>
+    </decisions>
+    <description>PSC-179 - added MSA field updates when review complete</description>
+    <environments>Default</environments>
+    <interviewLabel>Conga CLM - Review Cycle Updates {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Conga CLM - Review Cycle Updates</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Get_Legal_Queue</name>
+        <label>Get Legal Queue</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Update_Agreement_Fields</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Legal_Queue</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Group</object>
+        <queriedFields>Id</queriedFields>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <name>Set_Status_to_Author_Contract</name>
+        <label>Set Status to Author Contract</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <inputAssignments>
+            <field>Apttus__Status__c</field>
+            <value>
+                <stringValue>Author Contract</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record.Apttus__OriginalDocumentVersionDetail__r.Agreement__r</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Set_Status_to_Author_Contract_Cancelled</name>
+        <label>Set Status to Author Contract</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <inputAssignments>
+            <field>Apttus__Status__c</field>
+            <value>
+                <stringValue>Author Contract</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record.Apttus__OriginalDocumentVersionDetail__r.Agreement__r</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Owner = Legal Queue; Status = Internal Review</description>
+        <name>Update_Agreement_Fields</name>
+        <label>Update Agreement Fields</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <inputAssignments>
+            <field>Apttus__Status__c</field>
+            <value>
+                <stringValue>Internal Review</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>OwnerId</field>
+            <value>
+                <elementReference>Get_Legal_Queue.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record.Apttus__OriginalDocumentVersionDetail__r.Agreement__r</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Approval Status = Approval Required; Status = Internal Review</description>
+        <name>Update_Agreement_Fields_MSA</name>
+        <label>Update Agreement Fields - MSA</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <inputAssignments>
+            <field>Apttus_Approval__Approval_Status__c</field>
+            <value>
+                <stringValue>Approval Required</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Apttus__Status__c</field>
+            <value>
+                <stringValue>Internal Review</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record.Apttus__OriginalDocumentVersionDetail__r.Agreement__r</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>What_Happened</targetReference>
+        </connector>
+        <object>Apttus__ReviewCycle__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

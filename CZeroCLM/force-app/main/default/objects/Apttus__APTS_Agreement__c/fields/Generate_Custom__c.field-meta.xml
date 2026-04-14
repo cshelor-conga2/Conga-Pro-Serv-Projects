@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Generate_Custom__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(
+	AND(ISPICKVAL(APTS_CBS_CLM_Division__c , &apos;Conga Buy-side&apos;),
+		ISPICKVAL( Apttus_Approval__Approval_Status__c , &quot;Approved&quot;)
+	),
+	NULL,
+	IF(
+		AND(ISPICKVAL(APTS_CBS_CLM_Division__c , &apos;Conga Buy-side&apos;),
+			APTS_Record_Type_Name__c == &quot;Vendor_Order_Form&quot;,
+			ISPICKVAL(APTS_Type_of_Paper__c,&quot;Vendor Paper&quot;),
+			ISPICKVAL(Apttus__Status__c,&quot;Request&quot;),
+			ISPICKVAL(Apttus__Status_Category__c,&quot;Request&quot;)
+		),
+		NULL,
+		IF(
+			AND(ISPICKVAL(APTS_CBS_CLM_Division__c , &apos;Conga Buy-side&apos;),
+				ISPICKVAL(APTS_Type_of_Paper__c, &apos;Conga Redlined&apos;),
+				ISPICKVAL(Apttus__Status__c,&quot;Request&quot;),
+				ISPICKVAL(Apttus__Status_Category__c,&quot;Request&quot;)
+			),
+			$CustomMetadata.Agreement_Action_Mapping__mdt.Generate.Lightning_Link__c,
+			IF(
+				OR(
+					AND(
+						OR( $User.Id = OwnerId,
+							$Profile.Name = &apos;Sales Ops&apos;,
+							$User.Department = &apos;240000 Legal&apos;
+						),
+						CONTAINS($CustomMetadata.Agreement_Action_Mapping__mdt.Generate.Agreement_Process_Flow_Short_Name__c, APTS_Process_Flow__c),
+						CONTAINS($CustomMetadata.Agreement_Action_Mapping__mdt.Generate.Agreement_Status_Category__c, TEXT(Apttus__Status_Category__c)),
+						CONTAINS($CustomMetadata.Agreement_Action_Mapping__mdt.Generate.Agreement_Status__c, TEXT(Apttus__Status__c)),
+						OR( NOT(RecordType.DeveloperName = &apos;Order&apos;),
+							AND(RecordType.DeveloperName = &apos;Order&apos;,
+								NOT(ISBLANK(Apttus__Parent_Agreement__c)),
+								NOT(ISNULL(Apttus__Parent_Agreement__c))
+							)
+						)
+					),
+					AND(
+						OR( $User.Id = OwnerId,
+							$Profile.Name = &apos;Sales Ops&apos;,
+							$User.Department = &apos;240000 Legal&apos;
+						),
+						CONTAINS($CustomMetadata.Agreement_Action_Mapping__mdt.Generate.Additional_Inclusion__c, APTS_Process_Flow__c &amp; TEXT(Apttus__Status_Category__c) &amp; TEXT(Apttus_Approval__Approval_Status__c))
+					)
+				),
+				IF(
+					OR(
+						AND(APTS_Record_Type_Name__c == &quot;SOW&quot;,
+							ISPICKVAL(APTS_Type_of_Paper__c,&quot;Third Party Paper&quot;)
+						),
+						AND(APTS_Record_Type_Name__c == &quot;MSSA&quot;,
+							OR( ISPICKVAL(APTS_Type_of_Paper__c,&quot;Conga (C1) Online MSA&quot;),
+								ISPICKVAL(APTS_Type_of_Paper__c,&quot;Apttus Standard&quot;),
+								ISPICKVAL(APTS_Type_of_Paper__c,&quot;Online MSSA&quot;),
+								ISPICKVAL(APTS_Type_of_Paper__c,&quot;Third Party Paper&quot;),
+								ISPICKVAL(APTS_Type_of_Paper__c,&quot;Other Party Paper&quot;),
+								ISPICKVAL(APTS_Type_of_Paper__c,&quot;Conga Standard&quot;)	
+							)
+						)
+					),
+					NULL,
+					HYPERLINK(&quot;/apex/APTS_AgreementInvoiceValidation?id=&quot; &amp;Id &amp; &quot;&amp;actionType=Generate&quot;, IMAGE(&quot;/resource/Apttus__Button_Generate&quot;, &quot;Generate&quot;),&quot;_self&quot;)
+				),
+				NULL
+			)
+		)
+	)
+)</formula>
+    <label>Generate_Custom</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

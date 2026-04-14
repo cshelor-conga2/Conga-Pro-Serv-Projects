@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CSign__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(
+	OR(
+		ISPICKVAL(APTS_CBS_CLM_Division__c, &apos;Conga Buy-side&apos;),
+		APTS_Record_Type_Name__c == &apos;MPA&apos;,
+		APTS_Record_Type_Name__c == &apos;MSSA&apos;,
+                APTS_Record_Type_Name__c == &apos;DPA&apos;	
+	),
+	NULL,
+	IF(
+		IF( 
+			AND(
+				OR( APTS_Record_Type_Name__c = &apos;PSOD&apos;,
+					APTS_Record_Type_Name__c = &apos;SOW&apos;
+				),
+				ISPICKVAL(Apttus__Status__c,&apos;Ready for Signatures&apos;),
+				ISBLANK(APTS_Customer_Signatory_Contact__c)
+			),
+			FALSE,
+			OR(
+				AND(
+					APTS_Record_Type_Name__c != &quot;NDA&quot;,
+					CONTAINS($CustomMetadata.Agreement_Action_Mapping__mdt.Send_For_eSignature.Agreement_Process_Flow_Short_Name__c, APTS_Process_Flow__c),
+					CONTAINS($CustomMetadata.Agreement_Action_Mapping__mdt.Send_For_eSignature.Agreement_Status_Category__c, TEXT(Apttus__Status_Category__c)),
+					CONTAINS($CustomMetadata.Agreement_Action_Mapping__mdt.Send_For_eSignature.Agreement_Status__c, TEXT(Apttus__Status__c))
+				),
+				AND(
+					APTS_Record_Type_Name__c != &quot;NDA&quot;,
+					CONTAINS($CustomMetadata.Agreement_Action_Mapping__mdt.Send_For_eSignature.Additional_Inclusion__c, APTS_Process_Flow__c &amp; TEXT(Apttus__Status_Category__c) &amp; TEXT(Apttus__Status__c))
+				),
+				AND(
+					APTS_Record_Type_Name__c == &quot;NDA&quot;,
+					ISPICKVAL(APTS_Type_of_Paper__c, &quot;Conga MNDA&quot;),
+					ISPICKVAL(Apttus__Status__c, &quot;Ready For Signatures&quot;)
+				),
+				AND(
+					APTS_Record_Type_Name__c == &quot;NDA&quot;,
+					OR( 
+						ISPICKVAL(APTS_Type_of_Paper__c, &quot;Third Party Paper&quot;),
+						ISPICKVAL(APTS_Type_of_Paper__c, &quot;Conga Hybrid Redlined&quot;)
+					), 
+					ISPICKVAL(Apttus__Status__c, &quot;Ready For Signatures&quot;),
+					Legal_Review_Complete__c == True
+				)
+			)
+		),
+		HYPERLINK(&quot;/apex/APTS_CongaSignRedirection?id=&quot;&amp;Id, IMAGE(&quot;/resource/APTS_logo_congaSign&quot;,&quot;Send via Conga Sign&quot;), &quot;_self&quot;),
+		NULL
+	)
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Send via Conga Sign</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

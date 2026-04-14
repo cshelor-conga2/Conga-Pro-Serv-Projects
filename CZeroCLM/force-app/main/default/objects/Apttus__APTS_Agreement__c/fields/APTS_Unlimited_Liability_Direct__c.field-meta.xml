@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>APTS_Unlimited_Liability_Direct__c</fullName>
+    <description>Categories of unlimited direct liability</description>
+    <label>Limitation of Liability</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Standard</fullName>
+                <default>false</default>
+                <label>Standard</label>
+            </value>
+            <value>
+                <fullName>Medium</fullName>
+                <default>false</default>
+                <label>Medium</label>
+            </value>
+            <value>
+                <fullName>High</fullName>
+                <default>false</default>
+                <label>High</label>
+            </value>
+            <value>
+                <fullName>Confidentiality</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Confidentiality</label>
+            </value>
+            <value>
+                <fullName>Data Security</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Data Security</label>
+            </value>
+            <value>
+                <fullName>IP Infringement Indemnification</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>IP Infringement Indemnification</label>
+            </value>
+            <value>
+                <fullName>IP Ownership</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>IP Ownership</label>
+            </value>
+            <value>
+                <fullName>Non-Standard</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Non-Standard</label>
+            </value>
+            <value>
+                <fullName>None</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>None</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Other</label>
+            </value>
+            <value>
+                <fullName>Other Indemnification</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Other Indemnification</label>
+            </value>
+            <value>
+                <fullName>Standard (IP Infringement Only)</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Standard (IP Infringement Only)</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

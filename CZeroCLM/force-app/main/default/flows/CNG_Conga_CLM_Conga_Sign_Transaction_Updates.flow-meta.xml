@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Send_email</name>
+        <label>Send email</label>
+        <locationX>50</locationX>
+        <locationY>755</locationY>
+        <actionName>emailSimple</actionName>
+        <actionType>emailSimple</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>emailAddresses</name>
+            <value>
+                <elementReference>RecepientsList</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailSubject</name>
+            <value>
+                <elementReference>Subject</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailBody</name>
+            <value>
+                <elementReference>EmailBody</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>relatedRecordId</name>
+            <value>
+                <elementReference>$Record.Parent_aMN__r.Id</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>logEmailOnSend</name>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputParameters>
+        <nameSegment>emailSimple</nameSegment>
+        <offset>0</offset>
+    </actionCalls>
+    <apiVersion>59.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <name>What_Changed</name>
+        <label>What Changed?</label>
+        <locationX>314</locationX>
+        <locationY>323</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Service_Request_Completed</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.APXT_CongaSign__Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>COMPLETE</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Parent_aMN__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Service_Request_Status</targetReference>
+            </connector>
+            <label>Service Request Completed</label>
+        </rules>
+        <rules>
+            <name>DPA_Sent_for_Signature</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Parent_a9z__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.APXT_CongaSign__Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>SENT</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Set_Agreement_Status</targetReference>
+            </connector>
+            <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+            <label>DPA Sent for Signature</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <formulas>
+        <name>AccountRecordLink</name>
+        <dataType>String</dataType>
+        <expression>LEFT({!$Api.Enterprise_Server_URL_510},FIND(&apos;/services&apos;,{!$Api.Enterprise_Server_URL_510}))&amp;{!$Record.Parent_aMN__r.Account__r.Id}</expression>
+    </formulas>
+    <formulas>
+        <name>RecepientsList</name>
+        <dataType>String</dataType>
+        <expression>&quot;shshinde@conga.com,sharad.shinde@outlook.com&quot;</expression>
+    </formulas>
+    <formulas>
+        <name>Subject</name>
+        <dataType>String</dataType>
+        <expression>&quot;Account Information has been updated&quot;</expression>
+    </formulas>
+    <interviewLabel>Conga CLM - Conga Sign Transaction Updates {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Conga CLM - Conga Sign Transaction Updates</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordCreates>
+        <name>Create_Content_Document_Link_Record</name>
+        <label>Create Content Document Link Record</label>
+        <locationX>50</locationX>
+        <locationY>647</locationY>
+        <connector>
+            <targetReference>Send_email</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>ContentDocumentId</field>
+            <value>
+                <elementReference>Get_Content_Document_Id.APXT_CongaSign__ContentDocumentId__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>LinkedEntityId</field>
+            <value>
+                <elementReference>$Record.Parent_aMN__r.Account__r.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <object>ContentDocumentLink</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordLookups>
+        <name>Get_Content_Document_Id</name>
+        <label>Get Content Document Id</label>
+        <locationX>50</locationX>
+        <locationY>539</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Create_Content_Document_Link_Record</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>APXT_CongaSign__Transaction__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>APXT_CongaSign__Type__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Final</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>APXT_CongaSign__DocumentOrder__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <numberValue>1.0</numberValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>APXT_CongaSign__Document__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <description>Set to Other Party Signatures</description>
+        <name>Set_Agreement_Status</name>
+        <label>Set Agreement Status</label>
+        <locationX>314</locationX>
+        <locationY>431</locationY>
+        <inputAssignments>
+            <field>Apttus__Status__c</field>
+            <value>
+                <stringValue>Other Party Signatures</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record.Parent_a9z__r</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Set Status = Completed</description>
+        <name>Update_Service_Request_Status</name>
+        <label>Update Service Request Status</label>
+        <locationX>50</locationX>
+        <locationY>431</locationY>
+        <connector>
+            <targetReference>Get_Content_Document_Id</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Parent_aMN__r.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Status__c</field>
+            <value>
+                <stringValue>Completed</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Service_Request__c</object>
+    </recordUpdates>
+    <start>
+        <locationX>188</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>What_Changed</targetReference>
+        </connector>
+        <object>APXT_CongaSign__Transaction__c</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <textTemplates>
+        <name>EmailBody</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>Dear Team, 
+
+A new customer request has been received to update account information.
+
+The customer has provided the necessary details and signed the document using Conga Sign. Kindly find the document linked to below account record and proceed with the necessary updates. 
+{!AccountRecordLink}
+
+Your prompt attention to this matter is appreciated. 
+Thank you.</text>
+    </textTemplates>
+</Flow>

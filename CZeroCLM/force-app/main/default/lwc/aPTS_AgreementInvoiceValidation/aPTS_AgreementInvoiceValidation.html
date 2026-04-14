@@ -1,0 +1,20 @@
+<template>
+    <div class="slds-grid slds-wrap">
+        <div class="slds-p-right_xxx-large slds-p-leftt_xxx-large slds-p-top_xx-large" style="width:90%" if:true={showMsg}>
+            <div class="slds-box slds-theme_error slds-theme_alert-texture">
+                    <strong>{errorMsg}</strong>
+            </div>
+            
+            <div class="slds-m-top_small slds-m-bottom_medium slds-float_right">
+                <lightning-button variant="brand" label="Return to Agreement" title="Primary action" onclick={navigateToAgreement} class="slds-m-left_x-small" icon-position="right"></lightning-button>
+            </div>
+        </div>
+    </div>
+    <div if:true={spinnerOn}>
+        <div style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; opacity: 0.25; z-index: 1000; background-color: black;">
+        </div>
+        <div style="position: fixed; left: 0; top: 0; bottom: 0; right: 0; z-index: 1001; margin: 15% 50%">
+            <lightning-spinner variant="brand" size="large" alternative-text="waiting for reply"></lightning-spinner>
+        </div>
+    </div>
+</template>

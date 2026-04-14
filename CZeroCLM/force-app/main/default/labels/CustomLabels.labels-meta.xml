@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
+    <labels>
+        <fullName>Order_agreement_with_activated_MSA</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Order agreement with activated MSA</shortDescription>
+        <value>This Agreement cannot be Activated while the Parent Agreement (MSA/Reseller/MPA) linked to this record is not Activated. The Activate action in the Agreement Actions section will appear once the Parent Agreement is activated.</value>
+    </labels>
+    <labels>
+        <fullName>Required_Customer_Signatory_Contact</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Required Customer Signatory Contact</shortDescription>
+        <value>Please choose a value for Customer Signatory Contact. The Customer Signatory must be selected before sending the document for signature.</value>
+    </labels>
+</CustomLabels>

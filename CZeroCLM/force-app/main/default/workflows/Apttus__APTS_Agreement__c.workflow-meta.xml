@@ -1,0 +1,1284 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <alerts>
+        <fullName>APTS_Activate_Work_Order_Agreement</fullName>
+        <description>Activate Work Order Agreement</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <recipients>
+            <field>Apttus__Requestor__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>Apttus__ApttusEmailTemplates/Apts_Work_Order_Fully_Signed_Notification</template>
+    </alerts>
+    <alerts>
+        <fullName>APTS_Create_a_Project_for_signed_PSOD_Agreement</fullName>
+        <ccEmails>psops@conga.com</ccEmails>
+        <description>Create a Project for PSOD Agreement</description>
+        <protected>false</protected>
+        <senderType>CurrentUser</senderType>
+        <template>Apttus__ApttusEmailTemplates/Apts_PSOD_Fully_Signed_Notification_to_PS_Ops</template>
+    </alerts>
+    <alerts>
+        <fullName>APTS_PSOD_Document_Generation_Notice_to_Requestor</fullName>
+        <description>PSOD Document Generation Notice to Requestor</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Apttus__Requestor__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>Apttus__ApttusEmailTemplates/APTS_Apttus_PSOD_Generated_Notification_to_Requestor</template>
+    </alerts>
+    <alerts>
+        <fullName>APTS_SOW_Activation_Notification_Email_to_Deal_Desk</fullName>
+        <ccEmails>psnewdealdesk@apttus.com</ccEmails>
+        <description>SOW Activation Notification Email to Deal Desk</description>
+        <protected>false</protected>
+        <senderType>CurrentUser</senderType>
+        <template>Apttus__ApttusEmailTemplates/APTS_SOWContractActivationNotice</template>
+    </alerts>
+    <alerts>
+        <fullName>APTS_SOW_Agreement_Approved_Notification</fullName>
+        <description>SOW Agreement Approved Notification</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <recipients>
+            <field>Apttus__Requestor__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>Apttus__ApttusEmailTemplates/APTS_SOW_Agreement_Approved_Notification</template>
+    </alerts>
+    <alerts>
+        <fullName>Apts_PSOD_PO_Process_Initiation</fullName>
+        <description>Apttus PSOD PO Process Initiation</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>lemerson1@apttus.com</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>Apttus__ApttusEmailTemplates/Apts_PSOD_Fully_Signed_Notification_to_Process_PO</template>
+    </alerts>
+    <alerts>
+        <fullName>Apttus_Approval_Rejected_Notification</fullName>
+        <description>Apttus - Approval - Rejected Notification</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Apttus__Requestor__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>Apttus__ApttusEmailTemplates/CNG_Agreement_Rejected_Notification</template>
+    </alerts>
+    <alerts>
+        <fullName>CNG_Activation_Notice_to_Owner_and_Legal_Reviewer</fullName>
+        <description>Activation Notice to Owner and Legal Reviewer</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <recipients>
+            <field>Legal_Owner__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>Apttus__ApttusEmailTemplates/Apttus__ApttusContractActivationNotice</template>
+    </alerts>
+    <alerts>
+        <fullName>CNG_Activation_Notice_to_Owner_and_Requestor</fullName>
+        <description>Activation Notice to Owner and Requestor</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <recipients>
+            <field>Apttus__Requestor__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>Apttus__ApttusEmailTemplates/Apttus__ApttusContractActivationNotice</template>
+    </alerts>
+    <alerts>
+        <fullName>CNG_Activation_Notice_to_Requestor_Only</fullName>
+        <description>Activation Notice to Requestor Only</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Apttus__Requestor__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>Apttus__ApttusEmailTemplates/Apttus__ApttusContractActivationNotice</template>
+    </alerts>
+    <alerts>
+        <fullName>CNG_Agreement_Approval_Approved_Email</fullName>
+        <description>Agreement Approval Approved Email</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderAddress>info@conga.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Apttus__ApttusEmailTemplates/CNG_Agreement_Approved_Notification</template>
+    </alerts>
+    <alerts>
+        <fullName>CNG_Agreement_Approval_Rejected_Email</fullName>
+        <description>Agreement Approval Rejected Email</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderAddress>info@conga.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Apttus__ApttusEmailTemplates/CNG_Agreement_Rejected_Notification</template>
+    </alerts>
+    <alerts>
+        <fullName>CNG_Agreement_Submitted_to_Queue</fullName>
+        <description>Agreement Submitted to Queue</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>Apttus__ApttusEmailTemplates/CNG_Agreement_Submitted_to_Legal_Queue</template>
+    </alerts>
+    <alerts>
+        <fullName>CNG_Cancellation_Notice_Email_to_Owner</fullName>
+        <description>Cancellation Notice Email to Owner</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Apttus__Requestor__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>Apttus__ApttusEmailTemplates/ApttusContractCancellationNotice</template>
+    </alerts>
+    <alerts>
+        <fullName>CNG_Ready_for_Signature_Notice_to_Requestor</fullName>
+        <description>Ready for Signature Notice to Requestor</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Apttus__Requestor__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>Apttus__ApttusEmailTemplates/CNG_Agreement_Ready_for_Signature</template>
+    </alerts>
+    <alerts>
+        <fullName>Expiration_early_Notice_Email_to_Owner</fullName>
+        <description>Expiration early Notice Email to Owner</description>
+        <protected>false</protected>
+        <recipients>
+            <type>accountOwner</type>
+        </recipients>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>Apttus__ApttusEmailTemplates/ApttusContractExpirationearlyNotice</template>
+    </alerts>
+    <alerts>
+        <fullName>Expire_Notice_Email_to_Owner</fullName>
+        <description>Expire Notice Email to Owner</description>
+        <protected>false</protected>
+        <recipients>
+            <type>accountOwner</type>
+        </recipients>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>Apttus__ApttusEmailTemplates/ApttusContractExpireNotice</template>
+    </alerts>
+    <alerts>
+        <fullName>Send_Agreement_Approved_Notice</fullName>
+        <description>Send Agreement Approved Notice</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <recipients>
+            <field>Apttus__Requestor__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>Apttus__ApttusEmailTemplates/Apttus_Approval_Approved_Notification</template>
+    </alerts>
+    <alerts>
+        <fullName>Termination_Notice_Email_to_Owner</fullName>
+        <description>Termination Notice Email to Owner</description>
+        <protected>false</protected>
+        <recipients>
+            <type>accountOwner</type>
+        </recipients>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>Apttus__ApttusEmailTemplates/ApttusContractTerminationNotice</template>
+    </alerts>
+    <fieldUpdates>
+        <fullName>APTS_Default_Agreement_Request_Date</fullName>
+        <field>Apttus__Request_Date__c</field>
+        <formula>TODAY()</formula>
+        <name>Default Agreement Request_Date</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>APTS_Default_Agreement_Status_to_Request</fullName>
+        <field>Apttus__Status__c</field>
+        <literalValue>Request</literalValue>
+        <name>Default Agreement Status to Request</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>APTS_Default_Change_Order_Rate</fullName>
+        <field>APTS_Change_Order_Rate__c</field>
+        <formula>250</formula>
+        <name>Default Change Order Rate</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>APTS_Default_Expenses_Payment_Term</fullName>
+        <field>APTS_Expenses_Payment_Term__c</field>
+        <literalValue>net thirty (30)</literalValue>
+        <name>Default Expenses Payment Term</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>APTS_Default_Fees_Payment_Term</fullName>
+        <field>APTS_Fees_Payment_Term__c</field>
+        <literalValue>net thirty (30)</literalValue>
+        <name>Default Fees Payment Term</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>APTS_Default_PSOD_Invoicing_Date</fullName>
+        <field>APTS_Invoicing_Date__c</field>
+        <formula>Apttus__Contract_Start_Date__c</formula>
+        <name>Default PSOD Invoicing Date</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>APTS_Default_Rate_Card_Type</fullName>
+        <field>APTS_Rate_Card_Type__c</field>
+        <literalValue>Multi-Tier</literalValue>
+        <name>Default Rate Card Type</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>APTS_Nullify_Submit_Request_Mode</fullName>
+        <field>Apttus__Submit_Request_Mode__c</field>
+        <name>Nullify Submit Request Mode</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>APTS_Reset_Workflow_Trigger</fullName>
+        <field>Apttus__Workflow_Trigger_Viewed_Final__c</field>
+        <literalValue>0</literalValue>
+        <name>APTS_Reset Workflow Trigger</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>APTS_Set_Status_Category_to_Expired</fullName>
+        <field>Apttus__Status_Category__c</field>
+        <literalValue>Expired</literalValue>
+        <name>Set Status Category to Expired</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>APTS_Set_Status_to_Expired</fullName>
+        <field>Apttus__Status__c</field>
+        <literalValue>Expired</literalValue>
+        <name>Set Status to Expired</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>APTS_Update_Approval_Status_on_Recall</fullName>
+        <field>Apttus_Approval__Approval_Status__c</field>
+        <literalValue>Approval Required</literalValue>
+        <name>Update Approval Status on Recall</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>APTS_Update_Disclosure</fullName>
+        <field>APTS_Nondisclosure_Period__c</field>
+        <literalValue>3</literalValue>
+        <name>APTS_Update_Disclosure</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>APTS_Update_Perpetual_To_TRUE</fullName>
+        <field>Apttus__Perpetual__c</field>
+        <literalValue>1</literalValue>
+        <name>APTS_Update_Perpetual_To_TRUE</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>APTS_Update_Status_Cat_to_In_Authoring</fullName>
+        <field>Apttus__Status_Category__c</field>
+        <literalValue>In Authoring</literalValue>
+        <name>APTS_Update Status Cat to In Authoring</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>APTS_Update_Status_Cat_to_In_Signatures</fullName>
+        <field>Apttus__Status_Category__c</field>
+        <literalValue>In Signatures</literalValue>
+        <name>APTS_Update Status Cat to In Signatures</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>APTS_Update_Status_to_Author_Contract</fullName>
+        <field>Apttus__Status__c</field>
+        <literalValue>Author Contract</literalValue>
+        <name>APTS_Update Status to Author Contract</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>APTS_Update_Status_to_Ready_for_Sign</fullName>
+        <field>Apttus__Status__c</field>
+        <literalValue>Ready for Signatures</literalValue>
+        <name>APTS_Update Status to Ready for Sign</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>APTS_Work_Order_Signing_Order</fullName>
+        <field>APTS_Signing_Order__c</field>
+        <formula>IF (APTS_Total_Cost__c &lt; 500000,
+&apos;1- Route to VP Ops for initial&apos;&amp;BR()&amp;
+&apos;2- Route to Vendor for signature&apos;&amp;BR()&amp;
+&apos;3- Route to Corporate Controller for signature&apos;
+,
+&apos;1- Route to VP Ops for initial&apos;&amp;BR()&amp;
+&apos;2- Route to Vendor for signature&apos;&amp;BR()&amp;
+&apos;3- Route to Corporate Controller for initial&apos;&amp;BR()&amp;
+&apos;4- Route to CFO for signature&apos;
+)</formula>
+        <name>Work Order Signing Order</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>APTS_set_submit_request_mode_to_manual</fullName>
+        <field>Apttus__Submit_Request_Mode__c</field>
+        <literalValue>Manual</literalValue>
+        <name>APTS set submit request mode to manual</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Apttus__SearchFieldUpdate</fullName>
+        <description>Update the account search field with Account Name</description>
+        <field>Apttus__Account_Search_Field__c</field>
+        <formula>Apttus__Account__r.Name  &amp;  Apttus__FF_Agreement_Number__c</formula>
+        <name>Search Field Update</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Apttus__SetAgreementNumber</fullName>
+        <description>Set agreement number from the auto generated contract number</description>
+        <field>Apttus__Agreement_Number__c</field>
+        <formula>Apttus__Contract_Number__c</formula>
+        <name>Set Agreement Number</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Apttus__SetClonetriggertofalse</fullName>
+        <description>Set Clone trigger to false</description>
+        <field>Apttus__Workflow_Trigger_Created_From_Clone__c</field>
+        <literalValue>0</literalValue>
+        <name>Set Clone trigger to false</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Set_Agreement_End_date</fullName>
+        <description>&quot;Agreement End Date&quot; of one year from the &quot;Effective Date&quot;</description>
+        <field>Apttus__Contract_End_Date__c</field>
+        <formula>If(mod(year(Apttus__Contract_Start_Date__c ) ,4)=0 &amp;&amp; MONTH(Apttus__Contract_Start_Date__c)&lt;= 2
+,Apttus__Contract_Start_Date__c +365,Apttus__Contract_Start_Date__c +364)</formula>
+        <name>Set Agreement End date</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Set_renewal_uplift_cap</fullName>
+        <field>APTS_Renewal_Uplift_Cap__c</field>
+        <formula>IF(ISPICKVAL(APTS_Renewal_Uplift_Type__c,&quot;Uplift %&quot;) &amp;&amp; SRC_SYSTEM__c != &quot;C1&quot;,0.08,null)</formula>
+        <name>Set renewal uplift cap</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Agreement_Name</fullName>
+        <field>Name</field>
+        <formula>IF (
+				LEN(
+								RecordType.Name + &apos;--&apos; + Apttus__Account__r.Name + &apos;--&apos; 
+								+ TEXT(Month( Apttus__Contract_Start_Date__c )) + &apos;-&apos; 
+								+ TEXT(Day(Apttus__Contract_Start_Date__c )) + &apos;-&apos;
+								+ TEXT(Year (Apttus__Contract_Start_Date__c ))
+				) &gt;80,
+				RecordType.Name + &apos;--&apos; + LEFT(Apttus__Account__r.Name, (80-14-LEN(RecordType.Name))) + &apos;--&apos; 
+				+ TEXT(Month( Apttus__Contract_Start_Date__c )) + &apos;-&apos; 
+				+ TEXT(Day(Apttus__Contract_Start_Date__c )) + &apos;-&apos;
+				+ TEXT(Year (Apttus__Contract_Start_Date__c )),
+				RecordType.Name + &apos;--&apos; + Apttus__Account__r.Name + &apos;--&apos; 
+				+ TEXT(Month( Apttus__Contract_Start_Date__c )) + &apos;-&apos; 
+				+ TEXT(Day(Apttus__Contract_Start_Date__c )) + &apos;-&apos;
+				+ TEXT(Year (Apttus__Contract_Start_Date__c ))
+)</formula>
+        <name>Update Agreement Name</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Status_Category_In_Signature</fullName>
+        <field>Apttus__Status_Category__c</field>
+        <literalValue>In Signatures</literalValue>
+        <name>Update Status Category In Signature</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Status_Send_For_Signature</fullName>
+        <field>Apttus__Status__c</field>
+        <literalValue>Ready for Signatures</literalValue>
+        <name>Update Status Send For Signature</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <rules>
+        <fullName>APTS Reset Submit Request Mode for PSOD</fullName>
+        <actions>
+            <name>APTS_Nullify_Submit_Request_Mode</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>Update Submit Request Mode on PSOD Agreements to Auto after submit request</description>
+        <formula>AND(APTS_Record_Type_Name__c == &apos;PSOD&apos;, ISCHANGED(Apttus__Submit_Request_Mode__c), ISPICKVAL(Apttus__Submit_Request_Mode__c, &apos;Manual&apos;), OR(ISPICKVAL( PRIORVALUE(Apttus__Submit_Request_Mode__c) , &quot;Auto&quot;) , ISPICKVAL( PRIORVALUE(Apttus__Submit_Request_Mode__c) , &quot;&quot;)) )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>APTS_Auto_Expiration_for_PSOD</fullName>
+        <active>true</active>
+        <booleanFilter>(1 OR 5) AND 2 AND 3 AND 4</booleanFilter>
+        <criteriaItems>
+            <field>Apttus__APTS_Agreement__c.APTS_Record_Type_Name__c</field>
+            <operation>equals</operation>
+            <value>PSOD</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Apttus__APTS_Agreement__c.Apttus__Status_Category__c</field>
+            <operation>equals</operation>
+            <value>In Effect</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Apttus__APTS_Agreement__c.Apttus__Status__c</field>
+            <operation>equals</operation>
+            <value>Activated</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Apttus__APTS_Agreement__c.Apttus__Contract_End_Date__c</field>
+            <operation>notEqual</operation>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Apttus__APTS_Agreement__c.APTS_Record_Type_Name__c</field>
+            <operation>equals</operation>
+            <value>Work Order</value>
+        </criteriaItems>
+        <description>Sets the Status and Status Category to Expired at the End Date of the PSOD Agreements.</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+        <workflowTimeTriggers>
+            <actions>
+                <name>APTS_Set_Status_Category_to_Expired</name>
+                <type>FieldUpdate</type>
+            </actions>
+            <actions>
+                <name>APTS_Set_Status_to_Expired</name>
+                <type>FieldUpdate</type>
+            </actions>
+            <offsetFromField>Apttus__APTS_Agreement__c.Apttus__Contract_End_Date__c</offsetFromField>
+            <timeLength>1</timeLength>
+            <workflowTimeTriggerUnit>Days</workflowTimeTriggerUnit>
+        </workflowTimeTriggers>
+    </rules>
+    <rules>
+        <fullName>APTS_Default_PSOD_Fields</fullName>
+        <actions>
+            <name>APTS_Default_Agreement_Status_to_Request</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>APTS_Default_PSOD_Invoicing_Date</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Apttus__APTS_Agreement__c.APTS_Record_Type_Name__c</field>
+            <operation>equals</operation>
+            <value>PSOD</value>
+        </criteriaItems>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>APTS_Default_SOW_Fields</fullName>
+        <actions>
+            <name>APTS_Default_Change_Order_Rate</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>APTS_Default_Expenses_Payment_Term</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>APTS_Default_Fees_Payment_Term</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Apttus__APTS_Agreement__c.APTS_Record_Type_Name__c</field>
+            <operation>equals</operation>
+            <value>SOW</value>
+        </criteriaItems>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>APTS_Default_Work_Order_Fields</fullName>
+        <actions>
+            <name>APTS_Default_Agreement_Status_to_Request</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Apttus__APTS_Agreement__c.APTS_Record_Type_Name__c</field>
+            <operation>equals</operation>
+            <value>Work Order</value>
+        </criteriaItems>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>APTS_Enforce_PSOD_Agreement_Name</fullName>
+        <actions>
+            <name>Update_Agreement_Name</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Apttus__APTS_Agreement__c.APTS_Record_Type_Name__c</field>
+            <operation>equals</operation>
+            <value>PSOD</value>
+        </criteriaItems>
+        <description>This workflow updates the Agreement Name to Record Type + Other Party Name + Start Date for PSOD and does not allow users to modify it.</description>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>APTS_Generate_Default</fullName>
+        <actions>
+            <name>APTS_Reset_Workflow_Trigger</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>APTS_Update_Status_Cat_to_In_Authoring</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>APTS_Update_Status_to_Author_Contract</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <booleanFilter>1 AND 2 AND (3 OR (4 AND 5)) AND 6</booleanFilter>
+        <criteriaItems>
+            <field>Apttus__APTS_Agreement__c.Apttus__Status_Category__c</field>
+            <operation>equals</operation>
+            <value>Request</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Apttus__APTS_Agreement__c.Apttus__Workflow_Trigger_Viewed_Final__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Apttus__APTS_Agreement__c.APTS_Process_Flow__c</field>
+            <operation>notEqual</operation>
+            <value>SSPF</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Apttus__APTS_Agreement__c.APTS_Process_Flow__c</field>
+            <operation>equals</operation>
+            <value>SSPF</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Apttus__APTS_Agreement__c.Apttus__Submit_Request_Mode__c</field>
+            <operation>notEqual</operation>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Apttus__APTS_Agreement__c.APTS_Record_Type_Name__c</field>
+            <operation>notEqual</operation>
+            <value>PSOD</value>
+        </criteriaItems>
+        <description>Changes the status to Author contract once the document is generated</description>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>APTS_PSOD_Fully_Signed_ Notifications</fullName>
+        <actions>
+            <name>Apts_PSOD_PO_Process_Initiation</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <booleanFilter>1 AND 2 AND 3</booleanFilter>
+        <criteriaItems>
+            <field>Apttus__APTS_Agreement__c.APTS_Record_Type_Name__c</field>
+            <operation>equals</operation>
+            <value>PSOD</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Apttus__APTS_Agreement__c.Apttus__Status__c</field>
+            <operation>equals</operation>
+            <value>Fully Signed</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Apttus__APTS_Agreement__c.Apttus__Status_Category__c</field>
+            <operation>equals</operation>
+            <value>In Signatures</value>
+        </criteriaItems>
+        <description>Send email notification to Laurie to process PO when PSOD is signed.</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>APTS_PSOD_Generate_Default</fullName>
+        <actions>
+            <name>APTS_Reset_Workflow_Trigger</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>APTS_Update_Status_Cat_to_In_Signatures</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>APTS_Update_Status_to_Ready_for_Sign</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <booleanFilter>1 AND 2 AND 3</booleanFilter>
+        <criteriaItems>
+            <field>Apttus__APTS_Agreement__c.Apttus__Status_Category__c</field>
+            <operation>equals</operation>
+            <value>Request</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Apttus__APTS_Agreement__c.APTS_Record_Type_Name__c</field>
+            <operation>equals</operation>
+            <value>PSOD</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Apttus__APTS_Agreement__c.Apttus__Workflow_Trigger_Viewed_Final__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>APTS_PSOD_Generated_ Notifications</fullName>
+        <actions>
+            <name>APTS_Create_a_Project_for_signed_PSOD_Agreement</name>
+            <type>Alert</type>
+        </actions>
+        <actions>
+            <name>APTS_PSOD_Document_Generation_Notice_to_Requestor</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <booleanFilter>1 AND 2 AND 3</booleanFilter>
+        <criteriaItems>
+            <field>Apttus__APTS_Agreement__c.APTS_Record_Type_Name__c</field>
+            <operation>equals</operation>
+            <value>PSOD</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Apttus__APTS_Agreement__c.Apttus__Status__c</field>
+            <operation>equals</operation>
+            <value>Ready for Signatures</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Apttus__APTS_Agreement__c.Apttus__Status_Category__c</field>
+            <operation>equals</operation>
+            <value>In Signatures</value>
+        </criteriaItems>
+        <description>Send email notifications to PS OPs when PSOD is generated to create a project record.</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>APTS_SOW Agreement Activation Notification</fullName>
+        <actions>
+            <name>APTS_SOW_Activation_Notification_Email_to_Deal_Desk</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <booleanFilter>1 AND 2 AND 3</booleanFilter>
+        <criteriaItems>
+            <field>Apttus__APTS_Agreement__c.Apttus__Status_Category__c</field>
+            <operation>equals</operation>
+            <value>In Effect</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Apttus__APTS_Agreement__c.Apttus__Status__c</field>
+            <operation>equals</operation>
+            <value>Activated</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Apttus__APTS_Agreement__c.APTS_Record_Type_Name__c</field>
+            <operation>equals</operation>
+            <value>SOW</value>
+        </criteriaItems>
+        <description>SOW Agreement Activation Notification</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>APTS_SOW Agreement Approved Notification</fullName>
+        <actions>
+            <name>APTS_SOW_Agreement_Approved_Notification</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Apttus__APTS_Agreement__c.Apttus_Approval__Approval_Status__c</field>
+            <operation>equals</operation>
+            <value>Approved</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Apttus__APTS_Agreement__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>SOW</value>
+        </criteriaItems>
+        <description>SOW Agreement Approved Notification</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>APTS_Set Agreement Approval Status to Approval Required</fullName>
+        <actions>
+            <name>APTS_Update_Approval_Status_on_Recall</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <booleanFilter>1 AND (2 OR  3)</booleanFilter>
+        <criteriaItems>
+            <field>Apttus__APTS_Agreement__c.Apttus__Status__c</field>
+            <operation>equals</operation>
+            <value>Submitted Request</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Apttus__APTS_Agreement__c.APTS_Record_Type_Name__c</field>
+            <operation>equals</operation>
+            <value>MSSA</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Apttus__APTS_Agreement__c.APTS_Record_Type_Name__c</field>
+            <operation>equals</operation>
+            <value>SOW</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>APTS_Update Agreement Status When WO Signature is Declined</fullName>
+        <actions>
+            <name>APTS_Update_Status_to_Ready_for_Sign</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Apttus__APTS_Agreement__c.Apttus__Status_Category__c</field>
+            <operation>equals</operation>
+            <value>In Signatures</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Apttus__APTS_Agreement__c.Apttus__Status__c</field>
+            <operation>equals</operation>
+            <value>Signature Declined</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Apttus__APTS_Agreement__c.APTS_Record_Type_Name__c</field>
+            <operation>equals</operation>
+            <value>Work Order</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>APTS_Update PSOD Approval Status</fullName>
+        <actions>
+            <name>APTS_Update_Approval_Status_on_Recall</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>APTS_set_submit_request_mode_to_manual</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <booleanFilter>1 AND (2 OR 3)</booleanFilter>
+        <criteriaItems>
+            <field>Apttus__APTS_Agreement__c.APTS_Record_Type_Name__c</field>
+            <operation>equals</operation>
+            <value>PSOD</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Apttus__APTS_Agreement__c.APTS_PSOD_Order_No_For_This_FY__c</field>
+            <operation>greaterThan</operation>
+            <value>4</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Apttus__APTS_Agreement__c.APTS_PSOD_Order_No_For_This_FQ__c</field>
+            <operation>greaterThan</operation>
+            <value>1</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>APTS_Update_Disclosure_NDA</fullName>
+        <actions>
+            <name>APTS_Update_Disclosure</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Apttus__APTS_Agreement__c.APTS_Type_of_Paper__c</field>
+            <operation>equals</operation>
+            <value>Apttus Standard</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Apttus__APTS_Agreement__c.APTS_Record_Type_Name__c</field>
+            <operation>equals</operation>
+            <value>NDA</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Apttus__APTS_Agreement__c.APTS_Nondisclosure_Period__c</field>
+            <operation>equals</operation>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>APTS_Update_Perpetual_to_TRUE_for_NDA</fullName>
+        <actions>
+            <name>APTS_Update_Perpetual_To_TRUE</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <criteriaItems>
+            <field>Apttus__APTS_Agreement__c.APTS_Type_of_Paper__c</field>
+            <operation>equals</operation>
+            <value>Apttus Standard</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Apttus__APTS_Agreement__c.APTS_Record_Type_Name__c</field>
+            <operation>equals</operation>
+            <value>NDA</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Apttus__APTS_Agreement__c.Apttus__Perpetual__c</field>
+            <operation>equals</operation>
+            <value>False</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>APTS_WO_Fully_Signed_ Notifications</fullName>
+        <actions>
+            <name>APTS_Activate_Work_Order_Agreement</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Apttus__APTS_Agreement__c.APTS_Record_Type_Name__c</field>
+            <operation>equals</operation>
+            <value>Work Order</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Apttus__APTS_Agreement__c.Apttus__Status_Category__c</field>
+            <operation>equals</operation>
+            <value>In Signatures</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Apttus__APTS_Agreement__c.Apttus__Status__c</field>
+            <operation>equals</operation>
+            <value>Fully Signed</value>
+        </criteriaItems>
+        <description>Email Notifications to Requestor and Owner when Work Order is Fully Signed</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>APTS_Work_Order_Signing_Order</fullName>
+        <actions>
+            <name>APTS_Work_Order_Signing_Order</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <formula>APTS_Record_Type_Name__c == &quot;Work Order&quot;</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Activation Notification</fullName>
+        <actions>
+            <name>CNG_Activation_Notice_to_Owner_and_Requestor</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Apttus__APTS_Agreement__c.Apttus__Status_Category__c</field>
+            <operation>equals</operation>
+            <value>In Effect</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Apttus__APTS_Agreement__c.Apttus__Status__c</field>
+            <operation>equals</operation>
+            <value>Activated</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>User.Username</field>
+            <operation>notEqual</operation>
+            <value>admin@tractionondemand.com.apttus</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Apttus__APTS_Agreement__c.APTS_Record_Type_Name__c</field>
+            <operation>notEqual</operation>
+            <value>NDA</value>
+        </criteriaItems>
+        <description>Activation Notification</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Apttus - Approval - Approved Notification</fullName>
+        <actions>
+            <name>Send_Agreement_Approved_Notice</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Apttus__APTS_Agreement__c.Apttus_Approval__Approval_Status__c</field>
+            <operation>equals</operation>
+            <value>Approved</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Apttus__APTS_Agreement__c.RecordTypeId</field>
+            <operation>notEqual</operation>
+            <value>SOW</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Apttus__APTS_Agreement__c.APTS_Record_Type_Name__c</field>
+            <operation>notEqual</operation>
+            <value>MSSA</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Apttus__APTS_Agreement__c.APTS_Record_Type_Name__c</field>
+            <operation>notEqual</operation>
+            <value>NDA</value>
+        </criteriaItems>
+        <description>Apttus - Approval - Approved Notification</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Apttus - Approval - Rejected Notification</fullName>
+        <actions>
+            <name>Apttus_Approval_Rejected_Notification</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Apttus__APTS_Agreement__c.Apttus_Approval__Approval_Status__c</field>
+            <operation>equals</operation>
+            <value>Approval Required</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Apttus__APTS_Agreement__c.APTS_Approval_Rejected__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <description>Apttus - Approval - Rejected Notification</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Apttus__Reset Clone Trigger</fullName>
+        <actions>
+            <name>Apttus__SetClonetriggertofalse</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <criteriaItems>
+            <field>Apttus__APTS_Agreement__c.Apttus__Workflow_Trigger_Created_From_Clone__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <description>Reset Clone Trigger</description>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>Apttus__Search Field Update</fullName>
+        <actions>
+            <name>Apttus__SearchFieldUpdate</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>Populate an external Id search field with account name, so that side bar support can work with Account name search</description>
+        <formula>or(not (isnull(Apttus__Account__r.Name)) ,not (isnull(Apttus__FF_Agreement_Number__c)))</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Apttus__Set Agreement Number</fullName>
+        <actions>
+            <name>Apttus__SetAgreementNumber</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Apttus__APTS_Agreement__c.Apttus__Agreement_Number__c</field>
+            <operation>equals</operation>
+        </criteriaItems>
+        <description>Set agreement number for new agreements. The agreement number is auto generated.</description>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>Default Agreement Fields</fullName>
+        <actions>
+            <name>APTS_Default_Agreement_Request_Date</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <formula>True</formula>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>Expiration early Notice</fullName>
+        <active>true</active>
+        <criteriaItems>
+            <field>Apttus__APTS_Agreement__c.Apttus__Status_Category__c</field>
+            <operation>equals</operation>
+            <value>In Effect</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Apttus__APTS_Agreement__c.Apttus__Status__c</field>
+            <operation>equals</operation>
+            <value>Activated</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Apttus__APTS_Agreement__c.Apttus__Contract_End_Date__c</field>
+            <operation>notEqual</operation>
+        </criteriaItems>
+        <description>Expiration early Notice</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+        <workflowTimeTriggers>
+            <actions>
+                <name>Expiration_early_Notice_Email_to_Owner</name>
+                <type>Alert</type>
+            </actions>
+            <offsetFromField>Apttus__APTS_Agreement__c.Apttus__Contract_End_Date__c</offsetFromField>
+            <timeLength>-90</timeLength>
+            <workflowTimeTriggerUnit>Days</workflowTimeTriggerUnit>
+        </workflowTimeTriggers>
+    </rules>
+    <rules>
+        <fullName>Expire Notice</fullName>
+        <actions>
+            <name>Expire_Notice_Email_to_Owner</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Apttus__APTS_Agreement__c.Apttus__Status_Category__c</field>
+            <operation>equals</operation>
+            <value>Expired</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Apttus__APTS_Agreement__c.Apttus__Status__c</field>
+            <operation>equals</operation>
+            <value>Expired</value>
+        </criteriaItems>
+        <description>Expire Notice</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Set defaults for MSSA</fullName>
+        <actions>
+            <name>Set_renewal_uplift_cap</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <criteriaItems>
+            <field>Apttus__APTS_Agreement__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>MSSA</value>
+        </criteriaItems>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>TSO Agreement Set Stage</fullName>
+        <actions>
+            <name>Update_Status_Category_In_Signature</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Update_Status_Send_For_Signature</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <booleanFilter>1 AND 2 AND 3</booleanFilter>
+        <criteriaItems>
+            <field>Apttus__APTS_Agreement__c.Apttus__Status_Category__c</field>
+            <operation>equals</operation>
+            <value>In Authoring</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Apttus__APTS_Agreement__c.Apttus__Status__c</field>
+            <operation>equals</operation>
+            <value>Other Party Review</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Apttus__APTS_Agreement__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>TSO</value>
+        </criteriaItems>
+        <description>Set the stage to Send for Signatures when the TSO agreement is submitted for review</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Termination Notice</fullName>
+        <actions>
+            <name>Termination_Notice_Email_to_Owner</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Apttus__APTS_Agreement__c.Apttus__Status_Category__c</field>
+            <operation>equals</operation>
+            <value>Terminated</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Apttus__APTS_Agreement__c.Apttus__Status__c</field>
+            <operation>equals</operation>
+            <value>Terminated</value>
+        </criteriaItems>
+        <description>Termination Notice</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Update Agreement Name</fullName>
+        <actions>
+            <name>Update_Agreement_Name</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <criteriaItems>
+            <field>Apttus__APTS_Agreement__c.Apttus__Activated_Date__c</field>
+            <operation>equals</operation>
+        </criteriaItems>
+        <description>This workflow updates the Agreement Name to Record Type + Other Party Name + Start Date</description>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>Update Approval Status on Recall</fullName>
+        <actions>
+            <name>APTS_Update_Approval_Status_on_Recall</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Apttus__APTS_Agreement__c.Apttus_Approval__Approval_Status__c</field>
+            <operation>equals</operation>
+            <value>Cancelled</value>
+        </criteriaItems>
+        <description>Update Approval Status to Approval Required when approval is recalled</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>end is null and start date is not null</fullName>
+        <actions>
+            <name>Set_Agreement_End_date</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>IF record type is NDA and end date is null and effective date is not null then execute the logic and update the end date.</description>
+        <formula>AND (  RecordType.Name == &apos;NDA&apos;,  ISBLANK(Apttus__Contract_End_Date__c),  NOT(ISBLANK( Apttus__Contract_Start_Date__c )),  Apttus__Perpetual__c == false,  OR(    ISPICKVAL(APTS_Type_of_Paper__c, &apos;Apttus Standard&apos;),    ISPICKVAL(APTS_Type_of_Paper__c, &apos;Apttus Redlined&apos;)    )   )</formula>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+</Workflow>

@@ -1,0 +1,106 @@
+<apex:page sidebar="false" showHeader="true" docType="html-4.01-strict">
+<div id="tabstrip" style="display:none;"> <ul> 
+<li class="k-state-active">Agreement Legal Queue</li>
+<li>Approvals Submitted by Me</li>
+<li>Legal Queue Approvals</li>
+<li>My Approvals</li>
+<li>Completed by Me - Legal</li>
+<li>Pending on Sales OPS</li>
+<li>Completed by Sales OPS</li>
+<li>Conga Sign Transaction - In Progress</li>
+<li>Conga Sign Transaction - Completed</li>
+<li>DAI Agreements Queue</li>
+</ul>
+
+<!-- Agreement Legal Queue -->
+<div style="overflow:hidden;"> 
+<CRMC_PP:Grid ObjectName="Apttus__APTS_Agreement__c" DelayLoad="false"  ViewID="aHSRL000000sVur4AE" 
+ EnableNewButton="true"  EnableNewInline="true"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true" 
+ EnableStickyViews="true"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+ <CRMC_PP:DrillUp /> 
+ </div>
+
+<!-- Approvals Submitted by Me -->
+<div style="overflow:hidden;"> 
+<CRMC_PP:Grid ObjectName="Apttus_Approval__Approval_Request__c" DelayLoad="false"  ViewID="aHSDm00000001LLOAY" 
+ EnableNewButton="true"  EnableNewInline="true"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true" 
+ EnableStickyViews="true"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+<CRMC_PP:DrillUp />
+</div>
+
+ <!-- Legal Queue Approvals -->
+<div style="overflow:hidden;"> 
+<CRMC_PP:Grid ObjectName="Apttus_Approval__Approval_Request__c" DelayLoad="false"  ViewID="aHSDm00000001LPOAY" 
+ EnableNewButton="true"  EnableNewInline="true"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true" 
+ EnableStickyViews="true"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+<CRMC_PP:DrillUp />
+</div>
+
+ <!-- My Approvals -->
+<div style="overflow:hidden;"> 
+<CRMC_PP:Grid ObjectName="Apttus_Approval__Approval_Request__c" DelayLoad="false"  ViewID="aHSDm00000001LKOAY" 
+ EnableNewButton="true"  EnableNewInline="true"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true" 
+ EnableStickyViews="true"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+<CRMC_PP:DrillUp />
+</div>
+
+ <!-- Completed by Me - Legal-->
+<div style="overflow:hidden;"> 
+<CRMC_PP:Grid ObjectName="Apttus_Approval__Approval_Request__c" DelayLoad="false"  ViewID="aHSDm00000001LMOAY" 
+ EnableNewButton="true"  EnableNewInline="true"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true" 
+ EnableStickyViews="true"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+<CRMC_PP:DrillUp />
+</div>
+
+ <!-- Pending on Sales OPS -->
+<div style="overflow:hidden;"> 
+<CRMC_PP:Grid ObjectName="Apttus_Approval__Approval_Request__c" DelayLoad="false"  ViewID="aHSDm00000001LJOAY" 
+ EnableNewButton="true"  EnableNewInline="true"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true" 
+ EnableStickyViews="true"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+<CRMC_PP:DrillUp />
+</div>
+
+ <!-- Completed by Sales OPS -->
+<div style="overflow:hidden;"> 
+<CRMC_PP:Grid ObjectName="Apttus_Approval__Approval_Request__c" DelayLoad="false"  ViewID="aHSDm00000001LOOAY" 
+ EnableNewButton="true"  EnableNewInline="true"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true" 
+ EnableStickyViews="true"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+<CRMC_PP:DrillUp />
+</div>
+
+ <!-- Conga Sign Transaction - In Progress -->
+<div style="overflow:hidden;"> 
+<CRMC_PP:Grid ObjectName="APXT_CongaSign__Recipient__c" DelayLoad="false"  ViewID="aHSDm00000001LIOAY" 
+ EnableNewButton="true"  EnableNewInline="true"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true" 
+ EnableStickyViews="true"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+<CRMC_PP:DrillUp />
+</div>
+
+ <!-- Conga Sign Transaction - Completed -->
+<div style="overflow:hidden;"> 
+<CRMC_PP:Grid ObjectName="APXT_CongaSign__Recipient__c" DelayLoad="false"  ViewID="aHSDm00000001LNOAY" 
+ EnableNewButton="true"  EnableNewInline="true"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true" 
+ EnableStickyViews="true"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+<CRMC_PP:DrillUp />
+</div>
+
+<!-- DAI Agreements Queue -->
+<div style="overflow:hidden;"> 
+<CRMC_PP:Grid ObjectName="Apttus__APTS_Agreement__c" DelayLoad="false"  ViewID="aHSRL000000rB0X4AU" 
+ EnableNewButton="true"  EnableNewInline="true"  EnableEdit="true"  EnableActions="true"  EnableFieldChooser="true" 
+ EnableStickyViews="true"  EnableToolbar="true"  EnableViews="true"  EnableFormatting="true"  EnableReadingPane="true" />
+ <CRMC_PP:DrillUp /> 
+ </div>
+ 
+</div>
+<script>
+$(document).ready(function() {
+    $("#tabstrip").kendoTabStrip({
+      activate: function(e){
+        setTimeout(function(){          $(window).resize();        });
+      }
+    });
+    $("#tabstrip").css("display", "block");
+});
+ </script>
+</apex:page>

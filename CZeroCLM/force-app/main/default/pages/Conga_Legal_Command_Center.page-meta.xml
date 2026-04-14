@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApexPage xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>55.0</apiVersion>
+    <availableInTouch>true</availableInTouch>
+    <confirmationTokenRequired>false</confirmationTokenRequired>
+    <description>AG_Apttus__APTS_Agreement__c</description>
+    <label>Legal Command Center</label>
+    <packageVersions>
+        <majorNumber>3</majorNumber>
+        <minorNumber>99</minorNumber>
+        <namespace>CRMC_PP</namespace>
+    </packageVersions>
+</ApexPage>

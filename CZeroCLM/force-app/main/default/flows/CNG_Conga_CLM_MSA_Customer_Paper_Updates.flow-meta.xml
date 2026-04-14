@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>55.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <environments>Default</environments>
+    <interviewLabel>Conga CLM - MSA - Customer Paper Updates {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Conga CLM - MSA - Customer Paper Updates</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Update_Approval_Status_and_Legal_Approval_Required</name>
+        <label>Update Approval Status and Legal Approval Required</label>
+        <locationX>176</locationX>
+        <locationY>323</locationY>
+        <inputAssignments>
+            <field>Apttus_Approval__Approval_Status__c</field>
+            <value>
+                <stringValue>Approval Required</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Apttus__Status_Category__c</field>
+            <value>
+                <stringValue>In Authoring</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Apttus__Status__c</field>
+            <value>
+                <stringValue>Author Contract</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record.Apttus__AgreementId__r</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Update_Approval_Status_and_Legal_Approval_Required</targetReference>
+        </connector>
+        <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+        <filterFormula>ISPICKVAL({!$Record.Apttus__AgreementId__r.APTS_Type_of_Paper__c}, &quot;Third Party Paper&quot;) &amp;&amp; {!$Record.Name} == &quot;Import Offline Agreement&quot;</filterFormula>
+        <object>Apttus__DocumentVersion__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <variables>
+        <name>ApprovalProcess</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+        <objectType>Apttus_Approval__ApprovalProcessInstance__c</objectType>
+    </variables>
+</Flow>

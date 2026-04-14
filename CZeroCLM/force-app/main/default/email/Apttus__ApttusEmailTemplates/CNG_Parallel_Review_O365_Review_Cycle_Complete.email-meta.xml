@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Notification that review is complete - sent to internal user who originally sent for parallel review</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>Conga_Letterhead</letterhead>
+    <name>Parallel Review/O365 Review Cycle Complete</name>
+    <style>freeForm</style>
+    <subject>Review Cycle Complete | {!Apttus__DocumentVersionDetail__c.CNG_Account_Name__c} - {!Apttus__DocumentVersionDetail__c.Apttus__Title__c}</subject>
+    <textOnly>Hello,
+
+The review cycle for document {!Apttus__DocumentVersionDetail__c.Apttus__Title__c} has been completed by all recipient(s).
+
+Recipient redlines were received, merged, and checked in successfully.
+
+You can review submitted changes on the Agreement here:
+
+Link: {!Apttus__DocumentVersionDetail__c.Link}
+
+
+Thank you,
+Conga CLM</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

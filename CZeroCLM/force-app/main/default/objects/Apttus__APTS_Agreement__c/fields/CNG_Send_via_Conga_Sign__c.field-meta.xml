@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CNG_Send_via_Conga_Sign__c</fullName>
+    <description>1/23/26 - updated logic per PSC-35</description>
+    <externalId>false</externalId>
+    <formula>IF( ISPICKVAL(APTS_CBS_CLM_Division__c , &apos;Conga Buy-side&apos;),
+	NULL,
+	IF(
+		IF( AND(
+				OR( APTS_Record_Type_Name__c = &apos;PSOD&apos;,
+					APTS_Record_Type_Name__c = &apos;SOW&apos;
+				),
+				ISPICKVAL(Apttus__Status__c,&apos;Ready for Signatures&apos;),
+				ISBLANK(APTS_Customer_Signatory_Contact__c)
+			),
+			FALSE,
+			OR( AND(
+					APTS_Record_Type_Name__c != &quot;NDA&quot;,
+					CONTAINS($CustomMetadata.Agreement_Action_Mapping__mdt.Send_For_eSignature.Agreement_Process_Flow_Short_Name__c, APTS_Process_Flow__c),
+					CONTAINS($CustomMetadata.Agreement_Action_Mapping__mdt.Send_For_eSignature.Agreement_Status_Category__c, TEXT(Apttus__Status_Category__c)),
+					CONTAINS($CustomMetadata.Agreement_Action_Mapping__mdt.Send_For_eSignature.Agreement_Status__c, TEXT(Apttus__Status__c))
+				),
+				AND(
+					APTS_Record_Type_Name__c != &quot;NDA&quot;,
+					CONTAINS($CustomMetadata.Agreement_Action_Mapping__mdt.Send_For_eSignature.Additional_Inclusion__c, APTS_Process_Flow__c &amp; TEXT(Apttus__Status_Category__c) &amp; TEXT(Apttus__Status__c))
+				),
+				AND(
+					OR( APTS_Record_Type_Name__c == &quot;NDA&quot;,
+						APTS_Record_Type_Name__c == &quot;DPA&quot;,
+						APTS_Record_Type_Name__c == &quot;MSSA&quot;,
+						APTS_Record_Type_Name__c == &quot;MPA&quot;
+					),
+					ISPICKVAL(Apttus__Status_Category__c, &quot;In Signatures&quot;)
+				)
+			)
+		),
+		HYPERLINK(&quot;/apex/APTS_CongaSignRedirection?id=&quot;&amp;Id, IMAGE(&quot;/resource/APTS_logo_congaSign&quot;,&quot;Send via Conga Sign&quot;), &quot;_self&quot;),
+		NULL
+	)
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Send via Conga Sign</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

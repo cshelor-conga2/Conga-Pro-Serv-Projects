@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>65.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <environments>Default</environments>
+    <formulas>
+        <name>fT_AgreementName</name>
+        <dataType>String</dataType>
+        <expression>IF (LEN({!Get_Agreement.RecordType.Name} + &apos;--&apos; + (if ( CONTAINS({!Get_Agreement.Apttus__Account__r.Name}, &apos;&gt;&apos;), SUBSTITUTE({!Get_Agreement.Apttus__Account__r.Name},&apos;&gt;&apos;,&apos; &apos;) ,
+if (CONTAINS({!Get_Agreement.Apttus__Account__r.Name}, &apos;&lt;&apos;), SUBSTITUTE({!Get_Agreement.Apttus__Account__r.Name},&apos;&lt;&apos;,&apos; &apos;) ,
+if (CONTAINS({!Get_Agreement.Apttus__Account__r.Name}, &apos;\\&apos;), SUBSTITUTE({!Get_Agreement.Apttus__Account__r.Name},&apos;\\&apos;,&apos; &apos;) ,
+if (CONTAINS({!Get_Agreement.Apttus__Account__r.Name}, &apos;/&apos;), SUBSTITUTE({!Get_Agreement.Apttus__Account__r.Name},&apos;/&apos;,&apos; &apos;) ,
+{!Get_Agreement.Apttus__Account__r.Name}
+))))) + &apos;--&apos;
++ TEXT(Month( {!Get_Agreement.Apttus__Contract_Start_Date__c} )) + &apos;-&apos;
++ TEXT(Day({!Get_Agreement.Apttus__Contract_Start_Date__c} )) + &apos;-&apos;
++ TEXT(Year ({!Get_Agreement.Apttus__Contract_Start_Date__c} ))
+) &gt;80,{!Get_Agreement.RecordType.Name} + &apos;--&apos; + LEFT( if ( CONTAINS({!Get_Agreement.Apttus__Account__r.Name}, &apos;&gt;&apos;), SUBSTITUTE({!Get_Agreement.Apttus__Account__r.Name},&apos;&gt;&apos;,&apos; &apos;) ,
+if (CONTAINS({!Get_Agreement.Apttus__Account__r.Name}, &apos;&lt;&apos;), SUBSTITUTE({!Get_Agreement.Apttus__Account__r.Name},&apos;&lt;&apos;,&apos; &apos;) ,
+if (CONTAINS({!Get_Agreement.Apttus__Account__r.Name}, &apos;\\&apos;), SUBSTITUTE({!Get_Agreement.Apttus__Account__r.Name},&apos;\\&apos;,&apos; &apos;) ,
+if (CONTAINS({!Get_Agreement.Apttus__Account__r.Name}, &apos;/&apos;), SUBSTITUTE({!Get_Agreement.Apttus__Account__r.Name},&apos;/&apos;,&apos; &apos;) ,
+{!Get_Agreement.Apttus__Account__r.Name}
+)))), (80-14-LEN({!Get_Agreement.RecordType.Name}))) + &apos;--&apos;
++ TEXT(Month( {!Get_Agreement.Apttus__Contract_Start_Date__c} )) + &apos;-&apos;
++ TEXT(Day({!Get_Agreement.Apttus__Contract_Start_Date__c} )) + &apos;-&apos;
++ TEXT(Year({!Get_Agreement.Apttus__Contract_Start_Date__c})),
+{!Get_Agreement.RecordType.Name} + &apos;--&apos; + (if ( CONTAINS({!Get_Agreement.Apttus__Account__r.Name}, &apos;&gt;&apos;), SUBSTITUTE({!Get_Agreement.Apttus__Account__r.Name},&apos;&gt;&apos;,&apos; &apos;) ,
+if (CONTAINS({!Get_Agreement.Apttus__Account__r.Name}, &apos;&lt;&apos;), SUBSTITUTE({!Get_Agreement.Apttus__Account__r.Name},&apos;&lt;&apos;,&apos; &apos;) ,
+if (CONTAINS({!Get_Agreement.Apttus__Account__r.Name}, &apos;\\&apos;), SUBSTITUTE({!Get_Agreement.Apttus__Account__r.Name},&apos;\\&apos;,&apos; &apos;) ,
+if (CONTAINS({!Get_Agreement.Apttus__Account__r.Name}, &apos;/&apos;), SUBSTITUTE({!Get_Agreement.Apttus__Account__r.Name},&apos;/&apos;,&apos; &apos;) ,
+{!Get_Agreement.Apttus__Account__r.Name}
+))))) + &apos;--&apos;+ TEXT(Month({!Get_Agreement.Apttus__Contract_Start_Date__c} )) + &apos;-&apos;
++ TEXT(Day({!Get_Agreement.Apttus__Contract_Start_Date__c} )) + &apos;-&apos;
++ TEXT(Year({!Get_Agreement.Apttus__Contract_Start_Date__c} ))
+)</expression>
+    </formulas>
+    <interviewLabel>Conga CLM - Subflow | Set Agreement Name {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Conga CLM - Subflow | Set Agreement Name</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Get_Agreement</name>
+        <label>Get Agreement</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Set_Agreement_Name</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>varT_AgreementId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Apttus__APTS_Agreement__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <name>Set_Agreement_Name</name>
+        <label>Set Agreement Name</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>varT_AgreementId</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Name</field>
+            <value>
+                <elementReference>fT_AgreementName</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Apttus__APTS_Agreement__c</object>
+    </recordUpdates>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_Agreement</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+    <variables>
+        <name>varT_AgreementId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

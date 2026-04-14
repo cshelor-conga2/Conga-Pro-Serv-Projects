@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SendForReview_Custom__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(
+    OR(
+        APTS_Record_Type_Name__c = &apos;MSSA&apos;,
+        APTS_Record_Type_Name__c = &apos;MPA&apos;,
+        APTS_Record_Type_Name__c = &apos;NDA&apos;,
+        APTS_Record_Type_Name__c = &apos;DPA&apos;
+    ),
+    NULL,
+    IF( 
+        OR( 
+            ISPICKVAL(Apttus__Status_Category__c,&quot;In Authoring&quot;),
+            AND(
+                ISPICKVAL(Apttus__Status_Category__c,&quot;In Signatures&quot;),
+                ISPICKVAL(Apttus__Status__c ,&quot;Submitted Request&quot;)
+            ),
+            AND(
+                ISPICKVAL(Apttus__Status_Category__c,&quot;In Signatures&quot;),
+                ISPICKVAL( Apttus__Status__c ,&quot;Signature Declined&quot;)
+            ),
+            AND(
+                ISPICKVAL(Apttus__Status_Category__c,&quot;In Signatures&quot;),
+                ISPICKVAL( Apttus__Status__c ,&quot;Ready for Signatures&quot;),
+                APTS_Record_Type_Name__c == &apos;NDA&apos;,
+                NOT(ISPICKVAL(APTS_Type_of_Paper__c,&quot;Conga MNDA&quot;))
+            )
+        ),
+        IF( OR($User.UIThemeDisplayed == &apos;Theme4d&apos;, $User.UIThemeDisplayed == &apos;Theme4t&apos;),
+            HYPERLINK(&quot;/apex/Apttus__SendEmail?id=&quot;&amp;Id &amp; &quot;&amp;action=Send_To_Other_Party_For_Review&quot;, IMAGE(&quot;/resource/Apttus__Button_SendForReview&quot;, &quot;Send For Review&quot;), &quot;_self&quot;),
+            HYPERLINK(&quot;/apex/Apttus__SendEmail?id=&quot;&amp;Id &amp; &quot;&amp;action=Send_To_Other_Party_For_Review&quot;, IMAGE(&quot;/resource/Apttus__Button_SendForReview&quot;, &quot;Send For Review&quot;), &quot;_self&quot;)
+        ),
+        NULL
+    )
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>SendForReview_Custom</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

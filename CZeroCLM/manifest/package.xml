@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <types>
+        <members>APTS_AgreementTriggerHandler</members>
+        <members>APTS_AgreementTriggerHelper</members>
+        <members>APTS_GenerateAgreementDocumentBatch</members>
+        <members>APTS_CongaSignRedirectionCtrl</members>
+        <members>APTS_CongaSignRedirectionCtrlTest</members>
+        <members>CNG_AutoActivationViaFlow</members>
+        <members>CNG_AutoActivationViaFlowTest</members>
+        <name>ApexClass</name>
+    </types>
+    <types>
+        <members>APTS_HomePageLinks</members>
+        <members>navigateToRecord</members>
+        <members>navigateToUrl</members>
+        <name>AuraDefinitionBundle</name>
+    </types>
+    <types>
+        <members>Account.CNG_Request_Agreement</members>
+        <members>Opportunity.CNG_Request_Agreement</members>
+        <name>QuickAction</name>
+    </types>
+    <types>
+        <members>Apttus__APTS_Agreement__c.CNG_Create_Agreement</members>
+        <name>WebLink</name>
+    </types>
+    <types>
+        <members>Apttus__APTS_Agreement__c.APTS_TSO_Compact_Layout</members>
+        <name>CompactLayout</name>
+    </types>
+    <types>
+        <members>CNG_Conga_Legal</members>
+        <name>CustomApplication</name>
+    </types>
+    <types>
+        <members>Apttus__APTS_Agreement__c.APTS_Change_in_Control_Merger__c</members>
+        <members>Apttus__APTS_Agreement__c.APTS_Indemnification_Categories__c</members>
+        <members>Apttus__APTS_Agreement__c.APTS_Penalties__c</members>
+        <members>Apttus__APTS_Agreement__c.APTS_SLA_Termination__c</members>
+        <members>Apttus__APTS_Agreement__c.APTS_Security_Incident_Notification__c</members>
+        <members>Apttus__APTS_Agreement__c.APTS_Standard_NonStandard_PS_Terms__c</members>
+        <members>Apttus__APTS_Agreement__c.APTS_Termination_for_Convenience__c</members>
+        <members>Apttus__APTS_Agreement__c.APTS_Unlimited_Liability_Direct__c</members>
+        <members>Apttus__APTS_Agreement__c.Apttus__Termination_Date__c</members>
+        <members>Apttus__APTS_Agreement__c.Apttus__Termination_Notice_Days__c</members>
+        <members>Apttus__Agreement_Clause__c.CNG_Opportunity_Amount__c</members>
+        <members>Apttus__APTS_Agreement__c.CNG_Send_via_Conga_Sign__c</members>
+        <members>Apttus__APTS_Agreement__c.CSign__c</members>
+        <members>Apttus__APTS_Agreement__c.Conga_Signatory__c</members>
+        <members>Apttus__APTS_Agreement__c.Generate_Custom__c</members>
+        <members>Apttus__APTS_Agreement__c.Insurance_Obligations__c</members>
+        <members>Apttus__APTS_Agreement__c.Legal_Owner__c</members>
+        <members>Apttus__APTS_Agreement__c.Office365ExternalReview_Custom__c</members>
+        <members>Apttus__APTS_Agreement__c.Office365InternalReview_Custom__c</members>
+        <members>Apttus__APTS_Agreement__c.Office365Review_Custom__c</members>
+        <members>Apttus__APTS_Agreement__c.Renewal_Uplift_Cap_Language__c</members>
+        <members>Apttus__APTS_Agreement__c.SendForCongaSign_Custom__c</members>
+        <members>Apttus__APTS_Agreement__c.SendForSignatures_Custom__c</members>
+        <members>Apttus__APTS_Agreement__c.SendForReview_Custom__c</members>
+        <members>Apttus__APTS_Agreement__c.Renewal_Type__c</members>
+        <members>APXT_CongaSign__Transaction__c.Parent_a9z__c</members>
+        <members>APXT_CongaSign__Transaction__c.parent_a9v__c</members>
+        <members>APXT_CongaSign__Transaction__c.Parent_aRf__c</members>
+        <members>APXT_CongaSign__Transaction__c.parent_a1j__c</members>
+        <members>APXT_CongaSign__Transaction__c.Parent_aCL__c</members>
+        <members>Apttus__DocumentVersionDetail__c.CNG_Account_Name__c</members>
+        <name>CustomField</name>
+    </types>
+    <types>
+        <members>Order_agreement_with_activated_MSA</members>
+        <members>Required_Customer_Signatory_Contact</members>
+        <name>CustomLabel</name>
+    </types>
+    <types>
+        <members>Agreement_Action_Mapping__mdt.Generate</members>
+        <members>Agreement_Process_Flow_Setting__mdt.Self_serve_process_flow</members>
+        <name>CustomMetadata</name>
+    </types>
+    <types>
+        <members>Apttus__APTS_Agreement__c.CNG_Activation_Notice_to_Owner_and_Legal_Reviewer</members>
+        <members>Apttus__APTS_Agreement__c.CNG_Activation_Notice_to_Owner_and_Requestor</members>
+        <members>Apttus__APTS_Agreement__c.CNG_Activation_Notice_to_Requestor_Only</members>
+        <members>Apttus__APTS_Agreement__c.CNG_Agreement_Approval_Approved_Email</members>
+        <members>Apttus__APTS_Agreement__c.CNG_Agreement_Approval_Rejected_Email</members>
+        <members>Apttus__APTS_Agreement__c.CNG_Agreement_Submitted_to_Queue</members>
+        <members>Apttus__APTS_Agreement__c.CNG_Cancellation_Notice_Email_to_Owner</members>
+        <members>Apttus__ReviewCycle__c.CNG_Parallel_Review_O365_Review_Cycle_Complete_Email_to_Sender</members>
+        <members>Apttus__APTS_Agreement__c.CNG_Ready_for_Signature_Notice_to_Requestor</members>
+        <name>WorkflowAlert</name>
+        <!-- the following email alerts need to be deleted in prod, these are in the destructiveChangesPre.xml file:
+            - Activation Notification Email to Owner
+            - APTS_AgreementActivationNotificationEmail
+            - Approval_Approved_Email
+            - Approval_Rejection_Email
+            - Send_Email_to_Agreement_Owner_for_Review_Cycle_Status
+        -->
+    </types>
+    <types>
+        <members>Apttus__APTS_Agreement__c</members>
+        <members>Apttus__ReviewCycle__c</members>
+        <name>Workflow</name>
+    </types>
+    <types>
+        <members>Apttus__ApttusEmailTemplates/CNG_Parallel_Review_O365_Review_Cycle_Complete</members>
+        <members>Apttus__ApttusEmailTemplates/CNG_Agreement_Approved_Notification</members>
+        <members>Apttus__ApttusEmailTemplates/CNG_Agreement_Ready_for_Signature</members>
+        <members>Apttus__ApttusEmailTemplates/CNG_Agreement_Rejected_Notification</members>
+        <members>Apttus__ApttusEmailTemplates/CNG_Agreement_Submitted_to_Legal_Queue</members>
+        <members>Apttus__ApttusEmailTemplates/APTS_Agreement_Approval_Assignment</members>
+        <members>Apttus__ApttusEmailTemplates/APTS_Agreement_Approval_Resssignment</members>
+        <members>Apttus__ApttusEmailTemplates/CNG_Parallel_Review_O365_Review_Cycle_Complete</members>
+        <members>Apttus__ApttusEmailTemplates/APTS_Send_for_Reviews_External_Review</members>
+        <name>EmailTemplate</name>
+        <!-- Manual changes required to managed package email templates:
+            - ApttusContractCancellationNotice
+            - AgreementOffice365ExternalReviewNotification
+            - ApttusContractActivationNotice
+            - Office365ReviewCycleCancelNotification
+            - EndReviewOffice365
+            - AgreementOffice365ReviewNotification
+
+            The following email templates need to be deleted in prod. These are in the destructiveChangesPre.xml file:
+            - APTS_AgreementActivationTemplate
+            - APTS_ApprovalApprovedNotification
+            - Apttus_Approval_Rejected_Notification
+            - ApttusContractActivationNoticeRequestor
+        -->
+    </types>
+    <types>
+        <members>CNG_Conga_CLM_Request_Agreement</members>
+        <members>CNG_Conga_CLM_Auto_Expiration_Updates</members>
+        <members>CNG_Conga_CLM_Agreement_After_Insert_Update_Actions</members>
+        <members>CNG_Conga_CLM_MSA_Approval_Check</members>
+        <members>CNG_Conga_CLM_Agreement_Clause_Approvals</members>
+        <members>CNG_Conga_CLM_Conga_Sign_Transaction_Updates</members>
+        <members>CNG_Conga_CLM_MSA_Customer_Paper_Updates</members>
+        <members>CNG_Conga_CLM_Document_Version_Detail_Updates</members>
+        <members>CNG_Conga_CLM_Merge_Event_Updates</members>
+        <members>CNG_Conga_CLM_Review_Cycle_Updates</members>
+        <members>CNG_Conga_CLM_Subflow_Approval_Email_Notifications</members>
+        <members>CNG_Conga_CLM_Subflow_Disable_Document_Versioning</members>
+        <members>CNG_Conga_CLM_Subflow_Send_Activation_Email</members>
+        <members>CNG_Conga_CLM_Subflow_Set_Agreement_Name</members>
+        <members>CNG_Conga_CLM_Subflow_Set_Agreement_Ready_for_Signature</members>
+        <name>Flow</name>
+        <!-- The following flows need to be deleted in prod. These are in the destructiveChangesPre.xml file:
+            - Approval_Process_End_Emails
+            - Disable_Document_Versioning_for_Agreement_Records
+            - MSA_Update_status_for_customer_paper
+            - MSSA_Approval_Check_1
+            - NDA_Send_Agreement_Activation_Email
+            - APTS_Update_Agreement_Name
+            - Update_Ready_for_Signature_status_NDA
+            - Agreement_Clause_Approval_Status_Update_Flow
+            - Update_NDA_Agreement_Status
+            - MPA_Update_Agreement_Status_on_Review_Complete
+            - Update_ApprovalStatus_for_Legal_Approval
+        -->
+    </types>
+    <types>
+        <members>CNG_Agreement_Page_Master</members>
+        <name>FlexiPage</name>
+    </types>
+    <types>
+        <members>Apttus__APTS_Agreement__c-APTS_MSSA_Layout</members>
+        <members>Apttus__APTS_Agreement__c-APTS_NDA_Layout</members>
+        <name>Layout</name>
+    </types>
+    <types>
+        <members>CNG_Agreement_Path_DPA</members>
+        <name>PathAssistant</name>
+    </types>
+    <types>
+		<members>APTS_CBS_CLM_Agreement_Requestor</members>
+        <members>Conga_CLM_Ability_to_send_SOW_approvals</members>
+        <members>APTS_Apttus_Administrator</members>
+        <members>APTS_Contract_Manager_Legal</members>
+       <!-- <members>Conga_CLM_Agreement_Manager_Legal_Ability_to_Update_Status</members> 
+        - this is only in UAT, not QA -->
+        <members>APTS_Agreement_Requestor_All_Record_Types</members>
+        <members>APTS_DPA_Agreement_Requestor</members>
+        <members>APTS_Appa_Agreement_Requestor</members>
+        <members>APTS_Agreement_Requestor</members>
+		<name>PermissionSet</name>
+	</types>
+    <types>
+        <members>ReportsforCommercialDashboard/Commercial_SRs_by_Person_wType_Qch</members>
+        <members>ReportsforCommercialDashboard/CNG_Documents_Checkedin_as_Final_Dng</members>
+        <members>ReportsforCommercialDashboard/CNG_MSA_Fees_Clause_3VS</members>
+        <members>ReportsforCommercialDashboard/CNG_Negotiated_Agreements_b8Z</members>
+        <members>ReportsforCommercialDashboard/CNG_Negotiated_with_Modified_Clauses_Hx7</members>
+        <name>Report</name>
+    </types>
+    <types>
+        <members>ReportsforCommercialDashboard</members>
+        <name>ReportFolder</name>
+    </types>
+    <types>
+        <members>CNG_Agreements_with_Document_Version_Details</members>
+        <name>ReportType</name>
+    </types>
+    <types>
+        <members>Legal_Home_Page</members>
+        <name>CustomTab</name>
+    </types>
+    <types>
+        <members>Apttus__APTS_Agreement__c.CNG_End_Date_Check</members>
+        <name>ValidationRule</name>
+        <!-- The following managed package validation rule needs to be de-activated in prod:
+        -  Apttus__APTS_Agreement__c.End_Date_Check
+        -->
+    </types>
+    <version>66.0</version>
+</Package>

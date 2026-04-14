@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Default email template used with Send for External Review action</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>Conga_Letterhead</letterhead>
+    <name>Send for External Review</name>
+    <style>freeForm</style>
+    <subject>Review Agreement with Conga - {!Apttus__APTS_Agreement__c.Name}</subject>
+    <textOnly>Hello,
+
+Please review the attached document. If you have any questions or require any updates, please do not hesitate to reach out.
+
+If you would like to proceed with signature, let me know, and I will send out a version for signature.
+
+If you have redlines, please attach and reply to this email.
+
+We look forward to working with you and hope you have a great day!
+
+Thank you,
+
+{!Apttus__APTS_Agreement__c.OwnerFullName}
+{!Apttus__APTS_Agreement__c.OwnerTitle}</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

@@ -1,0 +1,19 @@
+{
+  "folders": [
+    {
+      "path": "c:/Users/cshelor/OneDrive - Conga/Documents/Conga/Conga-Pro-Serv-Projects/CZeroCLM"
+    }
+  ],
+  "settings": {
+    "eslint.workingDirectories": [
+      "c:/Users/cshelor/OneDrive - Conga/Documents/Conga/Conga-Pro-Serv-Projects/CZeroCLM"
+    ],
+    "eslint.validate": [
+      "javascript",
+      "typescript"
+    ],
+    "eslint.options": {
+      "overrideConfigFile": "c:\\Users\\cshelor\\OneDrive - Conga\\Documents\\Conga\\Conga-Pro-Serv-Projects\\CZeroCLM\\.eslintrc.json"
+    }
+  }
+}

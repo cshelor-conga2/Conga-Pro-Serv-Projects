@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>APTS_Change_in_Control_Merger__c</fullName>
+    <label>Change of Control Restrictions</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>No Restrictions</fullName>
+                <default>false</default>
+                <label>No Restrictions</label>
+            </value>
+            <value>
+                <fullName>Notice Required</fullName>
+                <default>false</default>
+                <label>Notice Required</label>
+            </value>
+            <value>
+                <fullName>Consent Required</fullName>
+                <default>false</default>
+                <label>Consent Required</label>
+            </value>
+            <value>
+                <fullName>Consent Required Only if Competitor of Acquiror</fullName>
+                <default>false</default>
+                <label>Consent Required Only if Competitor of Acquiror</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>
