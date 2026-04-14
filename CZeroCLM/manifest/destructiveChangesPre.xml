@@ -23,19 +23,19 @@
         <name>EmailTemplate</name>
     </types>
     <types>
-        <members>Cancellation_Notice</members>
-        <members>Set_defaults_for_MSSA</members>
+        <members>Apttus__APTS_Agreement__c.Cancellation_Notice</members>
+        <members>Apttus__APTS_Agreement__c.Set_defaults_for_MSSA</members>
         <name>WorkflowRule</name>
     </types>
     <types>
-        <members>Activation Notification Email to Owner</members>
-        <members>APTS_AgreementActivationNotificationEmail</members>
-        <members>Approval_Approved_Email</members>
-        <members>Approval_Rejection_Email</members>
-        <members>Send_Email_to_Agreement_Owner_for_Review_Cycle_Status</members>
+        <members>Apttus__APTS_Agreement__c.Activation Notification Email to Owner</members>
+        <members>Apttus__APTS_Agreement__c.APTS_AgreementActivationNotificationEmail</members>
+        <members>Apttus__APTS_Agreement__c.Approval_Approved_Email</members>
+        <members>Apttus__APTS_Agreement__c.Approval_Rejection_Email</members>
+        <members>Apttus__APTS_Agreement__c.Send_Email_to_Agreement_Owner_for_Review_Cycle_Status</members>
         <name>WorkflowAlert</name>
     <types>
-        <members>NDA_Custmr_reveiwer1_or_Signatory1_check</members>
+        <members>Apttus__APTS_Agreement__c.NDA_Custmr_reveiwer1_or_Signatory1_check</members>
         <name>ValidationRule</name>
     </types>
     <version>66.0</version>
