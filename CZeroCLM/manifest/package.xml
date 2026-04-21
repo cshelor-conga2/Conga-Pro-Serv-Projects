@@ -160,15 +160,35 @@
     </types>
     <types>
         <members>CNG_Agreement_Page_Master</members>
+        <members>CNG_Approval_Rule_Record_Page</members>
+        <members>CNG_Approval_Request_Record_Page</members>
+        <members>CNG_Conga_Sign_Transaction_Record_Page</members>
+        <members>Legal_UtilityBar</members>
+        <members>Legal_Home_Page</members>
         <name>FlexiPage</name>
+    </types>
+    <types>
+        <members>cng_flowRedirect</members>
+        <name>LightningComponentBundle</name>
     </types>
     <types>
         <members>Apttus__APTS_Agreement__c-APTS_MSSA_Layout</members>
         <members>Apttus__APTS_Agreement__c-APTS_NDA_Layout</members>
+        <members>Apttus__APTS_Agreement__c-APTS_DPA_Layout</members>
+        <members>Apttus__APTS_Agreement__c-APTS_MPA_Layout</members>
+        <members>Apttus__APTS_Agreement__c-APTS_MPA_Layout_Legal</members>
+        <members>Apttus__APTS_Agreement__c-APTS_MPA_Layout_PartnerOperations</members>
+        <members>Apttus__APTS_Agreement__c-APTS_MSSA_Layout_Legal</members>
+        <members>Apttus__APTS_Agreement__c-APTS_MSSA_Layout_SalesOps</members>
+        <members>Apttus__APTS_Agreement__c-APTS_NDA_EditStatus_Layout</members>
+        <members>Apttus__APTS_Agreement__c-APTS_NDA_Layout</members>
+        <members>Apttus__APTS_Agreement__c-APTS_NDA_Layout_Legal</members>
+        <members>Apttus__APTS_Agreement__c-APTS_NDA_Layout_SalesOps</members>
         <name>Layout</name>
     </types>
     <types>
         <members>CNG_Agreement_Path_DPA</members>
+        <members>CNG_Agreement_Path_MPA</members>
         <name>PathAssistant</name>
     </types>
     <types>
