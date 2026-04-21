@@ -231,5 +231,11 @@
         -  Apttus__APTS_Agreement__c.End_Date_Check
         -->
     </types>
+    <!-- Other manual deployments:
+        - Flow list view: CNG_Conga_CLM_Flows
+        - Email Alert list view: CNG_Conga_CLM_Alerts
+        - Custom metadata list view for "Agreement Process Flow Setting" object: CNG_Conga_CLM
+        - List View Button Layout for Agreement object: List_View
+    -->
     <version>66.0</version>
 </Package>
