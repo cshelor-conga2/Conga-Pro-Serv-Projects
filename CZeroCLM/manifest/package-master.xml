@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
+<!-- Two packages must be installed in prod from unofficialSF:
+    - FlowActionsBasePack
+    - FlowScreenComponentsBasePack
+    -->
     <types>
         <members>APTS_AgreementTriggerHandler</members>
         <members>APTS_AgreementTriggerHelper</members>
@@ -44,16 +48,16 @@
         <members>Apttus__APTS_Agreement__c.APTS_Unlimited_Liability_Direct__c</members>
         <members>Apttus__APTS_Agreement__c.Apttus__Termination_Date__c</members>
         <members>Apttus__APTS_Agreement__c.Apttus__Termination_Notice_Days__c</members>
-        <members>Apttus__Agreement_Clause__c.CNG_Opportunity_Amount__c</members>
         <members>Apttus__APTS_Agreement__c.CNG_Send_via_Conga_Sign__c</members>
         <members>Apttus__APTS_Agreement__c.CSign__c</members>
         <members>Apttus__APTS_Agreement__c.Conga_Signatory__c</members>
         <members>Apttus__APTS_Agreement__c.Generate_Custom__c</members>
         <members>Apttus__APTS_Agreement__c.Insurance_Obligations__c</members>
         <members>Apttus__APTS_Agreement__c.Legal_Owner__c</members>
+       <!-- These 3 actions are NOT being moved in this release
         <members>Apttus__APTS_Agreement__c.Office365ExternalReview_Custom__c</members>
         <members>Apttus__APTS_Agreement__c.Office365InternalReview_Custom__c</members>
-        <members>Apttus__APTS_Agreement__c.Office365Review_Custom__c</members>
+        <members>Apttus__APTS_Agreement__c.Office365Review_Custom__c</members> -->
         <members>Apttus__APTS_Agreement__c.Renewal_Uplift_Cap_Language__c</members>
         <members>Apttus__APTS_Agreement__c.SendForCongaSign_Custom__c</members>
         <members>Apttus__APTS_Agreement__c.SendForSignatures_Custom__c</members>
@@ -65,6 +69,7 @@
         <members>APXT_CongaSign__Transaction__c.parent_a1j__c</members>
         <members>APXT_CongaSign__Transaction__c.Parent_aCL__c</members>
         <members>Apttus__DocumentVersionDetail__c.CNG_Account_Name__c</members>
+        <members>Apttus__Agreement_Clause__c.CNG_Opportunity_Amount__c</members>
         <name>CustomField</name>
     </types>
     <types>
@@ -73,9 +78,18 @@
         <name>CustomLabel</name>
     </types>
     <types>
-        <members>Agreement_Action_Mapping__mdt.Generate</members>
-        <members>Agreement_Process_Flow_Setting__mdt.Self_serve_process_flow</members>
+        <members>Agreement_Action_Mapping.Generate</members>
+        <members>Agreement_Process_Flow_Setting.Self_serve_process_flow</members>
+        <members>Template_For_Generation.DPA_Settings_1</members>
+        <members>Template_For_Generation.DPA_Settings_2</members>
+        <members>Template_For_Generation.NDA_Settings_1</members>
+        <members>Template_For_Generation.NDA_Settings_2</members>
+        <members>APTS_C4C_Custom_Metadata.System_Properties</members>
         <name>CustomMetadata</name>
+    </types>
+    <types>
+        <members>Template_For_Generation__mdt</members>
+        <name>CustomObject</name>
     </types>
     <types>
         <members>Apttus__APTS_Agreement__c.CNG_Activation_Notice_to_Owner_and_Legal_Reviewer</members>
@@ -236,6 +250,10 @@
         - Email Alert list view: CNG_Conga_CLM_Alerts
         - Custom metadata list view for "Agreement Process Flow Setting" object: CNG_Conga_CLM
         - List View Button Layout for Agreement object: List_View
+        - Agreement.Type of Paper picklist - ensure that only the following three values are turned on for the MSA, DPA, NDA, and MPA record types:
+            - Conga Standard
+            - Conga Redlined
+            - Other Party Paper
     -->
     <version>66.0</version>
 </Package>
