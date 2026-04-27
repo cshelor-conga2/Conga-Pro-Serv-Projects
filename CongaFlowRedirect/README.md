@@ -24,9 +24,8 @@ This component is ideal for creating exit screens in Flows that need to navigate
 
 1. Clone or download this repository
 2. Deploy the component to your Salesforce org using Salesforce CLI:
-   \\\Bash
+  
    sf project deploy start --source-dir force-app/main/default/lwc/cng_flowRedirect
-   \\\
 
 ## Usage
 
