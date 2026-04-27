@@ -254,6 +254,9 @@
             - Conga Standard
             - Conga Redlined
             - Other Party Paper
+
+    Ensure that all users have the correct email setting set up for their individual users - either
+    send via Salesforce or send via O365, whichever has been configured by IT
     -->
     <version>66.0</version>
 </Package>
