@@ -59,6 +59,7 @@
         <members>Apttus__APTS_Agreement__c.Office365InternalReview_Custom__c</members>
         <members>Apttus__APTS_Agreement__c.Office365Review_Custom__c</members> -->
         <members>Apttus__APTS_Agreement__c.Renewal_Uplift_Cap_Language__c</members>
+        <members>Apttus__APTS_Agreement__c.ImportOfflineDocument_Custom__c</members>
         <members>Apttus__APTS_Agreement__c.SendForCongaSign_Custom__c</members>
         <members>Apttus__APTS_Agreement__c.SendForSignatures_Custom__c</members>
         <members>Apttus__APTS_Agreement__c.SendForReview_Custom__c</members>
@@ -182,7 +183,7 @@
         <name>FlexiPage</name>
     </types>
     <!-- Ensure that flexipage activation rules match UAT -->
-    
+
     <types>
         <members>cng_flowRedirect</members>
         <name>LightningComponentBundle</name>
