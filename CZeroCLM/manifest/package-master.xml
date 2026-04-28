@@ -181,6 +181,8 @@
         <members>Legal_Home_Page</members>
         <name>FlexiPage</name>
     </types>
+    <!-- Ensure that flexipage activation rules match UAT -->
+    
     <types>
         <members>cng_flowRedirect</members>
         <name>LightningComponentBundle</name>
