@@ -15,7 +15,6 @@
         <name>ApexClass</name>
     </types>
     <types>
-        <members>APTS_HomePageLinks</members>
         <members>navigateToRecord</members>
         <members>navigateToUrl</members>
         <name>AuraDefinitionBundle</name>
@@ -32,10 +31,6 @@
     <types>
         <members>Apttus__APTS_Agreement__c.APTS_TSO_Compact_Layout</members>
         <name>CompactLayout</name>
-    </types>
-    <types>
-        <members>CNG_Conga_Legal</members>
-        <name>CustomApplication</name>
     </types>
     <types>
         <members>Apttus__APTS_Agreement__c.APTS_Change_in_Control_Merger__c</members>
@@ -64,6 +59,8 @@
         <members>Apttus__APTS_Agreement__c.SendForSignatures_Custom__c</members>
         <members>Apttus__APTS_Agreement__c.SendForReview_Custom__c</members>
         <members>Apttus__APTS_Agreement__c.Renewal_Type__c</members>
+        <members>Apttus__APTS_Agreement__c.ViewAgreementHierarchy_Custom__c</members>
+        <members>Apttus__APTS_Agreement__c.APTS_Preview_Submit_Approvals__c</members>
         <members>APXT_CongaSign__Transaction__c.Parent_a9z__c</members>
         <members>APXT_CongaSign__Transaction__c.parent_a9v__c</members>
         <members>APXT_CongaSign__Transaction__c.Parent_aRf__c</members>
@@ -71,6 +68,9 @@
         <members>APXT_CongaSign__Transaction__c.Parent_aCL__c</members>
         <members>Apttus__DocumentVersionDetail__c.CNG_Account_Name__c</members>
         <members>Apttus__Agreement_Clause__c.CNG_Opportunity_Amount__c</members>
+        <!-- All CLM users must have read access for the fields listed for Conga Sign Transaction, Document Version Detail, and Agreement Clause objects.
+        All CLM users must have read access for Apttus__APTS_Agreement__c.ViewAgreementHierarchy_Custom__c.
+        Please add to all relevant permission sets -->
         <name>CustomField</name>
     </types>
     <types>
@@ -127,7 +127,7 @@
         <members>Apttus__ApttusEmailTemplates/CNG_Parallel_Review_O365_Review_Cycle_Complete</members>
         <members>Apttus__ApttusEmailTemplates/APTS_Send_for_Reviews_External_Review</members>
         <name>EmailTemplate</name>
-        <!-- Manual changes required to managed package email templates:
+        <!-- We modified managed package email templates, which cannot be moved between orgs using CLI. Please ensure that the following email templates are manually updated in prod to match UAT
             - ApttusContractCancellationNotice
             - AgreementOffice365ExternalReviewNotification
             - ApttusContractActivationNotice
@@ -175,14 +175,13 @@
     </types>
     <types>
         <members>CNG_Agreement_Page_Master</members>
+        <!-- for CNG_Agreement_Page_Master, do not change activation rules in prod -->
         <members>CNG_Approval_Rule_Record_Page</members>
         <members>CNG_Approval_Request_Record_Page</members>
         <members>CNG_Conga_Sign_Transaction_Record_Page</members>
-        <members>Legal_UtilityBar</members>
-        <members>Legal_Home_Page</members>
         <name>FlexiPage</name>
     </types>
-    <!-- Ensure that flexipage activation rules match UAT -->
+    <!-- For all flexipages other than the one mentioned above, ensure that activation rules match UAT -->
 
     <types>
         <members>cng_flowRedirect</members>
@@ -238,17 +237,13 @@
         <name>ReportType</name>
     </types>
     <types>
-        <members>Legal_Home_Page</members>
-        <name>CustomTab</name>
-    </types>
-    <types>
         <members>Apttus__APTS_Agreement__c.CNG_End_Date_Check</members>
         <name>ValidationRule</name>
         <!-- The following managed package validation rule needs to be de-activated in prod:
         -  Apttus__APTS_Agreement__c.End_Date_Check
         -->
     </types>
-    <!-- Other manual deployments:
+    <!-- Other manual Salesforce metadata deployments:
         - Flow list view: CNG_Conga_CLM_Flows
         - Email Alert list view: CNG_Conga_CLM_Alerts
         - Custom metadata list view for "Agreement Process Flow Setting" object: CNG_Conga_CLM
@@ -257,9 +252,21 @@
             - Conga Standard
             - Conga Redlined
             - Other Party Paper
+        - Conga Sign Business Units - move all 3 business units into prod and ensure that all settings match UAT
+            - Conga Sign - Legal
+            - Conga Sign - Generic
+            - Generic Default
+        - Account object: remove the "New" button from the Agreements related list on _all_ page layouts
+        
+        Conga deployments:
+        - Admin entry "APTS_CustomLinksforActionPanel"
+        - Approval process "MSA Approval Process"; replace existing process
+        - Approval rules "MSA Clause - Finance", "MSA Clause - Renewals Commercial", "MSA Clause - Renewal Enterprise"; replace existing rules
+        - Two Grid components: "Conga_Legal_Command_Center" VF page and "Agreements Legal Queue" Grid View; move both of these using the Grid migration tool
+        - Approvals Search Filter "MSA Approvals"
+        - XAC Templates "Customer DPA 2026" and "Pre-Signed Customer DPA"
 
-    Ensure that all users have the correct email setting set up for their individual users - either
-    send via Salesforce or send via O365, whichever has been configured by IT
+    Ensure that all users have the correct email setting set up for their individual users to send email via Salesforce
     -->
     <version>66.0</version>
 </Package>
