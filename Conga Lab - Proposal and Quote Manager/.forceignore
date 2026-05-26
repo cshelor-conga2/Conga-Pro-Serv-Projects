@@ -9,3 +9,5 @@ temp/**
 
 # Ignore Grid managed package components
 **/CRMC_PP__*
+**/jsconfig.json
+**/.eslintrc.json
