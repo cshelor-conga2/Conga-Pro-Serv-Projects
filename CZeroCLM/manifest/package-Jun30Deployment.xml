@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <!-- Manual changes
+    - Email templates notated starting in line 35
+    - Approval Process: MSA Approval Process
+    - 3 Approval Rules: MSA Clause - Finance; MSA Clause - Renewals Commercial; MSA Clause - Renewals Enterprise
+    - 2 Admin Entries: APTS_CustomLinksforActionPanel; APTS_EndReviewEmailServiceAddress
+    - Flexipage notated on line 55: CNG_Agreement_Page_Master
+    -->
+    <types>
+        <members>APXT_Redlining__Conga_Contracts/CNG_Conga_2026_Purple_Wordmark_Logo</members>
+        <name>Document</name>
+    </types>
+    <types>
+        <members>APXT_Redlining__Conga_Contracts</members>
+        <name>DocumentFolder</name>
+    </types>
+    <types>
+        <members>Apttus__APTS_Agreement__c.APTS_CBS_Conga_Sign__c</members>
+        <members>Apttus__APTS_Agreement__c.Office365Review_Custom__c</members>
+        <members>Apttus__APTS_Agreement__c.SendForReview_Custom__c</members>
+        <name>CustomField</name>
+    </types>
+    <types>
+        <members>Apttus__ApttusEmailTemplates</members>
+        <name>EmailFolder</name>
+    </types>
+    <types>
+        <members>AgreementEndParallelByEmail</members>
+        <name>EmailServicesFunction</name>
+    </types>
+    <types>
+        <members>Apttus__ApttusEmailTemplates/APTS_Send_for_Reviews_External_Review</members>
+
+        <!--Managed package templates - must be manually moved/updated in prod
+        <members>Apttus__ApttusEmailTemplates/Apttus__ApttusContractActivationNotice</members>
+        <members>Apttus__ApttusEmailTemplates/Apttus__ApttusContractCancellationNotice</members>
+        <members>Apttus__ApttusEmailTemplates/Apttus__ParallelReviewCycleCancelNotification</members>
+        <members>Apttus__ApttusEmailTemplates/Apttus__ParallelReviewCycleCompleteNotification</members>
+        <members>Apttus__ApttusEmailTemplates/Apttus__ParallelReviewCycleCompleteWithoutDocumentNotification</members>
+        <members>Apttus__ApttusEmailTemplates/Apttus__ParallelReviewCycleFailureNotification</members>
+        <members>Apttus__ApttusEmailTemplates/Apttus__ParallelReviewIncorrectFileUploadNotification</members>
+        <members>Apttus__ApttusEmailTemplates/Apttus__ParallelReviewSubmissionFailureNotification</members>
+    -->
+        <members>Apttus__ApttusEmailTemplates/CNG_Agreement_Approved_Notification</members>
+        <members>Apttus__ApttusEmailTemplates/CNG_Agreement_Ready_for_Signature</members>
+        <members>Apttus__ApttusEmailTemplates/CNG_Agreement_Rejected_Notification</members>
+        <members>Apttus__ApttusEmailTemplates/CNG_Agreement_Submitted_to_Legal_Queue</members>
+        <members>Apttus__ApttusEmailTemplates/CNG_Agreement_Termination_Notice</members>
+        <members>Apttus__ApttusEmailTemplates/CNG_Parallel_Review_O365_Review_Cycle_Complete</members>
+        <name>EmailTemplate</name>
+    </types>
+    <types>
+       <!--Move manually
+        <members>CNG_Agreement_Page_Master</members>
+        -->
+        <members>CNG_Document_Version_Record_Page</members>
+        <members>CNG_Template_Record_Page</members>
+        <name>FlexiPage</name>
+    </types>
+    <types>
+        <members>CNG_Conga_CLM_Agreement_After_Insert_Update_Actions</members>
+        <members>CNG_Conga_CLM_Agreement_Clause_Approvals</members>
+        <members>CNG_Conga_CLM_Document_Version_Updates</members>
+        <members>CNG_Conga_CLM_MSA_Approval_Check</members>
+        <members>CNG_Conga_CLM_Merge_Event_Updates</members>
+        <members>CNG_Conga_CLM_Request_Agreement</members>
+        <members>CNG_Conga_CLM_Review_Cycle_Updates</members>
+        <name>Flow</name>
+    </types>
+    <types>
+        <members>Apttus__APTS_Agreement__c-APTS_NDA_EditStatus_Layout</members>
+        <members>Apttus__APTS_Agreement__c-APTS_NDA_Layout</members>
+        <members>Apttus__APTS_Agreement__c-APTS_NDA_Layout_Legal</members>
+        <members>Apttus__APTS_Agreement__c-APTS_NDA_Layout_SalesOps</members>
+        <members>Apttus__APTS_Agreement__c-Partner_APTS_NDA_Layout</members>
+        <name>Layout</name>
+    </types>
+    <types>
+        <members>CNG_Conga_CLM_2026_Logo</members>
+        <name>Letterhead</name>
+    </types>
+    <types>
+        <members>Apttus__APTS_Agreement__c.CNG_Termination_Notice_Email_to_Owner</members>
+        <name>WorkflowAlert</name>
+    </types>
+    <version>66.0</version>
+</Package>
