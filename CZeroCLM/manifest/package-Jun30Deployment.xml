@@ -2,10 +2,10 @@
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
     <!-- Manual changes
     - Email templates notated starting in line 35
-    - Approval Process: MSA Approval Process
-    - 3 Approval Rules: MSA Clause - Finance; MSA Clause - Renewals Commercial; MSA Clause - Renewals Enterprise
-    - 2 Admin Entries: APTS_CustomLinksforActionPanel; APTS_EndReviewEmailServiceAddress
-    - Flexipage notated on line 55: CNG_Agreement_Page_Master
+    - Approval Process: MSA Approval Process - either delete prod process and deploy this one or manually update the process in prod to match this one
+    - 3 Approval Rules: MSA Clause - Finance; MSA Clause - Renewals Commercial; MSA Clause - Renewals Enterprise - either delete prod rules and deploy this one or manually update the rules in prod to match these
+    - 2 Admin Entries: APTS_CustomLinksforActionPanel; APTS_EndReviewEmailServiceAddress (see notes in spreadsheet, Id 217 and Id 218)
+    - Flexipage notated on line 55; PS team will handle this: CNG_Agreement_Page_Master
     -->
     <types>
         <members>APXT_Redlining__Conga_Contracts/CNG_Conga_2026_Purple_Wordmark_Logo</members>
@@ -32,7 +32,7 @@
     <types>
         <members>Apttus__ApttusEmailTemplates/APTS_Send_for_Reviews_External_Review</members>
 
-        <!--Managed package templates - must be manually moved/updated in prod
+        <!-- Managed package templates - must be manually moved/updated in prod. Update everything to match: Properties, Subject, HTML content, plain text content
         <members>Apttus__ApttusEmailTemplates/Apttus__ApttusContractActivationNotice</members>
         <members>Apttus__ApttusEmailTemplates/Apttus__ApttusContractCancellationNotice</members>
         <members>Apttus__ApttusEmailTemplates/Apttus__ParallelReviewCycleCancelNotification</members>
@@ -51,7 +51,7 @@
         <name>EmailTemplate</name>
     </types>
     <types>
-       <!--Move manually
+       <!--Move manually; PS team will handle this
         <members>CNG_Agreement_Page_Master</members>
         -->
         <members>CNG_Document_Version_Record_Page</members>
