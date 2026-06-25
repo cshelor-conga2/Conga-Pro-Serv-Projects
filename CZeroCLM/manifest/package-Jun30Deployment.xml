@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
     <!-- Manual changes
-    - Email templates notated starting in line 35
+    - Email templates notated starting in line 38
     - Approval Process: MSA Approval Process - either delete prod process and deploy this one or manually update the process in prod to match this one
     - 3 Approval Rules: MSA Clause - Finance; MSA Clause - Renewals Commercial; MSA Clause - Renewals Enterprise - either delete prod rules and deploy this one or manually update the rules in prod to match these
     - 2 Admin Entries: APTS_CustomLinksforActionPanel; APTS_EndReviewEmailServiceAddress (see notes in spreadsheet, Id 217 and Id 218)
-    - Flexipage notated on line 55; PS team will handle this: CNG_Agreement_Page_Master
+    - Flexipage notated on line 58; PS team will handle this: CNG_Agreement_Page_Master
     - Move Legal Command Center Grid config using migration tool: VF page `Conga_Legal_Command_Center` and 2 views "Legal SR Queue" and "My Legal SRs"
+    - Update Agreement Document Output Formats for the profile "Account Executive": set MSA record type to use DOCX instead of PDF
     -->
     <types>
         <members>APXT_Redlining__Conga_Contracts/CNG_Conga_2026_Purple_Wordmark_Logo</members>
