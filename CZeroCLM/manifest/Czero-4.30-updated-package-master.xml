@@ -64,7 +64,7 @@
         <name>CustomMetadata</name>
     </types>
     <types>
-        <members>Template_For_Generation__mdt</members>
+        <members>Template_For_Generation__mdt</members><!-- Wait for confirmation if this is needed or not -->
         <name>CustomObject</name>
     </types>
     <types>
@@ -73,8 +73,6 @@
         <members>Apttus__APTS_Agreement__c.CNG_Activation_Notice_to_Requestor_Only</members>
         <members>Apttus__APTS_Agreement__c.CNG_Agreement_Submitted_to_Queue</members>
         <members>Apttus__APTS_Agreement__c.CNG_Cancellation_Notice_Email_to_Owner</members>
-        <members>Apttus__ReviewCycle__c.CNG_Parallel_Review_O365_Review_Cycle_Complete_Email_to_Sender</members>
-
         <members>Apttus__APTS_Agreement__c.CNG_Ready_for_Signature_Notice_to_Requestor</members>
         <name>WorkflowAlert</name>
         <!-- the following email alerts need to be deactivated/deleted in prod, these are in the destructiveChangesPre.xml file:
@@ -110,11 +108,11 @@
         <members>CNG_Conga_CLM_Request_Agreement</members>
         <members>CNG_Conga_CLM_Auto_Expiration_Updates</members>
         <members>CNG_Conga_CLM_Agreement_After_Insert_Update_Actions</members>
-        <members>CNG_Conga_CLM_Conga_Sign_Transaction_Updates</members><!-- only runs on DPA -->
-        <members>CNG_Conga_CLM_MSA_Customer_Paper_Updates</members><!-- this replaces "MSA_Update_status_for_customer_paper"; new label and API name for consistency -->
-        <members>CNG_Conga_CLM_Document_Version_Detail_Updates</members><!-- replaces "CBS_Document_Version_Detail_Create_Agreement_Update"; new label and API name for consistency -->
+        <members>CNG_Conga_CLM_Conga_Sign_Transaction_Updates</members>
+        <members>CNG_Conga_CLM_MSA_Customer_Paper_Updates</members><!-- Wait for confirmation if this is needed or not -->
+        <members>CNG_Conga_CLM_Document_Version_Detail_Updates</members>
         <members>CNG_Conga_CLM_Merge_Event_Updates</members>
-        <members>CNG_Conga_CLM_Review_Cycle_Updates</members>
+        <members>CNG_Conga_CLM_Review_Cycle_Updates</members><!-- Wait for confirmation if this is needed or not -->
         <members>CNG_Conga_CLM_Subflow_Disable_Document_Versioning</members>
         <members>CNG_Conga_CLM_Subflow_Send_Activation_Email</members>
         <members>CNG_Conga_CLM_Subflow_Set_Agreement_Name</members>
@@ -122,14 +120,13 @@
         <name>Flow</name>
         <!-- The following flows need to be deactivated/deleted in prod. These are in the destructiveChangesPre.xml file:
             - Disable_Document_Versioning_for_Agreement_Records
-            - MSA_Update_status_for_customer_paper
-            - CBS_Document_Version_Detail_Create_Agreement_Update
-
             - Update_Ready_for_Signature_status_NDA
             - Update_NDA_Agreement_Status
             - NDA_Send_Agreement_Activation_Email
-            - APTS_Update_Agreement_Name - made a copy of this and called it as a subflow in After Inser/Update flow. Did not change functionality, just updated label/api name for consistency
-            - MPA_Update_Agreement_Status_on_Review_Complete - consolidated into Conga CLM - Review Cycle Updates flow
+            ** Wait for confirmation on the following flows if this udpate is needed or not **
+            - MSA_Update_status_for_customer_paper
+            - APTS_Update_Agreement_Name
+            - MPA_Update_Agreement_Status_on_Review_Complete
         -->
     </types>
     <types>
@@ -165,34 +162,6 @@
         <!-- The following managed package validation rule needs to be de-activated in prod:
         -  Apttus__APTS_Agreement__c.End_Date_Check
         -->
-    </types>
-
-
-    <types>
-        <members>Apttus__ApttusEmailTemplates/CNG_Agreement_Approved_Notification</members>
-        <members>Apttus__ApttusEmailTemplates/CNG_Agreement_Ready_for_Signature</members>
-        <members>Apttus__ApttusEmailTemplates/CNG_Agreement_Rejected_Notification</members>
-        <members>Apttus__ApttusEmailTemplates/CNG_Agreement_Submitted_to_Legal_Queue</members>
-        <members>Apttus__ApttusEmailTemplates/CNG_Agreement_Termination_Notice</members>
-        <members>Apttus__ApttusEmailTemplates/CNG_Parallel_Review_O365_Review_Cycle_Complete</members>
-        <members>Apttus__ApttusEmailTemplates/ApttusContractCancellationNotice</members>
-        <name>EmailTemplate</name>
-    </types>
-    <types>
-        <members>CNG_Conga_CLM_2026_Logo</members>
-        <name>Letterhead</name>
-    </types>
-    <types>
-        <members>Apttus__APTS_Agreement__c.CNG_Termination_Notice_Email_to_Owner</members>
-        <name>WorkflowAlert</name>
-    </types>
-    <types>
-        <members>Apttus__APTS_Agreement__c</members>
-        <name>Workflow</name>
-    </types>
-    <types>
-        <members>APXT_Redlining__Conga_Contracts/CNG_Conga_2026_Purple_Wordmark_Logo</members>
-        <name>Document</name>
     </types>
     <!-- Other manual Salesforce metadata deployments:
         - Flow list view: CNG_Conga_CLM_Flows (PS can create manually)

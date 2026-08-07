@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <types>
+        <members>Set_defaults_for_MSSA</members>
+        <members>NDA_Send_Agreement_Activation_Email</members>
+        <members>Update_Ready_for_Signature_status_NDA</members>
+        <members>Update_NDA_Agreement_Status</members>
+
+        <name>Flow</name>
+    </types>
+    <types>
+        <members>Apttus__ApttusEmailTemplates/APTS_AgreementActivationTemplate</members>
+        <members>Apttus__ApttusEmailTemplates/ApttusContractActivationNoticeRequestor</members>
+        <name>EmailTemplate</name>
+    </types>
+    <types>
+        <members>Apttus__APTS_Agreement__c.Cancellation_Notice</members>
+        <members>Apttus__APTS_Agreement__c.Set_defaults_for_MSSA</members>
+        <name>WorkflowRule</name>
+    </types>
+    <types>
+        <members>Apttus__APTS_Agreement__c.Activation Notification Email to Owner</members>
+        <members>Apttus__APTS_Agreement__c.APTS_AgreementActivationNotificationEmail</members>
+        <name>WorkflowAlert</name>
+    <types>
+        <members>Apttus__APTS_Agreement__c.NDA_Custmr_reveiwer1_or_Signatory1_check</members>
+        <name>ValidationRule</name>
+    </types>
+    <version>66.0</version>
+</Package>

@@ -2,23 +2,24 @@
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
     <!--
     Manual deploy:
-    - Update all permissions as needed to support new record typ "Other" and new field on Agreement "CNG_Record_Subtype__c"
-    - Apttus__APTS_Template__c object; Apttus__Agreement_Types__c field; new value added "Other"
+    - Update all permissions as needed to support new record type
+    - Conga Grid: Legal Command Center VF page
+    - Conga Grid: "All Amendment Clauses" view
+    - Apttus__APTS_Template__c object; Apttus__Agreement_Types__c field; new value added "Amendment"
     - Flexipage: update assignments for "Agreement Page - Master" to match UAT
     - Ensure that page layout assignments match UAT
-    - Conga Grid view: "Agreements Legal Queue"
     -->
     
     <types>
-        <members>CNG_Agreement_Path_Other</members>
+        <members>CNG_Agreement_Path_Amendment</members>
         <name>PathAssistant</name>
     </types>
     <types>
+        <members>CNG_Conga_CLM_Subflow_Create_Amendment</members>
         <members>CNG_Conga_CLM_Request_Agreement</members>
         <members>CNG_Conga_CLM_Subflow_Disable_Document_Versioning</members>
         <members>CNG_Conga_CLM_Merge_Event_Updates</members>
         <members>CNG_Conga_CLM_Review_Cycle_Updates</members>
-        <members>CNG_Conga_CLM_Document_Version_Updates</members>
         <name>Flow</name>
     </types>
     <types>
@@ -28,15 +29,14 @@
     <types>
         <members>Apttus__APTS_Agreement__c.SubmitRequest_Custom__c</members>
         <members>Apttus__APTS_Agreement__c.Office365Review_Custom__c</members>
-        <members>Apttus__APTS_Agreement__c.CNG_Record_Subtype__c</members>
         <name>CustomField</name>
     </types>
     <types>
-        <members>Apttus__APTS_Agreement__c-APTS_Other_Layout</members>
+        <members>Apttus__APTS_Agreement__c-APTS_Amendment_Layout</members>
         <name>Layout</name>
     </types>
     <types>
-        <members>Apttus__APTS_Agreement__c.Other</members>
+        <members>Apttus__APTS_Agreement__c.Amendment</members>
         <name>RecordType</name>
     </types>
     <version>67.0</version>
