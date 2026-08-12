@@ -1,0 +1,50 @@
+{
+  "packageDirectories": [
+    {
+      "versionName": "CFS Bundled Signature - Fall '26 Release",
+      "versionNumber": "0.1.0.NEXT",
+      "path": "force-app",
+      "default": true,
+      "package": "CFS Bundled Signature",
+      "versionDescription": "See Github readme for all installation instructions",
+      "dependencies": [
+        {
+          "package": "CongaComposer"
+        },
+        {
+          "package": "CongaContracts"
+        },
+        {
+          "package": "CongaGrid"
+        },
+        {
+          "package": "NavigateEverywhere"
+        },
+        {
+          "package": "FlowActionsBasePack"
+        },
+        {
+          "package": "FlowScreenComponentsBasePack"
+        },
+        {
+          "package": "CongaSign"
+        }
+      ]
+    }
+  ],
+  "name": "CFSBundledSignature",
+  "namespace": "",
+  "sfdcLoginUrl": "https://login.salesforce.com",
+  "sourceApiVersion": "67.0",
+  "packageAliases": {
+    "CongaComposer": "04tg7000000AK1VAAW",
+    "CongaContracts": "04tal000007D26TAAS",
+    "CongaGrid": "04tKg000000D3buIAC",
+    "CongaSign": "04tHp000001yqxEIAQ",
+    "NavigateEverywhere": "04t5G000003rUhrQAE",
+    "FlowActionsBasePack": "04t8b00000170r5AAA",
+    "FlowScreenComponentsBasePack": "04t5G000004fzDQQAY",
+    "CFS Bundled Signature": "0Hoak0000004tvZCAQ",
+    "CFS Bundled Signature@0.1.0-1": "04tak000000azJVAAY"
+  }
+}

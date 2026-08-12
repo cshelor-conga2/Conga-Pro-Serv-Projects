@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Parent_a2g__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <label>Contract Agreement</label>
+    <referenceTo>APXT_Redlining__Contract_Agreement__c</referenceTo>
+    <relationshipLabel>Conga Sign Transactions (Contract Agreement)</relationshipLabel>
+    <relationshipName>Conga_Sign_Transactions</relationshipName>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

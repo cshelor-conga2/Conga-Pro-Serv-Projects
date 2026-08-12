@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CNG_Send_for_Bundled_Signature</fullName>
+    <availability>online</availability>
+    <displayType>button</displayType>
+    <encodingKey>UTF-8</encodingKey>
+    <hasMenubar>false</hasMenubar>
+    <hasScrollbars>true</hasScrollbars>
+    <hasToolbar>false</hasToolbar>
+    <height>600</height>
+    <isResizable>true</isResizable>
+    <linkType>url</linkType>
+    <masterLabel>Send for Bundled Signature</masterLabel>
+    <openType>newWindow</openType>
+    <position>none</position>
+    <protected>false</protected>
+    <showsLocation>false</showsLocation>
+    <showsStatus>false</showsStatus>
+    <url>/apex/APXTConga4__Conga_Composer?SolMgr=1
+&amp;serverUrl={!API.Partner_Server_URL_370}
+&amp;Id={!APXT_Redlining__Contract_Agreement__c.Id}
+
+&amp;QVar0Id=0Q_026EA4710420
+&amp;QVar0Format=10000
+
+&amp;TemplateId={QVar0}
+
+&amp;CSVisible=1
+&amp;CSMultiDocs=1
+&amp;APDF=0
+&amp;ZipFiles=0
+&amp;_DS7=1141
+&amp;BML=Bundling+Agreements+for+Signature...
+
+&amp;_SC0=1
+&amp;_SC1=SalesforceFile</url>
+</WebLink>
