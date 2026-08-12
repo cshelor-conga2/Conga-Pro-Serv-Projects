@@ -48,7 +48,7 @@ The picklist fields below belong to the Conga CFS managed package and cannot be 
 ## 3. Install Bundled Signature Package
 
 Use the install link provided and install for all users in your target org. As noted above, swap `login` for `test` if you are installing in a sandbox.
-[Install CFS Bundled Signature](https://login.salesforce.com/?retURL=/packaging/installPackage.apexp?p0=04tak000000azJVAAY)
+[Install CFS Bundled Signature](https://login.salesforce.com/?retURL=/packaging/installPackage.apexp?p0=04tak000000b18PAAQ)
 
 ---
 
